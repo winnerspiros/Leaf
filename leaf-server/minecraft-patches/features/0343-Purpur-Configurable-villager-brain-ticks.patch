@@ -10,7 +10,6 @@ Adds configurable villager brain tick rate to reduce CPU usage from villager AI.
 Based on Purpur commit 337fd268bb08bd24e83e4538600c1a4ae54c4f3f
 
 diff --git a/net/minecraft/world/entity/npc/villager/Villager.java b/net/minecraft/world/entity/npc/villager/Villager.java
-index b7d5037ebfd306f37f689df161406a72645d1e9a..0000000000000000000000000000000000000000 100644
 --- a/net/minecraft/world/entity/npc/villager/Villager.java
 +++ b/net/minecraft/world/entity/npc/villager/Villager.java
 @@ -180,6 +180,7 @@ public class Villager extends AbstractVillager implements VillagerDataHolder, Re
@@ -41,7 +40,6 @@ index b7d5037ebfd306f37f689df161406a72645d1e9a..00000000000000000000000000000000
              this.getBrain().tick(level, this); // Paper - EAR 2
          }
 diff --git a/org/purpurmc/purpur/PurpurWorldConfig.java b/org/purpurmc/purpur/PurpurWorldConfig.java
-index fb6056efa01d30209d0db4a02bc2635beb130161..0000000000000000000000000000000000000000 100644
 --- a/org/purpurmc/purpur/PurpurWorldConfig.java
 +++ b/org/purpurmc/purpur/PurpurWorldConfig.java
 @@ -21876,6 +21876,8 @@ public class PurpurWorldConfig {

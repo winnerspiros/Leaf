@@ -32,7 +32,6 @@ The rooted dirt item drop logic is being processed in HoeItem#useOn, the drop ca
 This bug has existed since 1.19, after Mojang added the rooted dirt.
 
 diff --git a/net/minecraft/world/item/ItemStack.java b/net/minecraft/world/item/ItemStack.java
-index 53946c36538eab1333f16f8bd7a1c2bd434d8a59..5166961c0013142390c951e7dc29e42460605d0b 100644
 --- a/net/minecraft/world/item/ItemStack.java
 +++ b/net/minecraft/world/item/ItemStack.java
 @@ -395,6 +395,13 @@ public final class ItemStack implements DataComponentHolder, ItemInstance, net.c

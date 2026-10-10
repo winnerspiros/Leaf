@@ -6,7 +6,6 @@ Subject: [PATCH] Use UUID for cure reputation
 Related MC issue: https://bugs.mojang.com/browse/MC/issues/MC-247647
 
 diff --git a/net/minecraft/world/entity/monster/zombie/ZombieVillager.java b/net/minecraft/world/entity/monster/zombie/ZombieVillager.java
-index cb9e7a437b00f19752745da6937eeacec29dab3c..1357d5e06b77d53d7dc79b4cb775e24eae7346b0 100644
 --- a/net/minecraft/world/entity/monster/zombie/ZombieVillager.java
 +++ b/net/minecraft/world/entity/monster/zombie/ZombieVillager.java
 @@ -334,9 +334,10 @@ public class ZombieVillager extends Zombie implements VillagerDataHolder {
@@ -22,7 +21,6 @@ index cb9e7a437b00f19752745da6937eeacec29dab3c..1357d5e06b77d53d7dc79b4cb775e24e
                  }
  
 diff --git a/net/minecraft/world/entity/npc/villager/Villager.java b/net/minecraft/world/entity/npc/villager/Villager.java
-index 8ffe48b9e28145535aca96559e6eeb1e6318a382..13cbc69eb894a1c4945bef6c88631dc9f1ed0945 100644
 --- a/net/minecraft/world/entity/npc/villager/Villager.java
 +++ b/net/minecraft/world/entity/npc/villager/Villager.java
 @@ -1103,6 +1103,22 @@ public class Villager extends AbstractVillager implements VillagerDataHolder, Re

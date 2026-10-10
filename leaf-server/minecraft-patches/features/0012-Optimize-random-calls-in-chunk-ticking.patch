@@ -57,7 +57,6 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 diff --git a/net/minecraft/server/level/ServerLevel.java b/net/minecraft/server/level/ServerLevel.java
-index 5dd2c0879dcfe01075eac166d75e87f4919eb456..509ef25908fa31178daa611a87a657f1d7801d40 100644
 --- a/net/minecraft/server/level/ServerLevel.java
 +++ b/net/minecraft/server/level/ServerLevel.java
 @@ -1067,7 +1067,7 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
@@ -70,7 +69,6 @@ index 5dd2c0879dcfe01075eac166d75e87f4919eb456..509ef25908fa31178daa611a87a657f1
              if (this.isRainingAt(pos)) {
                  DifficultyInstance difficulty = this.getCurrentDifficultyAt(pos);
 diff --git a/net/minecraft/world/level/chunk/LevelChunk.java b/net/minecraft/world/level/chunk/LevelChunk.java
-index af4106497a69f9b311970197016c6157475a7d85..790350e46adafb27e9b647479dfc13e95ee5535c 100644
 --- a/net/minecraft/world/level/chunk/LevelChunk.java
 +++ b/net/minecraft/world/level/chunk/LevelChunk.java
 @@ -135,6 +135,18 @@ public class LevelChunk extends ChunkAccess implements DebugValueSource, ca.spot

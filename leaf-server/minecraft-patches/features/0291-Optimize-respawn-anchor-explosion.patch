@@ -8,7 +8,6 @@ Subject: [PATCH] Optimize respawn anchor explosion
 (Since we can assume the chunk is loaded when a respawn anchor exploded.)
 
 diff --git a/net/minecraft/world/level/block/RespawnAnchorBlock.java b/net/minecraft/world/level/block/RespawnAnchorBlock.java
-index 4e525c7b8b227e736130c56f90476656755053c9..11c50d14bfe4e2d4e0a22fffb87e5eca9252ad04 100644
 --- a/net/minecraft/world/level/block/RespawnAnchorBlock.java
 +++ b/net/minecraft/world/level/block/RespawnAnchorBlock.java
 @@ -135,7 +135,8 @@ public class RespawnAnchorBlock extends Block {

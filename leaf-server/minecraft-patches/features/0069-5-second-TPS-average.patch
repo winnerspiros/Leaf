@@ -37,7 +37,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 diff --git a/net/minecraft/server/MinecraftServer.java b/net/minecraft/server/MinecraftServer.java
-index 4cbbcb757ce1ee065a49539d9237d68b5fd4dde8..c8293251a989eac5cc7b41481d415041a55ad04e 100644
 --- a/net/minecraft/server/MinecraftServer.java
 +++ b/net/minecraft/server/MinecraftServer.java
 @@ -366,6 +366,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
@@ -116,7 +115,6 @@ index 4cbbcb757ce1ee065a49539d9237d68b5fd4dde8..c8293251a989eac5cc7b41481d415041
                      // adjust ticksBehind so that it is not greater-than catchup
                      if (ticksBehind - catchup > 0L) {
 diff --git a/net/minecraft/server/gui/StatsComponent.java b/net/minecraft/server/gui/StatsComponent.java
-index e9f53520d99454536f32bb491ed1ef6b2a5ee07a..a64cdb78f17b8a65642caffb65fd91b81ec7f159 100644
 --- a/net/minecraft/server/gui/StatsComponent.java
 +++ b/net/minecraft/server/gui/StatsComponent.java
 @@ -33,7 +33,7 @@ public class StatsComponent extends JComponent {

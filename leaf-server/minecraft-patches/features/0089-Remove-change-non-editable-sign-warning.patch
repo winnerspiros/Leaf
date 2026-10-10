@@ -5,7 +5,6 @@ Subject: [PATCH] Remove change non-editable sign warning
 
 
 diff --git a/net/minecraft/world/level/block/entity/SignBlockEntity.java b/net/minecraft/world/level/block/entity/SignBlockEntity.java
-index a990072c34f651be58b9e3a90a088d163b3c5db0..a38e9e1d35ac92042f43c79b1a1468b08da06e57 100644
 --- a/net/minecraft/world/level/block/entity/SignBlockEntity.java
 +++ b/net/minecraft/world/level/block/entity/SignBlockEntity.java
 @@ -136,7 +136,7 @@ public class SignBlockEntity extends BlockEntity {

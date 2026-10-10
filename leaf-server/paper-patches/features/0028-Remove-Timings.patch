@@ -6,7 +6,6 @@ Subject: [PATCH] Remove Timings
 Completely remove the Timings, since it wastes too much performance. Use Spark instead.
 
 diff --git a/src/main/java/io/papermc/paper/plugin/manager/PaperPluginManagerImpl.java b/src/main/java/io/papermc/paper/plugin/manager/PaperPluginManagerImpl.java
-index 097500a59336db1bbfffcd1aa4cff7a8586e46ec..f06076864582ed153c6154fd7f3e9101bf21c4ac 100644
 --- a/src/main/java/io/papermc/paper/plugin/manager/PaperPluginManagerImpl.java
 +++ b/src/main/java/io/papermc/paper/plugin/manager/PaperPluginManagerImpl.java
 @@ -232,7 +232,7 @@ public class PaperPluginManagerImpl implements PluginManager, DependencyContext

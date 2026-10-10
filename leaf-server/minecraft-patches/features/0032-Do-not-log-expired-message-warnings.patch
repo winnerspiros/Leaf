@@ -7,7 +7,6 @@ License: GPL-3.0-only (https://www.gnu.org/licenses/gpl-3.0.html)
 Gale - https://galemc.org
 
 diff --git a/net/minecraft/network/chat/PlayerChatMessage.java b/net/minecraft/network/chat/PlayerChatMessage.java
-index 3a9d3097a836bd7acce8b60d32c9d9aea12de1fc..9d0ebbaac3cfba850ad62a9e0d97973f6664d303 100644
 --- a/net/minecraft/network/chat/PlayerChatMessage.java
 +++ b/net/minecraft/network/chat/PlayerChatMessage.java
 @@ -143,7 +143,7 @@ public record PlayerChatMessage(
@@ -20,7 +19,6 @@ index 3a9d3097a836bd7acce8b60d32c9d9aea12de1fc..9d0ebbaac3cfba850ad62a9e0d97973f
  
      public boolean hasExpiredClient(final Instant now) {
 diff --git a/net/minecraft/network/chat/SignedMessageChain.java b/net/minecraft/network/chat/SignedMessageChain.java
-index fd5059c9f37af798036f2ac5dd55d7f9a4aafe97..3aa85202ed8fc2f45ca37504834ad2dcc141507a 100644
 --- a/net/minecraft/network/chat/SignedMessageChain.java
 +++ b/net/minecraft/network/chat/SignedMessageChain.java
 @@ -61,7 +61,7 @@ public class SignedMessageChain {

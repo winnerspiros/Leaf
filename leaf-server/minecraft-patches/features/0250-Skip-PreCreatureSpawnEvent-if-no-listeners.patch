@@ -5,7 +5,6 @@ Subject: [PATCH] Skip PreCreatureSpawnEvent if no listeners
 
 
 diff --git a/net/minecraft/world/level/NaturalSpawner.java b/net/minecraft/world/level/NaturalSpawner.java
-index 9a8c8a0f361f5e76505e489a31079bee0d8a654a..f9c12fbb316a190880f5ed4b5531243b0e956368 100644
 --- a/net/minecraft/world/level/NaturalSpawner.java
 +++ b/net/minecraft/world/level/NaturalSpawner.java
 @@ -543,6 +543,8 @@ public final class NaturalSpawner {

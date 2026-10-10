@@ -5,7 +5,6 @@ Subject: [PATCH] Optimize BlockEntityType#isValid
 
 
 diff --git a/net/minecraft/world/level/block/entity/BlockEntityType.java b/net/minecraft/world/level/block/entity/BlockEntityType.java
-index 4c91a0cd674e23ae31e21ba7014fdbb15514cc45..d8e12059194985e5356153fc42ff21ed5b9bcf33 100644
 --- a/net/minecraft/world/level/block/entity/BlockEntityType.java
 +++ b/net/minecraft/world/level/block/entity/BlockEntityType.java
 @@ -17,6 +17,14 @@ public class BlockEntityType<T extends BlockEntity> {
@@ -33,7 +32,6 @@ index 4c91a0cd674e23ae31e21ba7014fdbb15514cc45..d8e12059194985e5356153fc42ff21ed
  
      @Deprecated
 diff --git a/net/minecraft/world/level/block/state/BlockBehaviour.java b/net/minecraft/world/level/block/state/BlockBehaviour.java
-index 306623efb3dc002af96818afaa068eb1fc068de1..d7198cea0b1bf7a315523385054aedc574b24652 100644
 --- a/net/minecraft/world/level/block/state/BlockBehaviour.java
 +++ b/net/minecraft/world/level/block/state/BlockBehaviour.java
 @@ -100,6 +100,7 @@ public abstract class BlockBehaviour implements FeatureElement {

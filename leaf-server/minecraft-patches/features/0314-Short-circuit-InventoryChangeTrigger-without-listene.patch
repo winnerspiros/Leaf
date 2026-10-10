@@ -7,7 +7,6 @@ Skip the full inventory slot scan when the player has no
 pending advancement listener for this trigger.
 
 diff --git a/net/minecraft/advancements/triggers/InventoryChangeTrigger.java b/net/minecraft/advancements/triggers/InventoryChangeTrigger.java
-index 399203f83bd406c748708987a7de2cb4b0e9ee4d..b3dd483db1cc535cfd11b1a7c48ee2cfef6d3f3f 100644
 --- a/net/minecraft/advancements/triggers/InventoryChangeTrigger.java
 +++ b/net/minecraft/advancements/triggers/InventoryChangeTrigger.java
 @@ -24,6 +24,13 @@ public class InventoryChangeTrigger extends SimpleCriterionTrigger<InventoryChan
@@ -49,7 +48,6 @@ index 399203f83bd406c748708987a7de2cb4b0e9ee4d..b3dd483db1cc535cfd11b1a7c48ee2cf
          @Override Optional<Holder<LootItemCondition>> player, InventoryChangeTrigger.TriggerInstance.Slots slots, List<ItemPredicate> items
      ) implements SimpleCriterionTrigger.SimpleInstance {
 diff --git a/net/minecraft/advancements/triggers/SimpleCriterionTrigger.java b/net/minecraft/advancements/triggers/SimpleCriterionTrigger.java
-index b938e10fe5b5f3aae1d18ee769827535ed543a9c..2ede5c48f4b58704667054ce910d927dacfd3687 100644
 --- a/net/minecraft/advancements/triggers/SimpleCriterionTrigger.java
 +++ b/net/minecraft/advancements/triggers/SimpleCriterionTrigger.java
 @@ -20,6 +20,12 @@ public abstract class SimpleCriterionTrigger<T extends SimpleCriterionTrigger.Si

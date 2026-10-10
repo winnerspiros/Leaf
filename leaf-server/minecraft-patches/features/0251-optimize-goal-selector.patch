@@ -5,7 +5,6 @@ Subject: [PATCH] optimize goal selector
 
 
 diff --git a/net/minecraft/world/entity/ai/goal/Goal.java b/net/minecraft/world/entity/ai/goal/Goal.java
-index 60e0d618c603caef5e3516c9fdfc63ff45a7cdff..d098f5a370862e40c85ace58d74986a68f46f1d5 100644
 --- a/net/minecraft/world/entity/ai/goal/Goal.java
 +++ b/net/minecraft/world/entity/ai/goal/Goal.java
 @@ -100,10 +100,12 @@ public abstract class Goal {
@@ -22,7 +21,6 @@ index 60e0d618c603caef5e3516c9fdfc63ff45a7cdff..d098f5a370862e40c85ace58d74986a6
      }
  }
 diff --git a/net/minecraft/world/entity/ai/goal/GoalSelector.java b/net/minecraft/world/entity/ai/goal/GoalSelector.java
-index 0439543fbb25ddb974550fe9dbdaa479e330937d..7bb75f4ff6307190952eb97743497421db9f9d4b 100644
 --- a/net/minecraft/world/entity/ai/goal/GoalSelector.java
 +++ b/net/minecraft/world/entity/ai/goal/GoalSelector.java
 @@ -22,17 +22,24 @@ public class GoalSelector {
@@ -181,7 +179,6 @@ index 0439543fbb25ddb974550fe9dbdaa479e330937d..7bb75f4ff6307190952eb97743497421
                  goal.tick();
              }
 diff --git a/net/minecraft/world/entity/ai/goal/WrappedGoal.java b/net/minecraft/world/entity/ai/goal/WrappedGoal.java
-index 0203405b8abefa82cf9cafd9bc0ab2a3ee866240..42c9a729fb2f305501e2775d24decb180636bb14 100644
 --- a/net/minecraft/world/entity/ai/goal/WrappedGoal.java
 +++ b/net/minecraft/world/entity/ai/goal/WrappedGoal.java
 @@ -4,7 +4,7 @@ import java.util.EnumSet;

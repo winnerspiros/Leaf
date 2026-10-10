@@ -5,7 +5,6 @@ Subject: [PATCH] Skip VehicleEntityCollisionEvent if no listeners
 
 
 diff --git a/net/minecraft/world/entity/vehicle/boat/AbstractBoat.java b/net/minecraft/world/entity/vehicle/boat/AbstractBoat.java
-index 39899c2b2f525369f0fec9130f8952a6cc8f4edf..248b98ecda1e1a879d3f9e4b99b57dbff8ebc601 100644
 --- a/net/minecraft/world/entity/vehicle/boat/AbstractBoat.java
 +++ b/net/minecraft/world/entity/vehicle/boat/AbstractBoat.java
 @@ -190,7 +190,7 @@ public abstract class AbstractBoat extends VehicleEntity implements Leashable {
@@ -27,7 +26,6 @@ index 39899c2b2f525369f0fec9130f8952a6cc8f4edf..248b98ecda1e1a879d3f9e4b99b57dbf
                      (org.bukkit.entity.Vehicle) this.getBukkitEntity(),
                      entity.getBukkitEntity()
 diff --git a/net/minecraft/world/entity/vehicle/minecart/AbstractMinecart.java b/net/minecraft/world/entity/vehicle/minecart/AbstractMinecart.java
-index 7e6253a7979f3eabdf0b24c089ad50fedb6314ba..0c00d4839f7da5e480dd3038b1724eb27e051567 100644
 --- a/net/minecraft/world/entity/vehicle/minecart/AbstractMinecart.java
 +++ b/net/minecraft/world/entity/vehicle/minecart/AbstractMinecart.java
 @@ -188,6 +188,7 @@ public abstract class AbstractMinecart extends VehicleEntity {
@@ -53,7 +51,6 @@ index 7e6253a7979f3eabdf0b24c089ad50fedb6314ba..0c00d4839f7da5e480dd3038b1724eb2
                      double xa = entity.getX() - this.getX();
                      double za = entity.getZ() - this.getZ();
 diff --git a/net/minecraft/world/entity/vehicle/minecart/NewMinecartBehavior.java b/net/minecraft/world/entity/vehicle/minecart/NewMinecartBehavior.java
-index f08def3b40ec970ea61fccdcd44041cbe7baf68a..683a71943a04047ab88c948ee80416c3236dc466 100644
 --- a/net/minecraft/world/entity/vehicle/minecart/NewMinecartBehavior.java
 +++ b/net/minecraft/world/entity/vehicle/minecart/NewMinecartBehavior.java
 @@ -531,6 +531,7 @@ public class NewMinecartBehavior extends MinecartBehavior {
@@ -112,7 +109,6 @@ index f08def3b40ec970ea61fccdcd44041cbe7baf68a..683a71943a04047ab88c948ee80416c3
                      entity.push(this.minecart);
                      pushed = true;
 diff --git a/net/minecraft/world/entity/vehicle/minecart/OldMinecartBehavior.java b/net/minecraft/world/entity/vehicle/minecart/OldMinecartBehavior.java
-index 2e5ea2e0f0b0776d12ac29b5737871e6789ce0d9..4eac510c6ae54f922ef6c1e4c0c44dc2ab257fe0 100644
 --- a/net/minecraft/world/entity/vehicle/minecart/OldMinecartBehavior.java
 +++ b/net/minecraft/world/entity/vehicle/minecart/OldMinecartBehavior.java
 @@ -358,6 +358,7 @@ public class OldMinecartBehavior extends MinecartBehavior {

@@ -13,7 +13,6 @@ As part of: MultiPaper (https://github.com/MultiPaper/MultiPaper)
 Licensed under: GPL-3.0-only (https://www.gnu.org/licenses/gpl-3.0.html)
 
 diff --git a/net/minecraft/world/entity/ai/goal/RandomStrollGoal.java b/net/minecraft/world/entity/ai/goal/RandomStrollGoal.java
-index 7e4fb5bb4e1df8e09ad7b08ca482ce44a47d0b28..bc8fdce935f26c4ddb5c1b7e95e6317816fb9e88 100644
 --- a/net/minecraft/world/entity/ai/goal/RandomStrollGoal.java
 +++ b/net/minecraft/world/entity/ai/goal/RandomStrollGoal.java
 @@ -50,7 +50,7 @@ public class RandomStrollGoal extends Goal {

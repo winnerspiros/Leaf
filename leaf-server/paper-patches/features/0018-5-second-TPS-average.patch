@@ -37,7 +37,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 diff --git a/src/main/java/com/destroystokyo/paper/gui/RAMDetails.java b/src/main/java/com/destroystokyo/paper/gui/RAMDetails.java
-index 330f14b15cee99aa12314057b8dc17576007e105..79c27e0a1d3e9ab7eed1f2f601ece92aca735014 100644
 --- a/src/main/java/com/destroystokyo/paper/gui/RAMDetails.java
 +++ b/src/main/java/com/destroystokyo/paper/gui/RAMDetails.java
 @@ -61,7 +61,7 @@ public class RAMDetails extends JList<String> {
@@ -59,7 +58,6 @@ index 330f14b15cee99aa12314057b8dc17576007e105..79c27e0a1d3e9ab7eed1f2f601ece92a
      }
  
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 8b1bc07050902672fb946b5fb56a784cdfe4f03d..e1451565fd3f5d90f1bfa949f3017a7fb632734a 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 @@ -2833,7 +2833,21 @@ public final class CraftServer implements Server {
@@ -85,7 +83,6 @@ index 8b1bc07050902672fb946b5fb56a784cdfe4f03d..e1451565fd3f5d90f1bfa949f3017a7f
      public double get1MinuteTPSAverage() {
          return MinecraftServer.getServer().getTPSIncluding5SecondsReadOnly()[1];
 diff --git a/src/main/java/org/spigotmc/TicksPerSecondCommand.java b/src/main/java/org/spigotmc/TicksPerSecondCommand.java
-index 5eb0a3e02bcfbba914cbeecf2c7f814051599458..b0b504ef8572d62b346934d67da91d955b2e95ca 100644
 --- a/src/main/java/org/spigotmc/TicksPerSecondCommand.java
 +++ b/src/main/java/org/spigotmc/TicksPerSecondCommand.java
 @@ -39,7 +39,7 @@ public class TicksPerSecondCommand extends Command {

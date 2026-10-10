@@ -5,7 +5,6 @@ Subject: [PATCH] Replace entity equipment items to array
 
 
 diff --git a/net/minecraft/world/entity/EntityEquipment.java b/net/minecraft/world/entity/EntityEquipment.java
-index 222268f81d96712cc14355135e70456dc98c7604..66ee55e5a64371b17b3babb490799d12135df819 100644
 --- a/net/minecraft/world/entity/EntityEquipment.java
 +++ b/net/minecraft/world/entity/EntityEquipment.java
 @@ -14,11 +14,19 @@ public class EntityEquipment implements net.caffeinemc.mods.lithium.common.entit

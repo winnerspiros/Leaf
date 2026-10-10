@@ -5,7 +5,6 @@ Subject: [PATCH] Pre authenticate event
 
 
 diff --git a/net/minecraft/server/network/ServerLoginPacketListenerImpl.java b/net/minecraft/server/network/ServerLoginPacketListenerImpl.java
-index f738257d310b6fd02ca63e2d9475fd32560dd3af..69a9b6b8a4ab71a0d426546986c498e9c842ec5a 100644
 --- a/net/minecraft/server/network/ServerLoginPacketListenerImpl.java
 +++ b/net/minecraft/server/network/ServerLoginPacketListenerImpl.java
 @@ -192,7 +192,10 @@ public class ServerLoginPacketListenerImpl implements ServerLoginPacketListener,

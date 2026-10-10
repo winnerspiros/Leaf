@@ -8,7 +8,6 @@ and the results are always same, thus there is no need to do the convert process
 Save ~0.16ms per tick, and improve 11660ms -> 60ms in around 1 hour.
 
 diff --git a/src/main/java/org/bukkit/craftbukkit/entity/CraftEntityType.java b/src/main/java/org/bukkit/craftbukkit/entity/CraftEntityType.java
-index 5b2a126779cc41246cb954e2a50f817a2dc11cfa..af3e1ed5cb3c5cdd00f492078548a86895348d99 100644
 --- a/src/main/java/org/bukkit/craftbukkit/entity/CraftEntityType.java
 +++ b/src/main/java/org/bukkit/craftbukkit/entity/CraftEntityType.java
 @@ -15,11 +15,20 @@ import org.bukkit.entity.EntityType;

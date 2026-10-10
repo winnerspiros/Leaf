@@ -7,7 +7,6 @@ Co-authored-by: Taiyou06 <kaandindar21@gmail.com>
 Co-authored-by: hayanesuru <hayanesuru@outlook.jp>
 
 diff --git a/net/minecraft/world/entity/ai/ActivityData.java b/net/minecraft/world/entity/ai/ActivityData.java
-index c8185e32f7e4b2b4df959a571a7c4c80f5983986..cbb54e19819b04b6ee250b386d93876f3052383c 100644
 --- a/net/minecraft/world/entity/ai/ActivityData.java
 +++ b/net/minecraft/world/entity/ai/ActivityData.java
 @@ -40,7 +40,7 @@ public record ActivityData<E extends LivingEntity>(
@@ -29,7 +28,6 @@ index c8185e32f7e4b2b4df959a571a7c4c80f5983986..cbb54e19819b04b6ee250b386d93876f
  
      public static <E extends LivingEntity> ActivityData<E> create(
 diff --git a/net/minecraft/world/entity/ai/Brain.java b/net/minecraft/world/entity/ai/Brain.java
-index 2b22bbfac4e324969e7cff368c690ee915d33a66..5f84ab70a41c4f30276cd895745ea773e671bea6 100644
 --- a/net/minecraft/world/entity/ai/Brain.java
 +++ b/net/minecraft/world/entity/ai/Brain.java
 @@ -37,14 +37,21 @@ import org.jspecify.annotations.Nullable;
@@ -211,7 +209,6 @@ index 2b22bbfac4e324969e7cff368c690ee915d33a66..5f84ab70a41c4f30276cd895745ea773
  
      private boolean activityRequirementsAreMet(final Activity activity) {
 diff --git a/net/minecraft/world/entity/schedule/Activity.java b/net/minecraft/world/entity/schedule/Activity.java
-index 23a614ea83abf7abdbf4f5b34751d08962c46cee..eca371aad70bbd92244ccb4279e762af134b7ade 100644
 --- a/net/minecraft/world/entity/schedule/Activity.java
 +++ b/net/minecraft/world/entity/schedule/Activity.java
 @@ -32,10 +32,12 @@ public class Activity {

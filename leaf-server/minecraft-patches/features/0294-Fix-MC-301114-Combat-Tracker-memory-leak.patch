@@ -7,7 +7,6 @@ Rewritten using EvictingRingList instead of ArrayDeque.
 Superseded Paper PR: https://github.com/PaperMC/Paper/pull/13455
 
 diff --git a/net/minecraft/world/damagesource/CombatTracker.java b/net/minecraft/world/damagesource/CombatTracker.java
-index e78fdda864d951c3ab7c747070c526ea7b1a9cb4..fdace41869c2fe5c2c22059355b41c5463cdcb3b 100644
 --- a/net/minecraft/world/damagesource/CombatTracker.java
 +++ b/net/minecraft/world/damagesource/CombatTracker.java
 @@ -22,7 +22,7 @@ public class CombatTracker {

@@ -5,7 +5,6 @@ Subject: [PATCH] thread unsafe chunk map
 
 
 diff --git a/ca/spottedleaf/moonrise/patches/chunk_system/scheduling/ChunkHolderManager.java b/ca/spottedleaf/moonrise/patches/chunk_system/scheduling/ChunkHolderManager.java
-index 13df17c593b85edb61c56ec282cab2283c149a1f..887ec6eb8b583cb09bec4622ce2438ca700182df 100644
 --- a/ca/spottedleaf/moonrise/patches/chunk_system/scheduling/ChunkHolderManager.java
 +++ b/ca/spottedleaf/moonrise/patches/chunk_system/scheduling/ChunkHolderManager.java
 @@ -81,6 +81,7 @@ public final class ChunkHolderManager {
@@ -81,7 +80,6 @@ index 13df17c593b85edb61c56ec282cab2283c149a1f..887ec6eb8b583cb09bec4622ce2438ca
  
      // note: never call while inside the chunk system, this will absolutely break everything
 diff --git a/net/minecraft/server/MinecraftServer.java b/net/minecraft/server/MinecraftServer.java
-index 102d15435c150d973032af2b2ec83361f17f15cd..2e18112a07ee3a9fc5ded8cd28c91ad7cb64ad3f 100644
 --- a/net/minecraft/server/MinecraftServer.java
 +++ b/net/minecraft/server/MinecraftServer.java
 @@ -1926,6 +1926,8 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
@@ -105,7 +103,6 @@ index 102d15435c150d973032af2b2ec83361f17f15cd..2e18112a07ee3a9fc5ded8cd28c91ad7
          } catch (java.lang.InterruptedException | java.util.concurrent.ExecutionException e) {
              throw new RuntimeException(e); // Propagate exception
 diff --git a/net/minecraft/server/level/ServerChunkCache.java b/net/minecraft/server/level/ServerChunkCache.java
-index 6b9bacdf12afcc5c28592fa2d33c90d31cbedf94..7ba08ffc25986343dd82e610940276211cfb2b29 100644
 --- a/net/minecraft/server/level/ServerChunkCache.java
 +++ b/net/minecraft/server/level/ServerChunkCache.java
 @@ -79,6 +79,7 @@ public class ServerChunkCache extends ChunkSource implements ca.spottedleaf.moon
@@ -190,7 +187,6 @@ index 6b9bacdf12afcc5c28592fa2d33c90d31cbedf94..7ba08ffc25986343dd82e61094027621
              return ret;
          }
 diff --git a/net/minecraft/world/level/Level.java b/net/minecraft/world/level/Level.java
-index 0ac0d93df310f89546f6367325613bd0b6c65743..33fd6d86a1b920614ca56d00213a61bf532d4fa2 100644
 --- a/net/minecraft/world/level/Level.java
 +++ b/net/minecraft/world/level/Level.java
 @@ -1040,6 +1040,16 @@ public abstract class Level implements LevelAccessor, AutoCloseable, ca.spottedl

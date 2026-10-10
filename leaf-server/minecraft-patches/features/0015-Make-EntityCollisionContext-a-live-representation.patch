@@ -40,7 +40,6 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 diff --git a/net/minecraft/world/phys/shapes/EntityCollisionContext.java b/net/minecraft/world/phys/shapes/EntityCollisionContext.java
-index 2958b47d82064eb1ef7578e8515dee3eaa55d330..fd421bef0db76d9047003276f288a6fde817c68a 100644
 --- a/net/minecraft/world/phys/shapes/EntityCollisionContext.java
 +++ b/net/minecraft/world/phys/shapes/EntityCollisionContext.java
 @@ -12,10 +12,7 @@ import net.minecraft.world.level.material.FluidState;

@@ -7,7 +7,6 @@ AFK command & command cooldown
 AFK title message
 
 diff --git a/net/minecraft/commands/Commands.java b/net/minecraft/commands/Commands.java
-index 9d5ce60b639aa70377c6542a87e98022e6def723..a39afafd9c72a7624acf40e18c91d539276c8ccc 100644
 --- a/net/minecraft/commands/Commands.java
 +++ b/net/minecraft/commands/Commands.java
 @@ -304,6 +304,7 @@ public class Commands {
@@ -19,7 +18,6 @@ index 9d5ce60b639aa70377c6542a87e98022e6def723..a39afafd9c72a7624acf40e18c91d539
              org.purpurmc.purpur.command.DemoCommand.register(this.dispatcher); // Purpur - Add demo command
              org.purpurmc.purpur.command.PingCommand.register(this.dispatcher); // Purpur - Add ping command
 diff --git a/net/minecraft/server/level/ServerPlayer.java b/net/minecraft/server/level/ServerPlayer.java
-index e940f08966c15db5449e6ba3813542f88dbd1afc..a9e4d3fc098094552afc122813b34398c9523b42 100644
 --- a/net/minecraft/server/level/ServerPlayer.java
 +++ b/net/minecraft/server/level/ServerPlayer.java
 @@ -2665,6 +2665,10 @@ public class ServerPlayer extends Player implements ca.spottedleaf.moonrise.patc
@@ -53,7 +51,6 @@ index e940f08966c15db5449e6ba3813542f88dbd1afc..a9e4d3fc098094552afc122813b34398
              } else {
                  getBukkitEntity().setPlayerListName(prefix + scoreboardName + suffix, true);
 diff --git a/net/minecraft/server/network/ServerGamePacketListenerImpl.java b/net/minecraft/server/network/ServerGamePacketListenerImpl.java
-index 906f1e4e2c5447041023a4a8123c2bfa6e479237..d1e0905e8d7f76ba7d90be21abd25abb2b6d485b 100644
 --- a/net/minecraft/server/network/ServerGamePacketListenerImpl.java
 +++ b/net/minecraft/server/network/ServerGamePacketListenerImpl.java
 @@ -2518,6 +2518,7 @@ public class ServerGamePacketListenerImpl
@@ -153,7 +150,6 @@ index 906f1e4e2c5447041023a4a8123c2bfa6e479237..d1e0905e8d7f76ba7d90be21abd25abb
          synchronized (this.lastSeenMessages) {
              Optional var10000;
 diff --git a/net/minecraft/server/players/PlayerList.java b/net/minecraft/server/players/PlayerList.java
-index 96badfebc4f9550976d797bf63af886854d7f801..c97940bfba340acb5ae9e3c82d3745a9abb269f4 100644
 --- a/net/minecraft/server/players/PlayerList.java
 +++ b/net/minecraft/server/players/PlayerList.java
 @@ -454,6 +454,7 @@ public abstract class PlayerList {
@@ -165,7 +161,6 @@ index 96badfebc4f9550976d797bf63af886854d7f801..c97940bfba340acb5ae9e3c82d3745a9
          player.awardStat(Stats.LEAVE_GAME);
          // CraftBukkit start - Quitting must be before we do final save of data, in case plugins need to modify it
 diff --git a/org/purpurmc/purpur/PurpurConfig.java b/org/purpurmc/purpur/PurpurConfig.java
-index 3102420f3296ab320a1b484b870cf5bc95d390f8..75c2229db653600328047f664dd506c615695e10 100644
 --- a/org/purpurmc/purpur/PurpurConfig.java
 +++ b/org/purpurmc/purpur/PurpurConfig.java
 @@ -175,6 +175,11 @@ public class PurpurConfig {

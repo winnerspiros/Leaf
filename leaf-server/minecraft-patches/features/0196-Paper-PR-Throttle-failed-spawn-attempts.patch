@@ -31,7 +31,6 @@ vain. Throttling spawn attempts in suspected spawnproof chunks improves
 performance without noticeably advantaging or disadvantaging the mob farm.
 
 diff --git a/net/minecraft/world/level/NaturalSpawner.java b/net/minecraft/world/level/NaturalSpawner.java
-index 15c1bddff242e208c291f3bbbc01083ba333a98c..4921da56d07b543c4651bb668eb8f643c82bfebb 100644
 --- a/net/minecraft/world/level/NaturalSpawner.java
 +++ b/net/minecraft/world/level/NaturalSpawner.java
 @@ -219,10 +219,21 @@ public final class NaturalSpawner {
@@ -176,7 +175,6 @@ index 15c1bddff242e208c291f3bbbc01083ba333a98c..4921da56d07b543c4651bb668eb8f643
  
      private static boolean isRightDistanceToPlayerAndSpawnPoint(
 diff --git a/net/minecraft/world/level/chunk/ChunkAccess.java b/net/minecraft/world/level/chunk/ChunkAccess.java
-index fb191cd4208b9acdfb42b5b699d2cf45d23d9275..2ed9b81819bdfbe664096f817493770cdc1ac527 100644
 --- a/net/minecraft/world/level/chunk/ChunkAccess.java
 +++ b/net/minecraft/world/level/chunk/ChunkAccess.java
 @@ -85,6 +85,7 @@ public abstract class ChunkAccess implements LightChunk, StructureAccess, BiomeR
@@ -188,7 +186,6 @@ index fb191cd4208b9acdfb42b5b699d2cf45d23d9275..2ed9b81819bdfbe664096f817493770c
      // Paper start - rewrite chunk system
      private volatile ca.spottedleaf.moonrise.patches.starlight.light.SWMRNibbleArray[] blockNibbles;
 diff --git a/net/minecraft/world/level/chunk/storage/SerializableChunkData.java b/net/minecraft/world/level/chunk/storage/SerializableChunkData.java
-index 3fef98e8c3c9908c6f05ded33596cbcb18996c3d..317550bf16e28c5cceac1abe09c25bcf90ea58ac 100644
 --- a/net/minecraft/world/level/chunk/storage/SerializableChunkData.java
 +++ b/net/minecraft/world/level/chunk/storage/SerializableChunkData.java
 @@ -92,6 +92,7 @@ public record SerializableChunkData(

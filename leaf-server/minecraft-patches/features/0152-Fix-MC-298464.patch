@@ -8,7 +8,6 @@ Related MC issue: https://bugs.mojang.com/browse/MC/issues/MC-298464
 Co-authored-by: HaHaWTH <102713261+HaHaWTH@users.noreply.github.com>
 
 diff --git a/net/minecraft/world/entity/LivingEntity.java b/net/minecraft/world/entity/LivingEntity.java
-index 2fdbb1460ec5ed2f020672156d2378b26a297943..77f95e3549e932fe8145a9be4ff39491588515d9 100644
 --- a/net/minecraft/world/entity/LivingEntity.java
 +++ b/net/minecraft/world/entity/LivingEntity.java
 @@ -777,7 +777,7 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin

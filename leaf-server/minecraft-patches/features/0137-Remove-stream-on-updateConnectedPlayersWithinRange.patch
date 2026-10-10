@@ -5,7 +5,6 @@ Subject: [PATCH] Remove stream on updateConnectedPlayersWithinRange
 
 
 diff --git a/net/minecraft/world/level/block/entity/vault/VaultSharedData.java b/net/minecraft/world/level/block/entity/vault/VaultSharedData.java
-index 41154db05edbb777fbe08e1e79b4f30f12a3cc80..fe3a84af09907491f0d94c14918afbfe5bdf5138 100644
 --- a/net/minecraft/world/level/block/entity/vault/VaultSharedData.java
 +++ b/net/minecraft/world/level/block/entity/vault/VaultSharedData.java
 @@ -67,11 +67,15 @@ public class VaultSharedData {

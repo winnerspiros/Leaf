@@ -9,7 +9,6 @@ Original project: https://github.com/CraftCanvasMC/Canvas
 It is recommended to enable these options, as the client displays most of these particles already, so the server-side particle logic is not needed
 
 diff --git a/net/minecraft/world/entity/Entity.java b/net/minecraft/world/entity/Entity.java
-index 27cb3e0208df3d59b56f598a9c52296bc83c44b0..c836526d8052213ed7e8a65000c6a77ce2b33e12 100644
 --- a/net/minecraft/world/entity/Entity.java
 +++ b/net/minecraft/world/entity/Entity.java
 @@ -1021,7 +1021,7 @@ public abstract class Entity
@@ -46,7 +45,6 @@ index 27cb3e0208df3d59b56f598a9c52296bc83c44b0..c836526d8052213ed7e8a65000c6a77c
              RandomSource random = level.getRandom();
  
 diff --git a/net/minecraft/world/entity/LivingEntity.java b/net/minecraft/world/entity/LivingEntity.java
-index 57c8f1089f8fd3cf581cf41f7bd8aa2c586f5137..9a462a63fb86b2a807679a3a8e35e31638882cea 100644
 --- a/net/minecraft/world/entity/LivingEntity.java
 +++ b/net/minecraft/world/entity/LivingEntity.java
 @@ -999,7 +999,7 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin

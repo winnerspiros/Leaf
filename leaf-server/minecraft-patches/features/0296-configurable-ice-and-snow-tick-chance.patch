@@ -5,7 +5,6 @@ Subject: [PATCH] configurable ice and snow tick chance
 
 
 diff --git a/net/minecraft/server/level/ServerLevel.java b/net/minecraft/server/level/ServerLevel.java
-index 293a3144ce2ba8c709307627808d75d0ac6bb114..aaf031daf62f5c832f9c11f9d1cbd28117dc076a 100644
 --- a/net/minecraft/server/level/ServerLevel.java
 +++ b/net/minecraft/server/level/ServerLevel.java
 @@ -1269,9 +1269,10 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet

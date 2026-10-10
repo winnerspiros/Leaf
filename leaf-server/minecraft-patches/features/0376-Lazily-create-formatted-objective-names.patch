@@ -8,7 +8,6 @@ Defer the copied, styled hover component until command feedback actually request
 Adapted from Paper PR #14039.
 
 diff --git a/net/minecraft/world/scores/Objective.java b/net/minecraft/world/scores/Objective.java
-index 64ea4741b7ed58fe7914b9431353abd1f658a935..a36a772ef30ba8f991781f760f6f10259b1b841e 100644
 --- a/net/minecraft/world/scores/Objective.java
 +++ b/net/minecraft/world/scores/Objective.java
 @@ -18,7 +18,7 @@ public class Objective {

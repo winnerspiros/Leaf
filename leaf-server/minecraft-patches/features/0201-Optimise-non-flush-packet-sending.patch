@@ -26,7 +26,6 @@ Locally this patch drops the entity tracker tick by a full 1.5x.
 Co-authored-by: Quang Tran <3d7777456@gmail.com>
 
 diff --git a/net/minecraft/network/Connection.java b/net/minecraft/network/Connection.java
-index bc9e45e17ce2ff1cf0b63c5540f8004e7ab0abc3..6ccc4d2a9acce111fbcdaaf3590c8b09b31b2c1d 100644
 --- a/net/minecraft/network/Connection.java
 +++ b/net/minecraft/network/Connection.java
 @@ -126,6 +126,7 @@ public class Connection extends SimpleChannelInboundHandler<Packet<?>> {

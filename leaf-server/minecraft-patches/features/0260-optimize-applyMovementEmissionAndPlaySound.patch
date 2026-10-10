@@ -5,7 +5,6 @@ Subject: [PATCH] optimize applyMovementEmissionAndPlaySound
 
 
 diff --git a/net/minecraft/world/entity/Entity.java b/net/minecraft/world/entity/Entity.java
-index 10b59a6aeb9362fb15f8d31f4365de960f5130d9..fdf53c083f7863b0019015f968d104f7ec31db62 100644
 --- a/net/minecraft/world/entity/Entity.java
 +++ b/net/minecraft/world/entity/Entity.java
 @@ -1436,7 +1436,10 @@ public abstract class Entity

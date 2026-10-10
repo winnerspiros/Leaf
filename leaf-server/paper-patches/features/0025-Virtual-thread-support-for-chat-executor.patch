@@ -5,7 +5,6 @@ Subject: [PATCH] Virtual thread support for chat executor
 
 
 diff --git a/src/main/java/io/papermc/paper/configuration/GlobalConfiguration.java b/src/main/java/io/papermc/paper/configuration/GlobalConfiguration.java
-index 0b35a293f3436bcf8a39c4f07a88340cd9d33bcb..d0a48f86544991ad6a23aedeefca15c017fc0a5b 100644
 --- a/src/main/java/io/papermc/paper/configuration/GlobalConfiguration.java
 +++ b/src/main/java/io/papermc/paper/configuration/GlobalConfiguration.java
 @@ -312,9 +312,11 @@ public class GlobalConfiguration extends ConfigurationPart {

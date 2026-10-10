@@ -39,7 +39,6 @@ https://github.com/CaffeineMC/lithium/commit/ba08831d0254076cba1e8aba3db6c42f26d
 https://github.com/CaffeineMC/lithium/commit/ba089f52be5b26e6590402211581e05e467a8e2d
 
 diff --git a/net/minecraft/world/level/block/CalibratedSculkSensorBlock.java b/net/minecraft/world/level/block/CalibratedSculkSensorBlock.java
-index 37fb609443b418baf72c2207b01b4c5daf7721d7..67dcd975b9f0fff076a366e10ab93513b356139f 100644
 --- a/net/minecraft/world/level/block/CalibratedSculkSensorBlock.java
 +++ b/net/minecraft/world/level/block/CalibratedSculkSensorBlock.java
 @@ -38,7 +38,17 @@ public class CalibratedSculkSensorBlock extends SculkSensorBlock {
@@ -62,7 +61,6 @@ index 37fb609443b418baf72c2207b01b4c5daf7721d7..67dcd975b9f0fff076a366e10ab93513
              : null;
      }
 diff --git a/net/minecraft/world/level/block/SculkSensorBlock.java b/net/minecraft/world/level/block/SculkSensorBlock.java
-index 78145c3c30e818a60a4d5ae920b14ed0075a7f90..b35528c00aecdbb30c597f39c1c1815ace34f1d2 100644
 --- a/net/minecraft/world/level/block/SculkSensorBlock.java
 +++ b/net/minecraft/world/level/block/SculkSensorBlock.java
 @@ -165,7 +165,17 @@ public class SculkSensorBlock extends BaseEntityBlock implements SimpleWaterlogg
@@ -85,7 +83,6 @@ index 78145c3c30e818a60a4d5ae920b14ed0075a7f90..b35528c00aecdbb30c597f39c1c1815a
              : null;
      }
 diff --git a/net/minecraft/world/level/block/SculkShriekerBlock.java b/net/minecraft/world/level/block/SculkShriekerBlock.java
-index f5fd4c3ac3d82607e11fa48651897ab279b804d1..2398b660e8b3bc2565b0dbb4ab8ae634c3c0ce70 100644
 --- a/net/minecraft/world/level/block/SculkShriekerBlock.java
 +++ b/net/minecraft/world/level/block/SculkShriekerBlock.java
 @@ -139,7 +139,17 @@ public class SculkShriekerBlock extends BaseEntityBlock implements SimpleWaterlo
@@ -108,7 +105,6 @@ index f5fd4c3ac3d82607e11fa48651897ab279b804d1..2398b660e8b3bc2565b0dbb4ab8ae634
              : null;
      }
 diff --git a/net/minecraft/world/level/block/SculkSpreader.java b/net/minecraft/world/level/block/SculkSpreader.java
-index e702c5cd0cda6f5ac7121121c8ae90e368ee5d65..3f35c4581348461112a82b05e109924829dca555 100644
 --- a/net/minecraft/world/level/block/SculkSpreader.java
 +++ b/net/minecraft/world/level/block/SculkSpreader.java
 @@ -34,7 +34,7 @@ import net.minecraft.world.level.storage.ValueInput;
@@ -149,7 +145,6 @@ index e702c5cd0cda6f5ac7121121c8ae90e368ee5d65..3f35c4581348461112a82b05e1099248
          private static final ObjectArrayList<Vec3i> NON_CORNER_NEIGHBOURS = Util.make(
              new ObjectArrayList<>(18),
 diff --git a/net/minecraft/world/level/block/entity/AbstractFurnaceBlockEntity.java b/net/minecraft/world/level/block/entity/AbstractFurnaceBlockEntity.java
-index 7bf07bf8f27fc329c363a137507c10e1657d1b4a..e9bd612094bae420327b7f09fcabd5b2b1f731ad 100644
 --- a/net/minecraft/world/level/block/entity/AbstractFurnaceBlockEntity.java
 +++ b/net/minecraft/world/level/block/entity/AbstractFurnaceBlockEntity.java
 @@ -444,6 +444,7 @@ public abstract class AbstractFurnaceBlockEntity extends BaseContainerBlockEntit
@@ -161,7 +156,6 @@ index 7bf07bf8f27fc329c363a137507c10e1657d1b4a..e9bd612094bae420327b7f09fcabd5b2
  
      @Override
 diff --git a/net/minecraft/world/level/block/entity/ChestBlockEntity.java b/net/minecraft/world/level/block/entity/ChestBlockEntity.java
-index 04914fd35161bd8992d86e7c14673501309c7a67..899149db8ebf95c2813fbe562d4f7fd0e829b304 100644
 --- a/net/minecraft/world/level/block/entity/ChestBlockEntity.java
 +++ b/net/minecraft/world/level/block/entity/ChestBlockEntity.java
 @@ -256,6 +256,7 @@ public class ChestBlockEntity extends RandomizableContainerBlockEntity implement
@@ -173,7 +167,6 @@ index 04914fd35161bd8992d86e7c14673501309c7a67..899149db8ebf95c2813fbe562d4f7fd0
  
      @Override
 diff --git a/net/minecraft/world/level/block/entity/EnderChestBlockEntity.java b/net/minecraft/world/level/block/entity/EnderChestBlockEntity.java
-index 7106c539f3d454488de008804fd0cf7cc09a2149..dfa2d68430674b435b02fb90ec9780ba9602f5d3 100644
 --- a/net/minecraft/world/level/block/entity/EnderChestBlockEntity.java
 +++ b/net/minecraft/world/level/block/entity/EnderChestBlockEntity.java
 @@ -122,6 +122,7 @@ public class EnderChestBlockEntity extends BlockEntity implements LidBlockEntity
@@ -185,7 +178,6 @@ index 7106c539f3d454488de008804fd0cf7cc09a2149..dfa2d68430674b435b02fb90ec9780ba
  
      @Override
 diff --git a/net/minecraft/world/level/block/entity/HopperBlockEntity.java b/net/minecraft/world/level/block/entity/HopperBlockEntity.java
-index 3c89868ea0f8b01fb2a691b142113295fc3dfb5d..6f4af2726b308545f53162bcdf724f678be259aa 100644
 --- a/net/minecraft/world/level/block/entity/HopperBlockEntity.java
 +++ b/net/minecraft/world/level/block/entity/HopperBlockEntity.java
 @@ -880,10 +880,17 @@ public class HopperBlockEntity extends RandomizableContainerBlockEntity implemen
@@ -300,7 +292,6 @@ index 3c89868ea0f8b01fb2a691b142113295fc3dfb5d..6f4af2726b308545f53162bcdf724f67
              net.caffeinemc.mods.lithium.common.hopper.LithiumStackList extractInventoryStackList = net.caffeinemc.mods.lithium.common.hopper.InventoryHelper.getLithiumStackList(optimizedInventory);
              if (inventory != this.extractInventory || this.extractStackList != extractInventoryStackList) {
 diff --git a/net/minecraft/world/level/block/entity/SculkCatalystBlockEntity.java b/net/minecraft/world/level/block/entity/SculkCatalystBlockEntity.java
-index 6dc800b91a78ca52c264450d7b6489a0f98ba0c1..c5544f10c640e1c7745671bf699b87e6db430db8 100644
 --- a/net/minecraft/world/level/block/entity/SculkCatalystBlockEntity.java
 +++ b/net/minecraft/world/level/block/entity/SculkCatalystBlockEntity.java
 @@ -26,12 +26,13 @@ import net.minecraft.world.level.storage.ValueInput;
@@ -375,7 +366,6 @@ index 6dc800b91a78ca52c264450d7b6489a0f98ba0c1..c5544f10c640e1c7745671bf699b87e6
          public static final int PULSE_TICKS = 8;
          private final SculkSpreader sculkSpreader;
 diff --git a/net/minecraft/world/level/block/entity/SculkSensorBlockEntity.java b/net/minecraft/world/level/block/entity/SculkSensorBlockEntity.java
-index 7903289b01c652226b58d1f22f25cfabcbb10274..9b853009f4e059a7694181364f58ad53bf9f81ad 100644
 --- a/net/minecraft/world/level/block/entity/SculkSensorBlockEntity.java
 +++ b/net/minecraft/world/level/block/entity/SculkSensorBlockEntity.java
 @@ -15,7 +15,7 @@ import net.minecraft.world.level.storage.ValueInput;
@@ -441,7 +431,6 @@ index 7903289b01c652226b58d1f22f25cfabcbb10274..9b853009f4e059a7694181364f58ad53
          public static final int LISTENER_RANGE = 8;
          protected final BlockPos blockPos;
 diff --git a/net/minecraft/world/level/block/entity/SculkShriekerBlockEntity.java b/net/minecraft/world/level/block/entity/SculkShriekerBlockEntity.java
-index 3adfffd3f0a7e6b4867248f6483a36ca9f5f1ee3..5835d54c3e855085383f22424f3c36fbc74a7721 100644
 --- a/net/minecraft/world/level/block/entity/SculkShriekerBlockEntity.java
 +++ b/net/minecraft/world/level/block/entity/SculkShriekerBlockEntity.java
 @@ -40,7 +40,7 @@ import net.minecraft.world.level.storage.ValueOutput;
@@ -507,7 +496,6 @@ index 3adfffd3f0a7e6b4867248f6483a36ca9f5f1ee3..5835d54c3e855085383f22424f3c36fb
          private static final int LISTENER_RADIUS = 8;
          private final PositionSource positionSource = new BlockPositionSource(SculkShriekerBlockEntity.this.worldPosition);
 diff --git a/net/minecraft/world/level/block/entity/ShulkerBoxBlockEntity.java b/net/minecraft/world/level/block/entity/ShulkerBoxBlockEntity.java
-index 73016e8ca69fb8d880fa181850f77366efc19768..42f8261fe23861301221c53f65d4f19280a06394 100644
 --- a/net/minecraft/world/level/block/entity/ShulkerBoxBlockEntity.java
 +++ b/net/minecraft/world/level/block/entity/ShulkerBoxBlockEntity.java
 @@ -319,17 +319,18 @@ public class ShulkerBoxBlockEntity extends RandomizableContainerBlockEntity impl
@@ -532,7 +520,6 @@ index 73016e8ca69fb8d880fa181850f77366efc19768..42f8261fe23861301221c53f65d4f192
  
      @Override
 diff --git a/net/minecraft/world/level/gameevent/vibrations/VibrationSystem.java b/net/minecraft/world/level/gameevent/vibrations/VibrationSystem.java
-index 98e52c705e04f56e77f679eb05f3e0b8df4be743..1666f15937f17fa2d44e16f69ea90b89dce940e9 100644
 --- a/net/minecraft/world/level/gameevent/vibrations/VibrationSystem.java
 +++ b/net/minecraft/world/level/gameevent/vibrations/VibrationSystem.java
 @@ -190,7 +190,7 @@ public interface VibrationSystem {

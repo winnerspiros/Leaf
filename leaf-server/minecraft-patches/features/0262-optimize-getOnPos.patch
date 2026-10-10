@@ -5,7 +5,6 @@ Subject: [PATCH] optimize getOnPos
 
 
 diff --git a/net/minecraft/world/entity/Entity.java b/net/minecraft/world/entity/Entity.java
-index cab6150587e6682d3cb5a188242ff9810abcfb30..2355f167e6b874575876ed43ee342c6d347cc638 100644
 --- a/net/minecraft/world/entity/Entity.java
 +++ b/net/minecraft/world/entity/Entity.java
 @@ -1625,24 +1625,28 @@ public abstract class Entity

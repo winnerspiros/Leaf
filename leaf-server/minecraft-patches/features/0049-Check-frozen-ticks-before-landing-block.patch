@@ -21,7 +21,6 @@ track:
 // SYNC SOURCE END
 
 diff --git a/net/minecraft/world/entity/LivingEntity.java b/net/minecraft/world/entity/LivingEntity.java
-index a9eca4018a31dddeae4da85088097eb49e45ca06..3f554b998df6811f81e6825f274775765e9aab42 100644
 --- a/net/minecraft/world/entity/LivingEntity.java
 +++ b/net/minecraft/world/entity/LivingEntity.java
 @@ -576,10 +576,9 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin

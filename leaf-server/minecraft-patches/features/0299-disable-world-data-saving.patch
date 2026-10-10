@@ -8,7 +8,6 @@ ServerLevel full and incremental saves, and Moonrise chunk/entity/POI writes (in
 Shutdown closes the chunk system without flushing saves.
 
 diff --git a/ca/spottedleaf/moonrise/patches/chunk_system/scheduling/NewChunkHolder.java b/ca/spottedleaf/moonrise/patches/chunk_system/scheduling/NewChunkHolder.java
-index 7a0006f9b56d1e43b06f9f7452e1b5bb0ec53e72..d651e131f5a6cf5e566af50b15694b0cc0c0c6b0 100644
 --- a/ca/spottedleaf/moonrise/patches/chunk_system/scheduling/NewChunkHolder.java
 +++ b/ca/spottedleaf/moonrise/patches/chunk_system/scheduling/NewChunkHolder.java
 @@ -1708,6 +1708,14 @@ public final class NewChunkHolder {
@@ -50,7 +49,6 @@ index 7a0006f9b56d1e43b06f9f7452e1b5bb0ec53e72..d651e131f5a6cf5e566af50b15694b0c
              final CompoundTag save = poi.save();
              poi.setDirty(false);
 diff --git a/net/minecraft/server/level/ServerLevel.java b/net/minecraft/server/level/ServerLevel.java
-index aaf031daf62f5c832f9c11f9d1cbd28117dc076a..02f0d56bcf0fd48a48058895a0ac3c654ab0510c 100644
 --- a/net/minecraft/server/level/ServerLevel.java
 +++ b/net/minecraft/server/level/ServerLevel.java
 @@ -1753,6 +1753,7 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet

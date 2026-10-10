@@ -5,7 +5,6 @@ Subject: [PATCH] optimize structure map
 
 
 diff --git a/net/minecraft/world/level/chunk/ChunkAccess.java b/net/minecraft/world/level/chunk/ChunkAccess.java
-index 2ed9b81819bdfbe664096f817493770cdc1ac527..01a205eca9627736004a8e91e43b8aaa71a892f1 100644
 --- a/net/minecraft/world/level/chunk/ChunkAccess.java
 +++ b/net/minecraft/world/level/chunk/ChunkAccess.java
 @@ -71,8 +71,8 @@ public abstract class ChunkAccess implements LightChunk, StructureAccess, BiomeR

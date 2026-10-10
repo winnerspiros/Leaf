@@ -29,7 +29,6 @@ search to attempt respawning the ender dragon whenever a player places
 an end crystal.
 
 diff --git a/net/minecraft/world/item/EndCrystalItem.java b/net/minecraft/world/item/EndCrystalItem.java
-index fdce2bdc2ea73718bd016c2f2dbcb9d24f9d8cad..b2b8efad9da71fddb1a1011c05b7d6c7fe71bffb 100644
 --- a/net/minecraft/world/item/EndCrystalItem.java
 +++ b/net/minecraft/world/item/EndCrystalItem.java
 @@ -52,10 +52,12 @@ public class EndCrystalItem extends Item {

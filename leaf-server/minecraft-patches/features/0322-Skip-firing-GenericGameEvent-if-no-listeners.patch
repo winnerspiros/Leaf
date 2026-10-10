@@ -5,7 +5,6 @@ Subject: [PATCH] Skip firing GenericGameEvent if no listeners
 
 
 diff --git a/net/minecraft/world/level/gameevent/GameEventDispatcher.java b/net/minecraft/world/level/gameevent/GameEventDispatcher.java
-index 1bdb36266e718bce07eae8355538a8c7db86c3c8..007453a29656a50dc067cb61d63e2ad6d22a155a 100644
 --- a/net/minecraft/world/level/gameevent/GameEventDispatcher.java
 +++ b/net/minecraft/world/level/gameevent/GameEventDispatcher.java
 @@ -22,6 +22,7 @@ public class GameEventDispatcher {

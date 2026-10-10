@@ -21,7 +21,6 @@ track:
 // SYNC SOURCE END
 
 diff --git a/net/minecraft/world/phys/shapes/CubePointRange.java b/net/minecraft/world/phys/shapes/CubePointRange.java
-index 72bb3bb29f2a1b06371589ed9bfea85de8046d50..98d8a9dd44bc55e61e3c01bcc55a83ac9be16250 100644
 --- a/net/minecraft/world/phys/shapes/CubePointRange.java
 +++ b/net/minecraft/world/phys/shapes/CubePointRange.java
 @@ -4,6 +4,7 @@ import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;

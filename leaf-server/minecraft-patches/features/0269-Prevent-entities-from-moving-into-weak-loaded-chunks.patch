@@ -6,7 +6,6 @@ Subject: [PATCH] Prevent entities from moving into weak loaded chunks
 This also should mitigate most cases of memory leaks caused by massive weak loaded projectiles
 
 diff --git a/net/minecraft/server/level/ServerLevel.java b/net/minecraft/server/level/ServerLevel.java
-index 1a19d1840aa77df5aafdf03f36ae3279a053532d..293a3144ce2ba8c709307627808d75d0ac6bb114 100644
 --- a/net/minecraft/server/level/ServerLevel.java
 +++ b/net/minecraft/server/level/ServerLevel.java
 @@ -258,8 +258,40 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
@@ -52,7 +51,6 @@ index 1a19d1840aa77df5aafdf03f36ae3279a053532d..293a3144ce2ba8c709307627808d75d0
          // CollisionGetter methods for VoxelShapes)
          // be more strict too, add a block (dumb plugins in move events?)
 diff --git a/net/minecraft/world/entity/Entity.java b/net/minecraft/world/entity/Entity.java
-index 915d266e7d817b21bdd344dfe5f193c812651c64..74b85bc08dd8ed0f5a83eb612d7e24a026f8b05a 100644
 --- a/net/minecraft/world/entity/Entity.java
 +++ b/net/minecraft/world/entity/Entity.java
 @@ -396,6 +396,7 @@ public abstract class Entity
@@ -64,7 +62,6 @@ index 915d266e7d817b21bdd344dfe5f193c812651c64..74b85bc08dd8ed0f5a83eb612d7e24a0
      public final boolean defaultActivationState;
      public long activatedTick = Integer.MIN_VALUE;
 diff --git a/net/minecraft/world/entity/projectile/LlamaSpit.java b/net/minecraft/world/entity/projectile/LlamaSpit.java
-index 1cdf68260ab3589b86cbe34528956042bf1a79ad..6ed87e47ecb029ea81c45020e12f7e80543edc9b 100644
 --- a/net/minecraft/world/entity/projectile/LlamaSpit.java
 +++ b/net/minecraft/world/entity/projectile/LlamaSpit.java
 @@ -63,6 +63,17 @@ public class LlamaSpit extends Projectile {
@@ -86,7 +83,6 @@ index 1cdf68260ab3589b86cbe34528956042bf1a79ad..6ed87e47ecb029ea81c45020e12f7e80
          }
      }
 diff --git a/net/minecraft/world/entity/projectile/Projectile.java b/net/minecraft/world/entity/projectile/Projectile.java
-index 59139c5035040aab9fc14359fbf02e0c1b6d84c1..5c02264cac1ebc9fabc7d249a3e0034846910940 100644
 --- a/net/minecraft/world/entity/projectile/Projectile.java
 +++ b/net/minecraft/world/entity/projectile/Projectile.java
 @@ -59,6 +59,7 @@ public abstract class Projectile extends Entity implements TraceableEntity {
@@ -98,7 +94,6 @@ index 59139c5035040aab9fc14359fbf02e0c1b6d84c1..5c02264cac1ebc9fabc7d249a3e00348
  
      @Override
 diff --git a/net/minecraft/world/entity/projectile/ShulkerBullet.java b/net/minecraft/world/entity/projectile/ShulkerBullet.java
-index 54caa09ef2a5c1a5cd254c13873058d54f990308..7fe8e8a482820a2bb504efa5f4ec530d0daeb5c9 100644
 --- a/net/minecraft/world/entity/projectile/ShulkerBullet.java
 +++ b/net/minecraft/world/entity/projectile/ShulkerBullet.java
 @@ -226,6 +226,13 @@ public class ShulkerBullet extends Projectile {
@@ -116,7 +111,6 @@ index 54caa09ef2a5c1a5cd254c13873058d54f990308..7fe8e8a482820a2bb504efa5f4ec530d
          this.applyEffectsFromBlocks();
          if (this.portalProcess != null && this.portalProcess.isInsidePortalThisTick()) {
 diff --git a/net/minecraft/world/entity/projectile/ThrowableProjectile.java b/net/minecraft/world/entity/projectile/ThrowableProjectile.java
-index aab9ef42324619dcef6afcba040e4a01b69822a9..d45ae5afad699fa30e242e2540e9e22c07bbccd0 100644
 --- a/net/minecraft/world/entity/projectile/ThrowableProjectile.java
 +++ b/net/minecraft/world/entity/projectile/ThrowableProjectile.java
 @@ -55,7 +55,20 @@ public abstract class ThrowableProjectile extends Projectile {
@@ -142,7 +136,6 @@ index aab9ef42324619dcef6afcba040e4a01b69822a9..d45ae5afad699fa30e242e2540e9e22c
  
          this.setPos(newPosition);
 diff --git a/net/minecraft/world/entity/projectile/hurtingprojectile/AbstractHurtingProjectile.java b/net/minecraft/world/entity/projectile/hurtingprojectile/AbstractHurtingProjectile.java
-index 84c07fb51e8321b32f8607a602dd1e417ce36af7..b39383b134068b8cc58cc96c72230d2ea26cfa28 100644
 --- a/net/minecraft/world/entity/projectile/hurtingprojectile/AbstractHurtingProjectile.java
 +++ b/net/minecraft/world/entity/projectile/hurtingprojectile/AbstractHurtingProjectile.java
 @@ -24,6 +24,7 @@ public abstract class AbstractHurtingProjectile extends Projectile {
@@ -184,7 +177,6 @@ index 84c07fb51e8321b32f8607a602dd1e417ce36af7..b39383b134068b8cc58cc96c72230d2e
  
              ProjectileUtil.rotateTowardsMovement(this, 0.2F);
 diff --git a/net/minecraft/world/entity/projectile/throwableitemprojectile/ThrownEnderpearl.java b/net/minecraft/world/entity/projectile/throwableitemprojectile/ThrownEnderpearl.java
-index ae5b8fa9a06d498c56cbcf4cb56bda46785af3a4..df1f4771eaea6e0e41d585e5c35d555b00ae0c4a 100644
 --- a/net/minecraft/world/entity/projectile/throwableitemprojectile/ThrownEnderpearl.java
 +++ b/net/minecraft/world/entity/projectile/throwableitemprojectile/ThrownEnderpearl.java
 @@ -35,10 +35,12 @@ public class ThrownEnderpearl extends ThrowableItemProjectile {

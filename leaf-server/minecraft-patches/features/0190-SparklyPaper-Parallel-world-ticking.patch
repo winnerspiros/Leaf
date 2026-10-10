@@ -12,7 +12,6 @@ Co-authored-by: MrlingXD <90316914+wling-art@users.noreply.github.com>
 Commit: a274e6617255a93d567efdf00762e492aa2df535
 
 diff --git a/ca/spottedleaf/moonrise/patches/chunk_system/scheduling/ChunkHolderManager.java b/ca/spottedleaf/moonrise/patches/chunk_system/scheduling/ChunkHolderManager.java
-index 80e78dd70ebd2497c3d9c931ccd5c04fb7232662..13df17c593b85edb61c56ec282cab2283c149a1f 100644
 --- a/ca/spottedleaf/moonrise/patches/chunk_system/scheduling/ChunkHolderManager.java
 +++ b/ca/spottedleaf/moonrise/patches/chunk_system/scheduling/ChunkHolderManager.java
 @@ -1153,7 +1153,7 @@ public final class ChunkHolderManager {
@@ -58,7 +57,6 @@ index 80e78dd70ebd2497c3d9c931ccd5c04fb7232662..13df17c593b85edb61c56ec282cab228
          if (!PlatformHooks.get().allowAsyncTicketUpdates() && isTickThread) {
              TickThread.ensureTickThread("Cannot asynchronously process ticket updates");
 diff --git a/io/papermc/paper/entity/activation/ActivationRange.java b/io/papermc/paper/entity/activation/ActivationRange.java
-index 922c95a3bbdc27ff86ce74ecedb0bc63d4018f93..22d24882621a6e2184ef1c95bd45518267b9edf2 100644
 --- a/io/papermc/paper/entity/activation/ActivationRange.java
 +++ b/io/papermc/paper/entity/activation/ActivationRange.java
 @@ -133,7 +133,19 @@ public final class ActivationRange {
@@ -82,7 +80,6 @@ index 922c95a3bbdc27ff86ce74ecedb0bc63d4018f93..22d24882621a6e2184ef1c95bd455182
          final int raiderActivationRange = world.spigotConfig.raiderActivationRange;
          final int animalActivationRange = world.spigotConfig.animalActivationRange;
 diff --git a/io/papermc/paper/redstone/RedstoneWireTurbo.java b/io/papermc/paper/redstone/RedstoneWireTurbo.java
-index f7820568b78f630e4d234d3dfb36c2167149777a..fd1fe87bb891ad66b6edb35e9d7c363f9efa5790 100644
 --- a/io/papermc/paper/redstone/RedstoneWireTurbo.java
 +++ b/io/papermc/paper/redstone/RedstoneWireTurbo.java
 @@ -827,14 +827,22 @@ public final class RedstoneWireTurbo {
@@ -117,7 +114,6 @@ index f7820568b78f630e4d234d3dfb36c2167149777a..fd1fe87bb891ad66b6edb35e9d7c363f
          // The variable 'k' holds the maximum redstone power value of any adjacent blocks.
          // If 'k' has the highest level of all neighbors, then the power level of this
 diff --git a/net/minecraft/core/dispenser/DispenseItemBehavior.java b/net/minecraft/core/dispenser/DispenseItemBehavior.java
-index c33cb78dddfaff40f54ff4def7d58ebdd7085fa3..6c79567ef2c93e8e05820260eae1985934bd8b71 100644
 --- a/net/minecraft/core/dispenser/DispenseItemBehavior.java
 +++ b/net/minecraft/core/dispenser/DispenseItemBehavior.java
 @@ -308,8 +308,8 @@ public interface DispenseItemBehavior {
@@ -132,7 +128,6 @@ index c33cb78dddfaff40f54ff4def7d58ebdd7085fa3..6c79567ef2c93e8e05820260eae19859
                  // Paper end
                  // CraftBukkit start
 diff --git a/net/minecraft/server/MinecraftServer.java b/net/minecraft/server/MinecraftServer.java
-index 9cde443a3cf9b11647e9d644c8ef47906e0a650f..7845445d210b8636e0396d1812368addf035d8e5 100644
 --- a/net/minecraft/server/MinecraftServer.java
 +++ b/net/minecraft/server/MinecraftServer.java
 @@ -335,6 +335,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
@@ -278,7 +273,6 @@ index 9cde443a3cf9b11647e9d644c8ef47906e0a650f..7845445d210b8636e0396d1812368add
      }
      // CraftBukkit end
 diff --git a/net/minecraft/server/PlayerAdvancements.java b/net/minecraft/server/PlayerAdvancements.java
-index 55b1463df92251eb6e17479f7a5ca75276e88f8f..90125eac5a8f659794bbd38b22584f68a27424e1 100644
 --- a/net/minecraft/server/PlayerAdvancements.java
 +++ b/net/minecraft/server/PlayerAdvancements.java
 @@ -54,8 +54,10 @@ public class PlayerAdvancements {
@@ -347,7 +341,6 @@ index 55b1463df92251eb6e17479f7a5ca75276e88f8f..90125eac5a8f659794bbd38b22584f68
                  List<ClientboundUpdateAdvancementsPacket.PositionedAdvancement> convertedAdded = added.stream()
                      .map(ClientboundUpdateAdvancementsPacket.PositionedAdvancement::fromNode)
 diff --git a/net/minecraft/server/dedicated/DedicatedServer.java b/net/minecraft/server/dedicated/DedicatedServer.java
-index 1465e07aab8a6b0c7fc0f4e244d524be78ed8274..1205516c00335b5eacabad1b0ef022f9365fc439 100644
 --- a/net/minecraft/server/dedicated/DedicatedServer.java
 +++ b/net/minecraft/server/dedicated/DedicatedServer.java
 @@ -265,6 +265,12 @@ public class DedicatedServer extends MinecraftServer implements ServerInterface
@@ -364,7 +357,6 @@ index 1465e07aab8a6b0c7fc0f4e244d524be78ed8274..1205516c00335b5eacabad1b0ef022f9
  
          // Gale start - Pufferfish - SIMD support
 diff --git a/net/minecraft/server/level/ServerChunkCache.java b/net/minecraft/server/level/ServerChunkCache.java
-index 9d83f2f9de9cc043a3d671da7245b3098758a8f2..e60f1b0527196d51cb65e69d9b9d2936c5ea9285 100644
 --- a/net/minecraft/server/level/ServerChunkCache.java
 +++ b/net/minecraft/server/level/ServerChunkCache.java
 @@ -182,6 +182,7 @@ public class ServerChunkCache extends ChunkSource implements ca.spottedleaf.moon
@@ -376,7 +368,6 @@ index 9d83f2f9de9cc043a3d671da7245b3098758a8f2..e60f1b0527196d51cb65e69d9b9d2936
                  continue;
              }
 diff --git a/net/minecraft/server/level/ServerLevel.java b/net/minecraft/server/level/ServerLevel.java
-index 39ac8ca92d41666f8cc33e5d995e29ef1eec0e1d..11ce156954c88fc991b1daadca3390f5fe118eec 100644
 --- a/net/minecraft/server/level/ServerLevel.java
 +++ b/net/minecraft/server/level/ServerLevel.java
 @@ -197,7 +197,7 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
@@ -633,7 +624,6 @@ index 39ac8ca92d41666f8cc33e5d995e29ef1eec0e1d..11ce156954c88fc991b1daadca3390f5
          // Paper start - extra debug info
          if (entity.valid) {
 diff --git a/net/minecraft/server/level/ServerPlayer.java b/net/minecraft/server/level/ServerPlayer.java
-index 6c0de6b09df0b92c2fa8be0e7d46335d387cd492..1b6ab6720f8319e451e4b3d5d0f9d6e7db6597de 100644
 --- a/net/minecraft/server/level/ServerPlayer.java
 +++ b/net/minecraft/server/level/ServerPlayer.java
 @@ -483,6 +483,8 @@ public class ServerPlayer extends Player implements ca.spottedleaf.moonrise.patc
@@ -687,7 +677,6 @@ index 6c0de6b09df0b92c2fa8be0e7d46335d387cd492..1b6ab6720f8319e451e4b3d5d0f9d6e7
          // Paper end - Inventory close reason
          this.connection.send(new ClientboundContainerClosePacket(this.containerMenu.containerId));
 diff --git a/net/minecraft/server/players/PlayerList.java b/net/minecraft/server/players/PlayerList.java
-index 4b9f5813fa140f852f5f236e3e62f8ff2246e1ab..be3d09ffb6956b781b3ee2634520c81703ad744d 100644
 --- a/net/minecraft/server/players/PlayerList.java
 +++ b/net/minecraft/server/players/PlayerList.java
 @@ -160,6 +160,7 @@ public abstract class PlayerList {
@@ -722,7 +711,6 @@ index 4b9f5813fa140f852f5f236e3e62f8ff2246e1ab..be3d09ffb6956b781b3ee2634520c817
          player.restoreFrom(serverPlayer, keepAllPlayerData);
          player.setId(serverPlayer.getId());
 diff --git a/net/minecraft/server/waypoints/ServerWaypointManager.java b/net/minecraft/server/waypoints/ServerWaypointManager.java
-index b9748a392c9f76e61a1b673085b4dd74c007c70d..6774051521794990278d5ef5cf6b3dab05d3337e 100644
 --- a/net/minecraft/server/waypoints/ServerWaypointManager.java
 +++ b/net/minecraft/server/waypoints/ServerWaypointManager.java
 @@ -22,13 +22,17 @@ public class ServerWaypointManager implements WaypointManager<WaypointTransmitte
@@ -797,7 +785,6 @@ index b9748a392c9f76e61a1b673085b4dd74c007c70d..6774051521794990278d5ef5cf6b3dab
          for (ServerPlayer player : this.players) {
              this.createConnection(player, waypoint);
 diff --git a/net/minecraft/world/entity/Entity.java b/net/minecraft/world/entity/Entity.java
-index bafac231149ffbe5dd709996735d39226bf7db2d..2178c7661e48e5eb10d72a5ae3f95ad2d1673a0e 100644
 --- a/net/minecraft/world/entity/Entity.java
 +++ b/net/minecraft/world/entity/Entity.java
 @@ -3765,10 +3765,7 @@ public abstract class Entity
@@ -874,7 +861,6 @@ index bafac231149ffbe5dd709996735d39226bf7db2d..2178c7661e48e5eb10d72a5ae3f95ad2
          List<Entity> newPassengers = new ArrayList<>(oldPassengers.size());
          this.ejectPassengers();
 diff --git a/net/minecraft/world/entity/PortalProcessor.java b/net/minecraft/world/entity/PortalProcessor.java
-index 7ec15f3d3a770e1e9e2fbac29dd38e947bb07091..a7570cee21e4767dd5a3de37cae717730c87acb7 100644
 --- a/net/minecraft/world/entity/PortalProcessor.java
 +++ b/net/minecraft/world/entity/PortalProcessor.java
 @@ -11,6 +11,7 @@ public class PortalProcessor {
@@ -940,7 +926,6 @@ index 7ec15f3d3a770e1e9e2fbac29dd38e947bb07091..a7570cee21e4767dd5a3de37cae71773
 +    // Leaf end - SparklyPaper - parallel world ticking - prevent clearing portal process
  }
 diff --git a/net/minecraft/world/entity/ai/behavior/GoToPotentialJobSite.java b/net/minecraft/world/entity/ai/behavior/GoToPotentialJobSite.java
-index ba61762e09ace201173999b3984046f930ccfe57..2ec5283bdab7f533edeab8812a9033f0925be18f 100644
 --- a/net/minecraft/world/entity/ai/behavior/GoToPotentialJobSite.java
 +++ b/net/minecraft/world/entity/ai/behavior/GoToPotentialJobSite.java
 @@ -43,15 +43,39 @@ public class GoToPotentialJobSite extends Behavior<Villager> {
@@ -990,7 +975,6 @@ index ba61762e09ace201173999b3984046f930ccfe57..2ec5283bdab7f533edeab8812a9033f0
          body.getBrain().eraseMemory(MemoryModuleType.POTENTIAL_JOB_SITE);
      }
 diff --git a/net/minecraft/world/entity/npc/villager/Villager.java b/net/minecraft/world/entity/npc/villager/Villager.java
-index 5cf9b3caa7b06b947f5314b0eab2d8ed1b180d32..8ffe48b9e28145535aca96559e6eeb1e6318a382 100644
 --- a/net/minecraft/world/entity/npc/villager/Villager.java
 +++ b/net/minecraft/world/entity/npc/villager/Villager.java
 @@ -796,13 +796,29 @@ public class Villager extends AbstractVillager implements VillagerDataHolder, Re
@@ -1030,7 +1014,6 @@ index 5cf9b3caa7b06b947f5314b0eab2d8ed1b180d32..8ffe48b9e28145535aca96559e6eeb1e
              });
          }
 diff --git a/net/minecraft/world/entity/projectile/throwableitemprojectile/ThrownEnderpearl.java b/net/minecraft/world/entity/projectile/throwableitemprojectile/ThrownEnderpearl.java
-index 14d4d52c86fa014be034e22deafab68c0eaaacb7..ae5b8fa9a06d498c56cbcf4cb56bda46785af3a4 100644
 --- a/net/minecraft/world/entity/projectile/throwableitemprojectile/ThrownEnderpearl.java
 +++ b/net/minecraft/world/entity/projectile/throwableitemprojectile/ThrownEnderpearl.java
 @@ -104,15 +104,17 @@ public class ThrownEnderpearl extends ThrowableItemProjectile {
@@ -1075,7 +1058,6 @@ index 14d4d52c86fa014be034e22deafab68c0eaaacb7..ae5b8fa9a06d498c56cbcf4cb56bda46
                  } else {
                      Entity newOwner = owner.teleport(
 diff --git a/net/minecraft/world/inventory/AbstractContainerMenu.java b/net/minecraft/world/inventory/AbstractContainerMenu.java
-index 1931bfb7021c75ce32133646da9e7466ff624551..b12e9e1878a64e211de59b80d4280265394fba14 100644
 --- a/net/minecraft/world/inventory/AbstractContainerMenu.java
 +++ b/net/minecraft/world/inventory/AbstractContainerMenu.java
 @@ -97,8 +97,14 @@ public abstract class AbstractContainerMenu {
@@ -1094,7 +1076,6 @@ index 1931bfb7021c75ce32133646da9e7466ff624551..b12e9e1878a64e211de59b80d4280265
          this.containerId = containerId;
      }
 diff --git a/net/minecraft/world/item/ItemStack.java b/net/minecraft/world/item/ItemStack.java
-index 45fed057d225d404c6671b86c65437ec5fae6270..03aacc0c940a79164095537294490e167b754637 100644
 --- a/net/minecraft/world/item/ItemStack.java
 +++ b/net/minecraft/world/item/ItemStack.java
 @@ -404,8 +404,8 @@ public final class ItemStack implements DataComponentHolder, ItemInstance {
@@ -1109,7 +1090,6 @@ index 45fed057d225d404c6671b86c65437ec5fae6270..03aacc0c940a79164095537294490e16
  
              DataComponentPatch newPatch = this.components.asPatch();
 diff --git a/net/minecraft/world/level/Level.java b/net/minecraft/world/level/Level.java
-index 473fd50d9d9fa504417ce896133d552fd21fd3b5..e5d0b57a1be1b2399f9de833e61d61d45a47243b 100644
 --- a/net/minecraft/world/level/Level.java
 +++ b/net/minecraft/world/level/Level.java
 @@ -178,6 +178,7 @@ public abstract class Level implements LevelAccessor, AutoCloseable, ca.spottedl
@@ -1181,7 +1161,6 @@ index 473fd50d9d9fa504417ce896133d552fd21fd3b5..e5d0b57a1be1b2399f9de833e61d61d4
          // Paper start - rewrite chunk system
          final List<Entity> ret = new java.util.ArrayList<>();
 diff --git a/net/minecraft/world/level/block/MushroomBlock.java b/net/minecraft/world/level/block/MushroomBlock.java
-index c0779cb3c237e4399a53a7e6fc95bb2d88483bca..2bb3a277b90b40ebf9a803dde44eb5eeb20beeb4 100644
 --- a/net/minecraft/world/level/block/MushroomBlock.java
 +++ b/net/minecraft/world/level/block/MushroomBlock.java
 @@ -83,7 +83,7 @@ public class MushroomBlock extends VegetationBlock implements BonemealableBlock
@@ -1194,7 +1173,6 @@ index c0779cb3c237e4399a53a7e6fc95bb2d88483bca..2bb3a277b90b40ebf9a803dde44eb5ee
              return true;
          }
 diff --git a/net/minecraft/world/level/block/NetherFungusBlock.java b/net/minecraft/world/level/block/NetherFungusBlock.java
-index fefb4e7a3bf922be16cf7fb6b70c0689867dd963..ea2023b9f4511d47968521a9b6686f3d2bcfc0ae 100644
 --- a/net/minecraft/world/level/block/NetherFungusBlock.java
 +++ b/net/minecraft/world/level/block/NetherFungusBlock.java
 @@ -64,9 +64,9 @@ public class NetherFungusBlock extends VegetationBlock implements BonemealableBl
@@ -1210,7 +1188,6 @@ index fefb4e7a3bf922be16cf7fb6b70c0689867dd963..ea2023b9f4511d47968521a9b6686f3d
                  return value;
              })
 diff --git a/net/minecraft/world/level/block/RedstoneWireBlock.java b/net/minecraft/world/level/block/RedstoneWireBlock.java
-index ede64a0afbcdc41e60c3f2f5917c89f09b888433..2afcc3ee9438bd09eec452e28bc5dc92e4a74927 100644
 --- a/net/minecraft/world/level/block/RedstoneWireBlock.java
 +++ b/net/minecraft/world/level/block/RedstoneWireBlock.java
 @@ -64,6 +64,7 @@ public class RedstoneWireBlock extends Block {
@@ -1306,7 +1283,6 @@ index ede64a0afbcdc41e60c3f2f5917c89f09b888433..2afcc3ee9438bd09eec452e28bc5dc92
  
      public static int getColorForPower(final int power) {
 diff --git a/net/minecraft/world/level/block/SaplingBlock.java b/net/minecraft/world/level/block/SaplingBlock.java
-index 5564a54f23aab158b9506325953ec70cab55c961..8520a7fbf55403d5f9390ca894e54e97b958cfe1 100644
 --- a/net/minecraft/world/level/block/SaplingBlock.java
 +++ b/net/minecraft/world/level/block/SaplingBlock.java
 @@ -22,6 +22,35 @@ public class SaplingBlock extends VegetationBlock implements BonemealableBlock {
@@ -1374,7 +1350,6 @@ index 5564a54f23aab158b9506325953ec70cab55c961..8520a7fbf55403d5f9390ca894e54e97
                      }
                      if (event == null || !event.isCancelled()) {
 diff --git a/net/minecraft/world/level/block/entity/BaseContainerBlockEntity.java b/net/minecraft/world/level/block/entity/BaseContainerBlockEntity.java
-index c2f8479eef826efca3ed2993973b2cfc2c51ed00..3e7873e159cd4e81690626fa0f41bde2c656996e 100644
 --- a/net/minecraft/world/level/block/entity/BaseContainerBlockEntity.java
 +++ b/net/minecraft/world/level/block/entity/BaseContainerBlockEntity.java
 @@ -72,6 +72,12 @@ public abstract class BaseContainerBlockEntity extends BlockEntity implements Co
@@ -1391,7 +1366,6 @@ index c2f8479eef826efca3ed2993973b2cfc2c51ed00..3e7873e159cd4e81690626fa0f41bde2
      }
  
 diff --git a/net/minecraft/world/level/block/entity/SculkCatalystBlockEntity.java b/net/minecraft/world/level/block/entity/SculkCatalystBlockEntity.java
-index 4dbd9c425e670e6ff31d70803ba35f8a804459a9..6dc800b91a78ca52c264450d7b6489a0f98ba0c1 100644
 --- a/net/minecraft/world/level/block/entity/SculkCatalystBlockEntity.java
 +++ b/net/minecraft/world/level/block/entity/SculkCatalystBlockEntity.java
 @@ -43,9 +43,9 @@ public class SculkCatalystBlockEntity extends BlockEntity implements GameEventLi
@@ -1407,7 +1381,6 @@ index 4dbd9c425e670e6ff31d70803ba35f8a804459a9..6dc800b91a78ca52c264450d7b6489a0
  
      @Override
 diff --git a/net/minecraft/world/level/block/grower/TreeGrower.java b/net/minecraft/world/level/block/grower/TreeGrower.java
-index 95ac67eeee1c5c12fd709fe44288d6de9a28b3a1..f35b7894f26b77989cbd8d0a31c34ad48ab3b533 100644
 --- a/net/minecraft/world/level/block/grower/TreeGrower.java
 +++ b/net/minecraft/world/level/block/grower/TreeGrower.java
 @@ -234,57 +234,59 @@ public final class TreeGrower {
@@ -1495,7 +1468,6 @@ index 95ac67eeee1c5c12fd709fe44288d6de9a28b3a1..f35b7894f26b77989cbd8d0a31c34ad4
      // CraftBukkit end
  }
 diff --git a/net/minecraft/world/level/chunk/LevelChunk.java b/net/minecraft/world/level/chunk/LevelChunk.java
-index 416ca8d3e6bf48902d10e9a7432fbbfa068c68f5..be3ad6fe03af942615c0f7d276123f3635851974 100644
 --- a/net/minecraft/world/level/chunk/LevelChunk.java
 +++ b/net/minecraft/world/level/chunk/LevelChunk.java
 @@ -407,6 +407,7 @@ public class LevelChunk extends ChunkAccess implements DebugValueSource, ca.spot
@@ -1507,7 +1479,6 @@ index 416ca8d3e6bf48902d10e9a7432fbbfa068c68f5..be3ad6fe03af942615c0f7d276123f36
          LevelChunkSection section = this.getSection(this.getSectionIndex(y));
          boolean wasEmpty = section.hasOnlyAir();
 diff --git a/net/minecraft/world/level/entity/EntityTickList.java b/net/minecraft/world/level/entity/EntityTickList.java
-index a30409eddfaded878a3ac54bb526fd2e4b887c57..e28f2fa794988a6baf4cb25f0df18ba7217069ea 100644
 --- a/net/minecraft/world/level/entity/EntityTickList.java
 +++ b/net/minecraft/world/level/entity/EntityTickList.java
 @@ -11,16 +11,31 @@ import org.jspecify.annotations.Nullable;
@@ -1551,7 +1522,6 @@ index a30409eddfaded878a3ac54bb526fd2e4b887c57..e28f2fa794988a6baf4cb25f0df18ba7
          // To ensure nothing weird happens with dimension travelling, do not iterate over new entries...
          // (by dfl iterator() is configured to not iterate over new entries)
 diff --git a/net/minecraft/world/level/saveddata/maps/MapIndex.java b/net/minecraft/world/level/saveddata/maps/MapIndex.java
-index 6b3ce2ded53a7ea46cf7f0cb49043a022f6d9ee7..56f95221b6efbe0d65ec5dc68bb8b666a61b9cfa 100644
 --- a/net/minecraft/world/level/saveddata/maps/MapIndex.java
 +++ b/net/minecraft/world/level/saveddata/maps/MapIndex.java
 @@ -26,6 +26,15 @@ public class MapIndex extends SavedData {

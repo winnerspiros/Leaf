@@ -18,7 +18,6 @@ prominent legal notice accompanying the corresponding source:
 Original patch by HaHaWTH <102713261+HaHaWTH@users.noreply.github.com>
 
 diff --git a/ca/spottedleaf/moonrise/patches/chunk_system/level/entity/ChunkEntitySlices.java b/ca/spottedleaf/moonrise/patches/chunk_system/level/entity/ChunkEntitySlices.java
-index 2eeb6b8a05d1d214bc781ba70de9ccef58a07edb..fc55f9ad34fab700eede3fc48f1cb4ffe147517a 100644
 --- a/ca/spottedleaf/moonrise/patches/chunk_system/level/entity/ChunkEntitySlices.java
 +++ b/ca/spottedleaf/moonrise/patches/chunk_system/level/entity/ChunkEntitySlices.java
 @@ -340,6 +340,12 @@ public final class ChunkEntitySlices {
@@ -95,7 +94,6 @@ index 2eeb6b8a05d1d214bc781ba70de9ccef58a07edb..fc55f9ad34fab700eede3fc48f1cb4ff
      }
  }
 diff --git a/ca/spottedleaf/moonrise/patches/chunk_system/level/entity/EntityLookup.java b/ca/spottedleaf/moonrise/patches/chunk_system/level/entity/EntityLookup.java
-index d0638c2b5be330385341c46b89992deb8c5a4a0a..86dbcf7cfc7d929748b8acd3cb33ef4dd42e6a2f 100644
 --- a/ca/spottedleaf/moonrise/patches/chunk_system/level/entity/EntityLookup.java
 +++ b/ca/spottedleaf/moonrise/patches/chunk_system/level/entity/EntityLookup.java
 @@ -688,6 +688,47 @@ public abstract class EntityLookup implements LevelEntityGetter<Entity> {
@@ -147,7 +145,6 @@ index d0638c2b5be330385341c46b89992deb8c5a4a0a..86dbcf7cfc7d929748b8acd3cb33ef4d
          final int minChunkX = (Mth.floor(box.minX) - 2) >> 4;
          final int minChunkZ = (Mth.floor(box.minZ) - 2) >> 4;
 diff --git a/net/minecraft/world/entity/LivingEntity.java b/net/minecraft/world/entity/LivingEntity.java
-index 9a462a63fb86b2a807679a3a8e35e31638882cea..4eff554eafdfe46faf2af44a57e41432e44884fb 100644
 --- a/net/minecraft/world/entity/LivingEntity.java
 +++ b/net/minecraft/world/entity/LivingEntity.java
 @@ -4072,39 +4072,32 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin
@@ -266,7 +263,6 @@ index 9a462a63fb86b2a807679a3a8e35e31638882cea..4eff554eafdfe46faf2af44a57e41432
      // Leaf end - Only player pushable
  
 diff --git a/net/minecraft/world/level/Level.java b/net/minecraft/world/level/Level.java
-index 37a4c1a2c9e2265a697c9450a761a9686f807024..ea25dba6ae1253a5a024b6134f67c4a1753c9266 100644
 --- a/net/minecraft/world/level/Level.java
 +++ b/net/minecraft/world/level/Level.java
 @@ -1876,6 +1876,29 @@ public abstract class Level implements LevelAccessor, AutoCloseable, ca.spottedl

@@ -7,7 +7,6 @@ Subject: [PATCH] SparklyPaper: Skip dirty stats copy when requesting player
 Original project: https://github.com/SparklyPower/SparklyPaper
 
 diff --git a/net/minecraft/stats/ServerStatsCounter.java b/net/minecraft/stats/ServerStatsCounter.java
-index eb40f1bdab68d51047df702a0e4ad8a7931a134f..84a3d9c0073eb389fcb74cffa3c55c9cf79d2fd8 100644
 --- a/net/minecraft/stats/ServerStatsCounter.java
 +++ b/net/minecraft/stats/ServerStatsCounter.java
 @@ -109,11 +109,15 @@ public class ServerStatsCounter extends StatsCounter {

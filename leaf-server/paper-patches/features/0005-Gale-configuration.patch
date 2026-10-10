@@ -13,7 +13,6 @@ As part of: Paper (https://github.com/PaperMC/Paper)
 Licensed under: GPL-3.0-only (https://www.gnu.org/licenses/gpl-3.0.html)
 
 diff --git a/src/main/java/io/papermc/paper/configuration/Configurations.java b/src/main/java/io/papermc/paper/configuration/Configurations.java
-index b2c5e5cc2e798ac10c1c9cded65e1f8171a6cf98..c4a9fc7871959bfb92107f54d6b4554e255a3f1f 100644
 --- a/src/main/java/io/papermc/paper/configuration/Configurations.java
 +++ b/src/main/java/io/papermc/paper/configuration/Configurations.java
 @@ -94,7 +94,7 @@ public abstract class Configurations<G, W> {
@@ -83,7 +82,6 @@ index b2c5e5cc2e798ac10c1c9cded65e1f8171a6cf98..c4a9fc7871959bfb92107f54d6b4554e
 +
  }
 diff --git a/src/main/java/io/papermc/paper/configuration/PaperConfigurations.java b/src/main/java/io/papermc/paper/configuration/PaperConfigurations.java
-index de9a78d5b20d13a114591e986e990b4bd973097a..b9eeff9530f24fa2989b279aa4136fef0a600030 100644
 --- a/src/main/java/io/papermc/paper/configuration/PaperConfigurations.java
 +++ b/src/main/java/io/papermc/paper/configuration/PaperConfigurations.java
 @@ -341,13 +341,13 @@ public class PaperConfigurations extends Configurations<GlobalConfiguration, Wor
@@ -139,7 +137,6 @@ index de9a78d5b20d13a114591e986e990b4bd973097a..b9eeff9530f24fa2989b279aa4136fef
 +    // Gale end - Gale configuration
  }
 diff --git a/src/main/java/io/papermc/paper/configuration/mapping/InnerClassFieldDiscoverer.java b/src/main/java/io/papermc/paper/configuration/mapping/InnerClassFieldDiscoverer.java
-index a8a82aca70a97e30ca680c86421c6a04ed8172f8..db23f74b4c02c43ab42cf8db15c400eedf35d343 100644
 --- a/src/main/java/io/papermc/paper/configuration/mapping/InnerClassFieldDiscoverer.java
 +++ b/src/main/java/io/papermc/paper/configuration/mapping/InnerClassFieldDiscoverer.java
 @@ -97,7 +97,19 @@ public final class InnerClassFieldDiscoverer implements FieldDiscoverer<Map<Fiel
@@ -164,7 +161,6 @@ index a8a82aca70a97e30ca680c86421c6a04ed8172f8..db23f74b4c02c43ab42cf8db15c400ee
      }
  }
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 2013bbaf3ddd82aa936bf541ab445e673f05c064..31e566b69dda0b3b3fe1325439bfea374017bbac 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 @@ -1003,6 +1003,7 @@ public final class CraftServer implements Server {

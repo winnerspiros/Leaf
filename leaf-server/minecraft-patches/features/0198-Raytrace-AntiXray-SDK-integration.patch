@@ -8,7 +8,6 @@ Integrated with Imanity Software's Raytrace AntiXray for better performance
 Original project: https://github.com/Imanity-Software/raytrace-antixray-spigot-sdk
 
 diff --git a/net/minecraft/server/level/ServerPlayerGameMode.java b/net/minecraft/server/level/ServerPlayerGameMode.java
-index 9120e1b06948df255475921ccc7e32cecd53587d..d159acf35982ca4a5f874d79b851218f1c683d07 100644
 --- a/net/minecraft/server/level/ServerPlayerGameMode.java
 +++ b/net/minecraft/server/level/ServerPlayerGameMode.java
 @@ -326,6 +326,12 @@ public class ServerPlayerGameMode {
@@ -25,7 +24,6 @@ index 9120e1b06948df255475921ccc7e32cecd53587d..d159acf35982ca4a5f874d79b851218f
      }
  
 diff --git a/net/minecraft/world/level/Level.java b/net/minecraft/world/level/Level.java
-index f99f889dd132edaaeeaa6e04fb186ff533be3dd6..0ac0d93df310f89546f6367325613bd0b6c65743 100644
 --- a/net/minecraft/world/level/Level.java
 +++ b/net/minecraft/world/level/Level.java
 @@ -1151,6 +1151,12 @@ public abstract class Level implements LevelAccessor, AutoCloseable, ca.spottedl

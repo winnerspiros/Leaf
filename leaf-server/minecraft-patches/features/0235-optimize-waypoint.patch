@@ -5,7 +5,6 @@ Subject: [PATCH] optimize waypoint
 
 
 diff --git a/net/minecraft/world/entity/Entity.java b/net/minecraft/world/entity/Entity.java
-index 08800cb64e0f5a846e357af30ac9a1a371a69b89..8fc9e36d2ae40445ac13199a8ee946467ec83894 100644
 --- a/net/minecraft/world/entity/Entity.java
 +++ b/net/minecraft/world/entity/Entity.java
 @@ -5340,7 +5340,8 @@ public abstract class Entity

@@ -7,7 +7,6 @@ Original license: MIT
 Original project: https://github.com/KeYiMC/KeYi
 
 diff --git a/net/minecraft/world/entity/item/ItemEntity.java b/net/minecraft/world/entity/item/ItemEntity.java
-index 25c2b8d3e29dee82a4a305af96b6ed805a38150e..cfc7c4cffddb844b967dc1b496b7dfbda3bab882 100644
 --- a/net/minecraft/world/entity/item/ItemEntity.java
 +++ b/net/minecraft/world/entity/item/ItemEntity.java
 @@ -284,7 +284,7 @@ public class ItemEntity extends Entity implements TraceableEntity {

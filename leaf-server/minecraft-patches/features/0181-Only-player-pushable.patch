@@ -6,7 +6,6 @@ Subject: [PATCH] Only player pushable
 Useful for extreme cases like massive entities collide together in a small area
 
 diff --git a/net/minecraft/world/entity/LivingEntity.java b/net/minecraft/world/entity/LivingEntity.java
-index 34a2a52226349ae8891306640587f427b996f9ef..1b6da01ff409592dd4ca7ea6b457a55fa6aa2400 100644
 --- a/net/minecraft/world/entity/LivingEntity.java
 +++ b/net/minecraft/world/entity/LivingEntity.java
 @@ -3920,7 +3920,7 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin
@@ -76,7 +75,6 @@ index 34a2a52226349ae8891306640587f427b996f9ef..1b6da01ff409592dd4ca7ea6b457a55f
          AABB minmax = old.minmax(current);
          List<Entity> entities = this.level().getEntities(this, minmax);
 diff --git a/net/minecraft/world/entity/decoration/ArmorStand.java b/net/minecraft/world/entity/decoration/ArmorStand.java
-index df100a922f59914ae9aff3142027b3bf4c81a4b6..47db024ef4358279b08fe4e6fecd12fa2723c6c4 100644
 --- a/net/minecraft/world/entity/decoration/ArmorStand.java
 +++ b/net/minecraft/world/entity/decoration/ArmorStand.java
 @@ -209,7 +209,7 @@ public class ArmorStand extends LivingEntity {

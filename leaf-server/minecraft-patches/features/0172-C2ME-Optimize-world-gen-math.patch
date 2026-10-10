@@ -18,7 +18,6 @@ track:
 // SYNC SOURCE END
 
 diff --git a/net/minecraft/world/level/levelgen/Beardifier.java b/net/minecraft/world/level/levelgen/Beardifier.java
-index 7041d673e6f6b7b629d325fee770e640f75725a1..7e6a1a0e213c12405ce660a22f4c574199c25f9e 100644
 --- a/net/minecraft/world/level/levelgen/Beardifier.java
 +++ b/net/minecraft/world/level/levelgen/Beardifier.java
 @@ -135,45 +135,52 @@ public class Beardifier implements DensitySampler {

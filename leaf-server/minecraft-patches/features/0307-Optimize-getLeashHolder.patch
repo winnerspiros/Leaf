@@ -5,7 +5,6 @@ Subject: [PATCH] Optimize getLeashHolder
 
 
 diff --git a/net/minecraft/world/entity/Leashable.java b/net/minecraft/world/entity/Leashable.java
-index 98034a4c96bf2972316078d3b3a49140921aab50..a2841d21529c28620ac68558cc528e1388675a9d 100644
 --- a/net/minecraft/world/entity/Leashable.java
 +++ b/net/minecraft/world/entity/Leashable.java
 @@ -371,11 +371,7 @@ public interface Leashable {

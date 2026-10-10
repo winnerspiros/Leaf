@@ -6,7 +6,6 @@ Subject: [PATCH] SparklyPaper: Track each world MSPT
 Original project: https://github.com/SparklyPower/SparklyPaper
 
 diff --git a/net/minecraft/server/MinecraftServer.java b/net/minecraft/server/MinecraftServer.java
-index 7845445d210b8636e0396d1812368addf035d8e5..69c058ab21ad386057268770e9dee0acb770df59 100644
 --- a/net/minecraft/server/MinecraftServer.java
 +++ b/net/minecraft/server/MinecraftServer.java
 @@ -1842,7 +1842,16 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
@@ -27,7 +26,6 @@ index 7845445d210b8636e0396d1812368addf035d8e5..69c058ab21ad386057268770e9dee0ac
              CrashReport report = CrashReport.forThrowable(t, "Exception ticking world");
              level.fillReportDetails(report);
 diff --git a/net/minecraft/server/level/ServerLevel.java b/net/minecraft/server/level/ServerLevel.java
-index 11ce156954c88fc991b1daadca3390f5fe118eec..de5e69fdd33c326ad495014f175bc329cc4c8466 100644
 --- a/net/minecraft/server/level/ServerLevel.java
 +++ b/net/minecraft/server/level/ServerLevel.java
 @@ -615,6 +615,12 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
@@ -44,7 +42,6 @@ index 11ce156954c88fc991b1daadca3390f5fe118eec..de5e69fdd33c326ad495014f175bc329
          final MinecraftServer server,
          final Executor executor,
 diff --git a/org/purpurmc/purpur/task/TPSBarTask.java b/org/purpurmc/purpur/task/TPSBarTask.java
-index 8769993e7ca59da309087051a3cd38fc562c15d1..b7a463fc6f7cac62f2cd19a0d19a0fae9de96990 100644
 --- a/org/purpurmc/purpur/task/TPSBarTask.java
 +++ b/org/purpurmc/purpur/task/TPSBarTask.java
 @@ -28,6 +28,45 @@ public class TPSBarTask extends BossBarTask {

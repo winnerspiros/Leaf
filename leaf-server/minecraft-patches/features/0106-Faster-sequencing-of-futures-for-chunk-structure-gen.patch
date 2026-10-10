@@ -7,7 +7,6 @@ Replace `thenApply` with `thenCompose`. Once one task is completed then the next
 to prevent blocking threads while waiting to complete all tasks. But may cause the sequence of future compose disorder.
 
 diff --git a/net/minecraft/util/Util.java b/net/minecraft/util/Util.java
-index 318339d29a81d75e097b3684358f04dbc674dcca..5b56955f925590ae10f11ebcd6c78292e8c8aacf 100644
 --- a/net/minecraft/util/Util.java
 +++ b/net/minecraft/util/Util.java
 @@ -700,6 +700,11 @@ public class Util {
@@ -50,7 +49,6 @@ index 318339d29a81d75e097b3684358f04dbc674dcca..5b56955f925590ae10f11ebcd6c78292
          CompletableFuture<List<V>> failureFuture = new CompletableFuture<>();
          return fallibleSequence(futures, failureFuture::completeExceptionally).applyToEither(failureFuture, Function.identity());
 diff --git a/net/minecraft/world/level/chunk/ChunkGeneratorStructureState.java b/net/minecraft/world/level/chunk/ChunkGeneratorStructureState.java
-index 8547fccf2216867147adcefa3e58a2c9ce58eadb..701f83fab471edca04e696944ca2c3450dd9eca9 100644
 --- a/net/minecraft/world/level/chunk/ChunkGeneratorStructureState.java
 +++ b/net/minecraft/world/level/chunk/ChunkGeneratorStructureState.java
 @@ -232,7 +232,7 @@ public class ChunkGeneratorStructureState {

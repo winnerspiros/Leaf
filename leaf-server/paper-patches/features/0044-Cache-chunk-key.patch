@@ -9,7 +9,6 @@ This patch didn't cahce SectionPos or BlockPos to chunkKey, since they are mutab
 The JMH benchmark of this patch can be found in SunBox's `CacheChunkKey`
 
 diff --git a/src/main/java/ca/spottedleaf/moonrise/common/util/CoordinateUtils.java b/src/main/java/ca/spottedleaf/moonrise/common/util/CoordinateUtils.java
-index 47d2f0cd01619cb6ba4eed7145aeaf573141d047..f8b3ef52bc3c3bed52a277177031d5c990e771ba 100644
 --- a/src/main/java/ca/spottedleaf/moonrise/common/util/CoordinateUtils.java
 +++ b/src/main/java/ca/spottedleaf/moonrise/common/util/CoordinateUtils.java
 @@ -21,7 +21,7 @@ public final class CoordinateUtils {

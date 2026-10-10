@@ -7,7 +7,6 @@ Original license: GPL-3.0-only
 Original project: https://github.com/Gensokyo-Reimagined/Nitori
 
 diff --git a/net/minecraft/world/level/storage/LevelStorageSource.java b/net/minecraft/world/level/storage/LevelStorageSource.java
-index 01b4ea4159d1885c4f409cca85297342bf485d56..b6ce8a310a0c2d0b02fa1c202c763f885b21dc78 100644
 --- a/net/minecraft/world/level/storage/LevelStorageSource.java
 +++ b/net/minecraft/world/level/storage/LevelStorageSource.java
 @@ -599,15 +599,26 @@ public class LevelStorageSource {
@@ -44,7 +43,6 @@ index 01b4ea4159d1885c4f409cca85297342bf485d56..b6ce8a310a0c2d0b02fa1c202c763f88
  
          public Optional<Path> getIconFile() {
 diff --git a/net/minecraft/world/level/storage/PlayerDataStorage.java b/net/minecraft/world/level/storage/PlayerDataStorage.java
-index 142a34eb046c87f16b73023c83218d8752922fbe..1c1117f3e674ddd009fb1e580670e0140a22b1c0 100644
 --- a/net/minecraft/world/level/storage/PlayerDataStorage.java
 +++ b/net/minecraft/world/level/storage/PlayerDataStorage.java
 @@ -23,6 +23,7 @@ public class PlayerDataStorage {

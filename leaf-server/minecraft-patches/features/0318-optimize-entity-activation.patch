@@ -5,7 +5,6 @@ Subject: [PATCH] optimize entity activation
 
 
 diff --git a/ca/spottedleaf/moonrise/patches/chunk_system/level/entity/ChunkEntitySlices.java b/ca/spottedleaf/moonrise/patches/chunk_system/level/entity/ChunkEntitySlices.java
-index ef28e16838e7714b59fd8267e620fd212d0e99e5..2eeb6b8a05d1d214bc781ba70de9ccef58a07edb 100644
 --- a/ca/spottedleaf/moonrise/patches/chunk_system/level/entity/ChunkEntitySlices.java
 +++ b/ca/spottedleaf/moonrise/patches/chunk_system/level/entity/ChunkEntitySlices.java
 @@ -214,6 +214,16 @@ public final class ChunkEntitySlices {
@@ -26,7 +25,6 @@ index ef28e16838e7714b59fd8267e620fd212d0e99e5..2eeb6b8a05d1d214bc781ba70de9ccef
          return this.entities.size() == 0;
      }
 diff --git a/ca/spottedleaf/moonrise/patches/chunk_system/level/entity/EntityLookup.java b/ca/spottedleaf/moonrise/patches/chunk_system/level/entity/EntityLookup.java
-index 7fb79d5363d00028490e252abf736647e874a8b1..d0638c2b5be330385341c46b89992deb8c5a4a0a 100644
 --- a/ca/spottedleaf/moonrise/patches/chunk_system/level/entity/EntityLookup.java
 +++ b/ca/spottedleaf/moonrise/patches/chunk_system/level/entity/EntityLookup.java
 @@ -646,6 +646,48 @@ public abstract class EntityLookup implements LevelEntityGetter<Entity> {
@@ -79,7 +77,6 @@ index 7fb79d5363d00028490e252abf736647e874a8b1..d0638c2b5be330385341c46b89992deb
          final int minChunkX = (Mth.floor(box.minX) - 2) >> 4;
          final int minChunkZ = (Mth.floor(box.minZ) - 2) >> 4;
 diff --git a/io/papermc/paper/entity/activation/ActivationRange.java b/io/papermc/paper/entity/activation/ActivationRange.java
-index 22d24882621a6e2184ef1c95bd45518267b9edf2..31eff5ab6f930a76487d485977b996584c100e11 100644
 --- a/io/papermc/paper/entity/activation/ActivationRange.java
 +++ b/io/papermc/paper/entity/activation/ActivationRange.java
 @@ -93,6 +93,7 @@ public final class ActivationRange {
@@ -164,7 +161,6 @@ index 22d24882621a6e2184ef1c95bd45518267b9edf2..31eff5ab6f930a76487d485977b99658
          }
      }
 diff --git a/net/minecraft/server/level/ServerLevel.java b/net/minecraft/server/level/ServerLevel.java
-index 213ee337fe4685a44c47c0f035325d4b0584d586..68225715e543a049f95f7f1400712edd4f05be49 100644
 --- a/net/minecraft/server/level/ServerLevel.java
 +++ b/net/minecraft/server/level/ServerLevel.java
 @@ -1104,13 +1104,13 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
@@ -192,7 +188,6 @@ index 213ee337fe4685a44c47c0f035325d4b0584d586..68225715e543a049f95f7f1400712edd
          final net.minecraft.world.level.levelgen.BitRandomSource simpleRandom = this.simpleRandom; // Paper - optimise random ticking // Leaf - Faster random generator - upcasting
          ChunkPos chunkPos = chunk.getPos();
 diff --git a/net/minecraft/world/entity/Entity.java b/net/minecraft/world/entity/Entity.java
-index 88ea793cb6927d872730f3007c77b1c0dccabe78..2eba34f2cde75733dbf5a72cfb751030d28f7710 100644
 --- a/net/minecraft/world/entity/Entity.java
 +++ b/net/minecraft/world/entity/Entity.java
 @@ -392,7 +392,7 @@ public abstract class Entity

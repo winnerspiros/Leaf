@@ -5,7 +5,6 @@ Subject: [PATCH] Forge-like startup world migration
 
 
 diff --git a/src/main/java/io/papermc/paper/world/migration/WorldFolderMigration.java b/src/main/java/io/papermc/paper/world/migration/WorldFolderMigration.java
-index 3e72dd125e5e7d577f0c1187d40b17cc6c2fea5a..4889a18fba60c2b018b80792ce809a349319a18a 100644
 --- a/src/main/java/io/papermc/paper/world/migration/WorldFolderMigration.java
 +++ b/src/main/java/io/papermc/paper/world/migration/WorldFolderMigration.java
 @@ -74,19 +74,40 @@ public final class WorldFolderMigration {

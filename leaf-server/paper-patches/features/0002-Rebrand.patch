@@ -11,7 +11,6 @@ Licensed under: GPL-3.0-only (https://www.gnu.org/licenses/gpl-3.0.html)
 
 diff --git a/LGPL.txt b/LGPL.txt
 deleted file mode 100644
-index 65c5ca88a67c30becee01c5a8816d964b03862f9..0000000000000000000000000000000000000000
 --- a/LGPL.txt
 +++ /dev/null
 @@ -1,165 +0,0 @@
@@ -184,7 +183,6 @@ diff --git a/LICENCE.txt b/LICENSE.txt
 similarity index 99%
 rename from LICENCE.txt
 rename to LICENSE.txt
-index 94a9ed024d3859793618152ea559a168bbcbb5e2..e60008693e017bec1b4eb49c84be3898e26fcf2a 100644
 --- a/LICENCE.txt
 +++ b/LICENSE.txt
 @@ -1,7 +1,7 @@
@@ -220,7 +218,6 @@ index 94a9ed024d3859793618152ea559a168bbcbb5e2..e60008693e017bec1b4eb49c84be3898
 -<http://www.gnu.org/philosophy/why-not-lgpl.html>.
 +<https://www.gnu.org/philosophy/why-not-lgpl.html>.
 diff --git a/src/main/java/com/destroystokyo/paper/PaperVersionFetcher.java b/src/main/java/com/destroystokyo/paper/PaperVersionFetcher.java
-index ba32d58c33c65b1384baa7616da64f7a4a1f0d1d..da8dc6d62bb6071da150378c1daf384a24eb429f 100644
 --- a/src/main/java/com/destroystokyo/paper/PaperVersionFetcher.java
 +++ b/src/main/java/com/destroystokyo/paper/PaperVersionFetcher.java
 @@ -1,266 +1,30 @@
@@ -516,7 +513,6 @@ index ba32d58c33c65b1384baa7616da64f7a4a1f0d1d..da8dc6d62bb6071da150378c1daf384a
 +    // Gale end - branding changes - version fetcher
  }
 diff --git a/src/main/java/com/destroystokyo/paper/console/PaperConsole.java b/src/main/java/com/destroystokyo/paper/console/PaperConsole.java
-index 43006c22f26b9b3ff83d6d9511a8f29921b7f46d..147b842ed311ab0e1d6f3e71679ec325086b2a55 100644
 --- a/src/main/java/com/destroystokyo/paper/console/PaperConsole.java
 +++ b/src/main/java/com/destroystokyo/paper/console/PaperConsole.java
 @@ -21,7 +21,7 @@ public final class PaperConsole extends SimpleTerminalConsole {
@@ -529,7 +525,6 @@ index 43006c22f26b9b3ff83d6d9511a8f29921b7f46d..147b842ed311ab0e1d6f3e71679ec325
                  .completer(new ConsoleCommandCompleter(this.server))
                  .option(LineReader.Option.COMPLETE_IN_WORD, true);
 diff --git a/src/main/java/io/papermc/paper/PaperServerInternalAPIBridge.java b/src/main/java/io/papermc/paper/PaperServerInternalAPIBridge.java
-index 0152a712697acbe78eb2451d5b40cd407ad545ee..3c04352fb8fcb66d46727c628edbd0ad2838085d 100644
 --- a/src/main/java/io/papermc/paper/PaperServerInternalAPIBridge.java
 +++ b/src/main/java/io/papermc/paper/PaperServerInternalAPIBridge.java
 @@ -188,7 +188,7 @@ public class PaperServerInternalAPIBridge implements InternalAPIBridge {
@@ -542,7 +537,6 @@ index 0152a712697acbe78eb2451d5b40cd407ad545ee..3c04352fb8fcb66d46727c628edbd0ad
  
      @Override
 diff --git a/src/main/java/io/papermc/paper/ServerBuildInfoImpl.java b/src/main/java/io/papermc/paper/ServerBuildInfoImpl.java
-index 74ffdc823e66fc5ec027c4b7c462382bcbfe2be2..ca846f76d5ff53c547e1ce943e4e68cf4d5aa046 100644
 --- a/src/main/java/io/papermc/paper/ServerBuildInfoImpl.java
 +++ b/src/main/java/io/papermc/paper/ServerBuildInfoImpl.java
 @@ -31,6 +31,12 @@ public record ServerBuildInfoImpl(
@@ -586,7 +580,6 @@ index 74ffdc823e66fc5ec027c4b7c462382bcbfe2be2..ca846f76d5ff53c547e1ce943e4e68cf
  
      @Override
 diff --git a/src/main/java/org/bukkit/craftbukkit/scheduler/CraftScheduler.java b/src/main/java/org/bukkit/craftbukkit/scheduler/CraftScheduler.java
-index 7ffb7a210bf840009158d5e4364dad78221ded6c..c3713b6653bcd595c0a40788cd4ffa12e3ce2e4b 100644
 --- a/src/main/java/org/bukkit/craftbukkit/scheduler/CraftScheduler.java
 +++ b/src/main/java/org/bukkit/craftbukkit/scheduler/CraftScheduler.java
 @@ -491,7 +491,7 @@ public class CraftScheduler implements BukkitScheduler {
@@ -599,7 +592,6 @@ index 7ffb7a210bf840009158d5e4364dad78221ded6c..c3713b6653bcd595c0a40788cd4ffa12
                  // (async tasks must live with race-conditions if they attempt to cancel between these few lines of code)
              }
 diff --git a/src/main/java/org/spigotmc/WatchdogThread.java b/src/main/java/org/spigotmc/WatchdogThread.java
-index ab6c553f0f5c228e65c95538fc2deef07d9cd077..cbd8630035060115c291c403d9b84dc33e843d94 100644
 --- a/src/main/java/org/spigotmc/WatchdogThread.java
 +++ b/src/main/java/org/spigotmc/WatchdogThread.java
 @@ -25,7 +25,7 @@ public class WatchdogThread extends ca.spottedleaf.moonrise.common.util.TickThre
@@ -672,7 +664,6 @@ index ab6c553f0f5c228e65c95538fc2deef07d9cd077..cbd8630035060115c291c403d9b84dc3
  
                  logger.log(Level.SEVERE, "------------------------------");
 diff --git a/src/main/resources/logo.png b/src/main/resources/logo.png
-index 8b924977b7886df9ab8790b1e4ff9b1c04a2af45..9e698edad90ebcd641fc59ade84643556b427070 100644
 GIT binary patch
 literal 19657
 zcmbTdWmFtZ)HOPTyE}sf_W;42;I4zaI|TP2!QI{6-EDvbm!QEJf;&Nj=JLGvd)Ie=

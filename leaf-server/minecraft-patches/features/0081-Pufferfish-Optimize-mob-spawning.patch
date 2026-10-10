@@ -26,7 +26,6 @@ and, in my opinion, worth the low risk of minor mob-spawning-related
 inconsistencies.
 
 diff --git a/net/minecraft/server/MinecraftServer.java b/net/minecraft/server/MinecraftServer.java
-index 7b67c97ffe1fc33b0be427cc5b4354ba62fe007b..61e68184b0fa28b4025c0ba8b529110167ac79e3 100644
 --- a/net/minecraft/server/MinecraftServer.java
 +++ b/net/minecraft/server/MinecraftServer.java
 @@ -334,6 +334,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
@@ -46,7 +45,6 @@ index 7b67c97ffe1fc33b0be427cc5b4354ba62fe007b..61e68184b0fa28b4025c0ba8b5291101
          // Paper end - Improved watchdog support - move final shutdown items here
      }
 diff --git a/net/minecraft/server/dedicated/DedicatedServer.java b/net/minecraft/server/dedicated/DedicatedServer.java
-index 416a5d73302dacaa4a326fdb0d04cd33b561756e..64beedbc9e07642a20635a839446aa078619b88f 100644
 --- a/net/minecraft/server/dedicated/DedicatedServer.java
 +++ b/net/minecraft/server/dedicated/DedicatedServer.java
 @@ -415,6 +415,7 @@ public class DedicatedServer extends MinecraftServer implements ServerInterface
@@ -58,7 +56,6 @@ index 416a5d73302dacaa4a326fdb0d04cd33b561756e..64beedbc9e07642a20635a839446aa07
          this.saveEverything(false, true, true);
          this.notificationManager().serverStarted();
 diff --git a/net/minecraft/server/level/ServerChunkCache.java b/net/minecraft/server/level/ServerChunkCache.java
-index af2e95d7347d8c201e7e3124585c3506994d034e..a7a5d3e428aea98ebf016a189496a74894191ed5 100644
 --- a/net/minecraft/server/level/ServerChunkCache.java
 +++ b/net/minecraft/server/level/ServerChunkCache.java
 @@ -74,6 +74,9 @@ public class ServerChunkCache extends ChunkSource implements ca.spottedleaf.moon
@@ -224,7 +221,6 @@ index af2e95d7347d8c201e7e3124585c3506994d034e..a7a5d3e428aea98ebf016a189496a748
              if (this.level.getWorldBorder().isWithinBounds(chunkPos)) { // Paper - rewrite chunk system
                  NaturalSpawner.spawnForChunk(this.level, chunk, spawnCookie, spawningCategories);
 diff --git a/net/minecraft/world/attribute/EnvironmentAttributeSystem.java b/net/minecraft/world/attribute/EnvironmentAttributeSystem.java
-index b4a076292c17a9216764db4e0074315eca3127aa..7d4707bea911e6cd2f9e7fd35204435a1cc5ed66 100644
 --- a/net/minecraft/world/attribute/EnvironmentAttributeSystem.java
 +++ b/net/minecraft/world/attribute/EnvironmentAttributeSystem.java
 @@ -105,6 +105,30 @@ public class EnvironmentAttributeSystem implements EnvironmentAttributeReader {
@@ -259,7 +255,6 @@ index b4a076292c17a9216764db4e0074315eca3127aa..7d4707bea911e6cd2f9e7fd35204435a
          this.attributeSamplers.values().forEach(EnvironmentAttributeSystem.ValueSampler::invalidateTickCache);
      }
 diff --git a/net/minecraft/world/level/NaturalSpawner.java b/net/minecraft/world/level/NaturalSpawner.java
-index 3da6333683790ce17d9de34955dbf3f9e23a18ad..15c1bddff242e208c291f3bbbc01083ba333a98c 100644
 --- a/net/minecraft/world/level/NaturalSpawner.java
 +++ b/net/minecraft/world/level/NaturalSpawner.java
 @@ -121,6 +121,61 @@ public final class NaturalSpawner {
@@ -383,7 +378,6 @@ index 3da6333683790ce17d9de34955dbf3f9e23a18ad..15c1bddff242e208c291f3bbbc01083b
          private boolean canSpawnForCategoryGlobal(final MobCategory mobCategory, final int limit) {
              int maxMobCount = limit * this.spawnableChunkCount / NaturalSpawner.MAGIC_NUMBER;
 diff --git a/net/minecraft/world/timeline/AttributeTrackSampler.java b/net/minecraft/world/timeline/AttributeTrackSampler.java
-index 9fdc1fc6945621b0c938d9ada8a25eb57f034af5..976f5212ffaf67f5a12781c96534cb42f83f0e9d 100644
 --- a/net/minecraft/world/timeline/AttributeTrackSampler.java
 +++ b/net/minecraft/world/timeline/AttributeTrackSampler.java
 @@ -35,11 +35,25 @@ public class AttributeTrackSampler<Value, Argument> implements EnvironmentAttrib

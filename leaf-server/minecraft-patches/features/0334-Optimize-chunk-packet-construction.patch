@@ -5,7 +5,6 @@ Subject: [PATCH] Optimize chunk packet construction
 
 
 diff --git a/net/minecraft/network/protocol/game/ClientboundLevelChunkPacketData.java b/net/minecraft/network/protocol/game/ClientboundLevelChunkPacketData.java
-index 06f0088b4bdbd86c5942d523889386a81764a240..18d8d65e8a1d128ce8e737650cb9452c4379773b 100644
 --- a/net/minecraft/network/protocol/game/ClientboundLevelChunkPacketData.java
 +++ b/net/minecraft/network/protocol/game/ClientboundLevelChunkPacketData.java
 @@ -68,10 +68,14 @@ public class ClientboundLevelChunkPacketData {

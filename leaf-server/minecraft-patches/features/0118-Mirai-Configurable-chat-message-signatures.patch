@@ -11,7 +11,6 @@ Original license: GPL-3.0-only
 Original project: https://github.com/etil2jz/Mirai
 
 diff --git a/net/minecraft/network/protocol/game/ClientboundLoginPacket.java b/net/minecraft/network/protocol/game/ClientboundLoginPacket.java
-index 389e7a85439d67a4a86fc94f2134075fb3fa6138..91c1f92f358d69752c8e4c8b193375abf293ee9f 100644
 --- a/net/minecraft/network/protocol/game/ClientboundLoginPacket.java
 +++ b/net/minecraft/network/protocol/game/ClientboundLoginPacket.java
 @@ -49,7 +49,7 @@ public record ClientboundLoginPacket(
@@ -24,7 +23,6 @@ index 389e7a85439d67a4a86fc94f2134075fb3fa6138..91c1f92f358d69752c8e4c8b193375ab
      );
  
 diff --git a/net/minecraft/network/protocol/game/ServerboundChatPacket.java b/net/minecraft/network/protocol/game/ServerboundChatPacket.java
-index b758f2d913b5539362d228b04d4c9bb87e8c8482..e40c1356779c7293f240c7276e85d2a6ee217de2 100644
 --- a/net/minecraft/network/protocol/game/ServerboundChatPacket.java
 +++ b/net/minecraft/network/protocol/game/ServerboundChatPacket.java
 @@ -20,7 +20,7 @@ public record ServerboundChatPacket(String message, Instant timeStamp, long salt
@@ -37,7 +35,6 @@ index b758f2d913b5539362d228b04d4c9bb87e8c8482..e40c1356779c7293f240c7276e85d2a6
          ServerboundChatPacket::lastSeenMessages,
          ServerboundChatPacket::new
 diff --git a/net/minecraft/network/protocol/status/ServerStatus.java b/net/minecraft/network/protocol/status/ServerStatus.java
-index 5eb7d46bf0d84720662125711fa7b544e9299446..69206f1670321d8908e75fd203760590b3751cfb 100644
 --- a/net/minecraft/network/protocol/status/ServerStatus.java
 +++ b/net/minecraft/network/protocol/status/ServerStatus.java
 @@ -20,9 +20,13 @@ public record ServerStatus(
@@ -87,7 +84,6 @@ index 5eb7d46bf0d84720662125711fa7b544e9299446..69206f1670321d8908e75fd203760590
          private static final String PREFIX = "data:image/png;base64,";
          public static final Codec<ServerStatus.Favicon> CODEC = Codec.STRING.comapFlatMap(string -> {
 diff --git a/net/minecraft/server/dedicated/DedicatedServer.java b/net/minecraft/server/dedicated/DedicatedServer.java
-index 64beedbc9e07642a20635a839446aa078619b88f..1465e07aab8a6b0c7fc0f4e244d524be78ed8274 100644
 --- a/net/minecraft/server/dedicated/DedicatedServer.java
 +++ b/net/minecraft/server/dedicated/DedicatedServer.java
 @@ -814,6 +814,7 @@ public class DedicatedServer extends MinecraftServer implements ServerInterface
@@ -99,7 +95,6 @@ index 64beedbc9e07642a20635a839446aa078619b88f..1465e07aab8a6b0c7fc0f4e244d524be
          // Paper start - Add setting for proxy online mode status
          return properties.enforceSecureProfile
 diff --git a/net/minecraft/server/network/ServerGamePacketListenerImpl.java b/net/minecraft/server/network/ServerGamePacketListenerImpl.java
-index d1e0905e8d7f76ba7d90be21abd25abb2b6d485b..1c65e3286f267f527e24ef662d60ee3f769decc7 100644
 --- a/net/minecraft/server/network/ServerGamePacketListenerImpl.java
 +++ b/net/minecraft/server/network/ServerGamePacketListenerImpl.java
 @@ -2956,10 +2956,22 @@ public class ServerGamePacketListenerImpl
@@ -128,7 +123,6 @@ index d1e0905e8d7f76ba7d90be21abd25abb2b6d485b..1c65e3286f267f527e24ef662d60ee3f
          // Paper start - Ensure that client receives chat packets in the same order that we add into the message signature cache
          synchronized (this.messageSignatureCache) {
 diff --git a/net/minecraft/server/players/PlayerList.java b/net/minecraft/server/players/PlayerList.java
-index c97940bfba340acb5ae9e3c82d3745a9abb269f4..7b25c79e86820bc926379f7d78a9f2744f18c096 100644
 --- a/net/minecraft/server/players/PlayerList.java
 +++ b/net/minecraft/server/players/PlayerList.java
 @@ -1239,7 +1239,7 @@ public abstract class PlayerList {

@@ -5,7 +5,6 @@ Subject: [PATCH] optimize canHoldAnyFluid
 
 
 diff --git a/net/minecraft/world/level/material/FlowingFluid.java b/net/minecraft/world/level/material/FlowingFluid.java
-index eed24d905e24b4107352ed3e1392c63ad6fb44e3..e2b6299f2b33513b46debb184c4de090b478c551 100644
 --- a/net/minecraft/world/level/material/FlowingFluid.java
 +++ b/net/minecraft/world/level/material/FlowingFluid.java
 @@ -494,7 +494,7 @@ public abstract class FlowingFluid extends Fluid {

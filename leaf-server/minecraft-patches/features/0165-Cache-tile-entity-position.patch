@@ -5,7 +5,6 @@ Subject: [PATCH] Cache tile entity position
 
 
 diff --git a/net/minecraft/world/level/chunk/LevelChunk.java b/net/minecraft/world/level/chunk/LevelChunk.java
-index 9e4ed34492c86ae30096411034ec23ac5e3b7901..416ca8d3e6bf48902d10e9a7432fbbfa068c68f5 100644
 --- a/net/minecraft/world/level/chunk/LevelChunk.java
 +++ b/net/minecraft/world/level/chunk/LevelChunk.java
 @@ -972,10 +972,12 @@ public class LevelChunk extends ChunkAccess implements DebugValueSource, ca.spot

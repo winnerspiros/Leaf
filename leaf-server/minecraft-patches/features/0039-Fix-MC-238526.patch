@@ -37,7 +37,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 diff --git a/net/minecraft/world/entity/animal/fish/WaterAnimal.java b/net/minecraft/world/entity/animal/fish/WaterAnimal.java
-index 9d42eeaa1d2fcfad986a1d3ae3392bff4de5eab7..9bbeb92efe6eae57114792578c935242b4fd753f 100644
 --- a/net/minecraft/world/entity/animal/fish/WaterAnimal.java
 +++ b/net/minecraft/world/entity/animal/fish/WaterAnimal.java
 @@ -80,8 +80,11 @@ public abstract class WaterAnimal extends PathfinderMob {

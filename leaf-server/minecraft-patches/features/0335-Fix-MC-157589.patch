@@ -20,7 +20,6 @@ prominent legal notice accompanying the corresponding source:
 Original patch by HaHaWTH <102713261+HaHaWTH@users.noreply.github.com>
 
 diff --git a/net/minecraft/world/entity/ai/behavior/SetHiddenState.java b/net/minecraft/world/entity/ai/behavior/SetHiddenState.java
-index 5c2b736e33b8bcea33aac6760afdfce1573ff9e8..ebc87960e8199db308ce073bda88176a31b4716b 100644
 --- a/net/minecraft/world/entity/ai/behavior/SetHiddenState.java
 +++ b/net/minecraft/world/entity/ai/behavior/SetHiddenState.java
 @@ -13,12 +13,16 @@ public class SetHiddenState {

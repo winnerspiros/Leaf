@@ -15,7 +15,6 @@ The delay is currently set to 2 seconds, however, we may want to adjust this bef
 fixes Paper#9581
 
 diff --git a/ca/spottedleaf/moonrise/patches/chunk_system/player/RegionizedPlayerChunkLoader.java b/ca/spottedleaf/moonrise/patches/chunk_system/player/RegionizedPlayerChunkLoader.java
-index 45c927417d34ddd48c92116efd9b5777bfc52e35..8b987ca4e1db327f42806083c25e758375a959ef 100644
 --- a/ca/spottedleaf/moonrise/patches/chunk_system/player/RegionizedPlayerChunkLoader.java
 +++ b/ca/spottedleaf/moonrise/patches/chunk_system/player/RegionizedPlayerChunkLoader.java
 @@ -48,6 +48,7 @@ public final class RegionizedPlayerChunkLoader {
@@ -27,7 +26,6 @@ index 45c927417d34ddd48c92116efd9b5777bfc52e35..8b987ca4e1db327f42806083c25e7583
      public static final int GENERATED_TICKET_LEVEL = ChunkHolderManager.FULL_LOADED_TICKET_LEVEL;
      public static final int LOADED_TICKET_LEVEL = ChunkTaskScheduler.getTicketLevel(ChunkStatus.EMPTY);
 diff --git a/net/minecraft/server/players/PlayerList.java b/net/minecraft/server/players/PlayerList.java
-index be3d09ffb6956b781b3ee2634520c81703ad744d..2f0fd77fd951e2bbaa68b873cde9013329f76768 100644
 --- a/net/minecraft/server/players/PlayerList.java
 +++ b/net/minecraft/server/players/PlayerList.java
 @@ -234,6 +234,13 @@ public abstract class PlayerList {

@@ -19,7 +19,6 @@ prominent legal notice accompanying the corresponding source:
 Original patch by HaHaWTH <102713261+HaHaWTH@users.noreply.github.com>
 
 diff --git a/ca/spottedleaf/moonrise/patches/starlight/light/StarLightInterface.java b/ca/spottedleaf/moonrise/patches/starlight/light/StarLightInterface.java
-index e859cc266fe385949a058b85fa6be9c69951d85b..11f4f97b8b3a41d9cc84e7d9a01dbd465687fe81 100644
 --- a/ca/spottedleaf/moonrise/patches/starlight/light/StarLightInterface.java
 +++ b/ca/spottedleaf/moonrise/patches/starlight/light/StarLightInterface.java
 @@ -220,6 +220,16 @@ public final class StarLightInterface {
@@ -40,7 +39,6 @@ index e859cc266fe385949a058b85fa6be9c69951d85b..11f4f97b8b3a41d9cc84e7d9a01dbd46
          if (!this.hasSkyLight) {
              return 0;
 diff --git a/net/minecraft/world/level/block/SpreadingSnowyBlock.java b/net/minecraft/world/level/block/SpreadingSnowyBlock.java
-index 16ee18c44e779bcdf57bb8df5a9177b89eee467a..dfdee29e12ab97e478674cc242492ff30fecd3e1 100644
 --- a/net/minecraft/world/level/block/SpreadingSnowyBlock.java
 +++ b/net/minecraft/world/level/block/SpreadingSnowyBlock.java
 @@ -74,7 +74,12 @@ public abstract class SpreadingSnowyBlock extends SnowyBlock {

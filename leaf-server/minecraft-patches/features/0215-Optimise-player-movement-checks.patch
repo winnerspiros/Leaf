@@ -5,7 +5,6 @@ Subject: [PATCH] Optimise player movement checks
 
 
 diff --git a/net/minecraft/world/entity/Entity.java b/net/minecraft/world/entity/Entity.java
-index 2178c7661e48e5eb10d72a5ae3f95ad2d1673a0e..08800cb64e0f5a846e357af30ac9a1a371a69b89 100644
 --- a/net/minecraft/world/entity/Entity.java
 +++ b/net/minecraft/world/entity/Entity.java
 @@ -1278,7 +1278,7 @@ public abstract class Entity

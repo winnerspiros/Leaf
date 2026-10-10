@@ -16,7 +16,6 @@ With this approach only new methods are added into already existing Bukkit API, 
   get standarized.
 
 diff --git a/src/main/java/org/bukkit/Server.java b/src/main/java/org/bukkit/Server.java
-index 5955c8ce30bd0db65a4638cfb4cd1734415e7ac3..8fc933a8a664ad4eab3ea64365e6f91fae6f342c 100644
 --- a/src/main/java/org/bukkit/Server.java
 +++ b/src/main/java/org/bukkit/Server.java
 @@ -2993,4 +2993,15 @@ public interface Server extends PluginMessageRecipient, net.kyori.adventure.audi
@@ -36,7 +35,6 @@ index 5955c8ce30bd0db65a4638cfb4cd1734415e7ac3..8fc933a8a664ad4eab3ea64365e6f91f
 +    // Fish end - Parallel World Ticking API
  }
 diff --git a/src/main/java/org/bukkit/World.java b/src/main/java/org/bukkit/World.java
-index 1debcd48c152961d327e53aa42e30c81c6e9424a..dcf207edb89b8e4efc171ac9fe90db9382aafeb9 100644
 --- a/src/main/java/org/bukkit/World.java
 +++ b/src/main/java/org/bukkit/World.java
 @@ -4780,6 +4780,25 @@ public interface World extends RegionAccessor, WorldInfo, PluginMessageRecipient

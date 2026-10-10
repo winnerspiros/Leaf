@@ -5,7 +5,6 @@ Subject: [PATCH] optimize tickEffects
 
 
 diff --git a/net/minecraft/world/entity/LivingEntity.java b/net/minecraft/world/entity/LivingEntity.java
-index 521ac5d20b740aa6c52c1e31326674fbf5e9a826..46518efbaaf5366155effcfce2c8c2595662d80b 100644
 --- a/net/minecraft/world/entity/LivingEntity.java
 +++ b/net/minecraft/world/entity/LivingEntity.java
 @@ -962,6 +962,7 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin

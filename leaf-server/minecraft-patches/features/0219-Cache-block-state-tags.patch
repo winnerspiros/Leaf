@@ -9,7 +9,6 @@ so that custom things injected by plugins, CraftEngine, for example, will not be
 So we need to init it again after the plugin loads (Double init, but it doesn't matter)
 
 diff --git a/net/minecraft/server/MinecraftServer.java b/net/minecraft/server/MinecraftServer.java
-index 8adb09858040c495a49c8f3b149b63b6ac040bb7..411d9b1ba255a3510c27a6c53d03d978b78b13b9 100644
 --- a/net/minecraft/server/MinecraftServer.java
 +++ b/net/minecraft/server/MinecraftServer.java
 @@ -1350,6 +1350,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
@@ -21,7 +20,6 @@ index 8adb09858040c495a49c8f3b149b63b6ac040bb7..411d9b1ba255a3510c27a6c53d03d978
              if (io.papermc.paper.configuration.GlobalConfiguration.isFirstStart) {
                  LOGGER.info("*************************************************************************************");
 diff --git a/net/minecraft/server/ReloadableServerResources.java b/net/minecraft/server/ReloadableServerResources.java
-index 49c1b41143b99da4d72ff8e239b99c6c047132ba..e01f9a531609d00ad70c5c11db43eef8dbc497da 100644
 --- a/net/minecraft/server/ReloadableServerResources.java
 +++ b/net/minecraft/server/ReloadableServerResources.java
 @@ -124,5 +124,9 @@ public class ReloadableServerResources {
@@ -35,7 +33,6 @@ index 49c1b41143b99da4d72ff8e239b99c6c047132ba..e01f9a531609d00ad70c5c11db43eef8
      }
  }
 diff --git a/net/minecraft/world/entity/vehicle/DismountHelper.java b/net/minecraft/world/entity/vehicle/DismountHelper.java
-index 0339abc100520ea971a81110b754e6f5a33381b9..577110b08755b68a448300f4edd01fa4419d04ea 100644
 --- a/net/minecraft/world/entity/vehicle/DismountHelper.java
 +++ b/net/minecraft/world/entity/vehicle/DismountHelper.java
 @@ -55,7 +55,7 @@ public class DismountHelper {
@@ -48,7 +45,6 @@ index 0339abc100520ea971a81110b754e6f5a33381b9..577110b08755b68a448300f4edd01fa4
              : Shapes.empty();
      }
 diff --git a/net/minecraft/world/level/block/Blocks.java b/net/minecraft/world/level/block/Blocks.java
-index 78ce09f82ba09e1897f5df6744d835a51dbe4627..61b57b7a9e86905422f7555762320f06057dfa54 100644
 --- a/net/minecraft/world/level/block/Blocks.java
 +++ b/net/minecraft/world/level/block/Blocks.java
 @@ -5960,4 +5960,21 @@ public class Blocks {
@@ -74,7 +70,6 @@ index 78ce09f82ba09e1897f5df6744d835a51dbe4627..61b57b7a9e86905422f7555762320f06
 +    // Leaf end - Cache block state tags
  }
 diff --git a/net/minecraft/world/level/block/state/BlockBehaviour.java b/net/minecraft/world/level/block/state/BlockBehaviour.java
-index d7198cea0b1bf7a315523385054aedc574b24652..25f2348b0ab4a229f5bb0a7fa3cefd29872a8be4 100644
 --- a/net/minecraft/world/level/block/state/BlockBehaviour.java
 +++ b/net/minecraft/world/level/block/state/BlockBehaviour.java
 @@ -490,6 +490,8 @@ public abstract class BlockBehaviour implements FeatureElement {
@@ -103,7 +98,6 @@ index d7198cea0b1bf7a315523385054aedc574b24652..25f2348b0ab4a229f5bb0a7fa3cefd29
              return this.owner;
          }
 diff --git a/net/minecraft/world/level/pathfinder/PathTypeCache.java b/net/minecraft/world/level/pathfinder/PathTypeCache.java
-index 1a50ec0d56bb4b9c3b0958a0281028c8eff1000c..24c97627f3d6848729a6985d253838747e1ad2d1 100644
 --- a/net/minecraft/world/level/pathfinder/PathTypeCache.java
 +++ b/net/minecraft/world/level/pathfinder/PathTypeCache.java
 @@ -23,7 +23,7 @@ public class PathTypeCache {
@@ -116,7 +110,6 @@ index 1a50ec0d56bb4b9c3b0958a0281028c8eff1000c..24c97627f3d6848729a6985d25383874
          this.pathTypes[index] = pathType;
          return pathType;
 diff --git a/net/minecraft/world/level/pathfinder/PathfindingContext.java b/net/minecraft/world/level/pathfinder/PathfindingContext.java
-index 5d2f56999657cc9b0d5892ddc7897d96610a0dbd..864681a98d963575acb0d88c710e68f249578d32 100644
 --- a/net/minecraft/world/level/pathfinder/PathfindingContext.java
 +++ b/net/minecraft/world/level/pathfinder/PathfindingContext.java
 @@ -26,7 +26,7 @@ public class PathfindingContext {
@@ -129,7 +122,6 @@ index 5d2f56999657cc9b0d5892ddc7897d96610a0dbd..864681a98d963575acb0d88c710e68f2
  
      public BlockState getBlockState(final BlockPos pos) {
 diff --git a/net/minecraft/world/level/pathfinder/WalkNodeEvaluator.java b/net/minecraft/world/level/pathfinder/WalkNodeEvaluator.java
-index eefb729aaf84f50cd19c7c52d57f61f50ee04a78..8826c5c7fc9dc77d3381551e43c25eca84a198e9 100644
 --- a/net/minecraft/world/level/pathfinder/WalkNodeEvaluator.java
 +++ b/net/minecraft/world/level/pathfinder/WalkNodeEvaluator.java
 @@ -513,6 +513,17 @@ public class WalkNodeEvaluator extends NodeEvaluator {

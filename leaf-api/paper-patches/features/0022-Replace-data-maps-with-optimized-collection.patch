@@ -5,7 +5,6 @@ Subject: [PATCH] Replace data maps with optimized collection
 
 
 diff --git a/src/main/java/org/bukkit/ChatColor.java b/src/main/java/org/bukkit/ChatColor.java
-index f283bcabff7fe6eede6cf4344537e43048c35166..09e86b1431b30e190d9f3e152ad0231c0b70b98e 100644
 --- a/src/main/java/org/bukkit/ChatColor.java
 +++ b/src/main/java/org/bukkit/ChatColor.java
 @@ -246,8 +246,10 @@ public enum ChatColor {
@@ -22,7 +21,6 @@ index f283bcabff7fe6eede6cf4344537e43048c35166..09e86b1431b30e190d9f3e152ad0231c
      private ChatColor(char code, int intCode) {
          this(code, intCode, false);
 diff --git a/src/main/java/org/bukkit/CoalType.java b/src/main/java/org/bukkit/CoalType.java
-index ede570814963a0fb93e2e5affa54439880cd685b..8acb7e917ff68a759731eace466c14a18098f18a 100644
 --- a/src/main/java/org/bukkit/CoalType.java
 +++ b/src/main/java/org/bukkit/CoalType.java
 @@ -13,7 +13,7 @@ public enum CoalType {
@@ -35,7 +33,6 @@ index ede570814963a0fb93e2e5affa54439880cd685b..8acb7e917ff68a759731eace466c14a1
      private CoalType(final int data) {
          this.data = (byte) data;
 diff --git a/src/main/java/org/bukkit/CropState.java b/src/main/java/org/bukkit/CropState.java
-index 9420e919088392c6aac4114356af7a2096478195..4097a1c5b9e07c60eb13be1636193e474ab05235 100644
 --- a/src/main/java/org/bukkit/CropState.java
 +++ b/src/main/java/org/bukkit/CropState.java
 @@ -44,7 +44,7 @@ public enum CropState {
@@ -48,7 +45,6 @@ index 9420e919088392c6aac4114356af7a2096478195..4097a1c5b9e07c60eb13be1636193e47
      private CropState(final int data) {
          this.data = (byte) data;
 diff --git a/src/main/java/org/bukkit/Difficulty.java b/src/main/java/org/bukkit/Difficulty.java
-index 427ce8cfd6f63e5c7ec7b264b15ab4111b947729..72452d7e94fcbe53e7bf2e59786cc24deec604d8 100644
 --- a/src/main/java/org/bukkit/Difficulty.java
 +++ b/src/main/java/org/bukkit/Difficulty.java
 @@ -34,7 +34,7 @@ public enum Difficulty implements net.kyori.adventure.translation.Translatable {
@@ -61,7 +57,6 @@ index 427ce8cfd6f63e5c7ec7b264b15ab4111b947729..72452d7e94fcbe53e7bf2e59786cc24d
      private Difficulty(final int value) {
          this.value = value;
 diff --git a/src/main/java/org/bukkit/Effect.java b/src/main/java/org/bukkit/Effect.java
-index ed450e67fd178ebec2879718910ddd0831d04dd5..d3c0637b44831d1ddf600e41274aff43788cbcfd 100644
 --- a/src/main/java/org/bukkit/Effect.java
 +++ b/src/main/java/org/bukkit/Effect.java
 @@ -549,7 +549,7 @@ public enum Effect {
@@ -74,7 +69,6 @@ index ed450e67fd178ebec2879718910ddd0831d04dd5..d3c0637b44831d1ddf600e41274aff43
      private final int id;
      private final Type type;
 diff --git a/src/main/java/org/bukkit/GameMode.java b/src/main/java/org/bukkit/GameMode.java
-index 796f75313255ecc8917819b28eaf12776f2e4ce3..1a0ffcf0be29c08e43fd74766b2c74aa88ee9bcd 100644
 --- a/src/main/java/org/bukkit/GameMode.java
 +++ b/src/main/java/org/bukkit/GameMode.java
 @@ -34,7 +34,7 @@ public enum GameMode implements net.kyori.adventure.translation.Translatable { /
@@ -87,7 +81,6 @@ index 796f75313255ecc8917819b28eaf12776f2e4ce3..1a0ffcf0be29c08e43fd74766b2c74aa
      private final String translationKey;
  
 diff --git a/src/main/java/org/bukkit/GrassSpecies.java b/src/main/java/org/bukkit/GrassSpecies.java
-index 43da0eb033f7cb65e3b2cacd67946bc9dc187678..a4433669928516efe2ce9ce2fd914ae93c5d17b1 100644
 --- a/src/main/java/org/bukkit/GrassSpecies.java
 +++ b/src/main/java/org/bukkit/GrassSpecies.java
 @@ -25,7 +25,7 @@ public enum GrassSpecies {
@@ -100,7 +93,6 @@ index 43da0eb033f7cb65e3b2cacd67946bc9dc187678..a4433669928516efe2ce9ce2fd914ae9
      private GrassSpecies(final int data) {
          this.data = (byte) data;
 diff --git a/src/main/java/org/bukkit/Note.java b/src/main/java/org/bukkit/Note.java
-index aff858346776386f1288b648b221404f7f412399..4d50fb87489f10e641a1a48f55440d912ddf9e11 100644
 --- a/src/main/java/org/bukkit/Note.java
 +++ b/src/main/java/org/bukkit/Note.java
 @@ -26,7 +26,7 @@ public class Note {
@@ -113,7 +105,6 @@ index aff858346776386f1288b648b221404f7f412399..4d50fb87489f10e641a1a48f55440d91
          public static final byte TONES_COUNT = 12;
  
 diff --git a/src/main/java/org/bukkit/SandstoneType.java b/src/main/java/org/bukkit/SandstoneType.java
-index d2ea2c81f94093414399512e289cea6c12855ec2..4e742de7221ebd131dd04edb019c3f9921bbbd97 100644
 --- a/src/main/java/org/bukkit/SandstoneType.java
 +++ b/src/main/java/org/bukkit/SandstoneType.java
 @@ -15,7 +15,7 @@ public enum SandstoneType {
@@ -126,7 +117,6 @@ index d2ea2c81f94093414399512e289cea6c12855ec2..4e742de7221ebd131dd04edb019c3f99
      private SandstoneType(final int data) {
          this.data = (byte) data;
 diff --git a/src/main/java/org/bukkit/TreeSpecies.java b/src/main/java/org/bukkit/TreeSpecies.java
-index abbe7c3b2984dc03098780d5678553685ea78dc4..8cecfa130b7382cdf7a2eb6f00a2600746bd72dc 100644
 --- a/src/main/java/org/bukkit/TreeSpecies.java
 +++ b/src/main/java/org/bukkit/TreeSpecies.java
 @@ -39,7 +39,7 @@ public enum TreeSpecies {
@@ -139,7 +129,6 @@ index abbe7c3b2984dc03098780d5678553685ea78dc4..8cecfa130b7382cdf7a2eb6f00a26007
      private TreeSpecies(final int data) {
          this.data = (byte) data;
 diff --git a/src/main/java/org/bukkit/material/types/MushroomBlockTexture.java b/src/main/java/org/bukkit/material/types/MushroomBlockTexture.java
-index ca1b5d270848aebea3fb5c87daa5dc11ff1a877c..a9e61fc7a2b33f7f81f7d943a7a75db495f3b69b 100644
 --- a/src/main/java/org/bukkit/material/types/MushroomBlockTexture.java
 +++ b/src/main/java/org/bukkit/material/types/MushroomBlockTexture.java
 @@ -65,8 +65,10 @@ public enum MushroomBlockTexture {

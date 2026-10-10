@@ -15,7 +15,6 @@ prominent legal notice accompanying the corresponding source:
 Original patch by HaHaWTH <102713261+HaHaWTH@users.noreply.github.com>
 
 diff --git a/net/minecraft/world/entity/ExperienceOrb.java b/net/minecraft/world/entity/ExperienceOrb.java
-index 678b27a42979c7cf333904e006602420e9569bf7..38e73208ed5e2f0809684137f985292baa5672a8 100644
 --- a/net/minecraft/world/entity/ExperienceOrb.java
 +++ b/net/minecraft/world/entity/ExperienceOrb.java
 @@ -246,9 +246,14 @@ public class ExperienceOrb extends Entity {

@@ -6,7 +6,6 @@ Subject: [PATCH] Fix MC-270656
 Related MC issue: https://bugs.mojang.com/browse/MC/issues/MC-270656
 
 diff --git a/net/minecraft/server/level/ServerPlayer.java b/net/minecraft/server/level/ServerPlayer.java
-index a9e4d3fc098094552afc122813b34398c9523b42..6c0de6b09df0b92c2fa8be0e7d46335d387cd492 100644
 --- a/net/minecraft/server/level/ServerPlayer.java
 +++ b/net/minecraft/server/level/ServerPlayer.java
 @@ -1088,6 +1088,7 @@ public class ServerPlayer extends Player implements ca.spottedleaf.moonrise.patc

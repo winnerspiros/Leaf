@@ -12,7 +12,6 @@ before spawning, it checks isSpawnPositionOk() for the position which loads the 
 This patch ensures the chunk at the random location is loaded before trying to spawn the reinforcement zombie in it.
 
 diff --git a/net/minecraft/world/entity/monster/zombie/Zombie.java b/net/minecraft/world/entity/monster/zombie/Zombie.java
-index c35febe5271ca6a373f477abc71d9e07f2a3281c..f32e5b2b07f5a21c981b9269d37af8fdcf17d9f3 100644
 --- a/net/minecraft/world/entity/monster/zombie/Zombie.java
 +++ b/net/minecraft/world/entity/monster/zombie/Zombie.java
 @@ -383,6 +383,13 @@ public class Zombie extends Monster {

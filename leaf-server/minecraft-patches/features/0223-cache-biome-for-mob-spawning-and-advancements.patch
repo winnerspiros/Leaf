@@ -5,7 +5,6 @@ Subject: [PATCH] cache biome for mob spawning and advancements
 
 
 diff --git a/net/minecraft/advancements/predicates/LocationPredicate.java b/net/minecraft/advancements/predicates/LocationPredicate.java
-index 7e619958c539f28c79bc1466dcd634273b6e8742..1e08ea81e530384e4b7eb7ea6428e837473677bb 100644
 --- a/net/minecraft/advancements/predicates/LocationPredicate.java
 +++ b/net/minecraft/advancements/predicates/LocationPredicate.java
 @@ -52,7 +52,7 @@ public record LocationPredicate(
@@ -18,7 +17,6 @@ index 7e619958c539f28c79bc1466dcd634273b6e8742..1e08ea81e530384e4b7eb7ea6428e837
              && (!this.smokey.isPresent() || loaded && this.smokey.get() == CampfireBlock.isSmokeyPos(level, pos))
              && (!this.light.isPresent() || this.light.get().matches(level, pos))
 diff --git a/net/minecraft/world/level/LevelReader.java b/net/minecraft/world/level/LevelReader.java
-index ad225fe3eccf6d649566c47f8d6fd162fe92d6f5..72bdeb11e961a65432c1d15f6679eaa3ef1ee1c4 100644
 --- a/net/minecraft/world/level/LevelReader.java
 +++ b/net/minecraft/world/level/LevelReader.java
 @@ -60,6 +60,12 @@ public interface LevelReader extends BlockAndLightGetter, CollisionGetter, Signa
@@ -35,7 +33,6 @@ index ad225fe3eccf6d649566c47f8d6fd162fe92d6f5..72bdeb11e961a65432c1d15f6679eaa3
          int x0 = Mth.floor(box.minX);
          int x1 = Mth.floor(box.maxX);
 diff --git a/net/minecraft/world/level/NaturalSpawner.java b/net/minecraft/world/level/NaturalSpawner.java
-index 4921da56d07b543c4651bb668eb8f643c82bfebb..d3059582f18c8d1b1d518bdab05ea1d414c9deea 100644
 --- a/net/minecraft/world/level/NaturalSpawner.java
 +++ b/net/minecraft/world/level/NaturalSpawner.java
 @@ -545,7 +545,7 @@ public final class NaturalSpawner {
@@ -48,7 +45,6 @@ index 4921da56d07b543c4651bb668eb8f643c82bfebb..d3059582f18c8d1b1d518bdab05ea1d4
              ? Optional.empty()
              : mobsAt(level, structureManager, generator, mobCategory, pos).getRandom(random);
 diff --git a/net/minecraft/world/level/biome/BiomeManager.java b/net/minecraft/world/level/biome/BiomeManager.java
-index 7b3c72f50ef1b7d71a1a007f634808b2cd972bc4..95fa5539748af619762a70746894edac6753eaba 100644
 --- a/net/minecraft/world/level/biome/BiomeManager.java
 +++ b/net/minecraft/world/level/biome/BiomeManager.java
 @@ -16,10 +16,23 @@ public class BiomeManager {

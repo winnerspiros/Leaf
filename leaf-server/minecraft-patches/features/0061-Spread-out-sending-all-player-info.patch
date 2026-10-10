@@ -37,7 +37,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 diff --git a/net/minecraft/server/players/PlayerList.java b/net/minecraft/server/players/PlayerList.java
-index 74390674a2e1f654c7b713328bc3697f510518fe..2c096e333388b698e55b3e783ad4275c0495202f 100644
 --- a/net/minecraft/server/players/PlayerList.java
 +++ b/net/minecraft/server/players/PlayerList.java
 @@ -117,6 +117,7 @@ public abstract class PlayerList {
@@ -145,7 +144,6 @@ index 74390674a2e1f654c7b713328bc3697f510518fe..2c096e333388b698e55b3e783ad4275c
      public void broadcastAll(Packet packet, net.minecraft.world.entity.player.Player entityhuman) {
          for (ServerPlayer entityplayer : this.players) { // Paper - replace for i with for each for thread safety
 diff --git a/net/minecraft/world/entity/player/Player.java b/net/minecraft/world/entity/player/Player.java
-index 534a356f5b0427d0a675ac185e05a363a287a0b6..ff44fe1481a8a4eb56acb347b2d03823af1cc9b6 100644
 --- a/net/minecraft/world/entity/player/Player.java
 +++ b/net/minecraft/world/entity/player/Player.java
 @@ -208,9 +208,12 @@ public abstract class Player extends Avatar implements ContainerUser {

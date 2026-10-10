@@ -9,7 +9,6 @@ Gale - https://galemc.org
 Co-authored-by: MrlingXD <90316914+wling-art@users.noreply.github.com>
 
 diff --git a/io/papermc/paper/entity/activation/ActivationRange.java b/io/papermc/paper/entity/activation/ActivationRange.java
-index db127a30400045d3fe5672464f2ff706efa49031..987bbafa8033f0b7bd80856d9187d1ea8a0d3103 100644
 --- a/io/papermc/paper/entity/activation/ActivationRange.java
 +++ b/io/papermc/paper/entity/activation/ActivationRange.java
 @@ -60,27 +60,39 @@ public final class ActivationRange {

@@ -7,7 +7,6 @@ Leaf Config v3
 including load config, backup old or outdated config, and add config to spark profiler automatically.
 
 diff --git a/net/minecraft/server/Main.java b/net/minecraft/server/Main.java
-index 455302161c8b24a1c953005e0597f3c69f764e1e..69719421061869f145b66ac470957b9fa24445e6 100644
 --- a/net/minecraft/server/Main.java
 +++ b/net/minecraft/server/Main.java
 @@ -102,6 +102,8 @@ public class Main {
@@ -28,7 +27,6 @@ index 455302161c8b24a1c953005e0597f3c69f764e1e..69719421061869f145b66ac470957b9f
              DedicatedServerSettings settings = new DedicatedServerSettings(options); // CraftBukkit - CLI argument support
              settings.forceSave();
 diff --git a/net/minecraft/server/MinecraftServer.java b/net/minecraft/server/MinecraftServer.java
-index f3ab1fe2c7e0c133619001df4a238db98560dadf..b56481491db6e39ca30c482ce1d6cd5d44d65d78 100644
 --- a/net/minecraft/server/MinecraftServer.java
 +++ b/net/minecraft/server/MinecraftServer.java
 @@ -1285,6 +1285,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa

@@ -13,7 +13,6 @@ The JMH benchmark of this patch can be found in SunBox's `BetterBlocksTraverse`
 Co-authored-by: HaHaWTH <102713261+HaHaWTH@users.noreply.github.com>
 
 diff --git a/net/minecraft/world/entity/monster/Ghast.java b/net/minecraft/world/entity/monster/Ghast.java
-index bf5e977d395d2dbe0203d8b2488d7cb5ff0c08d3..c5aa0c1a6fa8849525b79200f8fb5a915d6543ca 100644
 --- a/net/minecraft/world/entity/monster/Ghast.java
 +++ b/net/minecraft/world/entity/monster/Ghast.java
 @@ -330,7 +330,7 @@ public class Ghast extends Mob implements Enemy {
@@ -26,7 +25,6 @@ index bf5e977d395d2dbe0203d8b2488d7cb5ff0c08d3..c5aa0c1a6fa8849525b79200f8fb5a91
                          return false;
                      }
 diff --git a/net/minecraft/world/level/BlockGetter.java b/net/minecraft/world/level/BlockGetter.java
-index 2a4c928281c7e455d6f210aeb599881855d328f8..4fb03447398608d48618a1b52e1ad1800c51029e 100644
 --- a/net/minecraft/world/level/BlockGetter.java
 +++ b/net/minecraft/world/level/BlockGetter.java
 @@ -209,7 +209,7 @@ public interface BlockGetter extends LevelHeightAccessor {

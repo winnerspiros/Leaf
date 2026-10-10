@@ -6,7 +6,6 @@ Subject: [PATCH] Fix MC-152094
 Related MC issue: https://bugs.mojang.com/browse/MC/issues/MC-152094
 
 diff --git a/net/minecraft/world/level/levelgen/structure/structures/EndCityPieces.java b/net/minecraft/world/level/levelgen/structure/structures/EndCityPieces.java
-index 855b9326f4e98a8b3b0f1e7f217401ccdbcaea96..5115ccf818af3db0f3770a7a809bee524ad39b2c 100644
 --- a/net/minecraft/world/level/levelgen/structure/structures/EndCityPieces.java
 +++ b/net/minecraft/world/level/levelgen/structure/structures/EndCityPieces.java
 @@ -206,12 +206,23 @@ public class EndCityPieces {

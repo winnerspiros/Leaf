@@ -15,7 +15,6 @@ prominent legal notice accompanying the corresponding source:
 Original patch by HaHaWTH <102713261+HaHaWTH@users.noreply.github.com>
 
 diff --git a/net/minecraft/server/gui/MinecraftServerGui.java b/net/minecraft/server/gui/MinecraftServerGui.java
-index db4d0cc0149b54e5b8a9b3e646d690e6da7cf782..537af6eec7e7f2460012ad082b4d09965f661635 100644
 --- a/net/minecraft/server/gui/MinecraftServerGui.java
 +++ b/net/minecraft/server/gui/MinecraftServerGui.java
 @@ -49,7 +49,7 @@ public class MinecraftServerGui extends JComponent {
@@ -52,7 +51,6 @@ index db4d0cc0149b54e5b8a9b3e646d690e6da7cf782..537af6eec7e7f2460012ad082b4d0996
          chatArea.setFont(MONOSPACED);
          JTextField chatField = new JTextField();
 diff --git a/org/purpurmc/purpur/gui/GUIColor.java b/org/purpurmc/purpur/gui/GUIColor.java
-index 550222758bf0e7deff26a6e813a860b7be365e87..54ad72f7130feaf6fd7377bd19ff680057363311 100644
 --- a/org/purpurmc/purpur/gui/GUIColor.java
 +++ b/org/purpurmc/purpur/gui/GUIColor.java
 @@ -7,35 +7,39 @@ import java.util.HashMap;
@@ -114,7 +112,6 @@ index 550222758bf0e7deff26a6e813a860b7be365e87..54ad72f7130feaf6fd7377bd19ff6800
  
      public ChatColor getChatColor() {
 diff --git a/org/purpurmc/purpur/gui/JColorTextPane.java b/org/purpurmc/purpur/gui/JColorTextPane.java
-index d75fb5e77eff27d86135ed7d605dbc250b660f7d..26e1b78d50c10987b03ace8e275a38c171982e9a 100644
 --- a/org/purpurmc/purpur/gui/JColorTextPane.java
 +++ b/org/purpurmc/purpur/gui/JColorTextPane.java
 @@ -17,7 +17,7 @@ import java.util.Set;

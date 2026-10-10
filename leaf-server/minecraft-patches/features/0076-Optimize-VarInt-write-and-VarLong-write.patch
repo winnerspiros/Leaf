@@ -21,7 +21,6 @@ Given that we do a lot of varint writing as well, this should provide a small pe
 This includes a test to ensure that the behavior is as expected and fixes the initialization loop so that the correct results will be given. Much thanks to @octylFractal for acting as my duck while trying to figure this out.
 
 diff --git a/net/minecraft/network/VarInt.java b/net/minecraft/network/VarInt.java
-index 1428ce80e8316a24cfca7b6aafdea8588a5a790e..529744f10da2c403650c895168edf7f8ad5ac458 100644
 --- a/net/minecraft/network/VarInt.java
 +++ b/net/minecraft/network/VarInt.java
 @@ -51,6 +51,40 @@ public class VarInt {
@@ -66,7 +65,6 @@ index 1428ce80e8316a24cfca7b6aafdea8588a5a790e..529744f10da2c403650c895168edf7f8
          // Peel the one and two byte count cases explicitly as they are the most common VarInt sizes
          // that the proxy will write, to improve inlining.
 diff --git a/net/minecraft/network/VarLong.java b/net/minecraft/network/VarLong.java
-index fbdc414be0f9e5c15ad72d11c134d75fc3851cec..8eb1a10f2bd06b4f9e66eb79087244595b3498ba 100644
 --- a/net/minecraft/network/VarLong.java
 +++ b/net/minecraft/network/VarLong.java
 @@ -51,6 +51,126 @@ public class VarLong {

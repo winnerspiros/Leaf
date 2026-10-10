@@ -19,7 +19,6 @@ track:
 // SYNC SOURCE END
 
 diff --git a/net/minecraft/world/level/chunk/HashMapPalette.java b/net/minecraft/world/level/chunk/HashMapPalette.java
-index 3ee35885ea1f997bb5a36dd8d5f83b168883ba61..2cee753e9927f04d8c77e179f34442ef8469de76 100644
 --- a/net/minecraft/world/level/chunk/HashMapPalette.java
 +++ b/net/minecraft/world/level/chunk/HashMapPalette.java
 @@ -14,7 +14,7 @@ public class HashMapPalette<T> implements Palette<T>, ca.spottedleaf.moonrise.pa
@@ -47,7 +46,6 @@ index 3ee35885ea1f997bb5a36dd8d5f83b168883ba61..2cee753e9927f04d8c77e179f34442ef
          this.bits = bits;
          this.values = values;
 diff --git a/net/minecraft/world/level/chunk/Strategy.java b/net/minecraft/world/level/chunk/Strategy.java
-index 958be147cd940ac430576ca5b4ada70fa5d051e3..e3d118a63513a4a2120b5699ee05141b1b93171e 100644
 --- a/net/minecraft/world/level/chunk/Strategy.java
 +++ b/net/minecraft/world/level/chunk/Strategy.java
 @@ -4,6 +4,15 @@ import net.minecraft.core.IdMap;

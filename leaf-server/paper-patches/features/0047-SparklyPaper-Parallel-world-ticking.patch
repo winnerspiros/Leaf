@@ -12,7 +12,6 @@ Co-authored-by: MrlingXD <90316914+wling-art@users.noreply.github.com>
 Commit: a274e6617255a93d567efdf00762e492aa2df535
 
 diff --git a/src/main/java/ca/spottedleaf/moonrise/common/util/TickThread.java b/src/main/java/ca/spottedleaf/moonrise/common/util/TickThread.java
-index 69cdd304d255d52c9b7dc9b6a33ffdb630b79abe..a3690445efe304e1ba26cf9e9b9fb10b9e8a82d0 100644
 --- a/src/main/java/ca/spottedleaf/moonrise/common/util/TickThread.java
 +++ b/src/main/java/ca/spottedleaf/moonrise/common/util/TickThread.java
 @@ -14,6 +14,7 @@ import java.util.concurrent.atomic.AtomicInteger;
@@ -267,7 +266,6 @@ index 69cdd304d255d52c9b7dc9b6a33ffdb630b79abe..a3690445efe304e1ba26cf9e9b9fb10b
 +    // Leaf end - SparklyPaper - parallel world ticking
  }
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftWorld.java b/src/main/java/org/bukkit/craftbukkit/CraftWorld.java
-index 2a8f8eb3579ea082fc8261cd5f9bcc2dae80c5aa..970281b9ec24e8e6587850b4d607ff8e02480fe6 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftWorld.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftWorld.java
 @@ -462,7 +462,13 @@ public class CraftWorld extends CraftRegionAccessor implements World {
@@ -349,7 +347,6 @@ index 2a8f8eb3579ea082fc8261cd5f9bcc2dae80c5aa..970281b9ec24e8e6587850b4d607ff8e
      }
      // Paper end
 diff --git a/src/main/java/org/bukkit/craftbukkit/block/CraftBlock.java b/src/main/java/org/bukkit/craftbukkit/block/CraftBlock.java
-index ef13f200d35b49c1d7b99b0a79e9c424898173f9..2dfa8287fc54c5c8527c2f5149dbfa2d6f570b80 100644
 --- a/src/main/java/org/bukkit/craftbukkit/block/CraftBlock.java
 +++ b/src/main/java/org/bukkit/craftbukkit/block/CraftBlock.java
 @@ -80,8 +80,97 @@ public class CraftBlock implements Block {
@@ -1618,7 +1615,6 @@ index ef13f200d35b49c1d7b99b0a79e9c424898173f9..2dfa8287fc54c5c8527c2f5149dbfa2d
 +    }
  }
 diff --git a/src/main/java/org/bukkit/craftbukkit/block/CraftBlockEntityState.java b/src/main/java/org/bukkit/craftbukkit/block/CraftBlockEntityState.java
-index 1ef1943c9934400e40c3c060299c98659709a5cc..77882e479f2dd9c268ed9371b0a3eddb61ada2ab 100644
 --- a/src/main/java/org/bukkit/craftbukkit/block/CraftBlockEntityState.java
 +++ b/src/main/java/org/bukkit/craftbukkit/block/CraftBlockEntityState.java
 @@ -34,6 +34,33 @@ public abstract class CraftBlockEntityState<T extends BlockEntity> extends Craft
@@ -1667,7 +1663,6 @@ index 1ef1943c9934400e40c3c060299c98659709a5cc..77882e479f2dd9c268ed9371b0a3eddb
          } else {
              this.snapshot = this.createSnapshot(blockEntity);
 diff --git a/src/main/java/org/bukkit/craftbukkit/block/CraftBlockState.java b/src/main/java/org/bukkit/craftbukkit/block/CraftBlockState.java
-index ec3343ecbe68b1c2a33f85edb3b527363affa9ba..53dc2f530a1335dd02fa6b1e6dad8333c8ecac8b 100644
 --- a/src/main/java/org/bukkit/craftbukkit/block/CraftBlockState.java
 +++ b/src/main/java/org/bukkit/craftbukkit/block/CraftBlockState.java
 @@ -346,6 +346,7 @@ public class CraftBlockState implements BlockState {
@@ -1679,7 +1674,6 @@ index ec3343ecbe68b1c2a33f85edb3b527363affa9ba..53dc2f530a1335dd02fa6b1e6dad8333
          net.minecraft.world.item.ItemStack item = org.bukkit.craftbukkit.inventory.CraftItemStack.asNMSCopy(tool);
  
 diff --git a/src/main/java/org/bukkit/craftbukkit/block/CraftBlockStates.java b/src/main/java/org/bukkit/craftbukkit/block/CraftBlockStates.java
-index 008619dc4d54d22450c5587aadd42a66c50b0730..74ea2618e8a7dc4fbfd62d9d83ace64fa6ae9f13 100644
 --- a/src/main/java/org/bukkit/craftbukkit/block/CraftBlockStates.java
 +++ b/src/main/java/org/bukkit/craftbukkit/block/CraftBlockStates.java
 @@ -198,14 +198,14 @@ public final class CraftBlockStates {
@@ -1701,7 +1695,6 @@ index 008619dc4d54d22450c5587aadd42a66c50b0730..74ea2618e8a7dc4fbfd62d9d83ace64f
      }
  
 diff --git a/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java b/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java
-index 0ca9566a87386f6d1f2e5c9fbd292a501991dcbc..91f2818ee1b1a31f17b84fab7ca1f904b186d056 100644
 --- a/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java
 +++ b/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java
 @@ -944,6 +944,34 @@ public class CraftEventFactory {
@@ -1752,7 +1745,6 @@ index 0ca9566a87386f6d1f2e5c9fbd292a501991dcbc..91f2818ee1b1a31f17b84fab7ca1f904
              boolean result = snapshot.place(flags);
              return !checkSetResult || result;
 diff --git a/src/main/java/org/bukkit/craftbukkit/scheduler/CraftScheduler.java b/src/main/java/org/bukkit/craftbukkit/scheduler/CraftScheduler.java
-index c3713b6653bcd595c0a40788cd4ffa12e3ce2e4b..bbf37820f4e16bf5a95ec992014f7fc05de484cd 100644
 --- a/src/main/java/org/bukkit/craftbukkit/scheduler/CraftScheduler.java
 +++ b/src/main/java/org/bukkit/craftbukkit/scheduler/CraftScheduler.java
 @@ -521,6 +521,16 @@ public class CraftScheduler implements BukkitScheduler {

@@ -5,7 +5,6 @@ Subject: [PATCH] Remove stream in BlockBehaviour cache blockstate
 
 
 diff --git a/net/minecraft/world/level/block/state/BlockBehaviour.java b/net/minecraft/world/level/block/state/BlockBehaviour.java
-index 37a0140e9b1add79f9ffdb4292a4fc553d0df61e..b488e754e834e28cbf6b0ad83b610d438995bc40 100644
 --- a/net/minecraft/world/level/block/state/BlockBehaviour.java
 +++ b/net/minecraft/world/level/block/state/BlockBehaviour.java
 @@ -1100,8 +1100,14 @@ public abstract class BlockBehaviour implements FeatureElement {

@@ -15,7 +15,6 @@ prominent legal notice accompanying the corresponding source:
 Original patch by HaHaWTH <102713261+HaHaWTH@users.noreply.github.com>
 
 diff --git a/src/main/java/com/destroystokyo/paper/gui/RAMGraph.java b/src/main/java/com/destroystokyo/paper/gui/RAMGraph.java
-index d9275ae196681d1116a117d0475604389a6c42ee..aad9760fddf828c2041201f1e05252f7464769fc 100644
 --- a/src/main/java/com/destroystokyo/paper/gui/RAMGraph.java
 +++ b/src/main/java/com/destroystokyo/paper/gui/RAMGraph.java
 @@ -41,6 +41,11 @@ public class RAMGraph extends JComponent {

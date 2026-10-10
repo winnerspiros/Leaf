@@ -37,7 +37,6 @@ track:
 // SYNC SOURCE END
 
 diff --git a/ca/spottedleaf/moonrise/patches/chunk_system/level/entity/EntityLookup.java b/ca/spottedleaf/moonrise/patches/chunk_system/level/entity/EntityLookup.java
-index cc02a276e5de57667676e5c2cdb9358f684984ec..0d8ca784122c70d74ad49c20821b535e1cb967a9 100644
 --- a/ca/spottedleaf/moonrise/patches/chunk_system/level/entity/EntityLookup.java
 +++ b/ca/spottedleaf/moonrise/patches/chunk_system/level/entity/EntityLookup.java
 @@ -1013,7 +1013,7 @@ public abstract class EntityLookup implements LevelEntityGetter<Entity> {
@@ -50,7 +49,6 @@ index cc02a276e5de57667676e5c2cdb9358f684984ec..0d8ca784122c70d74ad49c20821b535e
          public static final NoOpCallback INSTANCE = new NoOpCallback();
  
 diff --git a/net/minecraft/core/component/PatchedDataComponentMap.java b/net/minecraft/core/component/PatchedDataComponentMap.java
-index 4b77109e8bc5eb1ad7da9ec5684e7d61b5358565..1201435ef48c7cfffdf5e9ec34b68a16a3b9e474 100644
 --- a/net/minecraft/core/component/PatchedDataComponentMap.java
 +++ b/net/minecraft/core/component/PatchedDataComponentMap.java
 @@ -13,10 +13,11 @@ import java.util.Map.Entry;
@@ -102,7 +100,6 @@ index 4b77109e8bc5eb1ad7da9ec5684e7d61b5358565..1201435ef48c7cfffdf5e9ec34b68a16
      public boolean equals(final Object obj) {
          return this == obj || obj instanceof PatchedDataComponentMap otherMap && this.prototype.equals(otherMap.prototype) && this.patch.equals(otherMap.patch);
 diff --git a/net/minecraft/world/entity/Entity.java b/net/minecraft/world/entity/Entity.java
-index 28aae74274df0a4b1a9f9e4a2e35d1e626732277..10b59a6aeb9362fb15f8d31f4365de960f5130d9 100644
 --- a/net/minecraft/world/entity/Entity.java
 +++ b/net/minecraft/world/entity/Entity.java
 @@ -166,7 +166,7 @@ public abstract class Entity
@@ -144,7 +141,6 @@ index 28aae74274df0a4b1a9f9e4a2e35d1e626732277..10b59a6aeb9362fb15f8d31f4365de96
      // Inlining and avoid casting
      // Use Math#sqrt instead of Mojang's Mth#sqrt - only cast once
 diff --git a/net/minecraft/world/entity/EntityEquipment.java b/net/minecraft/world/entity/EntityEquipment.java
-index 1aa888376784dfc9ddd9c4e2493031ff2a564b59..222268f81d96712cc14355135e70456dc98c7604 100644
 --- a/net/minecraft/world/entity/EntityEquipment.java
 +++ b/net/minecraft/world/entity/EntityEquipment.java
 @@ -8,7 +8,7 @@ import java.util.Map.Entry;
@@ -351,7 +347,6 @@ index 1aa888376784dfc9ddd9c4e2493031ff2a564b59..222268f81d96712cc14355135e70456d
 +    // Leaf end - Lithium - equipment tracking
  }
 diff --git a/net/minecraft/world/entity/LivingEntity.java b/net/minecraft/world/entity/LivingEntity.java
-index 1baa7cc2fdda3942fe725956ecf8c80f10bd66e5..521ac5d20b740aa6c52c1e31326674fbf5e9a826 100644
 --- a/net/minecraft/world/entity/LivingEntity.java
 +++ b/net/minecraft/world/entity/LivingEntity.java
 @@ -154,7 +154,7 @@ import org.bukkit.event.entity.EntityRegainHealthEvent;
@@ -409,7 +404,6 @@ index 1baa7cc2fdda3942fe725956ecf8c80f10bd66e5..521ac5d20b740aa6c52c1e31326674fb
 +    // Leaf end - Lithium - equipment tracking
  }
 diff --git a/net/minecraft/world/entity/decoration/ArmorStand.java b/net/minecraft/world/entity/decoration/ArmorStand.java
-index 47db024ef4358279b08fe4e6fecd12fa2723c6c4..575545a8c41a766bd867ebfe169392edc6fed4e8 100644
 --- a/net/minecraft/world/entity/decoration/ArmorStand.java
 +++ b/net/minecraft/world/entity/decoration/ArmorStand.java
 @@ -557,8 +557,9 @@ public class ArmorStand extends LivingEntity {
@@ -424,7 +418,6 @@ index 47db024ef4358279b08fe4e6fecd12fa2723c6c4..575545a8c41a766bd867ebfe169392ed
  
              return;
 diff --git a/net/minecraft/world/item/ItemStack.java b/net/minecraft/world/item/ItemStack.java
-index 03aacc0c940a79164095537294490e167b754637..53946c36538eab1333f16f8bd7a1c2bd434d8a59 100644
 --- a/net/minecraft/world/item/ItemStack.java
 +++ b/net/minecraft/world/item/ItemStack.java
 @@ -100,7 +100,7 @@ import org.apache.commons.lang3.mutable.MutableBoolean;

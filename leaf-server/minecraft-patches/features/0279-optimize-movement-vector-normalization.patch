@@ -14,7 +14,6 @@ I have replaced the unconditional normalization with a conditional check based o
 `length()`, `normalize()`, and `scale()` calls entirely.
 
 diff --git a/net/minecraft/world/entity/Entity.java b/net/minecraft/world/entity/Entity.java
-index 616ed4b6853a7b788d26c547823575fc2e6c3f04..bc0037d74f998ae5be38a53bbf5bd12e826740c2 100644
 --- a/net/minecraft/world/entity/Entity.java
 +++ b/net/minecraft/world/entity/Entity.java
 @@ -1330,8 +1330,15 @@ public abstract class Entity

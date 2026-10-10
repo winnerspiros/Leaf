@@ -22,7 +22,6 @@ The obsolete fixFarEndTerrainGeneration field and migration registration is remo
 
 diff --git a/src/log4jPlugins/java/org/purpurmc/purpur/gui/util/HighlightErrorConverter.java b/src/log4jPlugins/java/org/purpurmc/purpur/gui/util/HighlightErrorConverter.java
 new file mode 100644
-index 0000000000000000000000000000000000000000..15a226e3854d731f7724025ea3459c8ace07630c
 --- /dev/null
 +++ b/src/log4jPlugins/java/org/purpurmc/purpur/gui/util/HighlightErrorConverter.java
 @@ -0,0 +1,85 @@
@@ -112,7 +111,6 @@ index 0000000000000000000000000000000000000000..15a226e3854d731f7724025ea3459c8a
 +    }
 +}
 diff --git a/src/main/java/com/destroystokyo/paper/entity/ai/MobGoalHelper.java b/src/main/java/com/destroystokyo/paper/entity/ai/MobGoalHelper.java
-index 845e86b6141332f5a690687357c4b37831e876f6..b35fe219e5446967d634c32cb9369732e19f8062 100644
 --- a/src/main/java/com/destroystokyo/paper/entity/ai/MobGoalHelper.java
 +++ b/src/main/java/com/destroystokyo/paper/entity/ai/MobGoalHelper.java
 @@ -149,6 +149,11 @@ public class MobGoalHelper {
@@ -128,7 +126,6 @@ index 845e86b6141332f5a690687357c4b37831e876f6..b35fe219e5446967d634c32cb9369732
          map.put("TraderLlama$TraderLlamaDefendWanderingTraderGoal", "TraderLlamaDefendWanderingTraderGoal");
          map.put("AbstractIllager$RaiderOpenDoorGoal", "RaiderOpenDoorGoal");
 diff --git a/src/main/java/io/papermc/paper/command/PaperPluginsCommand.java b/src/main/java/io/papermc/paper/command/PaperPluginsCommand.java
-index 9c49bb7fb8c3ca4b62e73dcfca2669971defb181..727253cb847e56e8716bc6b17512c0eb515f34e3 100644
 --- a/src/main/java/io/papermc/paper/command/PaperPluginsCommand.java
 +++ b/src/main/java/io/papermc/paper/command/PaperPluginsCommand.java
 @@ -74,10 +74,10 @@ public class PaperPluginsCommand {
@@ -255,7 +252,6 @@ index 9c49bb7fb8c3ca4b62e73dcfca2669971defb181..727253cb847e56e8716bc6b17512c0eb
          }
  
 diff --git a/src/main/java/io/papermc/paper/logging/SysoutCatcher.java b/src/main/java/io/papermc/paper/logging/SysoutCatcher.java
-index a8e813ca89b033f061e695288b3383bdcf128531..96a377a07d8396f893954a3ba97fbf88d73faf6d 100644
 --- a/src/main/java/io/papermc/paper/logging/SysoutCatcher.java
 +++ b/src/main/java/io/papermc/paper/logging/SysoutCatcher.java
 @@ -54,9 +54,9 @@ public final class SysoutCatcher {
@@ -271,7 +267,6 @@ index a8e813ca89b033f061e695288b3383bdcf128531..96a377a07d8396f893954a3ba97fbf88
                  }
                  if (SysoutCatcher.NAG_INTERVAL > 0 || SysoutCatcher.NAG_TIMEOUT > 0) {
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftOfflinePlayer.java b/src/main/java/org/bukkit/craftbukkit/CraftOfflinePlayer.java
-index 1aa8f1e0a3093a8b9e77213c56f987cd6ca7df86..de552ee1b59e8dd5b3d7c9ba5c578f28039d5ca5 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftOfflinePlayer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftOfflinePlayer.java
 @@ -342,6 +342,12 @@ public class CraftOfflinePlayer implements OfflinePlayer, ConfigurationSerializa
@@ -472,7 +467,6 @@ index 1aa8f1e0a3093a8b9e77213c56f987cd6ca7df86..de552ee1b59e8dd5b3d7c9ba5c578f28
 +    // Purpur end - OfflinePlayer API
  }
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 478f4461ab3fb21b288aa2f6079860f23832e622..2013bbaf3ddd82aa936bf541ab445e673f05c064 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 @@ -414,6 +414,20 @@ public final class CraftServer implements Server {
@@ -604,7 +598,6 @@ index 478f4461ab3fb21b288aa2f6079860f23832e622..2013bbaf3ddd82aa936bf541ab445e67
 +    // Purpur end - Lagging threshold
  }
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftWorld.java b/src/main/java/org/bukkit/craftbukkit/CraftWorld.java
-index f7ce4bf2f1eb3236bde5a91d4ada9eca2787e9d2..2a8f8eb3579ea082fc8261cd5f9bcc2dae80c5aa 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftWorld.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftWorld.java
 @@ -1949,6 +1949,52 @@ public class CraftWorld extends CraftRegionAccessor implements World {
@@ -661,7 +654,6 @@ index f7ce4bf2f1eb3236bde5a91d4ada9eca2787e9d2..2a8f8eb3579ea082fc8261cd5f9bcc2d
      public Collection<GeneratedStructure> getStructures(int x, int z) {
          return this.getStructures(x, z, _ -> true);
 diff --git a/src/main/java/org/bukkit/craftbukkit/Main.java b/src/main/java/org/bukkit/craftbukkit/Main.java
-index 8ce8de8eedfe8557848b0508857744a5b9641239..e6ea34b18c6db63efa77bb67d3484e4d66315ed6 100644
 --- a/src/main/java/org/bukkit/craftbukkit/Main.java
 +++ b/src/main/java/org/bukkit/craftbukkit/Main.java
 @@ -139,6 +139,14 @@ public class Main {
@@ -680,7 +672,6 @@ index 8ce8de8eedfe8557848b0508857744a5b9641239..e6ea34b18c6db63efa77bb67d3484e4d
                          .withRequiredArg()
                          .ofType(String.class)
 diff --git a/src/main/java/org/bukkit/craftbukkit/block/CraftBeehive.java b/src/main/java/org/bukkit/craftbukkit/block/CraftBeehive.java
-index aa00185b64f28e5e370a749ebe34666512d08bfa..99ef0febbabb3fe9b238504c96aa76cd6ba1e596 100644
 --- a/src/main/java/org/bukkit/craftbukkit/block/CraftBeehive.java
 +++ b/src/main/java/org/bukkit/craftbukkit/block/CraftBeehive.java
 @@ -16,8 +16,15 @@ import org.bukkit.entity.Bee;
@@ -763,7 +754,6 @@ index aa00185b64f28e5e370a749ebe34666512d08bfa..99ef0febbabb3fe9b238504c96aa76cd
      // Paper end
  }
 diff --git a/src/main/java/org/bukkit/craftbukkit/block/CraftConduit.java b/src/main/java/org/bukkit/craftbukkit/block/CraftConduit.java
-index 997dafd7d3c348226147eb3bf69ca4f14e617b64..37cf93839b048875b79e0ce020f217f46755bd6c 100644
 --- a/src/main/java/org/bukkit/craftbukkit/block/CraftConduit.java
 +++ b/src/main/java/org/bukkit/craftbukkit/block/CraftConduit.java
 @@ -74,7 +74,7 @@ public class CraftConduit extends CraftBlockEntityState<ConduitBlockEntity> impl
@@ -776,7 +766,6 @@ index 997dafd7d3c348226147eb3bf69ca4f14e617b64..37cf93839b048875b79e0ce020f217f4
  
      @Override
 diff --git a/src/main/java/org/bukkit/craftbukkit/command/CraftConsoleCommandSender.java b/src/main/java/org/bukkit/craftbukkit/command/CraftConsoleCommandSender.java
-index f8753cf0d2fe368331278d2d0b54cc1eb9acd77c..79c7c105f8d267eaca587917541a500b4cf3930e 100644
 --- a/src/main/java/org/bukkit/craftbukkit/command/CraftConsoleCommandSender.java
 +++ b/src/main/java/org/bukkit/craftbukkit/command/CraftConsoleCommandSender.java
 @@ -21,7 +21,12 @@ public class CraftConsoleCommandSender extends ServerCommandSender implements Co
@@ -803,7 +792,6 @@ index f8753cf0d2fe368331278d2d0b54cc1eb9acd77c..79c7c105f8d267eaca587917541a500b
  
      @Override
 diff --git a/src/main/java/org/bukkit/craftbukkit/entity/CraftCopperGolem.java b/src/main/java/org/bukkit/craftbukkit/entity/CraftCopperGolem.java
-index 2beb9348f17a685edb078449687ab6fa3c0aefd4..ad80d6f7f9099567e173045883217d435d8846cd 100644
 --- a/src/main/java/org/bukkit/craftbukkit/entity/CraftCopperGolem.java
 +++ b/src/main/java/org/bukkit/craftbukkit/entity/CraftCopperGolem.java
 @@ -67,4 +67,17 @@ public class CraftCopperGolem extends CraftGolem implements CopperGolem, PaperSh
@@ -825,7 +813,6 @@ index 2beb9348f17a685edb078449687ab6fa3c0aefd4..ad80d6f7f9099567e173045883217d43
 +    // Purpur end - Summoner API
  }
 diff --git a/src/main/java/org/bukkit/craftbukkit/entity/CraftEndermite.java b/src/main/java/org/bukkit/craftbukkit/entity/CraftEndermite.java
-index 000c5ea5d39d5ab6e5592012ab1cc7ee547505dc..140da7078217f833f490d88faaf803ab1763115d 100644
 --- a/src/main/java/org/bukkit/craftbukkit/entity/CraftEndermite.java
 +++ b/src/main/java/org/bukkit/craftbukkit/entity/CraftEndermite.java
 @@ -16,12 +16,12 @@ public class CraftEndermite extends CraftMonster implements Endermite {
@@ -844,7 +831,6 @@ index 000c5ea5d39d5ab6e5592012ab1cc7ee547505dc..140da7078217f833f490d88faaf803ab
  
      @Override
 diff --git a/src/main/java/org/bukkit/craftbukkit/entity/CraftEntity.java b/src/main/java/org/bukkit/craftbukkit/entity/CraftEntity.java
-index 078083c88f336afd8bfe69c770c6d3ac486e826f..83f1f4a58c439abf76d35190889af84ff80df933 100644
 --- a/src/main/java/org/bukkit/craftbukkit/entity/CraftEntity.java
 +++ b/src/main/java/org/bukkit/craftbukkit/entity/CraftEntity.java
 @@ -120,6 +120,25 @@ public abstract class CraftEntity implements org.bukkit.entity.Entity {
@@ -901,7 +887,6 @@ index 078083c88f336afd8bfe69c770c6d3ac486e826f..83f1f4a58c439abf76d35190889af84f
 +    // Purpur end - Ridables
  }
 diff --git a/src/main/java/org/bukkit/craftbukkit/entity/CraftHumanEntity.java b/src/main/java/org/bukkit/craftbukkit/entity/CraftHumanEntity.java
-index eb8ea3efb3e8ee77c4e766697d71f0632c0ff9b7..cd6a9defae8c99bec2d9c0f6f4b64e291d7153fa 100644
 --- a/src/main/java/org/bukkit/craftbukkit/entity/CraftHumanEntity.java
 +++ b/src/main/java/org/bukkit/craftbukkit/entity/CraftHumanEntity.java
 @@ -295,6 +295,7 @@ public class CraftHumanEntity extends CraftLivingEntity implements HumanEntity {
@@ -913,7 +898,6 @@ index eb8ea3efb3e8ee77c4e766697d71f0632c0ff9b7..cd6a9defae8c99bec2d9c0f6f4b64e29
  
      @Override
 diff --git a/src/main/java/org/bukkit/craftbukkit/entity/CraftIronGolem.java b/src/main/java/org/bukkit/craftbukkit/entity/CraftIronGolem.java
-index 54cea2ff4abbb3780814aadc534e53cd97022971..e0a5b55005fd8a6ff16c7d13fff9caea1d836f66 100644
 --- a/src/main/java/org/bukkit/craftbukkit/entity/CraftIronGolem.java
 +++ b/src/main/java/org/bukkit/craftbukkit/entity/CraftIronGolem.java
 @@ -22,4 +22,17 @@ public class CraftIronGolem extends CraftGolem implements IronGolem {
@@ -935,7 +919,6 @@ index 54cea2ff4abbb3780814aadc534e53cd97022971..e0a5b55005fd8a6ff16c7d13fff9caea
 +    // Purpur end - Summoner API
  }
 diff --git a/src/main/java/org/bukkit/craftbukkit/entity/CraftItem.java b/src/main/java/org/bukkit/craftbukkit/entity/CraftItem.java
-index fb04a607dd2768ca84f17344912c43ba970a7f90..2c5e527fa4ec84d3672556edddf060c1afcb788d 100644
 --- a/src/main/java/org/bukkit/craftbukkit/entity/CraftItem.java
 +++ b/src/main/java/org/bukkit/craftbukkit/entity/CraftItem.java
 @@ -143,4 +143,53 @@ public class CraftItem extends CraftEntity implements Item {
@@ -993,7 +976,6 @@ index fb04a607dd2768ca84f17344912c43ba970a7f90..2c5e527fa4ec84d3672556edddf060c1
 +    // Purpur end - Item entity immunities
  }
 diff --git a/src/main/java/org/bukkit/craftbukkit/entity/CraftLivingEntity.java b/src/main/java/org/bukkit/craftbukkit/entity/CraftLivingEntity.java
-index 8cdec4f9721b0a4959e13e340d35a7b95fbdf3e5..caf5d102b78987b9076f3e07112fe72c17beed7a 100644
 --- a/src/main/java/org/bukkit/craftbukkit/entity/CraftLivingEntity.java
 +++ b/src/main/java/org/bukkit/craftbukkit/entity/CraftLivingEntity.java
 @@ -497,7 +497,7 @@ public class CraftLivingEntity extends CraftEntity implements LivingEntity {
@@ -1023,7 +1005,6 @@ index 8cdec4f9721b0a4959e13e340d35a7b95fbdf3e5..caf5d102b78987b9076f3e07112fe72c
 +    // Purpur end - API for any mob to burn daylight
  }
 diff --git a/src/main/java/org/bukkit/craftbukkit/entity/CraftLlama.java b/src/main/java/org/bukkit/craftbukkit/entity/CraftLlama.java
-index 443146323ee54a3ea7191ffe3a065a6fabb8a0fb..f87b472c6747271dfec4152f7be0754b42b05845 100644
 --- a/src/main/java/org/bukkit/craftbukkit/entity/CraftLlama.java
 +++ b/src/main/java/org/bukkit/craftbukkit/entity/CraftLlama.java
 @@ -86,4 +86,17 @@ public class CraftLlama extends CraftChestedHorse implements Llama, com.destroys
@@ -1045,7 +1026,6 @@ index 443146323ee54a3ea7191ffe3a065a6fabb8a0fb..f87b472c6747271dfec4152f7be0754b
 +    // Purpur end - Llama API
  }
 diff --git a/src/main/java/org/bukkit/craftbukkit/entity/CraftPhantom.java b/src/main/java/org/bukkit/craftbukkit/entity/CraftPhantom.java
-index db0e625d8ba721b0ad6913fe4a11ed8eb939d344..ecba9986915abdf59e8a71252949b6e47b55ed89 100644
 --- a/src/main/java/org/bukkit/craftbukkit/entity/CraftPhantom.java
 +++ b/src/main/java/org/bukkit/craftbukkit/entity/CraftPhantom.java
 @@ -35,12 +35,12 @@ public class CraftPhantom extends CraftMob implements Phantom, CraftEnemy {
@@ -1064,7 +1044,6 @@ index db0e625d8ba721b0ad6913fe4a11ed8eb939d344..ecba9986915abdf59e8a71252949b6e4
  
      @Override
 diff --git a/src/main/java/org/bukkit/craftbukkit/entity/CraftPlayer.java b/src/main/java/org/bukkit/craftbukkit/entity/CraftPlayer.java
-index f11ad0f2cdbb128dfa1f572903ad1b16b80c3e87..21c8826a04c515e0ee9bce5bb61473157b894d9b 100644
 --- a/src/main/java/org/bukkit/craftbukkit/entity/CraftPlayer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/entity/CraftPlayer.java
 @@ -587,10 +587,15 @@ public class CraftPlayer extends CraftHumanEntity implements Player, PluginMessa
@@ -1195,7 +1174,6 @@ index f11ad0f2cdbb128dfa1f572903ad1b16b80c3e87..21c8826a04c515e0ee9bce5bb6147315
          Preconditions.checkArgument(value <= 1.0F && value >= -1.0F, "Speed value (%s) need to be between -1 and 1", value);
      }
 diff --git a/src/main/java/org/bukkit/craftbukkit/entity/CraftSnowman.java b/src/main/java/org/bukkit/craftbukkit/entity/CraftSnowman.java
-index 0a912863fe9f5e07bfd51110a4f0124af92afbcf..ad1acb743abda5859071f795b34e8a958db6ba65 100644
 --- a/src/main/java/org/bukkit/craftbukkit/entity/CraftSnowman.java
 +++ b/src/main/java/org/bukkit/craftbukkit/entity/CraftSnowman.java
 @@ -24,4 +24,17 @@ public class CraftSnowman extends CraftGolem implements Snowman, com.destroystok
@@ -1217,7 +1195,6 @@ index 0a912863fe9f5e07bfd51110a4f0124af92afbcf..ad1acb743abda5859071f795b34e8a95
 +    // Purpur end - Summoner API
  }
 diff --git a/src/main/java/org/bukkit/craftbukkit/entity/CraftVillager.java b/src/main/java/org/bukkit/craftbukkit/entity/CraftVillager.java
-index 6a8b50c09a5a4a6f5023eab93cc828783cba1529..94a271eddff445db654db08129c3e92413a662f4 100644
 --- a/src/main/java/org/bukkit/craftbukkit/entity/CraftVillager.java
 +++ b/src/main/java/org/bukkit/craftbukkit/entity/CraftVillager.java
 @@ -243,4 +243,11 @@ public class CraftVillager extends CraftAbstractVillager implements Villager {
@@ -1233,7 +1210,6 @@ index 6a8b50c09a5a4a6f5023eab93cc828783cba1529..94a271eddff445db654db08129c3e924
 +    // Purpur end - Lobotomize stuck villagers
  }
 diff --git a/src/main/java/org/bukkit/craftbukkit/entity/CraftWither.java b/src/main/java/org/bukkit/craftbukkit/entity/CraftWither.java
-index c8dbe5db3f9abf475a0da10dfd3e34d722cef775..dfaae588b7e8b9d6354a0696f055e38a0afe3cd9 100644
 --- a/src/main/java/org/bukkit/craftbukkit/entity/CraftWither.java
 +++ b/src/main/java/org/bukkit/craftbukkit/entity/CraftWither.java
 @@ -89,4 +89,18 @@ public class CraftWither extends CraftMonster implements Wither, com.destroystok
@@ -1256,7 +1232,6 @@ index c8dbe5db3f9abf475a0da10dfd3e34d722cef775..dfaae588b7e8b9d6354a0696f055e38a
 +    // Purpur end - Summoner API
  }
 diff --git a/src/main/java/org/bukkit/craftbukkit/entity/CraftWolf.java b/src/main/java/org/bukkit/craftbukkit/entity/CraftWolf.java
-index 1e24ae8526915154e270c297af1438ba82190755..a1f274dffbba4a5cdc5199c194c66da0dcae8912 100644
 --- a/src/main/java/org/bukkit/craftbukkit/entity/CraftWolf.java
 +++ b/src/main/java/org/bukkit/craftbukkit/entity/CraftWolf.java
 @@ -90,6 +90,18 @@ public class CraftWolf extends CraftTameableAnimal implements Wolf {
@@ -1279,7 +1254,6 @@ index 1e24ae8526915154e270c297af1438ba82190755..a1f274dffbba4a5cdc5199c194c66da0
  
          public static Variant minecraftHolderToBukkit(Holder<WolfVariant> minecraft) {
 diff --git a/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java b/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java
-index 52b11c40b1f89bdc6f79ac81f968af45492ad56b..0ca9566a87386f6d1f2e5c9fbd292a501991dcbc 100644
 --- a/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java
 +++ b/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java
 @@ -660,6 +660,15 @@ public class CraftEventFactory {
@@ -1307,7 +1281,6 @@ index 52b11c40b1f89bdc6f79ac81f968af45492ad56b..0ca9566a87386f6d1f2e5c9fbd292a50
              event = new EntityDamageEvent(damagee.getBukkitEntity(), cause, bukkitDamageSource, modifiers, modifierFunctions);
          }
 diff --git a/src/main/java/org/bukkit/craftbukkit/inventory/CraftContainer.java b/src/main/java/org/bukkit/craftbukkit/inventory/CraftContainer.java
-index 2f41a92465b9da28e026297cc3528898bb1c8412..83ae4b40e33e0dc58e0fd6aacf22e22ae0cd3684 100644
 --- a/src/main/java/org/bukkit/craftbukkit/inventory/CraftContainer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/inventory/CraftContainer.java
 @@ -148,8 +148,19 @@ public class CraftContainer extends AbstractContainerMenu {
@@ -1332,7 +1305,6 @@ index 2f41a92465b9da28e026297cc3528898bb1c8412..83ae4b40e33e0dc58e0fd6aacf22e22a
              case DISPENSER:
              case DROPPER:
 diff --git a/src/main/java/org/bukkit/craftbukkit/inventory/CraftInventory.java b/src/main/java/org/bukkit/craftbukkit/inventory/CraftInventory.java
-index dadd540555cf7097c6ec3666f95eae0791ccd40f..24198f00ebe679ab19c2d30d6b30474dd99fb2a7 100644
 --- a/src/main/java/org/bukkit/craftbukkit/inventory/CraftInventory.java
 +++ b/src/main/java/org/bukkit/craftbukkit/inventory/CraftInventory.java
 @@ -85,7 +85,7 @@ public class CraftInventory implements Inventory {
@@ -1345,7 +1317,6 @@ index dadd540555cf7097c6ec3666f95eae0791ccd40f..24198f00ebe679ab19c2d30d6b30474d
          for (int i = 0; i < this.getSize(); i++) {
              if (i >= items.length) {
 diff --git a/src/main/java/org/bukkit/craftbukkit/inventory/CraftInventoryAnvil.java b/src/main/java/org/bukkit/craftbukkit/inventory/CraftInventoryAnvil.java
-index 792cb6adf0c7a6335cc5985fce8bed2e0f1149af..5734c5caffda79383ae30df20c3defb51b87f39e 100644
 --- a/src/main/java/org/bukkit/craftbukkit/inventory/CraftInventoryAnvil.java
 +++ b/src/main/java/org/bukkit/craftbukkit/inventory/CraftInventoryAnvil.java
 @@ -19,6 +19,10 @@ public class CraftInventoryAnvil extends CraftResultInventory implements AnvilIn
@@ -1402,7 +1373,6 @@ index 792cb6adf0c7a6335cc5985fce8bed2e0f1149af..5734c5caffda79383ae30df20c3defb5
 +    // Purpur end - Anvil API
  }
 diff --git a/src/main/java/org/bukkit/craftbukkit/inventory/CraftItemStack.java b/src/main/java/org/bukkit/craftbukkit/inventory/CraftItemStack.java
-index d70fd987267deb9e19ef13b38221e89f0a9a8f88..a9c22da00399f221c921826806e18aed5d449381 100644
 --- a/src/main/java/org/bukkit/craftbukkit/inventory/CraftItemStack.java
 +++ b/src/main/java/org/bukkit/craftbukkit/inventory/CraftItemStack.java
 @@ -759,4 +759,285 @@ public final class CraftItemStack extends ItemStack {
@@ -1692,7 +1662,6 @@ index d70fd987267deb9e19ef13b38221e89f0a9a8f88..a9c22da00399f221c921826806e18aed
 +    // Purpur end - ItemStack convenience methods
  }
 diff --git a/src/main/java/org/bukkit/craftbukkit/inventory/view/CraftAnvilView.java b/src/main/java/org/bukkit/craftbukkit/inventory/view/CraftAnvilView.java
-index 2b3844f5ecc1bfbf3f5dab1c00d06f8be27f39e9..4e535c287137ceedd4d48047b03f4578c33467b0 100644
 --- a/src/main/java/org/bukkit/craftbukkit/inventory/view/CraftAnvilView.java
 +++ b/src/main/java/org/bukkit/craftbukkit/inventory/view/CraftAnvilView.java
 @@ -73,4 +73,26 @@ public class CraftAnvilView extends CraftInventoryView<AnvilMenu, AnvilInventory
@@ -1723,7 +1692,6 @@ index 2b3844f5ecc1bfbf3f5dab1c00d06f8be27f39e9..4e535c287137ceedd4d48047b03f4578
 +    // Purpur end - Anvil API
  }
 diff --git a/src/main/java/org/bukkit/craftbukkit/legacy/MaterialRerouting.java b/src/main/java/org/bukkit/craftbukkit/legacy/MaterialRerouting.java
-index a76e89c12afdf68aadc2742136d008a3f1b2e9aa..5aef45292bf6def0ed50a763a60541c9ae455b2d 100644
 --- a/src/main/java/org/bukkit/craftbukkit/legacy/MaterialRerouting.java
 +++ b/src/main/java/org/bukkit/craftbukkit/legacy/MaterialRerouting.java
 @@ -702,4 +702,10 @@ public class MaterialRerouting {
@@ -1738,7 +1706,6 @@ index a76e89c12afdf68aadc2742136d008a3f1b2e9aa..5aef45292bf6def0ed50a763a60541c9
 +    // Purpur end - Adopt MaterialRerouting
  }
 diff --git a/src/main/java/org/bukkit/craftbukkit/map/CraftMapRenderer.java b/src/main/java/org/bukkit/craftbukkit/map/CraftMapRenderer.java
-index a573499fb96cb08d96e0b20602fc423bfd0e2f52..eb9cbc29181ffc83acd556f26f2c0b4f227808ab 100644
 --- a/src/main/java/org/bukkit/craftbukkit/map/CraftMapRenderer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/map/CraftMapRenderer.java
 @@ -46,4 +46,10 @@ public class CraftMapRenderer extends MapRenderer {
@@ -1753,7 +1720,6 @@ index a573499fb96cb08d96e0b20602fc423bfd0e2f52..eb9cbc29181ffc83acd556f26f2c0b4f
 +    // Purpur end - Explorer Map API
  }
 diff --git a/src/main/java/org/bukkit/craftbukkit/util/permissions/CommandPermissions.java b/src/main/java/org/bukkit/craftbukkit/util/permissions/CommandPermissions.java
-index 3fdc1a27a72375054e5b02c4be8a24ed2a54f41e..cc347e10689b98b2e0689c6f74353321caa06027 100644
 --- a/src/main/java/org/bukkit/craftbukkit/util/permissions/CommandPermissions.java
 +++ b/src/main/java/org/bukkit/craftbukkit/util/permissions/CommandPermissions.java
 @@ -23,7 +23,15 @@ public final class CommandPermissions {
@@ -1774,7 +1740,6 @@ index 3fdc1a27a72375054e5b02c4be8a24ed2a54f41e..cc347e10689b98b2e0689c6f74353321
          DefaultPermissions.registerPermission(CommandPermissions.PREFIX + "defaultgamemode", "Allows the user to change the default gamemode of the server", PermissionDefault.OP, commands);
          DefaultPermissions.registerPermission(CommandPermissions.PREFIX + "seed", "Allows the user to view the seed of the world", PermissionDefault.OP, commands);
 diff --git a/src/main/resources/log4j2.xml b/src/main/resources/log4j2.xml
-index 4d881018248133d51661b45a087ebafdca62be8f..7441a667831a2f26c73bd03754846a9fd2a3353a 100644
 --- a/src/main/resources/log4j2.xml
 +++ b/src/main/resources/log4j2.xml
 @@ -2,7 +2,16 @@
@@ -1796,7 +1761,6 @@ index 4d881018248133d51661b45a087ebafdca62be8f..7441a667831a2f26c73bd03754846a9f
          <TerminalConsole name="TerminalConsole">
              <PatternLayout>
 diff --git a/src/test/java/io/papermc/paper/permissions/MinecraftCommandPermissionsTest.java b/src/test/java/io/papermc/paper/permissions/MinecraftCommandPermissionsTest.java
-index b9ce8c1a98ea847850809fea72a369bd8e7f249e..1ae700532dad07a39a3b973d7c077f308c3301ee 100644
 --- a/src/test/java/io/papermc/paper/permissions/MinecraftCommandPermissionsTest.java
 +++ b/src/test/java/io/papermc/paper/permissions/MinecraftCommandPermissionsTest.java
 @@ -46,6 +46,7 @@ public class MinecraftCommandPermissionsTest {

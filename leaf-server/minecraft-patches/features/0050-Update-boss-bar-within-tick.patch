@@ -21,7 +21,6 @@ track:
 // SYNC SOURCE END
 
 diff --git a/net/minecraft/world/entity/raid/Raid.java b/net/minecraft/world/entity/raid/Raid.java
-index 9291ff895d25ed93fcf56d8d727e81e9ab6428ce..1ce104521ba1c31408cf8c890af9645ebfb700dd 100644
 --- a/net/minecraft/world/entity/raid/Raid.java
 +++ b/net/minecraft/world/entity/raid/Raid.java
 @@ -132,6 +132,7 @@ public class Raid {

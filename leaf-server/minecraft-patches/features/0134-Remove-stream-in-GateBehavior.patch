@@ -5,7 +5,6 @@ Subject: [PATCH] Remove stream in GateBehavior
 
 
 diff --git a/net/minecraft/world/entity/ai/behavior/GateBehavior.java b/net/minecraft/world/entity/ai/behavior/GateBehavior.java
-index 3adfb334068d3722329f91011c41d5e59b1956c9..9975c19eb1bdafc8bbfb304ad244aa1fecc8ce3c 100644
 --- a/net/minecraft/world/entity/ai/behavior/GateBehavior.java
 +++ b/net/minecraft/world/entity/ai/behavior/GateBehavior.java
 @@ -85,7 +85,16 @@ public class GateBehavior<E extends LivingEntity> implements BehaviorControl<E>

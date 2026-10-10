@@ -5,7 +5,6 @@ Subject: [PATCH] Skip item merge checks for full stacks
 
 
 diff --git a/net/minecraft/world/entity/item/ItemEntity.java b/net/minecraft/world/entity/item/ItemEntity.java
-index cfc7c4cffddb844b967dc1b496b7dfbda3bab882..61e65c045cffe974e20973b7b1fa056a2457d660 100644
 --- a/net/minecraft/world/entity/item/ItemEntity.java
 +++ b/net/minecraft/world/entity/item/ItemEntity.java
 @@ -257,6 +257,12 @@ public class ItemEntity extends Entity implements TraceableEntity {

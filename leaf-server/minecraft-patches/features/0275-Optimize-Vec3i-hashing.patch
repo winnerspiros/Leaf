@@ -24,7 +24,6 @@ prominent legal notice accompanying the corresponding source:
 Original patch by HaHaWTH <102713261+HaHaWTH@users.noreply.github.com>
 
 diff --git a/net/minecraft/core/Vec3i.java b/net/minecraft/core/Vec3i.java
-index 6c0abe72bae1c1a483c0ba7b05ac280650182817..68e6f9bc112e93b7add377cf839930d0f4c1e7d4 100644
 --- a/net/minecraft/core/Vec3i.java
 +++ b/net/minecraft/core/Vec3i.java
 @@ -47,7 +47,7 @@ public class Vec3i implements Comparable<Vec3i> {

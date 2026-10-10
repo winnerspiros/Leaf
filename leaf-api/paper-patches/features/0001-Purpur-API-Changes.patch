@@ -19,7 +19,6 @@ Changes below are excluded because separate Gale/Leaf feature patches own them:
 * org/bukkit/plugin/java/LibraryLoader.java - API 0005 library logging
 
 diff --git a/src/generated/java/com/destroystokyo/paper/entity/ai/VanillaGoal.java b/src/generated/java/com/destroystokyo/paper/entity/ai/VanillaGoal.java
-index 330eaca630177f6546baebebd9aa5edbd997c203..39fffb5cab9970c49ca1f312dbd18d10c2221aa2 100644
 --- a/src/generated/java/com/destroystokyo/paper/entity/ai/VanillaGoal.java
 +++ b/src/generated/java/com/destroystokyo/paper/entity/ai/VanillaGoal.java
 @@ -457,6 +457,26 @@ public interface VanillaGoal<T extends Mob> extends Goal<T> {
@@ -50,7 +49,6 @@ index 330eaca630177f6546baebebd9aa5edbd997c203..39fffb5cab9970c49ca1f312dbd18d10
          return GoalKey.of(type, NamespacedKey.minecraft(key));
      }
 diff --git a/src/main/java/io/papermc/paper/ServerBuildInfo.java b/src/main/java/io/papermc/paper/ServerBuildInfo.java
-index 4e099b584c3435ba1ebce492011d35ae1ac0cdf8..780444eb8eb916ebe09f16092a70919bd99655cc 100644
 --- a/src/main/java/io/papermc/paper/ServerBuildInfo.java
 +++ b/src/main/java/io/papermc/paper/ServerBuildInfo.java
 @@ -17,6 +17,12 @@ public interface ServerBuildInfo {
@@ -67,7 +65,6 @@ index 4e099b584c3435ba1ebce492011d35ae1ac0cdf8..780444eb8eb916ebe09f16092a70919b
       * Gets the {@code ServerBuildInfo}.
       *
 diff --git a/src/main/java/org/bukkit/Bukkit.java b/src/main/java/org/bukkit/Bukkit.java
-index 3fd8ef8afe32117820e29320fde3f8950933ced8..b2a96d74fe36c2b25889f29701b274cb4d60e2a0 100644
 --- a/src/main/java/org/bukkit/Bukkit.java
 +++ b/src/main/java/org/bukkit/Bukkit.java
 @@ -3009,4 +3009,126 @@ public final class Bukkit {
@@ -198,7 +195,6 @@ index 3fd8ef8afe32117820e29320fde3f8950933ced8..b2a96d74fe36c2b25889f29701b274cb
 +    // Purpur end - Debug Marker API
  }
 diff --git a/src/main/java/org/bukkit/ChatColor.java b/src/main/java/org/bukkit/ChatColor.java
-index 918a045165cdcde264bc24082b7afebb407271de..f283bcabff7fe6eede6cf4344537e43048c35166 100644
 --- a/src/main/java/org/bukkit/ChatColor.java
 +++ b/src/main/java/org/bukkit/ChatColor.java
 @@ -456,4 +456,77 @@ public enum ChatColor {
@@ -280,7 +276,6 @@ index 918a045165cdcde264bc24082b7afebb407271de..f283bcabff7fe6eede6cf4344537e430
 +    // Purpur end - ChatColor conveniences
  }
 diff --git a/src/main/java/org/bukkit/Material.java b/src/main/java/org/bukkit/Material.java
-index 08aa172138b386042e5d72d9f541265296e4bfc8..53da2ebe16f5d6a0312dd034acf32ba15324eb79 100644
 --- a/src/main/java/org/bukkit/Material.java
 +++ b/src/main/java/org/bukkit/Material.java
 @@ -3863,4 +3863,40 @@ public enum Material implements Keyed, Translatable, net.kyori.adventure.transla
@@ -325,7 +320,6 @@ index 08aa172138b386042e5d72d9f541265296e4bfc8..53da2ebe16f5d6a0312dd034acf32ba1
 +    // Purpur end - ItemStack convenience methods
  }
 diff --git a/src/main/java/org/bukkit/OfflinePlayer.java b/src/main/java/org/bukkit/OfflinePlayer.java
-index 13ec9ea1ee08dc97cd2b9d740ad8394cd2ca90fe..31ce15fa8cc6b4c79f6be4cbb4be5d9e6a9d7536 100644
 --- a/src/main/java/org/bukkit/OfflinePlayer.java
 +++ b/src/main/java/org/bukkit/OfflinePlayer.java
 @@ -591,4 +591,104 @@ public interface OfflinePlayer extends ServerOperator, AnimalTamer, Configuratio
@@ -434,7 +428,6 @@ index 13ec9ea1ee08dc97cd2b9d740ad8394cd2ca90fe..31ce15fa8cc6b4c79f6be4cbb4be5d9e
 +    // Purpur end - OfflinePlayer API
  }
 diff --git a/src/main/java/org/bukkit/Server.java b/src/main/java/org/bukkit/Server.java
-index 9069939b755b1aaec15be572b979ef908ad61b27..7172188caff4168b2aa912a1e15e9b941ceeb5b8 100644
 --- a/src/main/java/org/bukkit/Server.java
 +++ b/src/main/java/org/bukkit/Server.java
 @@ -2438,6 +2438,18 @@ public interface Server extends PluginMessageRecipient, net.kyori.adventure.audi
@@ -566,7 +559,6 @@ index 9069939b755b1aaec15be572b979ef908ad61b27..7172188caff4168b2aa912a1e15e9b94
 +    // Purpur end - Debug Marker API
  }
 diff --git a/src/main/java/org/bukkit/World.java b/src/main/java/org/bukkit/World.java
-index 0d39006698a60f7dbf47892e80c2d3b0c9f4f027..1debcd48c152961d327e53aa42e30c81c6e9424a 100644
 --- a/src/main/java/org/bukkit/World.java
 +++ b/src/main/java/org/bukkit/World.java
 @@ -4591,6 +4591,100 @@ public interface World extends RegionAccessor, WorldInfo, PluginMessageRecipient
@@ -671,7 +663,6 @@ index 0d39006698a60f7dbf47892e80c2d3b0c9f4f027..1debcd48c152961d327e53aa42e30c81
       * Get all {@link FeatureFlag} enabled in this world.
       *
 diff --git a/src/main/java/org/bukkit/block/EntityBlockStorage.java b/src/main/java/org/bukkit/block/EntityBlockStorage.java
-index 739911cda33b373f99df627a3a378b37d7d461aa..58e16c12b06fa11d30b67f5038844ff9990790ae 100644
 --- a/src/main/java/org/bukkit/block/EntityBlockStorage.java
 +++ b/src/main/java/org/bukkit/block/EntityBlockStorage.java
 @@ -47,6 +47,25 @@ public interface EntityBlockStorage<T extends Entity> extends TileState {
@@ -701,7 +692,6 @@ index 739911cda33b373f99df627a3a378b37d7d461aa..58e16c12b06fa11d30b67f5038844ff9
       * Add an entity to the block.
       *
 diff --git a/src/main/java/org/bukkit/command/SimpleCommandMap.java b/src/main/java/org/bukkit/command/SimpleCommandMap.java
-index ad1330d87223dfcf3c9da40aa5ece8c21141f0d6..e3f0605d375dcbb43ae40dac48acdeb2bd458e54 100644
 --- a/src/main/java/org/bukkit/command/SimpleCommandMap.java
 +++ b/src/main/java/org/bukkit/command/SimpleCommandMap.java
 @@ -148,6 +148,19 @@ public class SimpleCommandMap implements CommandMap {
@@ -734,7 +724,6 @@ index ad1330d87223dfcf3c9da40aa5ece8c21141f0d6..e3f0605d375dcbb43ae40dac48acdeb2
          } catch (CommandException ex) {
              server.getPluginManager().callEvent(new com.destroystokyo.paper.event.server.ServerExceptionEvent(new com.destroystokyo.paper.exception.ServerCommandException(ex, target, sender, args))); // Paper
 diff --git a/src/main/java/org/bukkit/enchantments/EnchantmentTarget.java b/src/main/java/org/bukkit/enchantments/EnchantmentTarget.java
-index 2e29c62bda14355ebce073573628bdf5f5bd9a76..4002603f6eadec63b5cf5d0be87f582eadc28060 100644
 --- a/src/main/java/org/bukkit/enchantments/EnchantmentTarget.java
 +++ b/src/main/java/org/bukkit/enchantments/EnchantmentTarget.java
 @@ -169,6 +169,30 @@ public enum EnchantmentTarget {
@@ -769,7 +758,6 @@ index 2e29c62bda14355ebce073573628bdf5f5bd9a76..4002603f6eadec63b5cf5d0be87f582e
  
      /**
 diff --git a/src/main/java/org/bukkit/entity/CopperGolem.java b/src/main/java/org/bukkit/entity/CopperGolem.java
-index 6d3bd4f689064d5ca9bc36722dc4bf9b3d5b3615..3fd30150b4f37ac357fb3b840c4d85e654229385 100644
 --- a/src/main/java/org/bukkit/entity/CopperGolem.java
 +++ b/src/main/java/org/bukkit/entity/CopperGolem.java
 @@ -53,6 +53,22 @@ public interface CopperGolem extends Golem, Shearable {
@@ -796,7 +784,6 @@ index 6d3bd4f689064d5ca9bc36722dc4bf9b3d5b3615..3fd30150b4f37ac357fb3b840c4d85e6
       * Represents the oxidizing state of a copper golem.
       *
 diff --git a/src/main/java/org/bukkit/entity/Endermite.java b/src/main/java/org/bukkit/entity/Endermite.java
-index 332c55fd6b4b3a8c0cad920a6e765ecc40e684e4..10a8d64ad2da0be2c14f34c3e7d1957c6f2883d1 100644
 --- a/src/main/java/org/bukkit/entity/Endermite.java
 +++ b/src/main/java/org/bukkit/entity/Endermite.java
 @@ -3,25 +3,21 @@ package org.bukkit.entity;
@@ -830,7 +817,6 @@ index 332c55fd6b4b3a8c0cad920a6e765ecc40e684e4..10a8d64ad2da0be2c14f34c3e7d1957c
      // Paper start
      /**
 diff --git a/src/main/java/org/bukkit/entity/Entity.java b/src/main/java/org/bukkit/entity/Entity.java
-index 00376681df7492ac0e080dcb86284ce15d5acf70..d1132d9eb87949ae657be699ae30284cd41dc1c6 100644
 --- a/src/main/java/org/bukkit/entity/Entity.java
 +++ b/src/main/java/org/bukkit/entity/Entity.java
 @@ -1359,4 +1359,59 @@ public interface Entity extends Metadatable, CommandSender, Nameable, Persistent
@@ -894,7 +880,6 @@ index 00376681df7492ac0e080dcb86284ce15d5acf70..d1132d9eb87949ae657be699ae30284c
 +    // Purpur end - Fire Immunity API
  }
 diff --git a/src/main/java/org/bukkit/entity/IronGolem.java b/src/main/java/org/bukkit/entity/IronGolem.java
-index 655e37cb3a09610a3f3df805d6dcad17d722da62..09fd716c8fc9ea34a1cbf87bcbe22df035422a51 100644
 --- a/src/main/java/org/bukkit/entity/IronGolem.java
 +++ b/src/main/java/org/bukkit/entity/IronGolem.java
 @@ -19,4 +19,20 @@ public interface IronGolem extends Golem {
@@ -919,7 +904,6 @@ index 655e37cb3a09610a3f3df805d6dcad17d722da62..09fd716c8fc9ea34a1cbf87bcbe22df0
 +    // Purpur end
  }
 diff --git a/src/main/java/org/bukkit/entity/Item.java b/src/main/java/org/bukkit/entity/Item.java
-index bcc6ba95bd21c7972865838c636a03f50b6c1f1a..c3fcd8dd7dbb1e1a18e17c014c1e641149ea5960 100644
 --- a/src/main/java/org/bukkit/entity/Item.java
 +++ b/src/main/java/org/bukkit/entity/Item.java
 @@ -153,4 +153,62 @@ public interface Item extends Entity, io.papermc.paper.entity.Frictional { // Pa
@@ -986,7 +970,6 @@ index bcc6ba95bd21c7972865838c636a03f50b6c1f1a..c3fcd8dd7dbb1e1a18e17c014c1e6411
 +    // Purpur end
  }
 diff --git a/src/main/java/org/bukkit/entity/LivingEntity.java b/src/main/java/org/bukkit/entity/LivingEntity.java
-index ab18c028fd800a7b2da91e5c32a4547beea1d92b..88f322b1a6cc9702fdf8a5efa93d8cbeeef92258 100644
 --- a/src/main/java/org/bukkit/entity/LivingEntity.java
 +++ b/src/main/java/org/bukkit/entity/LivingEntity.java
 @@ -1559,4 +1559,20 @@ public interface LivingEntity extends Attributable, Damageable, ProjectileSource
@@ -1011,7 +994,6 @@ index ab18c028fd800a7b2da91e5c32a4547beea1d92b..88f322b1a6cc9702fdf8a5efa93d8cbe
 +    // Purpur end - API for any mob to burn daylight
  }
 diff --git a/src/main/java/org/bukkit/entity/Llama.java b/src/main/java/org/bukkit/entity/Llama.java
-index bc84b892cae5fe7019a3ad481e9da79956efa1fe..48eb5b00c460cccde29d327cef1d63fc04d6a829 100644
 --- a/src/main/java/org/bukkit/entity/Llama.java
 +++ b/src/main/java/org/bukkit/entity/Llama.java
 @@ -119,4 +119,20 @@ public interface Llama extends ChestedHorse, RangedEntity { // Paper
@@ -1036,7 +1018,6 @@ index bc84b892cae5fe7019a3ad481e9da79956efa1fe..48eb5b00c460cccde29d327cef1d63fc
 +    // Purpur end
  }
 diff --git a/src/main/java/org/bukkit/entity/Player.java b/src/main/java/org/bukkit/entity/Player.java
-index 190313bc060d5f8440cec7c249ad1d2f1074f5bc..088ba80359386a79b6663822d5010cc5026b73f3 100644
 --- a/src/main/java/org/bukkit/entity/Player.java
 +++ b/src/main/java/org/bukkit/entity/Player.java
 @@ -4084,4 +4084,123 @@ public interface Player extends HumanEntity, Conversable, OfflinePlayer, PluginM
@@ -1164,7 +1145,6 @@ index 190313bc060d5f8440cec7c249ad1d2f1074f5bc..088ba80359386a79b6663822d5010cc5
 +    // Purpur end
  }
 diff --git a/src/main/java/org/bukkit/entity/Snowman.java b/src/main/java/org/bukkit/entity/Snowman.java
-index 7fbfdb07585c7b28acea1f0c1f58ada0cc744441..21fcca092e2e31baa5ece0de9e44e3fade8c7123 100644
 --- a/src/main/java/org/bukkit/entity/Snowman.java
 +++ b/src/main/java/org/bukkit/entity/Snowman.java
 @@ -23,4 +23,20 @@ public interface Snowman extends Golem, RangedEntity, io.papermc.paper.entity.Sh
@@ -1189,7 +1169,6 @@ index 7fbfdb07585c7b28acea1f0c1f58ada0cc744441..21fcca092e2e31baa5ece0de9e44e3fa
 +    // Purpur end
  }
 diff --git a/src/main/java/org/bukkit/entity/Villager.java b/src/main/java/org/bukkit/entity/Villager.java
-index a2024b5dda030a7724c13b2446224903ae837339..c54ea3bbb57de8e7658df41eb44bb42e98757d98 100644
 --- a/src/main/java/org/bukkit/entity/Villager.java
 +++ b/src/main/java/org/bukkit/entity/Villager.java
 @@ -405,4 +405,13 @@ public interface Villager extends AbstractVillager {
@@ -1207,7 +1186,6 @@ index a2024b5dda030a7724c13b2446224903ae837339..c54ea3bbb57de8e7658df41eb44bb42e
 +    // Purpur end
  }
 diff --git a/src/main/java/org/bukkit/entity/Wither.java b/src/main/java/org/bukkit/entity/Wither.java
-index 11ae1b3ad8c215f9245945d223c52f4a62ac47d9..7f23eb5a60ff08fb31e8ba3731a43bd75690214a 100644
 --- a/src/main/java/org/bukkit/entity/Wither.java
 +++ b/src/main/java/org/bukkit/entity/Wither.java
 @@ -105,4 +105,20 @@ public interface Wither extends Monster, Boss, com.destroystokyo.paper.entity.Ra
@@ -1232,7 +1210,6 @@ index 11ae1b3ad8c215f9245945d223c52f4a62ac47d9..7f23eb5a60ff08fb31e8ba3731a43bd7
 +    // Purpur end
  }
 diff --git a/src/main/java/org/bukkit/entity/Wolf.java b/src/main/java/org/bukkit/entity/Wolf.java
-index 95ee6d2be7eb0bd5403a5fe97b9f0c74829b0a74..ec56cdaf9bc645da167d2155a873c9a21bbe8e0a 100644
 --- a/src/main/java/org/bukkit/entity/Wolf.java
 +++ b/src/main/java/org/bukkit/entity/Wolf.java
 @@ -105,6 +105,22 @@ public interface Wolf extends Tameable, Sittable, io.papermc.paper.entity.Collar
@@ -1259,7 +1236,6 @@ index 95ee6d2be7eb0bd5403a5fe97b9f0c74829b0a74..ec56cdaf9bc645da167d2155a873c9a2
       * Represents the variant of a wolf.
       */
 diff --git a/src/main/java/org/bukkit/event/entity/EntityDamageEvent.java b/src/main/java/org/bukkit/event/entity/EntityDamageEvent.java
-index 01d020c8848479e2dadd540d9bb3cf30f60722c9..576822822328da0d15f04316a9d9a3f3f0df09dd 100644
 --- a/src/main/java/org/bukkit/event/entity/EntityDamageEvent.java
 +++ b/src/main/java/org/bukkit/event/entity/EntityDamageEvent.java
 @@ -311,7 +311,8 @@ public class EntityDamageEvent extends EntityEvent implements Cancellable {
@@ -1273,7 +1249,6 @@ index 01d020c8848479e2dadd540d9bb3cf30f60722c9..576822822328da0d15f04316a9d9a3f3
           * Damage: variable
           */
 diff --git a/src/main/java/org/bukkit/event/entity/EntityPotionEffectEvent.java b/src/main/java/org/bukkit/event/entity/EntityPotionEffectEvent.java
-index bd071ee390e796b1c8c21ec317a62b92c44d1b4a..df1167f6ea97b6c53877fc8586b1173e85e9a434 100644
 --- a/src/main/java/org/bukkit/event/entity/EntityPotionEffectEvent.java
 +++ b/src/main/java/org/bukkit/event/entity/EntityPotionEffectEvent.java
 @@ -230,6 +230,12 @@ public class EntityPotionEffectEvent extends EntityEvent implements Cancellable
@@ -1290,7 +1265,6 @@ index bd071ee390e796b1c8c21ec317a62b92c44d1b4a..df1167f6ea97b6c53877fc8586b1173e
           * When the entity gets the effect from a nautilus.
           */
 diff --git a/src/main/java/org/bukkit/event/inventory/InventoryType.java b/src/main/java/org/bukkit/event/inventory/InventoryType.java
-index f1fe88f8beb04944f6be8e3be9bef2d8eaddb15d..eb160c016ecbc098cc9abbb63739102753fabd41 100644
 --- a/src/main/java/org/bukkit/event/inventory/InventoryType.java
 +++ b/src/main/java/org/bukkit/event/inventory/InventoryType.java
 @@ -170,7 +170,7 @@ public enum InventoryType {
@@ -1303,7 +1277,6 @@ index f1fe88f8beb04944f6be8e3be9bef2d8eaddb15d..eb160c016ecbc098cc9abbb637391027
      private final MenuType menuType;
      private final boolean isCreatable;
 diff --git a/src/main/java/org/bukkit/inventory/AnvilInventory.java b/src/main/java/org/bukkit/inventory/AnvilInventory.java
-index db5be16f2a04fb9b69225da6b88fdae9eeac52be..b9a3c83ef9abc10a95cdf0694663e8470a795ce8 100644
 --- a/src/main/java/org/bukkit/inventory/AnvilInventory.java
 +++ b/src/main/java/org/bukkit/inventory/AnvilInventory.java
 @@ -138,4 +138,42 @@ public interface AnvilInventory extends Inventory {
@@ -1350,7 +1323,6 @@ index db5be16f2a04fb9b69225da6b88fdae9eeac52be..b9a3c83ef9abc10a95cdf0694663e847
 +    // Purpur end
  }
 diff --git a/src/main/java/org/bukkit/inventory/ItemStack.java b/src/main/java/org/bukkit/inventory/ItemStack.java
-index a8a817fa6186f99107ccfd4d7a83f891fa7e1e17..c658ffd1c3cab93b20b02ff61fd258761c3513ac 100644
 --- a/src/main/java/org/bukkit/inventory/ItemStack.java
 +++ b/src/main/java/org/bukkit/inventory/ItemStack.java
 @@ -23,6 +23,13 @@ import org.bukkit.material.MaterialData;
@@ -1851,7 +1823,6 @@ index a8a817fa6186f99107ccfd4d7a83f891fa7e1e17..c658ffd1c3cab93b20b02ff61fd25876
 +    // Purpur end - ItemStack convenience methods
  }
 diff --git a/src/main/java/org/bukkit/inventory/view/AnvilView.java b/src/main/java/org/bukkit/inventory/view/AnvilView.java
-index 3c1aa1e036bee08304c1cdca59f6a5bc0ba306c0..b273e168c976fb6e185da3ba83d9d69e0b2e7920 100644
 --- a/src/main/java/org/bukkit/inventory/view/AnvilView.java
 +++ b/src/main/java/org/bukkit/inventory/view/AnvilView.java
 @@ -89,4 +89,34 @@ public interface AnvilView extends InventoryView {
@@ -1890,7 +1861,6 @@ index 3c1aa1e036bee08304c1cdca59f6a5bc0ba306c0..b273e168c976fb6e185da3ba83d9d69e
 +    // Purpur end - Anvil API
  }
 diff --git a/src/main/java/org/bukkit/map/MapRenderer.java b/src/main/java/org/bukkit/map/MapRenderer.java
-index cb7040876a99a5a7e49b81684ef0f3b79584c376..63351a0fb4263e2e7ccb6896768a5b10378de297 100644
 --- a/src/main/java/org/bukkit/map/MapRenderer.java
 +++ b/src/main/java/org/bukkit/map/MapRenderer.java
 @@ -54,4 +54,12 @@ public abstract class MapRenderer {
@@ -1907,7 +1877,6 @@ index cb7040876a99a5a7e49b81684ef0f3b79584c376..63351a0fb4263e2e7ccb6896768a5b10
 +    // Purpur - end - Explorer Map API
  }
 diff --git a/src/main/java/org/bukkit/permissions/PermissibleBase.java b/src/main/java/org/bukkit/permissions/PermissibleBase.java
-index 75b77cc4fe189b4b6baa1af3663dc492e992a266..1aa3c6dbf2f2a62fbec990f931d5c5d5c8e5a0bd 100644
 --- a/src/main/java/org/bukkit/permissions/PermissibleBase.java
 +++ b/src/main/java/org/bukkit/permissions/PermissibleBase.java
 @@ -169,7 +169,7 @@ public class PermissibleBase implements Permissible {
@@ -1929,7 +1898,6 @@ index 75b77cc4fe189b4b6baa1af3663dc492e992a266..1aa3c6dbf2f2a62fbec990f931d5c5d5
  
              permissions.put(lname, new PermissionAttachmentInfo(parent, lname, attachment, value));
 diff --git a/src/main/java/org/bukkit/util/permissions/CommandPermissions.java b/src/main/java/org/bukkit/util/permissions/CommandPermissions.java
-index 7763d6101ac61900db1e2310966b99584539fd0e..48c67cb3a7073db85d7cf2308e5b1aae89b7a1d2 100644
 --- a/src/main/java/org/bukkit/util/permissions/CommandPermissions.java
 +++ b/src/main/java/org/bukkit/util/permissions/CommandPermissions.java
 @@ -18,6 +18,7 @@ public final class CommandPermissions {
@@ -1941,7 +1909,6 @@ index 7763d6101ac61900db1e2310966b99584539fd0e..48c67cb3a7073db85d7cf2308e5b1aae
          commands.recalculatePermissibles();
          return commands;
 diff --git a/src/main/java/org/bukkit/util/permissions/DefaultPermissions.java b/src/main/java/org/bukkit/util/permissions/DefaultPermissions.java
-index e1a4ddf2c07cdd242fa8054a0152522fe4039e85..5329de48a739cafac98514e24edaf5f1b9d41fff 100644
 --- a/src/main/java/org/bukkit/util/permissions/DefaultPermissions.java
 +++ b/src/main/java/org/bukkit/util/permissions/DefaultPermissions.java
 @@ -31,7 +31,7 @@ public final class DefaultPermissions {
@@ -2000,7 +1967,6 @@ index e1a4ddf2c07cdd242fa8054a0152522fe4039e85..5329de48a739cafac98514e24edaf5f1
  }
 diff --git a/src/main/java/org/purpurmc/purpur/entity/StoredEntity.java b/src/main/java/org/purpurmc/purpur/entity/StoredEntity.java
 new file mode 100644
-index 0000000000000000000000000000000000000000..29540d55532197d2381a52ea9222b5785d224ef8
 --- /dev/null
 +++ b/src/main/java/org/purpurmc/purpur/entity/StoredEntity.java
 @@ -0,0 +1,52 @@
@@ -2058,7 +2024,6 @@ index 0000000000000000000000000000000000000000..29540d55532197d2381a52ea9222b578
 +}
 diff --git a/src/main/java/org/purpurmc/purpur/event/ExecuteCommandEvent.java b/src/main/java/org/purpurmc/purpur/event/ExecuteCommandEvent.java
 new file mode 100644
-index 0000000000000000000000000000000000000000..55feef2321c7d966c72a33a58cf10136a9cacfa6
 --- /dev/null
 +++ b/src/main/java/org/purpurmc/purpur/event/ExecuteCommandEvent.java
 @@ -0,0 +1,127 @@
@@ -2191,7 +2156,6 @@ index 0000000000000000000000000000000000000000..55feef2321c7d966c72a33a58cf10136
 +}
 diff --git a/src/main/java/org/purpurmc/purpur/event/PlayerAFKEvent.java b/src/main/java/org/purpurmc/purpur/event/PlayerAFKEvent.java
 new file mode 100644
-index 0000000000000000000000000000000000000000..e9637b82014fe3f4f4671b24d18f77f3d5e4b8ad
 --- /dev/null
 +++ b/src/main/java/org/purpurmc/purpur/event/PlayerAFKEvent.java
 @@ -0,0 +1,71 @@
@@ -2268,7 +2232,6 @@ index 0000000000000000000000000000000000000000..e9637b82014fe3f4f4671b24d18f77f3
 +}
 diff --git a/src/main/java/org/purpurmc/purpur/event/PlayerSetSpawnerTypeWithEggEvent.java b/src/main/java/org/purpurmc/purpur/event/PlayerSetSpawnerTypeWithEggEvent.java
 new file mode 100644
-index 0000000000000000000000000000000000000000..795c558b481f4e2a550925bd88b8e7d41711456f
 --- /dev/null
 +++ b/src/main/java/org/purpurmc/purpur/event/PlayerSetSpawnerTypeWithEggEvent.java
 @@ -0,0 +1,83 @@
@@ -2357,7 +2320,6 @@ index 0000000000000000000000000000000000000000..795c558b481f4e2a550925bd88b8e7d4
 +}
 diff --git a/src/main/java/org/purpurmc/purpur/event/PlayerSetTrialSpawnerTypeWithEggEvent.java b/src/main/java/org/purpurmc/purpur/event/PlayerSetTrialSpawnerTypeWithEggEvent.java
 new file mode 100644
-index 0000000000000000000000000000000000000000..1d4dbf60a182a2a5f93c449e387b82743d20616c
 --- /dev/null
 +++ b/src/main/java/org/purpurmc/purpur/event/PlayerSetTrialSpawnerTypeWithEggEvent.java
 @@ -0,0 +1,83 @@
@@ -2446,7 +2408,6 @@ index 0000000000000000000000000000000000000000..1d4dbf60a182a2a5f93c449e387b8274
 +}
 diff --git a/src/main/java/org/purpurmc/purpur/event/PreBlockExplodeEvent.java b/src/main/java/org/purpurmc/purpur/event/PreBlockExplodeEvent.java
 new file mode 100644
-index 0000000000000000000000000000000000000000..4b4d32c58224e1208f14024ca214078a37550bb5
 --- /dev/null
 +++ b/src/main/java/org/purpurmc/purpur/event/PreBlockExplodeEvent.java
 @@ -0,0 +1,56 @@
@@ -2508,7 +2469,6 @@ index 0000000000000000000000000000000000000000..4b4d32c58224e1208f14024ca214078a
 +}
 diff --git a/src/main/java/org/purpurmc/purpur/event/entity/BeeFoundFlowerEvent.java b/src/main/java/org/purpurmc/purpur/event/entity/BeeFoundFlowerEvent.java
 new file mode 100644
-index 0000000000000000000000000000000000000000..7f631a41abee4640a37339a7896ce96e61747735
 --- /dev/null
 +++ b/src/main/java/org/purpurmc/purpur/event/entity/BeeFoundFlowerEvent.java
 @@ -0,0 +1,48 @@
@@ -2562,7 +2522,6 @@ index 0000000000000000000000000000000000000000..7f631a41abee4640a37339a7896ce96e
 +}
 diff --git a/src/main/java/org/purpurmc/purpur/event/entity/BeeStartedPollinatingEvent.java b/src/main/java/org/purpurmc/purpur/event/entity/BeeStartedPollinatingEvent.java
 new file mode 100644
-index 0000000000000000000000000000000000000000..e260145d6dc556bbe9e3654296b965c4e393084d
 --- /dev/null
 +++ b/src/main/java/org/purpurmc/purpur/event/entity/BeeStartedPollinatingEvent.java
 @@ -0,0 +1,46 @@
@@ -2614,7 +2573,6 @@ index 0000000000000000000000000000000000000000..e260145d6dc556bbe9e3654296b965c4
 +}
 diff --git a/src/main/java/org/purpurmc/purpur/event/entity/BeeStopPollinatingEvent.java b/src/main/java/org/purpurmc/purpur/event/entity/BeeStopPollinatingEvent.java
 new file mode 100644
-index 0000000000000000000000000000000000000000..8b2b351d620c749cdf58d7e824b55cf55578fde6
 --- /dev/null
 +++ b/src/main/java/org/purpurmc/purpur/event/entity/BeeStopPollinatingEvent.java
 @@ -0,0 +1,60 @@
@@ -2680,7 +2638,6 @@ index 0000000000000000000000000000000000000000..8b2b351d620c749cdf58d7e824b55cf5
 +}
 diff --git a/src/main/java/org/purpurmc/purpur/event/entity/GoatRamEntityEvent.java b/src/main/java/org/purpurmc/purpur/event/entity/GoatRamEntityEvent.java
 new file mode 100644
-index 0000000000000000000000000000000000000000..f0a7fe694db145294ff93d320382d1baecc68702
 --- /dev/null
 +++ b/src/main/java/org/purpurmc/purpur/event/entity/GoatRamEntityEvent.java
 @@ -0,0 +1,58 @@
@@ -2744,7 +2701,6 @@ index 0000000000000000000000000000000000000000..f0a7fe694db145294ff93d320382d1ba
 +}
 diff --git a/src/main/java/org/purpurmc/purpur/event/entity/LlamaJoinCaravanEvent.java b/src/main/java/org/purpurmc/purpur/event/entity/LlamaJoinCaravanEvent.java
 new file mode 100644
-index 0000000000000000000000000000000000000000..e34c37579dc8a5a108c03b9eff6bb916a910d867
 --- /dev/null
 +++ b/src/main/java/org/purpurmc/purpur/event/entity/LlamaJoinCaravanEvent.java
 @@ -0,0 +1,60 @@
@@ -2810,7 +2766,6 @@ index 0000000000000000000000000000000000000000..e34c37579dc8a5a108c03b9eff6bb916
 +}
 diff --git a/src/main/java/org/purpurmc/purpur/event/entity/LlamaLeaveCaravanEvent.java b/src/main/java/org/purpurmc/purpur/event/entity/LlamaLeaveCaravanEvent.java
 new file mode 100644
-index 0000000000000000000000000000000000000000..23ea41ff5dc43a915a263aeb1a246705de8bf9e1
 --- /dev/null
 +++ b/src/main/java/org/purpurmc/purpur/event/entity/LlamaLeaveCaravanEvent.java
 @@ -0,0 +1,34 @@
@@ -2850,7 +2805,6 @@ index 0000000000000000000000000000000000000000..23ea41ff5dc43a915a263aeb1a246705
 +}
 diff --git a/src/main/java/org/purpurmc/purpur/event/entity/PreEntityExplodeEvent.java b/src/main/java/org/purpurmc/purpur/event/entity/PreEntityExplodeEvent.java
 new file mode 100644
-index 0000000000000000000000000000000000000000..d56fb066455007cc710f7ba34ba722af6e89bc1d
 --- /dev/null
 +++ b/src/main/java/org/purpurmc/purpur/event/entity/PreEntityExplodeEvent.java
 @@ -0,0 +1,66 @@
@@ -2922,7 +2876,6 @@ index 0000000000000000000000000000000000000000..d56fb066455007cc710f7ba34ba722af
 +}
 diff --git a/src/main/java/org/purpurmc/purpur/event/entity/RidableMoveEvent.java b/src/main/java/org/purpurmc/purpur/event/entity/RidableMoveEvent.java
 new file mode 100644
-index 0000000000000000000000000000000000000000..c31a656daa3df1ab87302d8f14110a828c920102
 --- /dev/null
 +++ b/src/main/java/org/purpurmc/purpur/event/entity/RidableMoveEvent.java
 @@ -0,0 +1,100 @@
@@ -3028,7 +2981,6 @@ index 0000000000000000000000000000000000000000..c31a656daa3df1ab87302d8f14110a82
 +}
 diff --git a/src/main/java/org/purpurmc/purpur/event/entity/RidableSpacebarEvent.java b/src/main/java/org/purpurmc/purpur/event/entity/RidableSpacebarEvent.java
 new file mode 100644
-index 0000000000000000000000000000000000000000..02de629f066ef7d4898b3053efa957edeea16a3f
 --- /dev/null
 +++ b/src/main/java/org/purpurmc/purpur/event/entity/RidableSpacebarEvent.java
 @@ -0,0 +1,38 @@
@@ -3072,7 +3024,6 @@ index 0000000000000000000000000000000000000000..02de629f066ef7d4898b3053efa957ed
 +}
 diff --git a/src/main/java/org/purpurmc/purpur/event/inventory/AnvilTakeResultEvent.java b/src/main/java/org/purpurmc/purpur/event/inventory/AnvilTakeResultEvent.java
 new file mode 100644
-index 0000000000000000000000000000000000000000..b2199854b5c7e74a673cbadbe584e5aaebbe3883
 --- /dev/null
 +++ b/src/main/java/org/purpurmc/purpur/event/inventory/AnvilTakeResultEvent.java
 @@ -0,0 +1,50 @@
@@ -3128,7 +3079,6 @@ index 0000000000000000000000000000000000000000..b2199854b5c7e74a673cbadbe584e5aa
 +}
 diff --git a/src/main/java/org/purpurmc/purpur/event/inventory/AnvilUpdateResultEvent.java b/src/main/java/org/purpurmc/purpur/event/inventory/AnvilUpdateResultEvent.java
 new file mode 100644
-index 0000000000000000000000000000000000000000..4293c4a57c1c054e8248b7712e8664bd4cb1a972
 --- /dev/null
 +++ b/src/main/java/org/purpurmc/purpur/event/inventory/AnvilUpdateResultEvent.java
 @@ -0,0 +1,35 @@
@@ -3169,7 +3119,6 @@ index 0000000000000000000000000000000000000000..4293c4a57c1c054e8248b7712e8664bd
 +}
 diff --git a/src/main/java/org/purpurmc/purpur/event/inventory/GrindstoneTakeResultEvent.java b/src/main/java/org/purpurmc/purpur/event/inventory/GrindstoneTakeResultEvent.java
 new file mode 100644
-index 0000000000000000000000000000000000000000..d6db2d355553c9c54b83328d237b9c75e7a8e375
 --- /dev/null
 +++ b/src/main/java/org/purpurmc/purpur/event/inventory/GrindstoneTakeResultEvent.java
 @@ -0,0 +1,72 @@
@@ -3247,7 +3196,6 @@ index 0000000000000000000000000000000000000000..d6db2d355553c9c54b83328d237b9c75
 +}
 diff --git a/src/main/java/org/purpurmc/purpur/event/player/PlayerBookTooLargeEvent.java b/src/main/java/org/purpurmc/purpur/event/player/PlayerBookTooLargeEvent.java
 new file mode 100644
-index 0000000000000000000000000000000000000000..31cce9f4e398135016114b96254376325a22ba7c
 --- /dev/null
 +++ b/src/main/java/org/purpurmc/purpur/event/player/PlayerBookTooLargeEvent.java
 @@ -0,0 +1,65 @@
@@ -3318,7 +3266,6 @@ index 0000000000000000000000000000000000000000..31cce9f4e398135016114b9625437632
 +}
 diff --git a/src/main/java/org/purpurmc/purpur/language/Language.java b/src/main/java/org/purpurmc/purpur/language/Language.java
 new file mode 100644
-index 0000000000000000000000000000000000000000..cbdad4cf09c170064a45644efdf7aa0b28608301
 --- /dev/null
 +++ b/src/main/java/org/purpurmc/purpur/language/Language.java
 @@ -0,0 +1,60 @@
@@ -3384,7 +3331,6 @@ index 0000000000000000000000000000000000000000..cbdad4cf09c170064a45644efdf7aa0b
 +}
 diff --git a/src/main/java/org/purpurmc/purpur/util/permissions/PurpurPermissions.java b/src/main/java/org/purpurmc/purpur/util/permissions/PurpurPermissions.java
 new file mode 100644
-index 0000000000000000000000000000000000000000..c9e46891c6ff3b53a4fddffa5262326aad2b2c32
 --- /dev/null
 +++ b/src/main/java/org/purpurmc/purpur/util/permissions/PurpurPermissions.java
 @@ -0,0 +1,89 @@

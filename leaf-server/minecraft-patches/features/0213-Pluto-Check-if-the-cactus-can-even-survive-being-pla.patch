@@ -18,7 +18,6 @@ Setting the gamerule "doTileDrop" to false was to simulate a server that has chu
 Note: This might increase the item output of a cacti farm, though in theory it should act the same as vanilla.
 
 diff --git a/net/minecraft/world/level/block/CactusBlock.java b/net/minecraft/world/level/block/CactusBlock.java
-index a69f54647775dc64bb476e474fb4ed98386a2ef6..e2f183dc52cf69153fdcf692442e182cfecaec31 100644
 --- a/net/minecraft/world/level/block/CactusBlock.java
 +++ b/net/minecraft/world/level/block/CactusBlock.java
 @@ -45,24 +45,45 @@ public class CactusBlock extends Block implements BonemealableBlock { // Purpur

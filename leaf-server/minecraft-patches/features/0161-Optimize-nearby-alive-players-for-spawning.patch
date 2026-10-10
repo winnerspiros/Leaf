@@ -9,7 +9,6 @@ and reduce the cost on predicate test
 Preserve the native unbounded search for negative RequiredPlayerRange values.
 
 diff --git a/net/minecraft/world/entity/EntitySelector.java b/net/minecraft/world/entity/EntitySelector.java
-index d449654d21a9d160c1a2825f6c8bee1a166a4a72..53a7312bc021edfe46b589d68e3bc775fdda0ffb 100644
 --- a/net/minecraft/world/entity/EntitySelector.java
 +++ b/net/minecraft/world/entity/EntitySelector.java
 @@ -32,7 +32,7 @@ public final class EntitySelector {
@@ -22,7 +21,6 @@ index d449654d21a9d160c1a2825f6c8bee1a166a4a72..53a7312bc021edfe46b589d68e3bc775
      // Paper end - Affects Spawning API
  
 diff --git a/net/minecraft/world/entity/monster/zombie/Zombie.java b/net/minecraft/world/entity/monster/zombie/Zombie.java
-index f32e5b2b07f5a21c981b9269d37af8fdcf17d9f3..3956e9df04e4571fec8ad2d1e484ee3bcaf1c72c 100644
 --- a/net/minecraft/world/entity/monster/zombie/Zombie.java
 +++ b/net/minecraft/world/entity/monster/zombie/Zombie.java
 @@ -393,7 +393,7 @@ public class Zombie extends Monster {
@@ -35,7 +33,6 @@ index f32e5b2b07f5a21c981b9269d37af8fdcf17d9f3..3956e9df04e4571fec8ad2d1e484ee3b
                          && level.noCollision(reinforcement)
                          && (reinforcement.canSpawnInLiquids() || !level.containsAnyLiquid(reinforcement.getBoundingBox()))) {
 diff --git a/net/minecraft/world/level/BaseSpawner.java b/net/minecraft/world/level/BaseSpawner.java
-index 28b677d61c385d771318cfa1e5421e5cee301903..53dde75a5b8ed35afc67c5e7c74e92fe8d579a19 100644
 --- a/net/minecraft/world/level/BaseSpawner.java
 +++ b/net/minecraft/world/level/BaseSpawner.java
 @@ -73,7 +73,7 @@ public abstract class BaseSpawner {
@@ -48,7 +45,6 @@ index 28b677d61c385d771318cfa1e5421e5cee301903..53dde75a5b8ed35afc67c5e7c74e92fe
  
      public void clientTick(final Level level, final BlockPos pos) {
 diff --git a/net/minecraft/world/level/EntityGetter.java b/net/minecraft/world/level/EntityGetter.java
-index 2841ac4ad1029e1d3a88e3710a532d803343bbe6..5b5bafef8dd1ea4cd1be3842eca7028915f8ee5b 100644
 --- a/net/minecraft/world/level/EntityGetter.java
 +++ b/net/minecraft/world/level/EntityGetter.java
 @@ -112,6 +112,87 @@ public interface EntityGetter extends ca.spottedleaf.moonrise.patches.chunk_syst

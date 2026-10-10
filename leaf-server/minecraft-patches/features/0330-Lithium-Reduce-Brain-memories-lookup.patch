@@ -26,7 +26,6 @@ track:
 // SYNC SOURCE END
 
 diff --git a/net/minecraft/world/entity/ai/Brain.java b/net/minecraft/world/entity/ai/Brain.java
-index 5f84ab70a41c4f30276cd895745ea773e671bea6..f576a0a1956e426f7601dc73bd3c13fe3e9e992d 100644
 --- a/net/minecraft/world/entity/ai/Brain.java
 +++ b/net/minecraft/world/entity/ai/Brain.java
 @@ -35,8 +35,9 @@ import net.minecraft.world.entity.schedule.Activity;
@@ -117,7 +116,6 @@ index 5f84ab70a41c4f30276cd895745ea773e671bea6..f576a0a1956e426f7601dc73bd3c13fe
      public void stopAll(final ServerLevel level, final E body) {
          long timestamp = body.level().getGameTime();
 diff --git a/net/minecraft/world/entity/ai/behavior/Behavior.java b/net/minecraft/world/entity/ai/behavior/Behavior.java
-index 3bed326ec1fe1c414f671367ace67daa5659cc5d..4f5ececac6d0f919ed41ea2ebcf90e3009ee0b56 100644
 --- a/net/minecraft/world/entity/ai/behavior/Behavior.java
 +++ b/net/minecraft/world/entity/ai/behavior/Behavior.java
 @@ -11,6 +11,10 @@ import net.minecraft.world.entity.ai.memory.MemoryStatus;
@@ -161,7 +159,6 @@ index 3bed326ec1fe1c414f671367ace67daa5659cc5d..4f5ececac6d0f919ed41ea2ebcf90e30
  
      public enum Status {
 diff --git a/net/minecraft/world/entity/ai/memory/MemorySlot.java b/net/minecraft/world/entity/ai/memory/MemorySlot.java
-index 88a89b4c72cc99dc89d3f3cc928b2dfda4125759..0745ef1bf981830909ce2e740f9f183903c36121 100644
 --- a/net/minecraft/world/entity/ai/memory/MemorySlot.java
 +++ b/net/minecraft/world/entity/ai/memory/MemorySlot.java
 @@ -30,6 +30,11 @@ public class MemorySlot<T> {

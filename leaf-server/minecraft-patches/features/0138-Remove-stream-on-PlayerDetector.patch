@@ -7,7 +7,6 @@ Keep the level selector's typed, bounded entity query when collecting UUIDs
 iterating players here would break the native sheep detector.
 
 diff --git a/net/minecraft/world/level/block/entity/trialspawner/PlayerDetector.java b/net/minecraft/world/level/block/entity/trialspawner/PlayerDetector.java
-index 69e74e6da56c38efc97ef6d5c272e8d162b63680..73a538218dd63cc3b933d292f9be9c66c1468106 100644
 --- a/net/minecraft/world/level/block/entity/trialspawner/PlayerDetector.java
 +++ b/net/minecraft/world/level/block/entity/trialspawner/PlayerDetector.java
 @@ -21,28 +21,24 @@ import net.minecraft.world.phys.Vec3;

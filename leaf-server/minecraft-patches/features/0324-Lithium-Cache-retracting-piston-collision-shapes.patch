@@ -24,7 +24,6 @@ track:
 // SYNC SOURCE END
 
 diff --git a/net/minecraft/world/level/block/piston/PistonMovingBlockEntity.java b/net/minecraft/world/level/block/piston/PistonMovingBlockEntity.java
-index 2126385a1fb5c89e01920f3a8cc77eb4ac78c87e..e78daa03b22621ed1ef94f1516af52cb33847537 100644
 --- a/net/minecraft/world/level/block/piston/PistonMovingBlockEntity.java
 +++ b/net/minecraft/world/level/block/piston/PistonMovingBlockEntity.java
 @@ -40,6 +40,7 @@ public class PistonMovingBlockEntity extends BlockEntity {

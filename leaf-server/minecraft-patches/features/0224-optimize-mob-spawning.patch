@@ -13,7 +13,6 @@ Changes:
 - Avoid repeated spawn list lookups for newly selected mobs if no PreCreatureSpawnEvent listeners
 
 diff --git a/net/minecraft/server/level/ChunkMap.java b/net/minecraft/server/level/ChunkMap.java
-index c200f2903cb582af2414f7e011f6c50b5aa65406..ffb4cac67c85ad35b131a89574bc2b03f4adedd6 100644
 --- a/net/minecraft/server/level/ChunkMap.java
 +++ b/net/minecraft/server/level/ChunkMap.java
 @@ -274,6 +274,7 @@ public class ChunkMap extends SimpleRegionStorage implements ChunkHolder.PlayerP
@@ -25,7 +24,6 @@ index c200f2903cb582af2414f7e011f6c50b5aa65406..ffb4cac67c85ad35b131a89574bc2b03
      }
      // Paper end - Optional per player mob spawns
 diff --git a/net/minecraft/server/level/ServerChunkCache.java b/net/minecraft/server/level/ServerChunkCache.java
-index e60f1b0527196d51cb65e69d9b9d2936c5ea9285..b3a514f10083f40f2768da0cd9d4676c2651baf1 100644
 --- a/net/minecraft/server/level/ServerChunkCache.java
 +++ b/net/minecraft/server/level/ServerChunkCache.java
 @@ -70,7 +70,7 @@ public class ServerChunkCache extends ChunkSource implements ca.spottedleaf.moon
@@ -75,7 +73,6 @@ index e60f1b0527196d51cb65e69d9b9d2936c5ea9285..b3a514f10083f40f2768da0cd9d4676c
  
          profiler.popPush("tickTickingChunks");
 diff --git a/net/minecraft/server/level/ServerLevel.java b/net/minecraft/server/level/ServerLevel.java
-index 4b7edcf351da57647b43b70602b86759cca05b62..1c6a141a43889caa0d23848bdfae9d46a60090cf 100644
 --- a/net/minecraft/server/level/ServerLevel.java
 +++ b/net/minecraft/server/level/ServerLevel.java
 @@ -1216,6 +1216,7 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
@@ -87,7 +84,6 @@ index 4b7edcf351da57647b43b70602b86759cca05b62..1c6a141a43889caa0d23848bdfae9d46
          final net.minecraft.world.level.levelgen.BitRandomSource simpleRandom = this.simpleRandom; // Paper - optimise random ticking // Leaf - Faster random generator - upcasting
          ChunkPos chunkPos = chunk.getPos();
 diff --git a/net/minecraft/world/level/NaturalSpawner.java b/net/minecraft/world/level/NaturalSpawner.java
-index d3059582f18c8d1b1d518bdab05ea1d414c9deea..c76c1c9780068f0a0c8785354f4a1516dcd303fa 100644
 --- a/net/minecraft/world/level/NaturalSpawner.java
 +++ b/net/minecraft/world/level/NaturalSpawner.java
 @@ -72,6 +72,7 @@ public final class NaturalSpawner {
@@ -385,7 +381,6 @@ index d3059582f18c8d1b1d518bdab05ea1d414c9deea..c76c1c9780068f0a0c8785354f4a1516
      }
  }
 diff --git a/net/minecraft/world/level/StructureManager.java b/net/minecraft/world/level/StructureManager.java
-index 5caccbc0b98c3fffb80d5bc28e2f2c57edf1e795..24e8ebd447ad7a232c39d5cd17c9dd80ce34b9f1 100644
 --- a/net/minecraft/world/level/StructureManager.java
 +++ b/net/minecraft/world/level/StructureManager.java
 @@ -205,6 +205,12 @@ public class StructureManager {
@@ -402,7 +397,6 @@ index 5caccbc0b98c3fffb80d5bc28e2f2c57edf1e795..24e8ebd447ad7a232c39d5cd17c9dd80
          final ChunkPos pos, final Structure structure, final StructurePlacement placement, final boolean createReference
      ) {
 diff --git a/net/minecraft/world/level/biome/MobSpawnSettings.java b/net/minecraft/world/level/biome/MobSpawnSettings.java
-index f386dc61780326705f7fe0078a49474ebbd38bca..f697d10f00c430e04bc974055977dfd3d9b3a043 100644
 --- a/net/minecraft/world/level/biome/MobSpawnSettings.java
 +++ b/net/minecraft/world/level/biome/MobSpawnSettings.java
 @@ -60,7 +60,7 @@ public class MobSpawnSettings {
@@ -415,7 +409,6 @@ index f386dc61780326705f7fe0078a49474ebbd38bca..f697d10f00c430e04bc974055977dfd3
      }
  
 diff --git a/net/minecraft/world/level/chunk/ChunkGenerator.java b/net/minecraft/world/level/chunk/ChunkGenerator.java
-index 54652ee6b4d19e79d176395988fcc5ae9aecc6e9..10ab99c2b8a1df751df0dccf0273a17f433cbf3b 100644
 --- a/net/minecraft/world/level/chunk/ChunkGenerator.java
 +++ b/net/minecraft/world/level/chunk/ChunkGenerator.java
 @@ -566,6 +566,39 @@ public abstract class ChunkGenerator {

@@ -12,7 +12,6 @@ Some changes to the original temptation lookups optimization patch
     - Happy ghast
 
 diff --git a/io/papermc/paper/entity/temptation/GlobalTemptationLookup.java b/io/papermc/paper/entity/temptation/GlobalTemptationLookup.java
-index c3339b22929cb4e3b216aadf1069daa1f792d74e..3a9fb2524df84fe332eb94c3efe22876338d08da 100644
 --- a/io/papermc/paper/entity/temptation/GlobalTemptationLookup.java
 +++ b/io/papermc/paper/entity/temptation/GlobalTemptationLookup.java
 @@ -18,6 +18,7 @@ public class GlobalTemptationLookup {
@@ -95,7 +94,6 @@ index c3339b22929cb4e3b216aadf1069daa1f792d74e..3a9fb2524df84fe332eb94c3efe22876
 +    // Leaf end - Paper PR: Optimise temptation lookups changes
  }
 diff --git a/net/minecraft/server/level/ServerLevel.java b/net/minecraft/server/level/ServerLevel.java
-index 8b64198c633e31204eee7aeb6d843d2ed2551e0e..282dee851e81d453cd95c6d1202e7ae70ee49187 100644
 --- a/net/minecraft/server/level/ServerLevel.java
 +++ b/net/minecraft/server/level/ServerLevel.java
 @@ -1072,7 +1072,7 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
@@ -108,7 +106,6 @@ index 8b64198c633e31204eee7aeb6d843d2ed2551e0e..282dee851e81d453cd95c6d1202e7ae7
                  .forEach(
                      entity -> {
 diff --git a/net/minecraft/world/entity/ai/goal/TemptGoal.java b/net/minecraft/world/entity/ai/goal/TemptGoal.java
-index d31c0139723f7b9b3fa04f373debc34c722abfeb..a8062ff41f009c77ce35292488483858b276b074 100644
 --- a/net/minecraft/world/entity/ai/goal/TemptGoal.java
 +++ b/net/minecraft/world/entity/ai/goal/TemptGoal.java
 @@ -26,10 +26,10 @@ public class TemptGoal extends Goal {
@@ -159,7 +156,6 @@ index d31c0139723f7b9b3fa04f373debc34c722abfeb..a8062ff41f009c77ce35292488483858
                              d = d1;
                              nearestPlayer = player;
 diff --git a/net/minecraft/world/entity/ai/sensing/SensorType.java b/net/minecraft/world/entity/ai/sensing/SensorType.java
-index 393f068b40e02a6f3cb2e3828ddae9b7d1f6e48f..ccb20f9b483364422151c09f3fda48d08b1ca5b2 100644
 --- a/net/minecraft/world/entity/ai/sensing/SensorType.java
 +++ b/net/minecraft/world/entity/ai/sensing/SensorType.java
 @@ -40,7 +40,7 @@ public class SensorType<U extends Sensor<?>> {
@@ -172,7 +168,6 @@ index 393f068b40e02a6f3cb2e3828ddae9b7d1f6e48f..ccb20f9b483364422151c09f3fda48d0
      public static final SensorType<TemptingSensor> NAUTILUS_TEMPTATIONS = register(
          "nautilus_temptations", () -> new TemptingSensor(io.papermc.paper.entity.temptation.GlobalTemptationLookup.NAUTILUS_TEMPTATIONS)
 diff --git a/net/minecraft/world/entity/ai/sensing/TemptingSensor.java b/net/minecraft/world/entity/ai/sensing/TemptingSensor.java
-index b69b35999ed4ed7b5b1d00e1b0d19dcc6862c9bd..fbb3ed23f7cc9ca2e8af39258170ab73ceaa9610 100644
 --- a/net/minecraft/world/entity/ai/sensing/TemptingSensor.java
 +++ b/net/minecraft/world/entity/ai/sensing/TemptingSensor.java
 @@ -46,11 +46,11 @@ public class TemptingSensor extends Sensor<PathfinderMob> {
@@ -209,7 +204,6 @@ index b69b35999ed4ed7b5b1d00e1b0d19dcc6862c9bd..fbb3ed23f7cc9ca2e8af39258170ab73
                          d = d1;
                          nearestPlayer = player;
 diff --git a/net/minecraft/world/entity/animal/cow/AbstractCow.java b/net/minecraft/world/entity/animal/cow/AbstractCow.java
-index c0bf417e8f84d4995d9a64e25e3f731d267dbb83..bd0f8e364e23fc6283e126f968645b6ac7f90faa 100644
 --- a/net/minecraft/world/entity/animal/cow/AbstractCow.java
 +++ b/net/minecraft/world/entity/animal/cow/AbstractCow.java
 @@ -42,7 +42,7 @@ public abstract class AbstractCow extends Animal {
@@ -222,7 +216,6 @@ index c0bf417e8f84d4995d9a64e25e3f731d267dbb83..bd0f8e364e23fc6283e126f968645b6a
          this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0));
          this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 6.0F));
 diff --git a/net/minecraft/world/entity/animal/happyghast/HappyGhast.java b/net/minecraft/world/entity/animal/happyghast/HappyGhast.java
-index 54ad7be059b7981e10c40ad56fb0ecaac6f04d90..504c0a936dd64bc4b03ea79d167d6536a352e83b 100644
 --- a/net/minecraft/world/entity/animal/happyghast/HappyGhast.java
 +++ b/net/minecraft/world/entity/animal/happyghast/HappyGhast.java
 @@ -104,12 +104,14 @@ public class HappyGhast extends Animal {
@@ -266,7 +259,6 @@ index 54ad7be059b7981e10c40ad56fb0ecaac6f04d90..504c0a936dd64bc4b03ea79d167d6536
 +    // Leaf end - Paper PR: Optimise temptation lookups changes
  }
 diff --git a/net/minecraft/world/entity/npc/villager/Villager.java b/net/minecraft/world/entity/npc/villager/Villager.java
-index 13cbc69eb894a1c4945bef6c88631dc9f1ed0945..b8440395c9f4ffaa3883b7fe9726315279c1d0e3 100644
 --- a/net/minecraft/world/entity/npc/villager/Villager.java
 +++ b/net/minecraft/world/entity/npc/villager/Villager.java
 @@ -260,7 +260,7 @@ public class Villager extends AbstractVillager implements VillagerDataHolder, Re
@@ -279,7 +271,6 @@ index 13cbc69eb894a1c4945bef6c88631dc9f1ed0945..b8440395c9f4ffaa3883b7fe97263152
      // Purpur end - Ridables
  
 diff --git a/net/minecraft/world/entity/npc/wanderingtrader/WanderingTrader.java b/net/minecraft/world/entity/npc/wanderingtrader/WanderingTrader.java
-index 8f67a2e50d2d52eedf6e9f5d5cdce9e5a7c68345..2ed79b97be5a7eb98f3d2da2a643c3d9c7cb0f6f 100644
 --- a/net/minecraft/world/entity/npc/wanderingtrader/WanderingTrader.java
 +++ b/net/minecraft/world/entity/npc/wanderingtrader/WanderingTrader.java
 @@ -143,7 +143,7 @@ public class WanderingTrader extends AbstractVillager implements Consumable.Over

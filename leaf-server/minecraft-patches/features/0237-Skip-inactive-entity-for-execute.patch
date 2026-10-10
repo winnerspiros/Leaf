@@ -6,7 +6,6 @@ Subject: [PATCH] Skip inactive entity for execute
 Co-authored-by: <90316914+wling-art@users.noreply.github.com>
 
 diff --git a/net/minecraft/commands/arguments/EntityArgument.java b/net/minecraft/commands/arguments/EntityArgument.java
-index 2d20317d50c9b5602ab547ab1217a5fe3c26b381..5c5c8ce05b11cb24b66ffeec4d269a7de3a10236 100644
 --- a/net/minecraft/commands/arguments/EntityArgument.java
 +++ b/net/minecraft/commands/arguments/EntityArgument.java
 @@ -67,7 +67,10 @@ public class EntityArgument implements ArgumentType<EntitySelector> {
@@ -22,7 +21,6 @@ index 2d20317d50c9b5602ab547ab1217a5fe3c26b381..5c5c8ce05b11cb24b66ffeec4d269a7d
  
      public static Collection<ServerPlayer> getOptionalPlayers(final CommandContext<CommandSourceStack> context, final String name) throws CommandSyntaxException {
 diff --git a/net/minecraft/commands/arguments/selector/EntitySelector.java b/net/minecraft/commands/arguments/selector/EntitySelector.java
-index d5559c82f52532bfc8c6aea7c9b1a769c1e532c4..1325dd2c8467d147fd45b2874e6040b7391e0e78 100644
 --- a/net/minecraft/commands/arguments/selector/EntitySelector.java
 +++ b/net/minecraft/commands/arguments/selector/EntitySelector.java
 @@ -181,6 +181,54 @@ public class EntitySelector {

@@ -9,7 +9,6 @@ Original license: GPL-3.0-only
 Original project: https://github.com/Yive/Pluto
 
 diff --git a/net/minecraft/core/Direction.java b/net/minecraft/core/Direction.java
-index e6b14aa7f9bd3003428c4e5756b9daf6a14d1a49..42d1d41f0f818f3f3526ce33c30027041752e6b3 100644
 --- a/net/minecraft/core/Direction.java
 +++ b/net/minecraft/core/Direction.java
 @@ -591,7 +591,7 @@ public enum Direction implements Directional, StringRepresentable, ca.spottedlea
@@ -22,7 +21,6 @@ index e6b14aa7f9bd3003428c4e5756b9daf6a14d1a49..42d1d41f0f818f3f3526ce33c3002704
  
          Plane(final Direction[] faces, final Direction.Axis[] axis) {
 diff --git a/net/minecraft/data/worldgen/features/VegetationFeatures.java b/net/minecraft/data/worldgen/features/VegetationFeatures.java
-index bc700545aa552e843e3e860f1ff383599e1963e9..02521579ae7962578063a66a464aee7889d06988 100644
 --- a/net/minecraft/data/worldgen/features/VegetationFeatures.java
 +++ b/net/minecraft/data/worldgen/features/VegetationFeatures.java
 @@ -493,7 +493,7 @@ public class VegetationFeatures {
@@ -35,7 +33,6 @@ index bc700545aa552e843e3e860f1ff383599e1963e9..02521579ae7962578063a66a464aee78
              }
          }
 diff --git a/net/minecraft/server/level/ServerLevel.java b/net/minecraft/server/level/ServerLevel.java
-index 85eda746a82c17fa68b0a147ecb6ff3883de1272..0d600fc5c06caba1a600eac8a279a1b964fb2c04 100644
 --- a/net/minecraft/server/level/ServerLevel.java
 +++ b/net/minecraft/server/level/ServerLevel.java
 @@ -1311,7 +1311,7 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
@@ -48,7 +45,6 @@ index 85eda746a82c17fa68b0a147ecb6ff3883de1272..0d600fc5c06caba1a600eac8a279a1b9
                                  BlockState blockStateNeighbor = this.getBlockState(blockPosNeighbor);
                                  if (blockStateNeighbor.is(Blocks.SNOW)) {
 diff --git a/net/minecraft/world/entity/ai/behavior/PrepareRamNearestTarget.java b/net/minecraft/world/entity/ai/behavior/PrepareRamNearestTarget.java
-index 818d7882a4d7001a9d8f90516b7368e89a5689a0..c336c47a026f0906a4e4a4cb6dac86f0de016adb 100644
 --- a/net/minecraft/world/entity/ai/behavior/PrepareRamNearestTarget.java
 +++ b/net/minecraft/world/entity/ai/behavior/PrepareRamNearestTarget.java
 @@ -145,7 +145,7 @@ public class PrepareRamNearestTarget<E extends PathfinderMob> extends Behavior<E
@@ -61,7 +57,6 @@ index 818d7882a4d7001a9d8f90516b7368e89a5689a0..c336c47a026f0906a4e4a4cb6dac86f0
  
              for (int distance = 0; distance < this.maxRamDistance; distance++) {
 diff --git a/net/minecraft/world/entity/ai/behavior/TryFindLandNearLiquid.java b/net/minecraft/world/entity/ai/behavior/TryFindLandNearLiquid.java
-index d873c8725cc86a3b3270c140729c23e737b53638..844cab0eab41e3bb4883fd8aa94684fbc7fa4f8c 100644
 --- a/net/minecraft/world/entity/ai/behavior/TryFindLandNearLiquid.java
 +++ b/net/minecraft/world/entity/ai/behavior/TryFindLandNearLiquid.java
 @@ -39,7 +39,7 @@ public class TryFindLandNearLiquid {
@@ -74,7 +69,6 @@ index d873c8725cc86a3b3270c140729c23e737b53638..844cab0eab41e3bb4883fd8aa94684fb
                                          if (level.getBlockState(testPos).isAir()
                                              && level.getBlockState(testPos.move(Direction.DOWN)).getFluidState().is(fluidTag)) {
 diff --git a/net/minecraft/world/entity/ai/behavior/TryLaySpawnOnFluidNearLand.java b/net/minecraft/world/entity/ai/behavior/TryLaySpawnOnFluidNearLand.java
-index 5ec0d04a0983cf6da1c10728ed36ca1ff9fd70ec..586e54778cf9a6a7cb09c81f4d881f092f182ea6 100644
 --- a/net/minecraft/world/entity/ai/behavior/TryLaySpawnOnFluidNearLand.java
 +++ b/net/minecraft/world/entity/ai/behavior/TryLaySpawnOnFluidNearLand.java
 @@ -23,7 +23,7 @@ public class TryLaySpawnOnFluidNearLand {
@@ -87,7 +81,6 @@ index 5ec0d04a0983cf6da1c10728ed36ca1ff9fd70ec..586e54778cf9a6a7cb09c81f4d881f09
                                  if (level.getBlockState(relativePos).getCollisionShape(level, relativePos).getFaceShape(Direction.UP).isEmpty()
                                      && (
 diff --git a/net/minecraft/world/entity/projectile/throwableitemprojectile/AbstractThrownPotion.java b/net/minecraft/world/entity/projectile/throwableitemprojectile/AbstractThrownPotion.java
-index e241312fd7484fa1d867b86828c785a466ff5d82..b535db7f6e4b75903c1576f7bf980ebbde33e075 100644
 --- a/net/minecraft/world/entity/projectile/throwableitemprojectile/AbstractThrownPotion.java
 +++ b/net/minecraft/world/entity/projectile/throwableitemprojectile/AbstractThrownPotion.java
 @@ -60,7 +60,7 @@ public abstract class AbstractThrownPotion extends ThrowableItemProjectile {
@@ -100,7 +93,6 @@ index e241312fd7484fa1d867b86828c785a466ff5d82..b535db7f6e4b75903c1576f7bf980ebb
                  }
              }
 diff --git a/net/minecraft/world/level/Level.java b/net/minecraft/world/level/Level.java
-index 96204ee26dd7e65ed4df6392088fdba53058fb94..da3c7f75838b3160eef9c774d130810d0f68786f 100644
 --- a/net/minecraft/world/level/Level.java
 +++ b/net/minecraft/world/level/Level.java
 @@ -2162,7 +2162,7 @@ public abstract class Level implements LevelAccessor, AutoCloseable, ca.spottedl
@@ -113,7 +105,6 @@ index 96204ee26dd7e65ed4df6392088fdba53058fb94..da3c7f75838b3160eef9c774d130810d
              if (this.hasChunkAt(relativePos)) {
                  BlockState state = this.getBlockState(relativePos);
 diff --git a/net/minecraft/world/level/block/CactusBlock.java b/net/minecraft/world/level/block/CactusBlock.java
-index e2f183dc52cf69153fdcf692442e182cfecaec31..85bf28f79251ba07c7d564f8ba7c022221a0540d 100644
 --- a/net/minecraft/world/level/block/CactusBlock.java
 +++ b/net/minecraft/world/level/block/CactusBlock.java
 @@ -130,7 +130,7 @@ public class CactusBlock extends Block implements BonemealableBlock { // Purpur
@@ -126,7 +117,6 @@ index e2f183dc52cf69153fdcf692442e182cfecaec31..85bf28f79251ba07c7d564f8ba7c0222
              if ((level.getWorldBorder().world == null || level.getWorldBorder().world.purpurConfig.cactusBreaksFromSolidNeighbors) && neighbor.isSolid() || level.getFluidState(pos.relative(direction)).is(FluidTags.LAVA)) { // Purpur - Cactus breaks from solid neighbors config
                  return false;
 diff --git a/net/minecraft/world/level/block/ChorusFlowerBlock.java b/net/minecraft/world/level/block/ChorusFlowerBlock.java
-index 4b2f1868ebd07b97a4900ea55aa31226a2d2e263..7b0b0fca1952f73a9126933011a714b34e0bef63 100644
 --- a/net/minecraft/world/level/block/ChorusFlowerBlock.java
 +++ b/net/minecraft/world/level/block/ChorusFlowerBlock.java
 @@ -133,7 +133,7 @@ public class ChorusFlowerBlock extends Block {
@@ -148,7 +138,6 @@ index 4b2f1868ebd07b97a4900ea55aa31226a2d2e263..7b0b0fca1952f73a9126933011a714b3
                  if (neighbor.is(this.plant)) {
                      if (oneNeighbor) {
 diff --git a/net/minecraft/world/level/block/ChorusPlantBlock.java b/net/minecraft/world/level/block/ChorusPlantBlock.java
-index 9bb7a2a33d96fcc9b05aaa58fb7dac61c1e90e13..933fafc91f8e368651c0581e583439b4b586287b 100644
 --- a/net/minecraft/world/level/block/ChorusPlantBlock.java
 +++ b/net/minecraft/world/level/block/ChorusPlantBlock.java
 @@ -88,7 +88,7 @@ public class ChorusPlantBlock extends PipeBlock {
@@ -161,7 +150,6 @@ index 9bb7a2a33d96fcc9b05aaa58fb7dac61c1e90e13..933fafc91f8e368651c0581e583439b4
              BlockState neighborState = level.getBlockState(neighborPos);
              if (neighborState.is(this)) {
 diff --git a/net/minecraft/world/level/block/MossyCarpetBlock.java b/net/minecraft/world/level/block/MossyCarpetBlock.java
-index dc2d53283c20be6ac31bdae82d8060d332f520d2..62039908276abd9a5d25517bd44974d53d4a2460 100644
 --- a/net/minecraft/world/level/block/MossyCarpetBlock.java
 +++ b/net/minecraft/world/level/block/MossyCarpetBlock.java
 @@ -122,7 +122,7 @@ public class MossyCarpetBlock extends Block implements BonemealableBlock {
@@ -183,7 +171,6 @@ index dc2d53283c20be6ac31bdae82d8060d332f520d2..62039908276abd9a5d25517bd44974d5
                  if (aboveState.getValue(property) != WallSide.NONE && !sideSurvivalTest.getAsBoolean()) {
                      aboveState = aboveState.setValue(property, WallSide.NONE);
 diff --git a/net/minecraft/world/level/block/RailState.java b/net/minecraft/world/level/block/RailState.java
-index af5e9e8d26ad0d9d9580aa327d9f145ee3cb747e..ac2499dd591f56ed9945fa8155d9b6a02bc016f3 100644
 --- a/net/minecraft/world/level/block/RailState.java
 +++ b/net/minecraft/world/level/block/RailState.java
 @@ -133,7 +133,7 @@ public class RailState {
@@ -196,7 +183,6 @@ index af5e9e8d26ad0d9d9580aa327d9f145ee3cb747e..ac2499dd591f56ed9945fa8155d9b6a0
                  count++;
              }
 diff --git a/net/minecraft/world/level/block/RedstoneWireBlock.java b/net/minecraft/world/level/block/RedstoneWireBlock.java
-index 78be705043916e80a542ca0991a58f55780c6776..a74fe8ec1c6e48d202eeabf420243ef4cc8b8956 100644
 --- a/net/minecraft/world/level/block/RedstoneWireBlock.java
 +++ b/net/minecraft/world/level/block/RedstoneWireBlock.java
 @@ -151,7 +151,7 @@ public class RedstoneWireBlock extends Block {
@@ -259,7 +245,6 @@ index 78be705043916e80a542ca0991a58f55780c6776..a74fe8ec1c6e48d202eeabf420243ef4
              if (oldState.getValue(PROPERTY_BY_DIRECTION.get(direction)).isConnected() != newState.getValue(PROPERTY_BY_DIRECTION.get(direction)).isConnected()
                  && level.getBlockState(relativePos).isRedstoneConductor(level, relativePos)) {
 diff --git a/net/minecraft/world/level/block/ScaffoldingBlock.java b/net/minecraft/world/level/block/ScaffoldingBlock.java
-index 92bc27c26e18472ee2c8555b17fc5b5e05db4ce4..e678e14a475f9fd3d6a5f4545de1b60570918375 100644
 --- a/net/minecraft/world/level/block/ScaffoldingBlock.java
 +++ b/net/minecraft/world/level/block/ScaffoldingBlock.java
 @@ -158,7 +158,7 @@ public class ScaffoldingBlock extends Block implements SimpleWaterloggedBlock {
@@ -272,7 +257,6 @@ index 92bc27c26e18472ee2c8555b17fc5b5e05db4ce4..e678e14a475f9fd3d6a5f4545de1b605
              if (relativeState.is(Blocks.SCAFFOLDING)) {
                  distance = Math.min(distance, relativeState.getValue(DISTANCE) + 1);
 diff --git a/net/minecraft/world/level/block/SugarCaneBlock.java b/net/minecraft/world/level/block/SugarCaneBlock.java
-index 4ad1680815087d753adafeeabb393fe37db72aeb..2eb5e4e4f1fd39202554ad0c81c6a250828367c9 100644
 --- a/net/minecraft/world/level/block/SugarCaneBlock.java
 +++ b/net/minecraft/world/level/block/SugarCaneBlock.java
 @@ -89,7 +89,7 @@ public class SugarCaneBlock extends Block implements BonemealableBlock { // Purp
@@ -285,7 +269,6 @@ index 4ad1680815087d753adafeeabb393fe37db72aeb..2eb5e4e4f1fd39202554ad0c81c6a250
                  FluidState fluidState = level.getFluidState(below.relative(direction));
                  if (fluidState.is(FluidTags.SUPPORTS_SUGAR_CANE_ADJACENTLY) || blockState.is(BlockTags.SUPPORTS_SUGAR_CANE_ADJACENTLY)) {
 diff --git a/net/minecraft/world/level/block/VineBlock.java b/net/minecraft/world/level/block/VineBlock.java
-index 81f87a0054cc2882679b9fade760d1f5a0772312..ace074e4100785fb72e3b25213b4e9f09b7628db 100644
 --- a/net/minecraft/world/level/block/VineBlock.java
 +++ b/net/minecraft/world/level/block/VineBlock.java
 @@ -122,7 +122,7 @@ public class VineBlock extends Block {
@@ -316,7 +299,6 @@ index 81f87a0054cc2882679b9fade760d1f5a0772312..ace074e4100785fb72e3b25213b4e9f0
                  BooleanProperty propertyForFace = getPropertyForFace(direction);
                  if (from.getValue(propertyForFace)) {
 diff --git a/net/minecraft/world/level/block/sounds/AmbientDesertBlockSoundsPlayer.java b/net/minecraft/world/level/block/sounds/AmbientDesertBlockSoundsPlayer.java
-index 3bc75f501d0050c1a5b8cd0321369e251b4e9efa..d7436c11c7d1ea3102cbd0f2d09356106a3397ba 100644
 --- a/net/minecraft/world/level/block/sounds/AmbientDesertBlockSoundsPlayer.java
 +++ b/net/minecraft/world/level/block/sounds/AmbientDesertBlockSoundsPlayer.java
 @@ -58,7 +58,7 @@ public class AmbientDesertBlockSoundsPlayer {
@@ -329,7 +311,6 @@ index 3bc75f501d0050c1a5b8cd0321369e251b4e9efa..d7436c11c7d1ea3102cbd0f2d0935610
              if (columnContainsTriggeringBlock(level, mutablePos) && matchingBlocksFound++ >= 3) {
                  return true;
 diff --git a/net/minecraft/world/level/dimension/end/EnderDragonFight.java b/net/minecraft/world/level/dimension/end/EnderDragonFight.java
-index ad9002fa7199a389ba76b6157699f063f71e2470..1a768ecd0792d1afefb2a4be826fc74a9c7f9740 100644
 --- a/net/minecraft/world/level/dimension/end/EnderDragonFight.java
 +++ b/net/minecraft/world/level/dimension/end/EnderDragonFight.java
 @@ -599,7 +599,7 @@ public class EnderDragonFight extends SavedData {
@@ -342,7 +323,6 @@ index ad9002fa7199a389ba76b6157699f063f71e2470..1a768ecd0792d1afefb2a4be826fc74a
                  if (found.isEmpty()) {
                      return false; // CraftBukkit - return value
 diff --git a/net/minecraft/world/level/levelgen/blending/Blender.java b/net/minecraft/world/level/levelgen/blending/Blender.java
-index b7722239afbc04f77445584f5019fedc3c8f3ced..4ee5c165f4eff9e1a9830d4126d1e8efe063787d 100644
 --- a/net/minecraft/world/level/levelgen/blending/Blender.java
 +++ b/net/minecraft/world/level/levelgen/blending/Blender.java
 @@ -322,7 +322,7 @@ public class Blender {
@@ -355,7 +335,6 @@ index b7722239afbc04f77445584f5019fedc3c8f3ced..4ee5c165f4eff9e1a9830d4126d1e8ef
                          int minX = direction == Direction.EAST ? 15 : 0;
                          int maxX = direction == Direction.WEST ? 0 : 15;
 diff --git a/net/minecraft/world/level/levelgen/feature/BonusChestFeature.java b/net/minecraft/world/level/levelgen/feature/BonusChestFeature.java
-index 6c8e3bfc589e29ea910f7c40f22414ceb3096c76..cedfff456b527e249560f36effa075d9efd759b8 100644
 --- a/net/minecraft/world/level/levelgen/feature/BonusChestFeature.java
 +++ b/net/minecraft/world/level/levelgen/feature/BonusChestFeature.java
 @@ -41,7 +41,7 @@ public record BonusChestFeature() implements Feature {
@@ -368,7 +347,6 @@ index 6c8e3bfc589e29ea910f7c40f22414ceb3096c76..cedfff456b527e249560f36effa075d9
                          if (torch.canSurvive(level, torchPos)) {
                              level.setBlock(torchPos, torch, Block.UPDATE_CLIENTS);
 diff --git a/net/minecraft/world/level/levelgen/feature/EndPodiumFeature.java b/net/minecraft/world/level/levelgen/feature/EndPodiumFeature.java
-index 20e2d649ad1f7cca5ab807f2afa5a787d378cfb2..d6444de6bd96f15c0cbf0c8c1a1dd063bdcf582b 100644
 --- a/net/minecraft/world/level/levelgen/feature/EndPodiumFeature.java
 +++ b/net/minecraft/world/level/levelgen/feature/EndPodiumFeature.java
 @@ -65,7 +65,7 @@ public record EndPodiumFeature(boolean active) implements Feature {
@@ -381,7 +359,6 @@ index 20e2d649ad1f7cca5ab807f2afa5a787d378cfb2..d6444de6bd96f15c0cbf0c8c1a1dd063
          }
  
 diff --git a/net/minecraft/world/level/levelgen/feature/MonsterRoomFeature.java b/net/minecraft/world/level/levelgen/feature/MonsterRoomFeature.java
-index c7f2cb020d35618b9521149317e0a3b69f2e7601..223f1f998709dfd31c626e488076fb8fc678bd24 100644
 --- a/net/minecraft/world/level/levelgen/feature/MonsterRoomFeature.java
 +++ b/net/minecraft/world/level/levelgen/feature/MonsterRoomFeature.java
 @@ -100,7 +100,7 @@ public record MonsterRoomFeature() implements Feature {
@@ -394,7 +371,6 @@ index c7f2cb020d35618b9521149317e0a3b69f2e7601..223f1f998709dfd31c626e488076fb8f
                                  wallCount++;
                              }
 diff --git a/net/minecraft/world/level/levelgen/feature/MultifaceGrowthFeature.java b/net/minecraft/world/level/levelgen/feature/MultifaceGrowthFeature.java
-index c1bd1fa54bf0d033f0a30b58f192e889289ee728..d937b0a42b7f5da154da496edde331dd3ab7e0ce 100644
 --- a/net/minecraft/world/level/levelgen/feature/MultifaceGrowthFeature.java
 +++ b/net/minecraft/world/level/levelgen/feature/MultifaceGrowthFeature.java
 @@ -135,7 +135,7 @@ public record MultifaceGrowthFeature(
@@ -407,7 +383,6 @@ index c1bd1fa54bf0d033f0a30b58f192e889289ee728..d937b0a42b7f5da154da496edde331dd
  
          return validDirections;
 diff --git a/net/minecraft/world/level/levelgen/feature/SpeleothemClusterFeature.java b/net/minecraft/world/level/levelgen/feature/SpeleothemClusterFeature.java
-index 50a31e0fff0c46f11764190753416a9db855ccc8..cd4549629ceecd2d275733d329ea4e6d4cb5939a 100644
 --- a/net/minecraft/world/level/levelgen/feature/SpeleothemClusterFeature.java
 +++ b/net/minecraft/world/level/levelgen/feature/SpeleothemClusterFeature.java
 @@ -233,7 +233,7 @@ public record SpeleothemClusterFeature(
@@ -420,7 +395,6 @@ index 50a31e0fff0c46f11764190753416a9db855ccc8..cd4549629ceecd2d275733d329ea4e6d
                      return false;
                  }
 diff --git a/net/minecraft/world/level/levelgen/feature/UnderwaterMagmaFeature.java b/net/minecraft/world/level/levelgen/feature/UnderwaterMagmaFeature.java
-index 62a7aba42e178a8de1c79007fe10a4eea9bbe5a4..70d457f0024433e5cfcbcee0798fca0d1b841665 100644
 --- a/net/minecraft/world/level/levelgen/feature/UnderwaterMagmaFeature.java
 +++ b/net/minecraft/world/level/levelgen/feature/UnderwaterMagmaFeature.java
 @@ -68,7 +68,7 @@ public record UnderwaterMagmaFeature(int floorSearchRange, int placementRadiusAr
@@ -433,7 +407,6 @@ index 62a7aba42e178a8de1c79007fe10a4eea9bbe5a4..70d457f0024433e5cfcbcee0798fca0d
                      return false;
                  }
 diff --git a/net/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer.java b/net/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer.java
-index e4bd972f63b5b2c90ad77fce8d1325f7f69589e4..64ce346d0e40d5436813af3b25abad88df10afd1 100644
 --- a/net/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer.java
 +++ b/net/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer.java
 @@ -131,7 +131,7 @@ public abstract class FoliagePlacer {
@@ -446,7 +419,6 @@ index e4bd972f63b5b2c90ad77fce8d1325f7f69589e4..64ce346d0e40d5436813af3b25abad88
              int offsetToEdge = toEdge.getAxisDirection() == Direction.AxisDirection.POSITIVE ? currentRadius + offset : currentRadius;
              pos.setWithOffset(origin, 0, y - 1, 0).move(toEdge, offsetToEdge).move(alongEdge, -currentRadius);
 diff --git a/net/minecraft/world/level/levelgen/feature/rootplacers/MangroveRootPlacer.java b/net/minecraft/world/level/levelgen/feature/rootplacers/MangroveRootPlacer.java
-index f6bf07da7d42325f17a90e01d69c01088dcdf8c0..31417587489106c49fe14fec737f01e0d8049451 100644
 --- a/net/minecraft/world/level/levelgen/feature/rootplacers/MangroveRootPlacer.java
 +++ b/net/minecraft/world/level/levelgen/feature/rootplacers/MangroveRootPlacer.java
 @@ -59,7 +59,7 @@ public class MangroveRootPlacer extends RootPlacer {
@@ -459,7 +431,6 @@ index f6bf07da7d42325f17a90e01d69c01088dcdf8c0..31417587489106c49fe14fec737f01e0
              List<BlockPos> positionsInDirection = Lists.newArrayList();
              if (!this.simulateRoots(level, random, pos, dir, trunkOrigin, positionsInDirection, 0)) {
 diff --git a/net/minecraft/world/level/levelgen/feature/treedecorators/CocoaDecorator.java b/net/minecraft/world/level/levelgen/feature/treedecorators/CocoaDecorator.java
-index 4fafa9253fecc4f5293d7ac2fe9caa983fe28556..e877197da6d471a75fed879216b89393f558c3da 100644
 --- a/net/minecraft/world/level/levelgen/feature/treedecorators/CocoaDecorator.java
 +++ b/net/minecraft/world/level/levelgen/feature/treedecorators/CocoaDecorator.java
 @@ -33,7 +33,7 @@ public class CocoaDecorator extends TreeDecorator {
@@ -472,7 +443,6 @@ index 4fafa9253fecc4f5293d7ac2fe9caa983fe28556..e877197da6d471a75fed879216b89393
                                      Direction opposite = direction.getOpposite();
                                      BlockPos cocoaPos = pos.offset(opposite.getStepX(), 0, opposite.getStepZ());
 diff --git a/net/minecraft/world/level/levelgen/structure/StructurePiece.java b/net/minecraft/world/level/levelgen/structure/StructurePiece.java
-index dc17f0ab266a6370ffec5e42342a60710df39886..71acfeb0b9a4f1b3358e006705441484e14d6668 100644
 --- a/net/minecraft/world/level/levelgen/structure/StructurePiece.java
 +++ b/net/minecraft/world/level/levelgen/structure/StructurePiece.java
 @@ -454,7 +454,7 @@ public abstract class StructurePiece {
@@ -485,7 +455,6 @@ index dc17f0ab266a6370ffec5e42342a60710df39886..71acfeb0b9a4f1b3358e006705441484
              BlockState state = level.getBlockState(relativePos);
              if (state.is(Blocks.CHEST)) {
 diff --git a/net/minecraft/world/level/levelgen/structure/structures/DesertPyramidPiece.java b/net/minecraft/world/level/levelgen/structure/structures/DesertPyramidPiece.java
-index cf3e1e74736ff9a8f51bfdd0132b3da83dd6820a..2f804b17eddf8884761a6e67c4a30b8e607e9a62 100644
 --- a/net/minecraft/world/level/levelgen/structure/structures/DesertPyramidPiece.java
 +++ b/net/minecraft/world/level/levelgen/structure/structures/DesertPyramidPiece.java
 @@ -292,7 +292,7 @@ public class DesertPyramidPiece extends ScatteredFeaturePiece {
@@ -498,7 +467,6 @@ index cf3e1e74736ff9a8f51bfdd0132b3da83dd6820a..2f804b17eddf8884761a6e67c4a30b8e
                      int xo = direction.getStepX() * 2;
                      int zo = direction.getStepZ() * 2;
 diff --git a/net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces.java b/net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces.java
-index eefc3c2965b69ab008005940b3d8e9516400bd31..c4e1c648c2520381365240d4c916675db6011c20 100644
 --- a/net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces.java
 +++ b/net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces.java
 @@ -167,7 +167,7 @@ public class WoodlandMansionPieces {
@@ -529,7 +497,6 @@ index eefc3c2965b69ab008005940b3d8e9516400bd31..c4e1c648c2520381365240d4c916675d
                                          doorDirs.add(direction);
                                      }
 diff --git a/net/minecraft/world/level/material/FlowingFluid.java b/net/minecraft/world/level/material/FlowingFluid.java
-index dc81802f4475bd3cd3ed4e1f2cf13db478337e60..eed24d905e24b4107352ed3e1392c63ad6fb44e3 100644
 --- a/net/minecraft/world/level/material/FlowingFluid.java
 +++ b/net/minecraft/world/level/material/FlowingFluid.java
 @@ -98,7 +98,7 @@ public abstract class FlowingFluid extends Fluid {
@@ -596,7 +563,6 @@ index dc81802f4475bd3cd3ed4e1f2cf13db478337e60..eed24d905e24b4107352ed3e1392c63a
              BlockState testState = level.getBlockStateIfLoaded(testPos); // Paper - Prevent chunk loading from fluid flowing
              if (testState == null) continue; // Paper - Prevent chunk loading from fluid flowing
 diff --git a/net/minecraft/world/level/pathfinder/SwimNodeEvaluator.java b/net/minecraft/world/level/pathfinder/SwimNodeEvaluator.java
-index 49d959160337f61a40cb94c31aec8dad0aee3839..a4fa389670f3f4ac6df5d2d95aa148843fb7630d 100644
 --- a/net/minecraft/world/level/pathfinder/SwimNodeEvaluator.java
 +++ b/net/minecraft/world/level/pathfinder/SwimNodeEvaluator.java
 @@ -59,7 +59,7 @@ public class SwimNodeEvaluator extends NodeEvaluator {
@@ -609,7 +575,6 @@ index 49d959160337f61a40cb94c31aec8dad0aee3839..a4fa389670f3f4ac6df5d2d95aa14884
              if (hasMalus(nodes.get(direction)) && hasMalus(nodes.get(secondDirection))) {
                  Node diagonalNode = this.findAcceptedNode(
 diff --git a/net/minecraft/world/level/pathfinder/WalkNodeEvaluator.java b/net/minecraft/world/level/pathfinder/WalkNodeEvaluator.java
-index 8826c5c7fc9dc77d3381551e43c25eca84a198e9..aeaf9188a521eb33b180ea7871265e37b79ce55d 100644
 --- a/net/minecraft/world/level/pathfinder/WalkNodeEvaluator.java
 +++ b/net/minecraft/world/level/pathfinder/WalkNodeEvaluator.java
 @@ -127,7 +127,7 @@ public class WalkNodeEvaluator extends NodeEvaluator {
@@ -631,7 +596,6 @@ index 8826c5c7fc9dc77d3381551e43c25eca84a198e9..aeaf9188a521eb33b180ea7871265e37
              if (this.isDiagonalValid(pos, this.reusableNeighbors[direction.get2DDataValue()], this.reusableNeighbors[secondDirection.get2DDataValue()])) {
                  Node diagonalNode = this.findAcceptedNode(
 diff --git a/net/minecraft/world/level/redstone/RedstoneWireEvaluator.java b/net/minecraft/world/level/redstone/RedstoneWireEvaluator.java
-index 01a3662cb6539b842e5d62ba150cc0f5990caa04..da893a2d1c6e60deb7cbfd959264d8d072bf440b 100644
 --- a/net/minecraft/world/level/redstone/RedstoneWireEvaluator.java
 +++ b/net/minecraft/world/level/redstone/RedstoneWireEvaluator.java
 @@ -29,7 +29,7 @@ public abstract class RedstoneWireEvaluator {

@@ -25,7 +25,6 @@ track:
 villagers that have no secondary POI (farmland) do not search for it
 
 diff --git a/net/minecraft/world/entity/ai/sensing/SecondaryPoiSensor.java b/net/minecraft/world/entity/ai/sensing/SecondaryPoiSensor.java
-index 1da9f1cdb2ee8b1514c79fee24460f852b6a3577..3c0b272ae11df3b2f929a55497278bd9bad51422 100644
 --- a/net/minecraft/world/entity/ai/sensing/SecondaryPoiSensor.java
 +++ b/net/minecraft/world/entity/ai/sensing/SecondaryPoiSensor.java
 @@ -24,7 +24,10 @@ public class SecondaryPoiSensor extends Sensor<Villager> {

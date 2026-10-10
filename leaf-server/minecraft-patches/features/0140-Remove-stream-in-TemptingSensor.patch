@@ -5,7 +5,6 @@ Subject: [PATCH] Remove stream in TemptingSensor
 
 
 diff --git a/net/minecraft/world/entity/ai/sensing/TemptingSensor.java b/net/minecraft/world/entity/ai/sensing/TemptingSensor.java
-index f0dc4231b79e4f02416917dacce978121ec6d7e2..70e5ffafdf8e78efb36c4480c0abe515dc35c62f 100644
 --- a/net/minecraft/world/entity/ai/sensing/TemptingSensor.java
 +++ b/net/minecraft/world/entity/ai/sensing/TemptingSensor.java
 @@ -38,15 +38,20 @@ public class TemptingSensor extends Sensor<PathfinderMob> {

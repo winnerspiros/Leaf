@@ -1,0 +1,38 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: RuleGaed <arasomeroguz9@gmail.com>
+Date: Tue, 9 Nov 2077 00:00:00 +0800
+Subject: [PATCH] Gale: precompute Direction.values + cache in pathfinding evaluators
+
+Ported from Gale feat/pathfinder-direction-cache (57a9e9b) + precompute base (9a5cbe2e7a)
+
+diff --git a/net/minecraft/core/Direction.java b/net/minecraft/core/Direction.java
+--- a/net/minecraft/core/Direction.java
++++ b/net/minecraft/core/Direction.java
+@@ -56,6 +_,7 @@
+     private final Vec3i normal;
+     private final Vec3 normalVec3;
+     private final Vector3fc normalVec3f;
++    public static final Direction[] leaf$precompute_VALUES = values(); // Leaf - precompute Direction.values()
+     private static final Direction[] VALUES = values();
+     private static final Direction[] BY_3D_DATA = Arrays.stream(VALUES).sorted(Comparator.comparingInt(d -> d.data3d)).toArray(Direction[]::new);
+     private static final Direction[] BY_2D_DATA = Arrays.stream(VALUES)
+diff --git a/net/minecraft/world/level/pathfinder/AmphibiousNodeEvaluator.java b/net/minecraft/world/level/pathfinder/AmphibiousNodeEvaluator.java
+--- a/net/minecraft/world/level/pathfinder/AmphibiousNodeEvaluator.java
++++ b/net/minecraft/world/level/pathfinder/AmphibiousNodeEvaluator.java
+@@ -98,5 +_,5 @@
+             BlockPos.MutableBlockPos reusablePos = new BlockPos.MutableBlockPos();
+
+-            for (Direction direction : Direction.values()) {
++            for (Direction direction : Direction.leaf$precompute_VALUES) { // Leaf - precompute Direction.values()
+                 reusablePos.set(x, y, z).move(direction);
+                 PathType pathType = context.getPathTypeFromState(reusablePos.getX(), reusablePos.getY(), reusablePos.getZ());
+diff --git a/net/minecraft/world/level/pathfinder/SwimNodeEvaluator.java b/net/minecraft/world/level/pathfinder/SwimNodeEvaluator.java
+--- a/net/minecraft/world/level/pathfinder/SwimNodeEvaluator.java
++++ b/net/minecraft/world/level/pathfinder/SwimNodeEvaluator.java
+@@ -52,5 +_,5 @@
+         Map<Direction, Node> nodes = Maps.newEnumMap(Direction.class);
+
+-        for (Direction direction : Direction.values()) {
++        for (Direction direction : Direction.leaf$precompute_VALUES) { // Leaf - precompute Direction.values()
+             Node node = this.findAcceptedNode(pos.x + direction.getStepX(), pos.y + direction.getStepY(), pos.z + direction.getStepZ());
+             nodes.put(direction, node);

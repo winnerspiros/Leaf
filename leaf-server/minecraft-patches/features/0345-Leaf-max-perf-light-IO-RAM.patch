@@ -8,31 +8,50 @@ Subject: [PATCH] Leaf max-perf: reduce light-engine + IO buffer retention
 - Luminol scratch retain 2MiB -> 1MiB
 
 diff --git a/net/minecraft/world/level/lighting/LightEngine.java b/net/minecraft/world/level/lighting/LightEngine.java
+index 0000000000000000000000000000000000000000..0000000000000000000000000000000000000000 100644
 --- a/net/minecraft/world/level/lighting/LightEngine.java
 +++ b/net/minecraft/world/level/lighting/LightEngine.java
-@@
+@@ -24,7 +24,9 @@ public abstract class LightEngine<M extends DataLayerStorageMap<M>, S extends Da
+     protected static final int MIN_OPACITY = 1;
+     protected static final long PULL_LIGHT_IN_ENTRY = LightEngine.QueueEntry.decreaseAllDirections(1);
 -    private static final int MIN_QUEUE_SIZE = 512;
 +    // Leaf start - max-perf: smaller light queue for low-RAM box
 +    private static final int MIN_QUEUE_SIZE = 128;
 +    // Leaf end - max-perf
-@@
+     protected static final Direction[] PROPAGATION_DIRECTIONS = Direction.values();
+     protected final LightChunkGetter chunkSource;
+     protected final S storage;
+@@ -31,7 +33,9 @@ public abstract class LightEngine<M extends DataLayerStorageMap<M>, S extends Da
+     private final LongOpenHashSet blockNodesToCheck = new LongOpenHashSet(512, 0.5F);
+     private final LongArrayFIFOQueue decreaseQueue = new LongArrayFIFOQueue();
+     private final LongArrayFIFOQueue increaseQueue = new LongArrayFIFOQueue();
 -    private static final int CACHE_SIZE = 2;
 +    // Leaf start - max-perf: single light-chunk slot
 +    private static final int CACHE_SIZE = 1;
 +    // Leaf end - max-perf
+     private final long[] lastChunkPos = new long[2];
+     private final LightChunk[] lastChunk = new LightChunk[2];
 diff --git a/net/minecraft/world/level/lighting/DataLayerStorageMap.java b/net/minecraft/world/level/lighting/DataLayerStorageMap.java
+index 0000000000000000000000000000000000000000..0000000000000000000000000000000000000000 100644
 --- a/net/minecraft/world/level/lighting/DataLayerStorageMap.java
 +++ b/net/minecraft/world/level/lighting/DataLayerStorageMap.java
-@@
+@@ -6,7 +6,9 @@
+ public abstract class DataLayerStorageMap<M extends DataLayerStorageMap<M>> {
 -    private static final int CACHE_SIZE = 2;
 +    // Leaf start - max-perf: single data-layer slot
 +    private static final int CACHE_SIZE = 1;
 +    // Leaf end - max-perf
+     private final long[] lastSectionKeys = new long[2];
+     private final @Nullable DataLayer[] lastSections = new DataLayer[2];
 diff --git a/me/earthme/luminol/data/BufferedLinearRegionFile.java b/me/earthme/luminol/data/BufferedLinearRegionFile.java
+index 0000000000000000000000000000000000000000..0000000000000000000000000000000000000000 100644
 --- a/me/earthme/luminol/data/BufferedLinearRegionFile.java
 +++ b/me/earthme/luminol/data/BufferedLinearRegionFile.java
-@@
+@@ -90,7 +90,9 @@ public class BufferedLinearRegionFile {
+     // bytes never outlive the single pread/pwrite they are staged for, so they never
+     // need to escape into a fresh allocation
 -    private static final int SCRATCH_RETAIN_LIMIT = 2 * 1024 * 1024; // 2 MiB
 +    // Leaf start - max-perf: halve scratch retention per IO thread
 +    private static final int SCRATCH_RETAIN_LIMIT = 1 * 1024 * 1024; // 1 MiB
 +    // Leaf end - max-perf
+     private static final ThreadLocal<ByteBuffer> SCRATCH = ThreadLocal.withInitial(() -> ByteBuffer.allocate(64 * 1024));

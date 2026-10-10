@@ -602,36 +602,6 @@ index f042ddf76f3a39c389e099f09dd5cb07483d2046..894bf0c1aa6ba8cec09917e42965e3e1
          if (this.path != null && !this.path.isDone() && targets.contains(this.targetPos)) {
              return this.path;
          }
-@@ -195,11 +201,29 @@ public abstract class PathNavigation {
-         PathNavigationRegion region = new PathNavigationRegion(this.level, fromPos.offset(-radius, -radius, -radius), fromPos.offset(radius, radius, radius));
-         Path path = this.pathFinder.findPath(region, this.mob, targets, maxPathLength, reachRange, this.maxVisitedNodesMultiplier);
-         profiler.pop();
-+        // Kaiiju start - petal - async path processing
-+        if (org.dreeam.leaf.config.modules.async.AsyncPathfinding.enabled) {
-+            // assign early a target position. most calls will only have 1 position
-+            if (!targets.isEmpty()) this.targetPos = targets.iterator().next();
-+
-+            org.dreeam.leaf.async.path.AsyncPathProcessor.awaitProcessing(path, processedPath -> {
-+                // check that processing didn't take so long that we calculated a new path
-+                if (processedPath != this.path) return;
-+
-+                if (processedPath != null && processedPath.getTarget() != null) {
-+                    this.targetPos = processedPath.getTarget();
-+                    this.reachRange = reachRange;
-+                    this.resetStuckTimeout();
-+                }
-+            });
-+        } else {
-+            // Kaiiju end - petal - async path processing
-         if (path != null && path.getTarget() != null) {
-             this.targetPos = path.getTarget();
-             this.reachRange = reachRange;
-             this.resetStuckTimeout();
-         }
-+        } // Kaiiju - petal - async path processing
- 
-         return path;
-     }
 @@ -255,8 +279,8 @@ public abstract class PathNavigation {
              return false;
          }

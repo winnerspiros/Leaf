@@ -40,10 +40,10 @@ index f499c02b2ff2d436fbf7759f1e865e14f5268de7..fdbd4a89a8865c7f5c073a22c627e718
          this.flags.put(BarFlag.PLAY_BOSS_MUSIC, new FlagContainer(this.handle::shouldPlayBossMusic, this.handle::setPlayBossMusic));
          this.flags.put(BarFlag.CREATE_FOG, new FlagContainer(this.handle::shouldCreateWorldFog, this.handle::setCreateWorldFog));
 diff --git a/src/main/java/org/bukkit/craftbukkit/entity/CraftEntityTypes.java b/src/main/java/org/bukkit/craftbukkit/entity/CraftEntityTypes.java
-index 1449c73e4310d140918ad07cccb9d3b53b3bfb47..7af4e5726d504a9ab6b15bc1312e9329cf990b19 100644
+index 9b120dc67c9e530be8a63b10793cb4c93b7ca1cd..b5752b52aad720c112d4432c279eaddafd3667eb 100644
 --- a/src/main/java/org/bukkit/craftbukkit/entity/CraftEntityTypes.java
 +++ b/src/main/java/org/bukkit/craftbukkit/entity/CraftEntityTypes.java
-@@ -272,8 +272,10 @@ public final class CraftEntityTypes {
+@@ -278,8 +278,10 @@ public final class CraftEntityTypes {
          }
      };
      // Paper end - respect randomizeData

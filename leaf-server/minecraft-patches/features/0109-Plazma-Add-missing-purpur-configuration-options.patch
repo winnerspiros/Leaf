@@ -256,7 +256,7 @@ index 58b99596b16e1dd8b0c9bcde5d465c6df52cc28b..6d7cd4b318e5edde90269bcf3a7b2366
  
      public void unpackLootTable(final @Nullable Player player) {
 diff --git a/org/purpurmc/purpur/PurpurConfig.java b/org/purpurmc/purpur/PurpurConfig.java
-index 97456a5ed6dc6f0049ea8520837f10e9c7b91713..3d200c17891e3416c8b6cff907a008c8c1add24e 100644
+index c1b701e4a8b39fc077516e8d08b06c7f1c6ccac1..3102420f3296ab320a1b484b870cf5bc95d390f8 100644
 --- a/org/purpurmc/purpur/PurpurConfig.java
 +++ b/org/purpurmc/purpur/PurpurConfig.java
 @@ -327,6 +327,7 @@ public class PurpurConfig {

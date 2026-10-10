@@ -1,6 +1,6 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: HaHaWTH <102713261+HaHaWTH@users.noreply.github.com>
-Date: Tue, 9 Sep 2025 00:00:00 +0800
+Date: Tue, 9 Nov 2077 00:00:00 +0800
 Subject: [PATCH] Fix MC-17876
 
 Related MC issue: https://bugs.mojang.com/browse/MC/issues/MC-17876
@@ -10,7 +10,7 @@ Temporarily bypass the max health check during entity creation, as equipment att
 Co-authored-by: Bjarne Koll <git@lynxplay.dev>
 
 diff --git a/net/minecraft/world/entity/LivingEntity.java b/net/minecraft/world/entity/LivingEntity.java
-index 93d2d6a6e9e2150007ec5c7044718046da8ad3df..78796af0e9661372abd51b4fc7b4f58cff12d910 100644
+index ff551a42b6e452a5454a8d07ef9f4b2f8b80e4a3..2fdbb1460ec5ed2f020672156d2378b26a297943 100644
 --- a/net/minecraft/world/entity/LivingEntity.java
 +++ b/net/minecraft/world/entity/LivingEntity.java
 @@ -926,7 +926,7 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin

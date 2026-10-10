@@ -5,10 +5,10 @@ Subject: [PATCH] optimize mob spawning
 
 
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 63f2c22c44fceb6f75accfebba324235d9aedf99..29f349a81c61edc634c591c98f3af5b853ba46af 100644
+index c5bd0297360e4f3fe104ec1aa1018ff3e36f052d..5ba9a28de52edb02dab908ee88c2d743d75c1425 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -287,7 +287,8 @@ public final class CraftServer implements Server {
+@@ -288,7 +288,8 @@ public final class CraftServer implements Server {
      private final EntityMetadataStore entityMetadata = new EntityMetadataStore();
      private final PlayerMetadataStore playerMetadata = new PlayerMetadataStore();
      private final WorldMetadataStore worldMetadata = new WorldMetadataStore();
@@ -18,7 +18,7 @@ index 63f2c22c44fceb6f75accfebba324235d9aedf99..29f349a81c61edc634c591c98f3af5b8
      private File container;
      private WarningState warningState = WarningState.DEFAULT;
      public ApiVersion minimumAPI;
-@@ -480,6 +481,7 @@ public final class CraftServer implements Server {
+@@ -481,6 +482,7 @@ public final class CraftServer implements Server {
          this.saveCommandsConfig();
          this.overrideAllCommandBlockCommands = this.commandsConfiguration.getStringList("command-block-overrides").contains("*");
          this.ignoreVanillaPermissions = this.commandsConfiguration.getBoolean("ignore-vanilla-permissions");
@@ -26,7 +26,7 @@ index 63f2c22c44fceb6f75accfebba324235d9aedf99..29f349a81c61edc634c591c98f3af5b8
          this.overrideSpawnLimits();
          console.autosavePeriod = this.configuration.getInt("ticks-per.autosave");
          this.warningState = WarningState.value(this.configuration.getString("settings.deprecated-verbose"));
-@@ -511,9 +513,9 @@ public final class CraftServer implements Server {
+@@ -512,9 +514,9 @@ public final class CraftServer implements Server {
      }
  
      private void overrideSpawnLimits() {
@@ -38,7 +38,7 @@ index 63f2c22c44fceb6f75accfebba324235d9aedf99..29f349a81c61edc634c591c98f3af5b8
              }
          }
      }
-@@ -2372,7 +2374,7 @@ public final class CraftServer implements Server {
+@@ -2359,7 +2361,7 @@ public final class CraftServer implements Server {
      }
  
      public int getSpawnLimitUnsafe(final SpawnCategory spawnCategory) {
@@ -48,7 +48,7 @@ index 63f2c22c44fceb6f75accfebba324235d9aedf99..29f349a81c61edc634c591c98f3af5b8
  
      @Override
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftWorld.java b/src/main/java/org/bukkit/craftbukkit/CraftWorld.java
-index 1e761650b95a202c7f137a22f2d00f2684d3a290..c20dc060e0555bcd0af31c9741cd5f6682fee519 100644
+index ce18685da5b7d9b8bd56201dcf8306a6f526d52c..0d2275fc02f1145933e48bfbb98a380bdac2ab97 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftWorld.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftWorld.java
 @@ -175,7 +175,8 @@ public class CraftWorld extends CraftRegionAccessor implements World {

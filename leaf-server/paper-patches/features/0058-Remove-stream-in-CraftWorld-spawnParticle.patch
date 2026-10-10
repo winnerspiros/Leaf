@@ -5,7 +5,7 @@ Subject: [PATCH] Remove stream in CraftWorld#spawnParticle
 
 
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftWorld.java b/src/main/java/org/bukkit/craftbukkit/CraftWorld.java
-index c20dc060e0555bcd0af31c9741cd5f6682fee519..97c01a5b7633e235652ea04c7a21b35fd4850ae4 100644
+index 0d2275fc02f1145933e48bfbb98a380bdac2ab97..6a54121b6ec0e524a1218e4475becc6e7f8bd896 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftWorld.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftWorld.java
 @@ -1770,8 +1770,8 @@ public class CraftWorld extends CraftRegionAccessor implements World {

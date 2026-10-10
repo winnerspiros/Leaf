@@ -27,7 +27,7 @@ index fd1fe87bb891ad66b6edb35e9d7c363f9efa5790..4fa1b9f2205ae0990561483372fb8091
  
          // Perform the walk over all directly reachable redstone wire blocks, propagating wire value
 diff --git a/net/minecraft/server/level/ServerLevel.java b/net/minecraft/server/level/ServerLevel.java
-index d463d1be4928b791fc4c20b9904dcbdc4d83ea99..2c78d3581866fe771a687e094c99e3242a283d93 100644
+index d84928bd3b0f479a2d173b3489f72e7673057e35..1a19d1840aa77df5aafdf03f36ae3279a053532d 100644
 --- a/net/minecraft/server/level/ServerLevel.java
 +++ b/net/minecraft/server/level/ServerLevel.java
 @@ -1170,6 +1170,8 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet

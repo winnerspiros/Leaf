@@ -1,6 +1,6 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: HaHaWTH <102713261+HaHaWTH@users.noreply.github.com>
-Date: Tue, 9 Sep 2025 00:00:00 +0800
+Date: Tue, 9 Nov 2077 00:00:00 +0800
 Subject: [PATCH] Prevent entities from moving into weak loaded chunks
 
 This also should mitigate most cases of memory leaks caused by massive weak loaded projectiles
@@ -52,7 +52,7 @@ index 1a19d1840aa77df5aafdf03f36ae3279a053532d..293a3144ce2ba8c709307627808d75d0
          // CollisionGetter methods for VoxelShapes)
          // be more strict too, add a block (dumb plugins in move events?)
 diff --git a/net/minecraft/world/entity/Entity.java b/net/minecraft/world/entity/Entity.java
-index 6874c5cca38eab9378b45b0a8a267278a778aece..c2223259a121eecb9891d023c1281cc11c4eb302 100644
+index 915d266e7d817b21bdd344dfe5f193c812651c64..74b85bc08dd8ed0f5a83eb612d7e24a026f8b05a 100644
 --- a/net/minecraft/world/entity/Entity.java
 +++ b/net/minecraft/world/entity/Entity.java
 @@ -396,6 +396,7 @@ public abstract class Entity

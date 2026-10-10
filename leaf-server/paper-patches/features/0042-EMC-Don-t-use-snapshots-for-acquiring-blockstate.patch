@@ -7,10 +7,10 @@ Original license: MIT
 Original project: https://github.com/starlis/empirecraft
 
 diff --git a/src/main/java/org/bukkit/craftbukkit/block/CraftBlock.java b/src/main/java/org/bukkit/craftbukkit/block/CraftBlock.java
-index 72aacb573365c521609ce35af6b430f525edf3e0..156453f21f96fe30c107e91caa980ad3829c07ed 100644
+index 0ab39922e53ebeb044958f99b7f0f06391d78d31..ef13f200d35b49c1d7b99b0a79e9c424898173f9 100644
 --- a/src/main/java/org/bukkit/craftbukkit/block/CraftBlock.java
 +++ b/src/main/java/org/bukkit/craftbukkit/block/CraftBlock.java
-@@ -292,7 +292,7 @@ public class CraftBlock implements Block {
+@@ -293,7 +293,7 @@ public class CraftBlock implements Block {
  
      @Override
      public org.bukkit.block.BlockState getState() {

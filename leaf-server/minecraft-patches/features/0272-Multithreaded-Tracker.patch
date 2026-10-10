@@ -182,7 +182,7 @@ index ffb4cac67c85ad35b131a89574bc2b03f4adedd6..0a0dad530483297ef6313cad73b41e31
      protected void tick() {
 +        // Leaf start - Multithreaded tracker
 +        if (org.dreeam.leaf.config.modules.async.MultithreadedTracker.enabled) {
-+            this.level.leaf$asyncTracker.tick(this.level);
++            this.level.leaf$asyncTracker.tick(this.level, this.trackerEntities);
 +            return;
 +        }
 +        // Leaf end - Multithreaded tracker

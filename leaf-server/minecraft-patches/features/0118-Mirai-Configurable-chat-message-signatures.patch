@@ -87,10 +87,10 @@ index 5eb7d46bf0d84720662125711fa7b544e9299446..69206f1670321d8908e75fd203760590
          private static final String PREFIX = "data:image/png;base64,";
          public static final Codec<ServerStatus.Favicon> CODEC = Codec.STRING.comapFlatMap(string -> {
 diff --git a/net/minecraft/server/dedicated/DedicatedServer.java b/net/minecraft/server/dedicated/DedicatedServer.java
-index 416a5d73302dacaa4a326fdb0d04cd33b561756e..c0c5fbe112b1ad54e38fdfd09d10ba464db5cb74 100644
+index 64beedbc9e07642a20635a839446aa078619b88f..1465e07aab8a6b0c7fc0f4e244d524be78ed8274 100644
 --- a/net/minecraft/server/dedicated/DedicatedServer.java
 +++ b/net/minecraft/server/dedicated/DedicatedServer.java
-@@ -813,6 +813,7 @@ public class DedicatedServer extends MinecraftServer implements ServerInterface
+@@ -814,6 +814,7 @@ public class DedicatedServer extends MinecraftServer implements ServerInterface
  
      @Override
      public boolean enforceSecureProfile() {
@@ -99,10 +99,10 @@ index 416a5d73302dacaa4a326fdb0d04cd33b561756e..c0c5fbe112b1ad54e38fdfd09d10ba46
          // Paper start - Add setting for proxy online mode status
          return properties.enforceSecureProfile
 diff --git a/net/minecraft/server/network/ServerGamePacketListenerImpl.java b/net/minecraft/server/network/ServerGamePacketListenerImpl.java
-index 41a8999e7ec264fcff91a4e73efa6f1316c1069a..870fa8574ea0380aca1dcd786b211d2ec94fe76f 100644
+index d1e0905e8d7f76ba7d90be21abd25abb2b6d485b..1c65e3286f267f527e24ef662d60ee3f769decc7 100644
 --- a/net/minecraft/server/network/ServerGamePacketListenerImpl.java
 +++ b/net/minecraft/server/network/ServerGamePacketListenerImpl.java
-@@ -2950,10 +2950,22 @@ public class ServerGamePacketListenerImpl
+@@ -2956,10 +2956,22 @@ public class ServerGamePacketListenerImpl
  
      public void sendPlayerChatMessage(final PlayerChatMessage message, final ChatType.Bound chatType) {
          // CraftBukkit start - SPIGOT-7262: if hidden we have to send as disguised message. Query whether we should send at all (but changing this may not be expected).
@@ -128,10 +128,10 @@ index 41a8999e7ec264fcff91a4e73efa6f1316c1069a..870fa8574ea0380aca1dcd786b211d2e
          // Paper start - Ensure that client receives chat packets in the same order that we add into the message signature cache
          synchronized (this.messageSignatureCache) {
 diff --git a/net/minecraft/server/players/PlayerList.java b/net/minecraft/server/players/PlayerList.java
-index 41e4d30da6fbeda7d48bda657f44506cdac72ae5..e37800561fb0f2b919a3fafeaefbf0a0a013e0db 100644
+index c97940bfba340acb5ae9e3c82d3745a9abb269f4..7b25c79e86820bc926379f7d78a9f2744f18c096 100644
 --- a/net/minecraft/server/players/PlayerList.java
 +++ b/net/minecraft/server/players/PlayerList.java
-@@ -1236,7 +1236,7 @@ public abstract class PlayerList {
+@@ -1239,7 +1239,7 @@ public abstract class PlayerList {
      public void broadcastChatMessage(final PlayerChatMessage message, final Predicate<ServerPlayer> isFiltered, final @Nullable ServerPlayer senderPlayer, final ChatType.Bound chatType, final @Nullable Function<net.kyori.adventure.audience.Audience, Component> unsignedFunction) {
          // Paper end
          boolean trusted = this.verifyChatTrusted(message);
@@ -140,7 +140,7 @@ index 41e4d30da6fbeda7d48bda657f44506cdac72ae5..e37800561fb0f2b919a3fafeaefbf0a0
          OutgoingChatMessage tracked = OutgoingChatMessage.create(message);
          boolean wasFullyFiltered = false;
  
-@@ -1261,6 +1261,7 @@ public abstract class PlayerList {
+@@ -1264,6 +1264,7 @@ public abstract class PlayerList {
      }
  
      public boolean verifyChatTrusted(final PlayerChatMessage message) {

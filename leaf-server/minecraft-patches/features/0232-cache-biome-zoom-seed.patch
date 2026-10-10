@@ -5,7 +5,7 @@ Subject: [PATCH] cache biome zoom seed
 
 
 diff --git a/net/minecraft/server/MinecraftServer.java b/net/minecraft/server/MinecraftServer.java
-index e75e0fdc44f3ad3713f389e14fffc3f502028668..995b179ebfb5de617e4a800caa47f71ab3cf7aa5 100644
+index 411d9b1ba255a3510c27a6c53d03d978b78b13b9..102d15435c150d973032af2b2ec83361f17f15cd 100644
 --- a/net/minecraft/server/MinecraftServer.java
 +++ b/net/minecraft/server/MinecraftServer.java
 @@ -717,8 +717,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
@@ -19,10 +19,10 @@ index e75e0fdc44f3ad3713f389e14fffc3f502028668..995b179ebfb5de617e4a800caa47f71a
              new PhantomSpawner(), new PatrolSpawner(), new CatSpawner(), new VillageSiege(), new WanderingTraderSpawner(savedDataStorage) // Paper - save to world data
          );
 diff --git a/net/minecraft/server/level/ServerPlayer.java b/net/minecraft/server/level/ServerPlayer.java
-index 94e45acbf67a3ff8139865d2befb9c89f54f10d8..e92af267d49c05eecf4b142e38d585a9c87ccbf9 100644
+index 17242dd1e16fddef6013c923d94597b8c5e2a899..edd6c7e52b44e6f0546c7bef1218937a75d91f2e 100644
 --- a/net/minecraft/server/level/ServerPlayer.java
 +++ b/net/minecraft/server/level/ServerPlayer.java
-@@ -3095,7 +3095,7 @@ public class ServerPlayer extends Player implements ca.spottedleaf.moonrise.patc
+@@ -3108,7 +3108,7 @@ public class ServerPlayer extends Player implements ca.spottedleaf.moonrise.patc
          return new CommonPlayerSpawnInfo(
              level.dimensionTypeRegistration(),
              level.dimension(),

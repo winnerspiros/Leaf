@@ -5,7 +5,7 @@ Subject: [PATCH] thread unsafe chunk map
 
 
 diff --git a/ca/spottedleaf/moonrise/patches/chunk_system/scheduling/ChunkHolderManager.java b/ca/spottedleaf/moonrise/patches/chunk_system/scheduling/ChunkHolderManager.java
-index dc3d0f0cefde5a9c0d47ccdcfaa5ea80ee03aa27..3acc875c7e5e70874f121d25fb5521589578b919 100644
+index 13df17c593b85edb61c56ec282cab2283c149a1f..887ec6eb8b583cb09bec4622ce2438ca700182df 100644
 --- a/ca/spottedleaf/moonrise/patches/chunk_system/scheduling/ChunkHolderManager.java
 +++ b/ca/spottedleaf/moonrise/patches/chunk_system/scheduling/ChunkHolderManager.java
 @@ -81,6 +81,7 @@ public final class ChunkHolderManager {
@@ -67,7 +67,7 @@ index dc3d0f0cefde5a9c0d47ccdcfaa5ea80ee03aa27..3acc875c7e5e70874f121d25fb552158
          this.chunkHolders.put(position, current);
  
  
-@@ -1147,7 +1164,11 @@ public final class ChunkHolderManager {
+@@ -1170,7 +1187,11 @@ public final class ChunkHolderManager {
          this.autoSaveQueue.remove(holder);
          ((ChunkSystemServerChunkCache)this.world.getChunkSource()).moonrise$chunkHolderUnload(holder);
          PlatformHooks.get().onChunkHolderDelete(this.world, holder.vanillaChunkHolder);
@@ -105,7 +105,7 @@ index 102d15435c150d973032af2b2ec83361f17f15cd..2e18112a07ee3a9fc5ded8cd28c91ad7
          } catch (java.lang.InterruptedException | java.util.concurrent.ExecutionException e) {
              throw new RuntimeException(e); // Propagate exception
 diff --git a/net/minecraft/server/level/ServerChunkCache.java b/net/minecraft/server/level/ServerChunkCache.java
-index 71a2b2f20993d05d336b68fc13c7af03266339aa..75bed9bea1279a6484b7bba64cfeee88a703e253 100644
+index 6b9bacdf12afcc5c28592fa2d33c90d31cbedf94..7ba08ffc25986343dd82e610940276211cfb2b29 100644
 --- a/net/minecraft/server/level/ServerChunkCache.java
 +++ b/net/minecraft/server/level/ServerChunkCache.java
 @@ -79,6 +79,7 @@ public class ServerChunkCache extends ChunkSource implements ca.spottedleaf.moon

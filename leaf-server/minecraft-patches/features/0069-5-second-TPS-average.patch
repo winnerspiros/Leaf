@@ -37,10 +37,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 diff --git a/net/minecraft/server/MinecraftServer.java b/net/minecraft/server/MinecraftServer.java
-index 6b69758622117f1709016d448a59c746e77f81aa..eae818a5df5b928ce9e0d78481037023b4dcf3b7 100644
+index 4cbbcb757ce1ee065a49539d9237d68b5fd4dde8..c8293251a989eac5cc7b41481d415041a55ad04e 100644
 --- a/net/minecraft/server/MinecraftServer.java
 +++ b/net/minecraft/server/MinecraftServer.java
-@@ -371,6 +371,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+@@ -366,6 +366,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
      private final java.util.concurrent.atomic.AtomicInteger tickTaskTickCount = new java.util.concurrent.atomic.AtomicInteger();
      private final Object statsLock = new Object();
      private double @Nullable [] tps;
@@ -48,7 +48,7 @@ index 6b69758622117f1709016d448a59c746e77f81aa..eae818a5df5b928ce9e0d78481037023
      private ca.spottedleaf.common.time.TickData.@Nullable MSPTData msptData5s;
  
      private void addTickTime(final ca.spottedleaf.common.time.TickTime time) {
-@@ -389,6 +390,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+@@ -384,6 +385,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
      private void clearTickTimeStatistics() {
          this.msptData5s = null;
          this.tps = null;
@@ -56,7 +56,7 @@ index 6b69758622117f1709016d448a59c746e77f81aa..eae818a5df5b928ce9e0d78481037023
      }
  
      private static double getTPS(final ca.spottedleaf.common.time.TickData tickData, final long tickInterval) {
-@@ -404,7 +406,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+@@ -399,7 +401,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
          synchronized (this.statsLock) {
              double @Nullable [] tps = this.tps;
              if (tps == null) {
@@ -65,7 +65,7 @@ index 6b69758622117f1709016d448a59c746e77f81aa..eae818a5df5b928ce9e0d78481037023
                  this.tps = tps;
              }
              return tps.clone();
-@@ -429,6 +431,40 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+@@ -424,6 +426,40 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
          };
      }
      // Paper end - improve tick loop
@@ -106,7 +106,7 @@ index 6b69758622117f1709016d448a59c746e77f81aa..eae818a5df5b928ce9e0d78481037023
      // Paper start - rewrite chunk system
      private volatile Throwable chunkSystemCrash;
  
-@@ -1354,7 +1390,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+@@ -1327,7 +1363,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
                          io.papermc.paper.configuration.GlobalConfiguration.get().misc.catchupTicks.or(5)
                      );
  

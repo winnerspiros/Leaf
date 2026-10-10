@@ -18,10 +18,10 @@ index 61e68184b0fa28b4025c0ba8b529110167ac79e3..fbc4536c22a5b73ebd01dbbc656c2a39
      public final ca.spottedleaf.common.time.TickData tickTimes1s  = new ca.spottedleaf.common.time.TickData(java.util.concurrent.TimeUnit.SECONDS.toNanos(1L));
      public final ca.spottedleaf.common.time.TickData tickTimes5s  = new ca.spottedleaf.common.time.TickData(java.util.concurrent.TimeUnit.SECONDS.toNanos(5L));
 diff --git a/net/minecraft/server/level/ServerPlayerGameMode.java b/net/minecraft/server/level/ServerPlayerGameMode.java
-index c982b2654beef63c4160d7443ea54a11950c3072..832ca7b37c6e4eee61a86a4e1b5f68ed4dc1eca2 100644
+index 8387d4b0aaee0b9426680729f435a6cc7a8168fa..9120e1b06948df255475921ccc7e32cecd53587d 100644
 --- a/net/minecraft/server/level/ServerPlayerGameMode.java
 +++ b/net/minecraft/server/level/ServerPlayerGameMode.java
-@@ -649,11 +649,28 @@ public class ServerPlayerGameMode {
+@@ -655,11 +655,28 @@ public class ServerPlayerGameMode {
  
      // Purpur start - Shift right click to use exp for mending
      public boolean shiftClickMended(ItemStack itemstack) {
@@ -54,10 +54,10 @@ index c982b2654beef63c4160d7443ea54a11950c3072..832ca7b37c6e4eee61a86a4e1b5f68ed
              }
          }
 diff --git a/net/minecraft/server/network/ServerGamePacketListenerImpl.java b/net/minecraft/server/network/ServerGamePacketListenerImpl.java
-index 5c2b6708502f8422e9cd106e56904192e5c509db..e96340cf99cecbb5b8d4d33c9247b2af0453f061 100644
+index dd4037289d3cdf1d6078d7779094995c5814bb3f..02d991930a172a04d8ea3e1a412af9689767f794 100644
 --- a/net/minecraft/server/network/ServerGamePacketListenerImpl.java
 +++ b/net/minecraft/server/network/ServerGamePacketListenerImpl.java
-@@ -1402,8 +1402,8 @@ public class ServerGamePacketListenerImpl
+@@ -1408,8 +1408,8 @@ public class ServerGamePacketListenerImpl
              }
  
              if (byteTotal > byteAllowed) {
@@ -82,10 +82,10 @@ index 27bb2fcec956ae57596fe1091c395a663eefd801..86314884bfd3a1637888c2440efd5cb4
              // Purpur end - Configurable daylight cycle
              this.setDirty();
 diff --git a/net/minecraft/world/entity/Entity.java b/net/minecraft/world/entity/Entity.java
-index d3c449641518feea3236210c0ccc31086c1d2fd4..4d2bbfe2a5071ace6ce258e120222437970f3354 100644
+index 7a2d4b0cefcd7fa8e598c58bef410079d59dc7ac..1d0b0fc05dd277a90f6a9b947292595f83d8f96e 100644
 --- a/net/minecraft/world/entity/Entity.java
 +++ b/net/minecraft/world/entity/Entity.java
-@@ -2826,7 +2826,11 @@ public abstract class Entity
+@@ -2829,7 +2829,11 @@ public abstract class Entity
                  output.putBoolean("Bukkit.invisible", this.persistentInvisibility);
              }
              // SPIGOT-6907: re-implement LivingEntity#setMaximumAir()

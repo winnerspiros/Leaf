@@ -5,10 +5,10 @@ Subject: [PATCH] optimize getOnPos
 
 
 diff --git a/net/minecraft/world/entity/Entity.java b/net/minecraft/world/entity/Entity.java
-index d49dc6984cdb0d9251cd9e0acb66b8a39e945456..7bdf97b321e72548bca02cd7df52cab6f588db67 100644
+index cab6150587e6682d3cb5a188242ff9810abcfb30..2355f167e6b874575876ed43ee342c6d347cc638 100644
 --- a/net/minecraft/world/entity/Entity.java
 +++ b/net/minecraft/world/entity/Entity.java
-@@ -1586,24 +1586,28 @@ public abstract class Entity
+@@ -1625,24 +1625,28 @@ public abstract class Entity
      }
  
      protected BlockPos getOnPos(final float offset) {
@@ -18,19 +18,7 @@ index d49dc6984cdb0d9251cd9e0acb66b8a39e945456..7bdf97b321e72548bca02cd7df52cab6
              BlockPos getOnPos = this.mainSupportingBlockPos.get();
 -            if (!(offset > 1.0E-5F)) {
 -                return getOnPos;
-+            net.minecraft.world.level.chunk.LevelChunk chunk = this.level().getChunkIfLoaded(getOnPos);
-+            if (chunk != null) {
-+                if (!(offset > 1.0E-5F)) {
-+                    return getOnPos;
-+                }
-+                BlockState belowState = chunk.getBlockStateFinal(getOnPos.getX(), getOnPos.getY(), getOnPos.getZ());
-+                int flags = belowState.tagFlag;
-+                return (!(offset <= 0.5) || (flags & org.dreeam.leaf.util.BlockMasks.FENCE_TAG) == 0)
-+                    && (flags & org.dreeam.leaf.util.BlockMasks.WALL_TAG) == 0
-+                    && (flags & org.dreeam.leaf.util.BlockMasks.FENCE_GATE_CL) == 0
-+                    ? getOnPos.atY(Mth.floor(this.position.y - offset))
-+                    : getOnPos;
-             }
+-            }
 -
 -            BlockState belowState = this.level().getBlockState(getOnPos);
 -            return (!(offset <= 0.5) || !belowState.is(BlockTags.FENCES))
@@ -43,7 +31,21 @@ index d49dc6984cdb0d9251cd9e0acb66b8a39e945456..7bdf97b321e72548bca02cd7df52cab6
 -            int yTruncatedBelow = Mth.floor(this.position.y - offset);
 -            int zTruncated = Mth.floor(this.position.z);
 -            return new BlockPos(xTruncated, yTruncatedBelow, zTruncated);
-         }
+-        }
++            net.minecraft.world.level.chunk.LevelChunk chunk = this.level().getChunkIfLoaded(getOnPos);
++            if (chunk != null) {
++                if (!(offset > 1.0E-5F)) {
++                    return getOnPos;
++                }
++                BlockState belowState = chunk.getBlockStateFinal(getOnPos.getX(), getOnPos.getY(), getOnPos.getZ());
++                int flags = belowState.tagFlag;
++                return (!(offset <= 0.5) || (flags & org.dreeam.leaf.util.BlockMasks.FENCE_TAG) == 0)
++                    && (flags & org.dreeam.leaf.util.BlockMasks.WALL_TAG) == 0
++                    && (flags & org.dreeam.leaf.util.BlockMasks.FENCE_GATE_CL) == 0
++                    ? getOnPos.atY(Mth.floor(this.position.y - offset))
++                    : getOnPos;
++            }
++        }
 +        int xTruncated = Mth.floor(this.position.x);
 +        int yTruncatedBelow = Mth.floor(this.position.y - offset);
 +        int zTruncated = Mth.floor(this.position.z);

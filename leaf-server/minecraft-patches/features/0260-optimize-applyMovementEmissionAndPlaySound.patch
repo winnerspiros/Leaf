@@ -5,10 +5,10 @@ Subject: [PATCH] optimize applyMovementEmissionAndPlaySound
 
 
 diff --git a/net/minecraft/world/entity/Entity.java b/net/minecraft/world/entity/Entity.java
-index 9ab84269f6d1c7e2de69b226efb1bea2e748ab40..de2897f8717ebacbdada75ebff821146c22f35c5 100644
+index 10b59a6aeb9362fb15f8d31f4365de960f5130d9..fdf53c083f7863b0019015f968d104f7ec31db62 100644
 --- a/net/minecraft/world/entity/Entity.java
 +++ b/net/minecraft/world/entity/Entity.java
-@@ -1397,7 +1397,10 @@ public abstract class Entity
+@@ -1436,7 +1436,10 @@ public abstract class Entity
          float movedDistance = (float)(clippedMovement.length() * 0.6F);
          float horizontalMovedDistance = (float)(clippedMovement.horizontalDistance() * 0.6F);
          BlockPos supportingPos = this.getOnPos();

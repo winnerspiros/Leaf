@@ -5,10 +5,10 @@ Subject: [PATCH] optimize collision shape
 
 
 diff --git a/net/minecraft/world/level/block/state/BlockBehaviour.java b/net/minecraft/world/level/block/state/BlockBehaviour.java
-index 5f3de48e33cf1c70679c29355ff71933563fa222..ed26c0eb4e1acbb28987a72ec0c541b2fb681c54 100644
+index 25f2348b0ab4a229f5bb0a7fa3cefd29872a8be4..5588204ccd22b727507e26fae26fa8d42e2e7fdc 100644
 --- a/net/minecraft/world/level/block/state/BlockBehaviour.java
 +++ b/net/minecraft/world/level/block/state/BlockBehaviour.java
-@@ -642,6 +642,18 @@ public abstract class BlockBehaviour implements FeatureElement {
+@@ -643,6 +643,18 @@ public abstract class BlockBehaviour implements FeatureElement {
                  this.emptyConstantCollisionShape = this.constantCollisionShape != null && this.constantCollisionShape.isEmpty();
                  // init caches
                  initCaches(collisionShape, true);

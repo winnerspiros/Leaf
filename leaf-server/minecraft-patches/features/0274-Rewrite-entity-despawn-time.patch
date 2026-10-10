@@ -120,7 +120,7 @@ index 0d8ca784122c70d74ad49c20821b535e1cb967a9..b5b3c91aee7e143e6879a2216ef84d7e
  
          private final ChunkEntitySlices[] slices = new ChunkEntitySlices[REGION_SIZE * REGION_SIZE];
 diff --git a/net/minecraft/server/level/ServerLevel.java b/net/minecraft/server/level/ServerLevel.java
-index 081918bec2e4a2c7dbf084a00b25e514bed8144b..1e02d238a6e75a97128fc3fd27cad9efd465f692 100644
+index 2fbd50eeb7af191568bdcc5fecc9a064e4d6f704..9bc21562f21f99743af7757ffd51b785a6fbac6f 100644
 --- a/net/minecraft/server/level/ServerLevel.java
 +++ b/net/minecraft/server/level/ServerLevel.java
 @@ -1136,6 +1136,7 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
@@ -132,7 +132,7 @@ index 081918bec2e4a2c7dbf084a00b25e514bed8144b..1e02d238a6e75a97128fc3fd27cad9ef
      }
  
 diff --git a/net/minecraft/world/entity/Entity.java b/net/minecraft/world/entity/Entity.java
-index e8a791a33d6fb248dc2c542716f75cf5e424f66e..2adc004b78681b7289690d352ae132cdc938bd16 100644
+index 3c1ed3159da48076de094051257f48a26261f7cd..909a23509c631a2bd0370324c57bac46dd7792fa 100644
 --- a/net/minecraft/world/entity/Entity.java
 +++ b/net/minecraft/world/entity/Entity.java
 @@ -388,12 +388,14 @@ public abstract class Entity
@@ -244,7 +244,7 @@ index e8a791a33d6fb248dc2c542716f75cf5e424f66e..2adc004b78681b7289690d352ae132cd
  
      // CraftBukkit start
      public void postTick() {
-@@ -2838,7 +2896,7 @@ public abstract class Entity
+@@ -2857,7 +2915,7 @@ public abstract class Entity
              // Leaf end - Fix Pufferfish and Purpur patches - Use effective default value for max air supply
                  output.putInt("Bukkit.MaxAirSupply", this.getMaxAirSupply());
              }
@@ -253,7 +253,7 @@ index e8a791a33d6fb248dc2c542716f75cf5e424f66e..2adc004b78681b7289690d352ae132cd
              // CraftBukkit end
              output.storeNullable("CustomName", ComponentSerialization.CODEC, this.getCustomName());
              if (this.isCustomNameVisible()) {
-@@ -5573,7 +5631,8 @@ public abstract class Entity
+@@ -5606,7 +5664,8 @@ public abstract class Entity
      public boolean shouldBeSaved() {
          return (this.removalReason == null || this.removalReason.shouldSave())
              && !this.isPassenger()

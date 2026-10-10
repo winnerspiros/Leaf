@@ -22,10 +22,10 @@ you to easily disable books, should you want to preemptively remove this
 functionality before additional exploits are found.
 
 diff --git a/net/minecraft/server/network/ServerGamePacketListenerImpl.java b/net/minecraft/server/network/ServerGamePacketListenerImpl.java
-index 817ec3f235dc820bd9ff9b4ad34b90681a0efb89..971bfd288e23ac9d39217998ad279f49c3130889 100644
+index 0fcb2e422bfa23fcc9e8cf33658f7abc5a53cfd0..c04d379b4dba46712bdb6f8473e2e99c0c1528de 100644
 --- a/net/minecraft/server/network/ServerGamePacketListenerImpl.java
 +++ b/net/minecraft/server/network/ServerGamePacketListenerImpl.java
-@@ -1361,6 +1361,12 @@ public class ServerGamePacketListenerImpl
+@@ -1366,6 +1366,12 @@ public class ServerGamePacketListenerImpl
  
      @Override
      public void handleEditBook(final ServerboundEditBookPacket packet) {

@@ -35,7 +35,7 @@ index bc700545aa552e843e3e860f1ff383599e1963e9..02521579ae7962578063a66a464aee78
              }
          }
 diff --git a/net/minecraft/server/level/ServerLevel.java b/net/minecraft/server/level/ServerLevel.java
-index 8b544ddf12b98b46afebd4763b44ac50ef0840d2..5beb82565f7eb2a0e99eb2be1e844bfbd2219c33 100644
+index 85eda746a82c17fa68b0a147ecb6ff3883de1272..0d600fc5c06caba1a600eac8a279a1b964fb2c04 100644
 --- a/net/minecraft/server/level/ServerLevel.java
 +++ b/net/minecraft/server/level/ServerLevel.java
 @@ -1311,7 +1311,7 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
@@ -329,10 +329,10 @@ index 3bc75f501d0050c1a5b8cd0321369e251b4e9efa..d7436c11c7d1ea3102cbd0f2d0935610
              if (columnContainsTriggeringBlock(level, mutablePos) && matchingBlocksFound++ >= 3) {
                  return true;
 diff --git a/net/minecraft/world/level/dimension/end/EnderDragonFight.java b/net/minecraft/world/level/dimension/end/EnderDragonFight.java
-index 03981d3c52a4dc735707efb80a8c0bfd37e64d90..1f55f2a3da0be41f8a04f268a1304bb33530ef04 100644
+index ad9002fa7199a389ba76b6157699f063f71e2470..1a768ecd0792d1afefb2a4be826fc74a9c7f9740 100644
 --- a/net/minecraft/world/level/dimension/end/EnderDragonFight.java
 +++ b/net/minecraft/world/level/dimension/end/EnderDragonFight.java
-@@ -596,7 +596,7 @@ public class EnderDragonFight extends SavedData {
+@@ -599,7 +599,7 @@ public class EnderDragonFight extends SavedData {
              List<EndCrystal> crystals = Lists.newArrayList();
              BlockPos center = location.above(1);
  

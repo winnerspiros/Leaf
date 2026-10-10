@@ -18,10 +18,10 @@ prominent legal notice accompanying the corresponding source:
 Original patch by HaHaWTH <102713261+HaHaWTH@users.noreply.github.com>
 
 diff --git a/ca/spottedleaf/moonrise/patches/chunk_system/level/entity/ChunkEntitySlices.java b/ca/spottedleaf/moonrise/patches/chunk_system/level/entity/ChunkEntitySlices.java
-index aaa30ab2dc639d4b84fa166cc31e5f033451bd5d..498f397b53b7b21f5c95cb0550381cd469cba9b1 100644
+index 2eeb6b8a05d1d214bc781ba70de9ccef58a07edb..fc55f9ad34fab700eede3fc48f1cb4ffe147517a 100644
 --- a/ca/spottedleaf/moonrise/patches/chunk_system/level/entity/ChunkEntitySlices.java
 +++ b/ca/spottedleaf/moonrise/patches/chunk_system/level/entity/ChunkEntitySlices.java
-@@ -339,6 +339,12 @@ public final class ChunkEntitySlices {
+@@ -340,6 +340,12 @@ public final class ChunkEntitySlices {
      }
  
  
@@ -34,7 +34,7 @@ index aaa30ab2dc639d4b84fa166cc31e5f033451bd5d..498f397b53b7b21f5c95cb0550381cd4
      public boolean getEntities(final Entity except, final AABB box, final List<Entity> into, final Predicate<? super Entity> predicate,
                                 final int maxCount) {
          return this.allEntities.getEntitiesLimited(except, box, into, predicate, maxCount);
-@@ -660,5 +666,59 @@ public final class ChunkEntitySlices {
+@@ -661,5 +667,59 @@ public final class ChunkEntitySlices {
  
              return false;
          }
@@ -95,10 +95,10 @@ index aaa30ab2dc639d4b84fa166cc31e5f033451bd5d..498f397b53b7b21f5c95cb0550381cd4
      }
  }
 diff --git a/ca/spottedleaf/moonrise/patches/chunk_system/level/entity/EntityLookup.java b/ca/spottedleaf/moonrise/patches/chunk_system/level/entity/EntityLookup.java
-index 325a8e0e090af340226a34cd6121e5b4d2f37416..7c3d376c2b3d969629ae49b4c5be9c7c30092965 100644
+index d0638c2b5be330385341c46b89992deb8c5a4a0a..86dbcf7cfc7d929748b8acd3cb33ef4dd42e6a2f 100644
 --- a/ca/spottedleaf/moonrise/patches/chunk_system/level/entity/EntityLookup.java
 +++ b/ca/spottedleaf/moonrise/patches/chunk_system/level/entity/EntityLookup.java
-@@ -682,6 +682,47 @@ public abstract class EntityLookup implements LevelEntityGetter<Entity> {
+@@ -688,6 +688,47 @@ public abstract class EntityLookup implements LevelEntityGetter<Entity> {
      }
      // Leaf end - optimize entity activation
  
@@ -147,10 +147,10 @@ index 325a8e0e090af340226a34cd6121e5b4d2f37416..7c3d376c2b3d969629ae49b4c5be9c7c
          final int minChunkX = (Mth.floor(box.minX) - 2) >> 4;
          final int minChunkZ = (Mth.floor(box.minZ) - 2) >> 4;
 diff --git a/net/minecraft/world/entity/LivingEntity.java b/net/minecraft/world/entity/LivingEntity.java
-index 151c2f298c6d8a08b959c0e88ba5940931cdeaf4..60231624abc6106978cccee0a8e4a233f3354946 100644
+index 9a462a63fb86b2a807679a3a8e35e31638882cea..4eff554eafdfe46faf2af44a57e41432e44884fb 100644
 --- a/net/minecraft/world/entity/LivingEntity.java
 +++ b/net/minecraft/world/entity/LivingEntity.java
-@@ -4078,39 +4078,32 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin
+@@ -4072,39 +4072,32 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin
              return;
          }
  
@@ -209,7 +209,7 @@ index 151c2f298c6d8a08b959c0e88ba5940931cdeaf4..60231624abc6106978cccee0a8e4a233
                      break;
                  }
  
-@@ -4120,10 +4113,21 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin
+@@ -4114,10 +4107,21 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin
                  this.doPush(entity);
              }
          }
@@ -232,7 +232,7 @@ index 151c2f298c6d8a08b959c0e88ba5940931cdeaf4..60231624abc6106978cccee0a8e4a233
          final Vec3 vec = entity.position;
          final net.minecraft.core.BlockPos.MutableBlockPos mutablePos = new net.minecraft.core.BlockPos.MutableBlockPos();
  
-@@ -4133,9 +4137,7 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin
+@@ -4127,9 +4131,7 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin
              mutablePos, ca.spottedleaf.moonrise.common.misc.NearbyPlayers.NearbyMapType.SPAWN_RANGE
          );
  
@@ -243,7 +243,7 @@ index 151c2f298c6d8a08b959c0e88ba5940931cdeaf4..60231624abc6106978cccee0a8e4a233
  
          final ServerPlayer[] raw = players.getRawDataUnchecked();
          final int len = players.size();
-@@ -4144,17 +4146,12 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin
+@@ -4138,17 +4140,12 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin
  
          for (int i = 0; i < len; i++) {
              final ServerPlayer player = raw[i];

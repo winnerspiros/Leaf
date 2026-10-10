@@ -5,10 +5,10 @@ Subject: [PATCH] Cache tile entity position
 
 
 diff --git a/net/minecraft/world/level/chunk/LevelChunk.java b/net/minecraft/world/level/chunk/LevelChunk.java
-index 997bb3af34ee0c8d99bfe8d0b73adc571b4a4304..bd55c7cabade9191564cf513885739fdffed7694 100644
+index 9e4ed34492c86ae30096411034ec23ac5e3b7901..416ca8d3e6bf48902d10e9a7432fbbfa068c68f5 100644
 --- a/net/minecraft/world/level/chunk/LevelChunk.java
 +++ b/net/minecraft/world/level/chunk/LevelChunk.java
-@@ -975,10 +975,12 @@ public class LevelChunk extends ChunkAccess implements DebugValueSource, ca.spot
+@@ -972,10 +972,12 @@ public class LevelChunk extends ChunkAccess implements DebugValueSource, ca.spot
          private final T blockEntity;
          private final BlockEntityTicker<T> ticker;
          private boolean loggedInvalidBlockState;
@@ -21,7 +21,7 @@ index 997bb3af34ee0c8d99bfe8d0b73adc571b4a4304..bd55c7cabade9191564cf513885739fd
          }
  
          @Override
-@@ -1029,7 +1031,7 @@ public class LevelChunk extends ChunkAccess implements DebugValueSource, ca.spot
+@@ -1026,7 +1028,7 @@ public class LevelChunk extends ChunkAccess implements DebugValueSource, ca.spot
  
          @Override
          public BlockPos getPos() {
@@ -30,7 +30,7 @@ index 997bb3af34ee0c8d99bfe8d0b73adc571b4a4304..bd55c7cabade9191564cf513885739fd
          }
  
          @Override
-@@ -1056,13 +1058,16 @@ public class LevelChunk extends ChunkAccess implements DebugValueSource, ca.spot
+@@ -1053,13 +1055,16 @@ public class LevelChunk extends ChunkAccess implements DebugValueSource, ca.spot
  
      private static class RebindableTickingBlockEntityWrapper implements TickingBlockEntity {
          private TickingBlockEntity ticker;
@@ -47,7 +47,7 @@ index 997bb3af34ee0c8d99bfe8d0b73adc571b4a4304..bd55c7cabade9191564cf513885739fd
          }
  
          @Override
-@@ -1077,7 +1082,7 @@ public class LevelChunk extends ChunkAccess implements DebugValueSource, ca.spot
+@@ -1074,7 +1079,7 @@ public class LevelChunk extends ChunkAccess implements DebugValueSource, ca.spot
  
          @Override
          public BlockPos getPos() {

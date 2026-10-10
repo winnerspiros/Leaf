@@ -22,10 +22,10 @@ index 08e253662a2c183c0ab53a51cc07485cff33bf2c..cc004fb5f990a0426f307ed09b453d72
              }
  
 diff --git a/net/minecraft/server/MinecraftServer.java b/net/minecraft/server/MinecraftServer.java
-index 54533af3f8e659e45c798d23877c2c8f2372622f..b1fcfc3ec6a4f473e85b54e43fc265d043b6ad33 100644
+index 69c058ab21ad386057268770e9dee0acb770df59..8adb09858040c495a49c8f3b149b63b6ac040bb7 100644
 --- a/net/minecraft/server/MinecraftServer.java
 +++ b/net/minecraft/server/MinecraftServer.java
-@@ -1964,6 +1964,8 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+@@ -1965,6 +1965,8 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
  
          profiler.popPush("server gui refresh");
  
@@ -35,7 +35,7 @@ index 54533af3f8e659e45c798d23877c2c8f2372622f..b1fcfc3ec6a4f473e85b54e43fc265d0
              tickable.run();
          }
 diff --git a/net/minecraft/server/level/ServerPlayer.java b/net/minecraft/server/level/ServerPlayer.java
-index 105bd985e8ec27c200590156a89fd9ed461ae09b..02177e520e3ac10a25bfaff6b00f42140ceee533 100644
+index 1b6ab6720f8319e451e4b3d5d0f9d6e7db6597de..3a1caec92d873317ab2feae0836a6b6f5e944614 100644
 --- a/net/minecraft/server/level/ServerPlayer.java
 +++ b/net/minecraft/server/level/ServerPlayer.java
 @@ -800,6 +800,7 @@ public class ServerPlayer extends Player implements ca.spottedleaf.moonrise.patc
@@ -64,7 +64,7 @@ index 37883c3b4aaef97c22978e66a53aff71d4afcd11..2bdb335e0a83ff8f756d66ac3ede5847
          final byte[] data = discardedPayload.data();
          try {
 diff --git a/net/minecraft/server/players/PlayerList.java b/net/minecraft/server/players/PlayerList.java
-index 0004167de890fa624ab32e96e485940e0a9b55fa..23eb0eae68727ab14de9d0679383511fc86d9602 100644
+index 2f0fd77fd951e2bbaa68b873cde9013329f76768..07c0cf06a40550715713ee51ab6c605bde824a40 100644
 --- a/net/minecraft/server/players/PlayerList.java
 +++ b/net/minecraft/server/players/PlayerList.java
 @@ -462,6 +462,7 @@ public abstract class PlayerList {

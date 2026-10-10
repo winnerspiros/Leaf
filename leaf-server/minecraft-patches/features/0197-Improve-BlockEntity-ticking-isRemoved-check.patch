@@ -10,10 +10,10 @@ Leaf (After): ~628ms (-96%)
 This should help for massive hopper chains or hopper matrix.
 
 diff --git a/net/minecraft/world/level/chunk/LevelChunk.java b/net/minecraft/world/level/chunk/LevelChunk.java
-index f61589618497fde5c22b37baeee2b96e9f588ba4..aaf4f90aee780ed9febbea1a91cf6dde97ff32fd 100644
+index be3ad6fe03af942615c0f7d276123f3635851974..eab126c2463f5a9c6d4b92053867e3dbc0ead41b 100644
 --- a/net/minecraft/world/level/chunk/LevelChunk.java
 +++ b/net/minecraft/world/level/chunk/LevelChunk.java
-@@ -1060,15 +1060,28 @@ public class LevelChunk extends ChunkAccess implements DebugValueSource, ca.spot
+@@ -1057,15 +1057,28 @@ public class LevelChunk extends ChunkAccess implements DebugValueSource, ca.spot
      private static class RebindableTickingBlockEntityWrapper implements TickingBlockEntity {
          private TickingBlockEntity ticker;
          private BlockPos cachedPos; // Leaf - Cache tile entity position
@@ -42,7 +42,7 @@ index f61589618497fde5c22b37baeee2b96e9f588ba4..aaf4f90aee780ed9febbea1a91cf6dde
          }
  
          @Override
-@@ -1078,6 +1091,11 @@ public class LevelChunk extends ChunkAccess implements DebugValueSource, ca.spot
+@@ -1075,6 +1088,11 @@ public class LevelChunk extends ChunkAccess implements DebugValueSource, ca.spot
  
          @Override
          public boolean isRemoved() {

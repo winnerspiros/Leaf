@@ -14,10 +14,10 @@ ThreadUnsafeRandom (Moonrise): 102,265,100 ns
 SimpleThreadUnsafeRandom (Moonrise): 97,054,600 ns
 
 diff --git a/net/minecraft/server/level/ServerChunkCache.java b/net/minecraft/server/level/ServerChunkCache.java
-index e1ddf962e2beb454c3913e9653202a2819f1deb8..722e2990bf9bdcc1a1b9698fbc1c2025731f24ad 100644
+index e0cf3a4b211b093bb9a9b5904eef351672b756e2..9d83f2f9de9cc043a3d671da7245b3098758a8f2 100644
 --- a/net/minecraft/server/level/ServerChunkCache.java
 +++ b/net/minecraft/server/level/ServerChunkCache.java
-@@ -153,7 +153,7 @@ public class ServerChunkCache extends ChunkSource implements ca.spottedleaf.moon
+@@ -161,7 +161,7 @@ public class ServerChunkCache extends ChunkSource implements ca.spottedleaf.moon
      }
      // Paper end - rewrite chunk system
      // Paper start - chunk tick iteration optimisations
@@ -27,7 +27,7 @@ index e1ddf962e2beb454c3913e9653202a2819f1deb8..722e2990bf9bdcc1a1b9698fbc1c2025
          final ServerLevel world = this.level;
          final int randomTickSpeed = world.getGameRules().get(GameRules.RANDOM_TICK_SPEED);
 diff --git a/net/minecraft/server/level/ServerLevel.java b/net/minecraft/server/level/ServerLevel.java
-index 75a23fd30619423b41cdde83efa63c0b433cf640..70f28f88b057610e803def23ba8639cd78f45ee0 100644
+index 209b84561bae1d84b79a57fdc95e8d2a52648751..213297111940f779d3adc53aaef621c93b7a8e09 100644
 --- a/net/minecraft/server/level/ServerLevel.java
 +++ b/net/minecraft/server/level/ServerLevel.java
 @@ -1004,7 +1004,7 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
@@ -97,7 +97,7 @@ index 664c1b3008b62c533b8e3302baa994ed0c135c42..bce2fc4fa3fc56edb2a29e5ba695ac8f
      static RandomSource createThreadLocalInstance(final long seed) {
          return new SingleThreadedRandomSource(seed);
 diff --git a/net/minecraft/world/entity/Entity.java b/net/minecraft/world/entity/Entity.java
-index 4d2bbfe2a5071ace6ce258e120222437970f3354..99e90cf156ae67286e387d875387b2203ddbd26a 100644
+index 1d0b0fc05dd277a90f6a9b947292595f83d8f96e..54cd927413a673c0d907e4cfa5830b079ec4b105 100644
 --- a/net/minecraft/world/entity/Entity.java
 +++ b/net/minecraft/world/entity/Entity.java
 @@ -175,7 +175,7 @@ public abstract class Entity

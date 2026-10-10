@@ -9,7 +9,7 @@ Replaces HashSet allocation per wire update with a fixed 7-element array.
 diff --git a/net/minecraft/world/level/redstone/DefaultRedstoneWireEvaluator.java b/net/minecraft/world/level/redstone/DefaultRedstoneWireEvaluator.java
 --- a/net/minecraft/world/level/redstone/DefaultRedstoneWireEvaluator.java
 +++ b/net/minecraft/world/level/redstone/DefaultRedstoneWireEvaluator.java
-@@ -1,7 +_,5 @@
+@@ -1,7 +5 @@
  package net.minecraft.world.level.redstone;
 
 -import com.google.common.collect.Sets;
@@ -17,7 +17,7 @@ diff --git a/net/minecraft/world/level/redstone/DefaultRedstoneWireEvaluator.jav
  import net.minecraft.core.BlockPos;
  import net.minecraft.core.Direction;
  import net.minecraft.world.level.Level;
-@@ -25,12 +_,16 @@
+@@ -25,12 +16 @@
                  level.setBlock(pos, state.setValue(RedStoneWireBlock.POWER, targetStrength), Block.UPDATE_CLIENTS);
              }
 

@@ -30,7 +30,8 @@ public final class AsyncTracker {
 
     private Future<TrackerCtx> @Nullable [] fut;
 
-    private final ReferenceList<ChunkMap.TrackedEntity> trackersRef = new ReferenceList<>(new ChunkMap.TrackedEntity[0]); // TODO: Whether this should be kept, for avoiding a for loop
+    // Leaf: kept deliberately — O(1) add/remove via index map + raw-array copy avoids map iteration per tick
+    private final ReferenceList<ChunkMap.TrackedEntity> trackersRef = new ReferenceList<>(new ChunkMap.TrackedEntity[0]);
     private final Reference2ReferenceOpenHashMap<ChunkMap.TrackedEntity, TrackerInput> trackers = new Reference2ReferenceOpenHashMap<>();
     private final Reference2ReferenceOpenHashMap<ChunkMap.TrackedEntity, TrackerInput> capture = new Reference2ReferenceOpenHashMap<>();
 

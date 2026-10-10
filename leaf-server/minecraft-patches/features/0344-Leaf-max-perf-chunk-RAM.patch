@@ -1,0 +1,34 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Leaf Max-Perf <leaf@localhost>
+Date: Sat, 10 Oct 2026 00:00:00 +0000
+Subject: [PATCH] Leaf max-perf: reduce chunk-system RAM retention (1-CPU box)
+
+Reduces steady-state heap on small boxes:
+- UNLOAD_COOLDOWN 5s -> 2s (faster chunk free)
+- RegionFileStorage non-existing cache 4096 -> 1024
+- ServerChunkCache last-chunk LRU 4 -> 2
+
+diff --git a/ca/spottedleaf/moonrise/patches/chunk_system/scheduling/ChunkHolderManager.java b/ca/spottedleaf/moonrise/patches/chunk_system/scheduling/ChunkHolderManager.java
+--- a/ca/spottedleaf/moonrise/patches/chunk_system/scheduling/ChunkHolderManager.java
++++ b/ca/spottedleaf/moonrise/patches/chunk_system/scheduling/ChunkHolderManager.java
+@@
+-    public static final TicketType UNLOAD_COOLDOWN = ChunkSystemTicketType.create("chunk_system:unload_cooldown", null, 5L * 20L);
++    // Leaf start - max-perf: shorter unload cooldown for 1-CPU box (2s vs 5s)
++    public static final TicketType UNLOAD_COOLDOWN = ChunkSystemTicketType.create("chunk_system:unload_cooldown", null, 2L * 20L);
++    // Leaf end - max-perf
+diff --git a/net/minecraft/world/level/chunk/storage/RegionFileStorage.java b/net/minecraft/world/level/chunk/storage/RegionFileStorage.java
+--- a/net/minecraft/world/level/chunk/storage/RegionFileStorage.java
++++ b/net/minecraft/world/level/chunk/storage/RegionFileStorage.java
+@@
+-    private static final int MAX_NON_EXISTING_CACHE = 1024 * 4;
++    // Leaf start - max-perf: smaller non-existing region cache
++    private static final int MAX_NON_EXISTING_CACHE = 1024;
++    // Leaf end - max-perf
+diff --git a/net/minecraft/server/level/ServerChunkCache.java b/net/minecraft/server/level/ServerChunkCache.java
+--- a/net/minecraft/server/level/ServerChunkCache.java
++++ b/net/minecraft/server/level/ServerChunkCache.java
+@@
+-    private static final int CACHE_SIZE = 4;
++    // Leaf start - max-perf: smaller last-chunk LRU for low-RAM box
++    private static final int CACHE_SIZE = 2;
++    // Leaf end - max-perf

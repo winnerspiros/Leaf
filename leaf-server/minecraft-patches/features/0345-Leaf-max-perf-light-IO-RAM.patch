@@ -1,0 +1,38 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Leaf Max-Perf <leaf@localhost>
+Date: Sat, 10 Oct 2026 00:00:00 +0000
+Subject: [PATCH] Leaf max-perf: reduce light-engine + IO buffer retention
+
+- LightEngine MIN_QUEUE_SIZE 512 -> 128, CACHE_SIZE 2 -> 1
+- DataLayerStorageMap CACHE_SIZE 2 -> 1
+- Luminol scratch retain 2MiB -> 1MiB
+
+diff --git a/net/minecraft/world/level/lighting/LightEngine.java b/net/minecraft/world/level/lighting/LightEngine.java
+--- a/net/minecraft/world/level/lighting/LightEngine.java
++++ b/net/minecraft/world/level/lighting/LightEngine.java
+@@
+-    private static final int MIN_QUEUE_SIZE = 512;
++    // Leaf start - max-perf: smaller light queue for low-RAM box
++    private static final int MIN_QUEUE_SIZE = 128;
++    // Leaf end - max-perf
+@@
+-    private static final int CACHE_SIZE = 2;
++    // Leaf start - max-perf: single light-chunk slot
++    private static final int CACHE_SIZE = 1;
++    // Leaf end - max-perf
+diff --git a/net/minecraft/world/level/lighting/DataLayerStorageMap.java b/net/minecraft/world/level/lighting/DataLayerStorageMap.java
+--- a/net/minecraft/world/level/lighting/DataLayerStorageMap.java
++++ b/net/minecraft/world/level/lighting/DataLayerStorageMap.java
+@@
+-    private static final int CACHE_SIZE = 2;
++    // Leaf start - max-perf: single data-layer slot
++    private static final int CACHE_SIZE = 1;
++    // Leaf end - max-perf
+diff --git a/me/earthme/luminol/data/BufferedLinearRegionFile.java b/me/earthme/luminol/data/BufferedLinearRegionFile.java
+--- a/me/earthme/luminol/data/BufferedLinearRegionFile.java
++++ b/me/earthme/luminol/data/BufferedLinearRegionFile.java
+@@
+-    private static final int SCRATCH_RETAIN_LIMIT = 2 * 1024 * 1024; // 2 MiB
++    // Leaf start - max-perf: halve scratch retention per IO thread
++    private static final int SCRATCH_RETAIN_LIMIT = 1 * 1024 * 1024; // 1 MiB
++    // Leaf end - max-perf

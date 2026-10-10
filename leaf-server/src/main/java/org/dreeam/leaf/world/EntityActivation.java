@@ -25,6 +25,12 @@ public final class EntityActivation {
     private final LongOpenHashSet chunks = new LongOpenHashSet();
     private final KDTree2D kdTree2 = new KDTree2D();
     private final KDTree3D kdTree3 = new KDTree3D();
+    // Leaf: reuse per-tick scratch buffers to avoid GC churn on 1-CPU box
+    private final double[] rangesCache = new double[ACTIVATION_TYPES.length];
+    private double[] pxl = new double[8];
+    private double[] pyl = new double[8];
+    private double[] pzl = new double[8];
+    private int[] indicesCache = new int[8];
 
     public void activateEntities(ServerLevel world) {
         final int miscActivationRange = world.spigotConfig.miscActivationRange;
@@ -48,7 +54,7 @@ public final class EntityActivation {
         maxRange = Math.max(maxRange, villagerActivationRange);
         maxRange = Math.min((world.spigotConfig.simulationDistance << 4) - 8, maxRange);
 
-        final double[] ranges = new double[ACTIVATION_TYPES.length];
+        final double[] ranges = this.rangesCache;
         ranges[ActivationType.WATER.ordinal()] = waterActivationRange;
         ranges[ActivationType.FLYING_MONSTER.ordinal()] = flyingActivationRange;
         ranges[ActivationType.VILLAGER.ordinal()] = villagerActivationRange;
@@ -72,9 +78,16 @@ public final class EntityActivation {
         final boolean dab = DynamicActivationofBrain.enabled;
         int playerSize = 0;
         final ServerPlayer[] players = world.players().toArray(EMPTY_PLAYERS);
-        final double[] pxl = new double[players.length];
-        final double[] pyl = new double[players.length];
-        final double[] pzl = new double[players.length];
+        if (players.length > this.pxl.length) {
+            final int n = players.length;
+            this.pxl = new double[n];
+            this.pyl = new double[n];
+            this.pzl = new double[n];
+            this.indicesCache = new int[n];
+        }
+        final double[] pxl = this.pxl;
+        final double[] pyl = this.pyl;
+        final double[] pzl = this.pzl;
         for (int i = 0; i < players.length; i++) {
             final ServerPlayer p = players[i];
             p.activatedTick = currentTick;
@@ -97,7 +110,8 @@ public final class EntityActivation {
             return;
         }
 
-        final int[] indices = new int[playerSize];
+        // Leaf: reuse cached index buffer when no players were filtered (common case), else exact alloc
+        final int[] indices = playerSize == players.length ? this.indicesCache : new int[playerSize];
         kdTree2.build(new double[][]{pxl, pzl}, indices);
         if (dab) kdTree3.build(new double[][]{pxl, pyl, pzl}, indices);
 

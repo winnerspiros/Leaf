@@ -27,6 +27,11 @@ public final class DespawnMap implements Consumer<Entity> {
     private final double[] hard = new double[CATEGORIES.length];
     private final double[] sort = new double[CATEGORIES.length];
     private boolean difficultyIsPeaceful = true;
+    // Leaf: reuse per-tick scratch buffers to avoid GC churn on 1-CPU box
+    private double[] playerX = new double[8];
+    private double[] playerY = new double[8];
+    private double[] playerZ = new double[8];
+    private int[] indicesCache = new int[8];
 
     public boolean tick(final ServerLevel world, final EntityTickList entityTickList) {
         if (!org.dreeam.leaf.config.modules.opt.OptimizeDespawn.enabled) {
@@ -71,9 +76,16 @@ public final class DespawnMap implements Consumer<Entity> {
             }
         }
         final ServerPlayer[] players = world.players().toArray(EMPTY_PLAYERS);
-        final double[] playerX = new double[players.length];
-        final double[] playerY = new double[players.length];
-        final double[] playerZ = new double[players.length];
+        if (players.length > this.playerX.length) {
+            final int n = players.length;
+            this.playerX = new double[n];
+            this.playerY = new double[n];
+            this.playerZ = new double[n];
+            this.indicesCache = new int[n];
+        }
+        final double[] playerX = this.playerX;
+        final double[] playerY = this.playerY;
+        final double[] playerZ = this.playerZ;
         int i = 0;
         for (int j = 0; j < players.length; j++) {
             final ServerPlayer p = players[j];
@@ -85,7 +97,8 @@ public final class DespawnMap implements Consumer<Entity> {
                 i++;
             }
         }
-        tree.build(new double[][]{playerX, playerY, playerZ}, new int[i]);
+        // Leaf: reuse cached buffer when all players affect spawning (common case), else exact alloc
+        tree.build(new double[][]{playerX, playerY, playerZ}, i == players.length ? this.indicesCache : new int[i]);
         entityTickList.forEach(this);
         return true;
     }

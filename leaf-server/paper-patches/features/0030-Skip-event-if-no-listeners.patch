@@ -5,6 +5,7 @@ Subject: [PATCH] Skip event if no listeners
 
 
 diff --git a/src/main/java/io/papermc/paper/plugin/manager/PaperEventManager.java b/src/main/java/io/papermc/paper/plugin/manager/PaperEventManager.java
+index 8b7a15af1eb2cc0318e26d7199c8e684de63cd72..877a03efd60d6d63c36497af3a3d7ed951309108 100644
 --- a/src/main/java/io/papermc/paper/plugin/manager/PaperEventManager.java
 +++ b/src/main/java/io/papermc/paper/plugin/manager/PaperEventManager.java
 @@ -34,15 +34,16 @@ class PaperEventManager {

@@ -8,7 +8,7 @@ Ported from Gale feat/pathfinder-direction-cache (57a9e9b) + precompute base (9a
 diff --git a/net/minecraft/core/Direction.java b/net/minecraft/core/Direction.java
 --- a/net/minecraft/core/Direction.java
 +++ b/net/minecraft/core/Direction.java
-@@ -56,6 +7 @@
+@@ -56,6 +7,7 @@
      private final Vec3i normal;
      private final Vec3 normalVec3;
      private final Vector3fc normalVec3f;
@@ -19,7 +19,7 @@ diff --git a/net/minecraft/core/Direction.java b/net/minecraft/core/Direction.ja
 diff --git a/net/minecraft/world/level/pathfinder/AmphibiousNodeEvaluator.java b/net/minecraft/world/level/pathfinder/AmphibiousNodeEvaluator.java
 --- a/net/minecraft/world/level/pathfinder/AmphibiousNodeEvaluator.java
 +++ b/net/minecraft/world/level/pathfinder/AmphibiousNodeEvaluator.java
-@@ -98,5 +5 @@
+@@ -98,5 +5,5 @@
              BlockPos.MutableBlockPos reusablePos = new BlockPos.MutableBlockPos();
 
 -            for (Direction direction : Direction.values()) {
@@ -29,7 +29,7 @@ diff --git a/net/minecraft/world/level/pathfinder/AmphibiousNodeEvaluator.java b
 diff --git a/net/minecraft/world/level/pathfinder/SwimNodeEvaluator.java b/net/minecraft/world/level/pathfinder/SwimNodeEvaluator.java
 --- a/net/minecraft/world/level/pathfinder/SwimNodeEvaluator.java
 +++ b/net/minecraft/world/level/pathfinder/SwimNodeEvaluator.java
-@@ -52,5 +5 @@
+@@ -52,5 +5,5 @@
          Map<Direction, Node> nodes = Maps.newEnumMap(Direction.class);
 
 -        for (Direction direction : Direction.values()) {

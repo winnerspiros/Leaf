@@ -9,7 +9,7 @@ Idea credit: pipatpad2011/Leaf chunk-optimization docs.
 diff --git a/net/minecraft/server/level/ServerLevel.java b/net/minecraft/server/level/ServerLevel.java
 --- a/net/minecraft/server/level/ServerLevel.java
 +++ b/net/minecraft/server/level/ServerLevel.java
-@@ -1897,17 +1897,24 @@ public class ServerLevel extends Level implements ChunkHolder.PlayerProvider, Se
+@@ -1897,16 +1897,23 @@ public class ServerLevel extends Level implements ChunkHolder.PlayerProvider, Se
      }
 
      public void waitForEntities(final ChunkPos centerChunk, final int radius) {

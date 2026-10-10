@@ -9,7 +9,6 @@ Reduces steady-state heap on small boxes:
 - ServerChunkCache last-chunk LRU 4 -> 2
 
 diff --git a/ca/spottedleaf/moonrise/patches/chunk_system/scheduling/ChunkHolderManager.java b/ca/spottedleaf/moonrise/patches/chunk_system/scheduling/ChunkHolderManager.java
-index 0000000000000000000000000000000000000000..0000000000000000000000000000000000000000 100644
 --- a/ca/spottedleaf/moonrise/patches/chunk_system/scheduling/ChunkHolderManager.java
 +++ b/ca/spottedleaf/moonrise/patches/chunk_system/scheduling/ChunkHolderManager.java
 @@ -72,7 +72,9 @@ public class ChunkHolderManager {
@@ -22,7 +21,6 @@ index 0000000000000000000000000000000000000000..00000000000000000000000000000000
 
      private static final long NO_TIMEOUT_MARKER = Long.MIN_VALUE;
 diff --git a/net/minecraft/world/level/chunk/storage/RegionFileStorage.java b/net/minecraft/world/level/chunk/storage/RegionFileStorage.java
-index 0000000000000000000000000000000000000000..0000000000000000000000000000000000000000 100644
 --- a/net/minecraft/world/level/chunk/storage/RegionFileStorage.java
 +++ b/net/minecraft/world/level/chunk/storage/RegionFileStorage.java
 @@ -56,7 +56,9 @@ public class RegionFileStorage implements AutoCloseable, ca.spottedleaf.moonrise
@@ -35,7 +33,6 @@ index 0000000000000000000000000000000000000000..00000000000000000000000000000000
      private final it.unimi.dsi.fastutil.longs.LongLinkedOpenHashSet nonExistingRegionFiles = new it.unimi.dsi.fastutil.longs.LongLinkedOpenHashSet();
      private static String getRegionFileName(final int chunkX, final int chunkZ) {
 diff --git a/net/minecraft/server/level/ServerChunkCache.java b/net/minecraft/server/level/ServerChunkCache.java
-index 0000000000000000000000000000000000000000..0000000000000000000000000000000000000000 100644
 --- a/net/minecraft/server/level/ServerChunkCache.java
 +++ b/net/minecraft/server/level/ServerChunkCache.java
 @@ -67,7 +67,9 @@ public class ServerChunkCache extends ChunkSource {

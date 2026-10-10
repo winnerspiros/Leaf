@@ -8,7 +8,6 @@ Subject: [PATCH] Leaf max-perf: reduce light-engine + IO buffer retention
 - Luminol scratch retain 2MiB -> 1MiB
 
 diff --git a/net/minecraft/world/level/lighting/LightEngine.java b/net/minecraft/world/level/lighting/LightEngine.java
-index 0000000000000000000000000000000000000000..0000000000000000000000000000000000000000 100644
 --- a/net/minecraft/world/level/lighting/LightEngine.java
 +++ b/net/minecraft/world/level/lighting/LightEngine.java
 @@ -24,7 +24,9 @@ public abstract class LightEngine<M extends DataLayerStorageMap<M>, S extends Da
@@ -32,7 +31,6 @@ index 0000000000000000000000000000000000000000..00000000000000000000000000000000
      private final long[] lastChunkPos = new long[2];
      private final LightChunk[] lastChunk = new LightChunk[2];
 diff --git a/net/minecraft/world/level/lighting/DataLayerStorageMap.java b/net/minecraft/world/level/lighting/DataLayerStorageMap.java
-index 0000000000000000000000000000000000000000..0000000000000000000000000000000000000000 100644
 --- a/net/minecraft/world/level/lighting/DataLayerStorageMap.java
 +++ b/net/minecraft/world/level/lighting/DataLayerStorageMap.java
 @@ -6,7 +6,9 @@
@@ -44,7 +42,6 @@ index 0000000000000000000000000000000000000000..00000000000000000000000000000000
      private final long[] lastSectionKeys = new long[2];
      private final @Nullable DataLayer[] lastSections = new DataLayer[2];
 diff --git a/me/earthme/luminol/data/BufferedLinearRegionFile.java b/me/earthme/luminol/data/BufferedLinearRegionFile.java
-index 0000000000000000000000000000000000000000..0000000000000000000000000000000000000000 100644
 --- a/me/earthme/luminol/data/BufferedLinearRegionFile.java
 +++ b/me/earthme/luminol/data/BufferedLinearRegionFile.java
 @@ -90,7 +90,9 @@ public class BufferedLinearRegionFile {

@@ -5,7 +5,6 @@ Subject: [PATCH] Bellows: Optimize display names
 
 
 diff --git a/net/minecraft/commands/CommandSourceStack.java b/net/minecraft/commands/CommandSourceStack.java
-index 3783382a712930b49fa5211342984d47faedd0e5..e75e8f84fbdb30706a9c48298707496d28898768 100644
 --- a/net/minecraft/commands/CommandSourceStack.java
 +++ b/net/minecraft/commands/CommandSourceStack.java
 @@ -66,6 +66,10 @@ public class CommandSourceStack implements SharedSuggestionProvider, ExecutionCo
@@ -251,7 +250,6 @@ index 3783382a712930b49fa5211342984d47faedd0e5..e75e8f84fbdb30706a9c48298707496d
      }
  
 diff --git a/net/minecraft/world/entity/Entity.java b/net/minecraft/world/entity/Entity.java
-index 0ac10f8283ebf0f897a9df1c6ec0e4bd7a2f732b..e7ccc58724c07ff0ea51ceec1c7d1e251d8bfc6c 100644
 --- a/net/minecraft/world/entity/Entity.java
 +++ b/net/minecraft/world/entity/Entity.java
 @@ -4219,6 +4219,12 @@ public abstract class Entity

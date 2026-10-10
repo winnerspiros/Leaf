@@ -39,7 +39,10 @@ public final class NodeEvaluatorCache {
         final ArrayDeque<NodeEvaluator> pool = NODE_EVALUATOR_TO_POOL.remove(nodeEvaluator);
         Validate.notNull(pool, "NodeEvaluator already returned");
 
-        pool.offer(nodeEvaluator);
+        // Leaf: cap pool size to avoid unbounded growth on exotic feature combos
+        if (pool.size() < 8) {
+            pool.offer(nodeEvaluator);
+        }
     }
 
     public static synchronized void removeNodeEvaluator(final NodeEvaluator nodeEvaluator) {

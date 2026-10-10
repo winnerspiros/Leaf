@@ -21,8 +21,8 @@ public final class ThreadPool {
         for (int i = 0; i < numThreads; i++) {
             threads[i] = Thread.ofPlatform()
                 .uncaughtExceptionHandler(Util::onThreadException)
-                .daemon(false)
-                .priority(Thread.NORM_PRIORITY)
+                .daemon(true)
+                .priority(Thread.NORM_PRIORITY - 1)
                 .name(prefix + " - " + i)
                 .start(new Worker(this));
         }
@@ -84,12 +84,13 @@ public final class ThreadPool {
                 } else if (executor.shutdown) {
                     break;
                 } else {
-                    Thread.yield();
                     if (channel.isEmpty()) {
                         LockSupport.park();
                         if (Thread.interrupted()) {
                             return;
                         }
+                    } else {
+                        Thread.yield();
                     }
                 }
             }

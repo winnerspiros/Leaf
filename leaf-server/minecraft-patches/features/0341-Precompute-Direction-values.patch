@@ -1,6 +1,6 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: RuleGaed <arasomeroguz9@gmail.com>
-Date: Tue, 9 Nov 2077 00:00:00 +0800
+Date: Tue, 9 Sep 2025 00:00:00 +0800
 Subject: [PATCH] Gale: precompute Direction.values + cache in pathfinding evaluators
 
 Ported from Gale feat/pathfinder-direction-cache (57a9e9b) + precompute base (9a5cbe2e7a)

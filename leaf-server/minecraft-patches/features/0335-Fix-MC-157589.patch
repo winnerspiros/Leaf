@@ -1,6 +1,6 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: HaHaWTH <102713261+HaHaWTH@users.noreply.github.com>
-Date: Tue, 9 Nov 2077 00:00:00 +0800
+Date: Tue, 9 Sep 2025 00:00:00 +0800
 Subject: [PATCH] Fix MC-157589
 
 The behavior is registered as "present",

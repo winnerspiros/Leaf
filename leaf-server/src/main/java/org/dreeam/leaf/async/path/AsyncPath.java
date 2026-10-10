@@ -108,7 +108,7 @@ public final class AsyncPath extends Path {
         this.target = bestPath.getTarget();
         this.distToTarget = bestPath.getDistToTarget();
         this.canReach = bestPath.canReach();
-        this.debugData = bestPath.debugData();
+        // Leaf: debugData is private in Path (Petal async-pathfinding dropped as incompatible) — skip copy
         this.pathFn = null;
         this.ready = true;
     }

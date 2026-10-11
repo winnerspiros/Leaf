@@ -17,9 +17,9 @@ Licensed under: GPL-3.0 (https://www.gnu.org/licenses/gpl-3.0.html)
 this patch is focused around the sensors used for ai
 delete the line of sight cache less often and use a faster nearby comparison
 
-diff --git a/src/main/java/net/minecraft/world/entity/ai/sensing/Sensing.java b/src/main/java/net/minecraft/world/entity/ai/sensing/Sensing.java
---- a/src/main/java/net/minecraft/world/entity/ai/sensing/Sensing.java
-+++ b/src/main/java/net/minecraft/world/entity/ai/sensing/Sensing.java
+diff --git a/net/minecraft/world/entity/ai/sensing/Sensing.java b/src/main/java/net/minecraft/world/entity/ai/sensing/Sensing.java
+--- a/net/minecraft/world/entity/ai/sensing/Sensing.java
++++ b/net/minecraft/world/entity/ai/sensing/Sensing.java
 @@ -1,39 +1,81 @@
  package net.minecraft.world.entity.ai.sensing;
  
@@ -113,14 +113,3 @@ diff --git a/src/main/java/net/minecraft/world/entity/ai/sensing/Sensing.java b/
  
              return bl;
          }
-diff --git a/src/main/java/org/galemc/gale/configuration/GaleGlobalConfiguration.java b/src/main/java/org/galemc/gale/configuration/GaleGlobalConfiguration.java
---- a/src/main/java/org/galemc/gale/configuration/GaleGlobalConfiguration.java
-+++ b/src/main/java/org/galemc/gale/configuration/GaleGlobalConfiguration.java
-@@ -33,6 +33,7 @@ public class GaleGlobalConfiguration extends ConfigurationPart {
-         public class ReducedIntervals extends ConfigurationPart.Post {
- 
-             public int increaseTimeStatistics = 20; // Gale - Hydrinity - increase time statistics in intervals
-+            public int updateEntityLineOfSight = 4; // Gale - Petal - reduce line of sight updates
- 
-             @Override
-             public void postProcess() {

@@ -151,9 +151,9 @@ new file mode 100644
 +          '}';
 +    }
 +}
-diff --git a/src/main/java/net/minecraft/world/CompoundContainer.java b/src/main/java/net/minecraft/world/CompoundContainer.java
---- a/src/main/java/net/minecraft/world/CompoundContainer.java
-+++ b/src/main/java/net/minecraft/world/CompoundContainer.java
+diff --git a/net/minecraft/world/CompoundContainer.java b/src/main/java/net/minecraft/world/CompoundContainer.java
+--- a/net/minecraft/world/CompoundContainer.java
++++ b/net/minecraft/world/CompoundContainer.java
 @@ -1,5 +1,6 @@
  package net.minecraft.world;
  
@@ -185,9 +185,9 @@ diff --git a/src/main/java/net/minecraft/world/CompoundContainer.java b/src/main
      @Override
      public int getContainerSize() {
          return this.container1.getContainerSize() + this.container2.getContainerSize();
-diff --git a/src/main/java/net/minecraft/world/Container.java b/src/main/java/net/minecraft/world/Container.java
---- a/src/main/java/net/minecraft/world/Container.java
-+++ b/src/main/java/net/minecraft/world/Container.java
+diff --git a/net/minecraft/world/Container.java b/src/main/java/net/minecraft/world/Container.java
+--- a/net/minecraft/world/Container.java
++++ b/net/minecraft/world/Container.java
 @@ -3,6 +3,8 @@ package net.minecraft.world;
  import java.util.Set;
  import java.util.function.Predicate;
@@ -261,9 +261,9 @@ diff --git a/src/main/java/net/minecraft/world/Container.java b/src/main/java/ne
  
      int LARGE_MAX_STACK_SIZE = 64;
      int DEFAULT_DISTANCE_LIMIT = 8;
-diff --git a/src/main/java/net/minecraft/world/entity/vehicle/AbstractMinecartContainer.java b/src/main/java/net/minecraft/world/entity/vehicle/AbstractMinecartContainer.java
---- a/src/main/java/net/minecraft/world/entity/vehicle/AbstractMinecartContainer.java
-+++ b/src/main/java/net/minecraft/world/entity/vehicle/AbstractMinecartContainer.java
+diff --git a/net/minecraft/world/entity/vehicle/AbstractMinecartContainer.java b/src/main/java/net/minecraft/world/entity/vehicle/AbstractMinecartContainer.java
+--- a/net/minecraft/world/entity/vehicle/AbstractMinecartContainer.java
++++ b/net/minecraft/world/entity/vehicle/AbstractMinecartContainer.java
 @@ -27,7 +27,10 @@ import org.bukkit.inventory.InventoryHolder;
  
  public abstract class AbstractMinecartContainer extends AbstractMinecart implements ContainerEntity {
@@ -307,9 +307,9 @@ diff --git a/src/main/java/net/minecraft/world/entity/vehicle/AbstractMinecartCo
          this.readChestVehicleSaveData(nbt);
      }
  
-diff --git a/src/main/java/net/minecraft/world/level/block/entity/ChestBlockEntity.java b/src/main/java/net/minecraft/world/level/block/entity/ChestBlockEntity.java
---- a/src/main/java/net/minecraft/world/level/block/entity/ChestBlockEntity.java
-+++ b/src/main/java/net/minecraft/world/level/block/entity/ChestBlockEntity.java
+diff --git a/net/minecraft/world/level/block/entity/ChestBlockEntity.java b/src/main/java/net/minecraft/world/level/block/entity/ChestBlockEntity.java
+--- a/net/minecraft/world/level/block/entity/ChestBlockEntity.java
++++ b/net/minecraft/world/level/block/entity/ChestBlockEntity.java
 @@ -31,7 +31,10 @@ import org.bukkit.entity.HumanEntity;
  public class ChestBlockEntity extends RandomizableContainerBlockEntity implements LidBlockEntity {
  
@@ -384,9 +384,9 @@ diff --git a/src/main/java/net/minecraft/world/level/block/entity/ChestBlockEnti
      }
  
      @Override
-diff --git a/src/main/java/net/minecraft/world/level/block/entity/HopperBlockEntity.java b/src/main/java/net/minecraft/world/level/block/entity/HopperBlockEntity.java
---- a/src/main/java/net/minecraft/world/level/block/entity/HopperBlockEntity.java
-+++ b/src/main/java/net/minecraft/world/level/block/entity/HopperBlockEntity.java
+diff --git a/net/minecraft/world/level/block/entity/HopperBlockEntity.java b/src/main/java/net/minecraft/world/level/block/entity/HopperBlockEntity.java
+--- a/net/minecraft/world/level/block/entity/HopperBlockEntity.java
++++ b/net/minecraft/world/level/block/entity/HopperBlockEntity.java
 @@ -47,7 +47,10 @@ public class HopperBlockEntity extends RandomizableContainerBlockEntity implemen
  
      public static final int MOVE_ITEM_SPEED = 8;
@@ -486,9 +486,9 @@ diff --git a/src/main/java/net/minecraft/world/level/block/entity/HopperBlockEnt
      }
  
      public static void entityInside(Level world, BlockPos pos, BlockState state, Entity entity, HopperBlockEntity blockEntity) {
-diff --git a/src/main/java/net/minecraft/world/level/block/entity/RandomizableContainerBlockEntity.java b/src/main/java/net/minecraft/world/level/block/entity/RandomizableContainerBlockEntity.java
---- a/src/main/java/net/minecraft/world/level/block/entity/RandomizableContainerBlockEntity.java
-+++ b/src/main/java/net/minecraft/world/level/block/entity/RandomizableContainerBlockEntity.java
+diff --git a/net/minecraft/world/level/block/entity/RandomizableContainerBlockEntity.java b/src/main/java/net/minecraft/world/level/block/entity/RandomizableContainerBlockEntity.java
+--- a/net/minecraft/world/level/block/entity/RandomizableContainerBlockEntity.java
++++ b/net/minecraft/world/level/block/entity/RandomizableContainerBlockEntity.java
 @@ -96,12 +96,7 @@ public abstract class RandomizableContainerBlockEntity extends BaseContainerBloc
      public boolean isEmpty() {
          this.unpackLootTable((Player)null);

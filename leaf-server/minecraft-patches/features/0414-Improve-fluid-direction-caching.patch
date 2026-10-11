@@ -184,9 +184,9 @@ new file mode 100644
 +        this.entries[toRemovePos] = new FluidDirectionEntry(data, flag);
 +    }
 +}
-diff --git a/src/main/java/net/minecraft/world/level/material/FlowingFluid.java b/src/main/java/net/minecraft/world/level/material/FlowingFluid.java
---- a/src/main/java/net/minecraft/world/level/material/FlowingFluid.java
-+++ b/src/main/java/net/minecraft/world/level/material/FlowingFluid.java
+diff --git a/net/minecraft/world/level/material/FlowingFluid.java b/src/main/java/net/minecraft/world/level/material/FlowingFluid.java
+--- a/net/minecraft/world/level/material/FlowingFluid.java
++++ b/net/minecraft/world/level/material/FlowingFluid.java
 @@ -45,6 +45,8 @@ public abstract class FlowingFluid extends Fluid {
      public static final BooleanProperty FALLING = BlockStateProperties.FALLING;
      public static final IntegerProperty LEVEL = BlockStateProperties.LEVEL_FLOWING;

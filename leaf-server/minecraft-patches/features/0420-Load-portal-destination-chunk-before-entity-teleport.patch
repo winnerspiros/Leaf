@@ -12,15 +12,15 @@ By: PureGero <puregero@gmail.com>
 As part of: MultiPaper (https://github.com/MultiPaper/MultiPaper)
 Licensed under: GPL-3.0 (https://www.gnu.org/licenses/gpl-3.0.html)
 
-diff --git a/src/main/java/net/minecraft/world/entity/Entity.java b/src/main/java/net/minecraft/world/entity/Entity.java
---- a/src/main/java/net/minecraft/world/entity/Entity.java
-+++ b/src/main/java/net/minecraft/world/entity/Entity.java
+diff --git a/net/minecraft/world/entity/Entity.java b/src/main/java/net/minecraft/world/entity/Entity.java
+--- a/net/minecraft/world/entity/Entity.java
++++ b/net/minecraft/world/entity/Entity.java
 @@ -3630,6 +3630,13 @@ public abstract class Entity implements Nameable, EntityAccess, CommandSource {
                  Entity entity = this.getType().create(worldserver);
  
                  if (entity != null) {
 +                    // Gale start - MultiPaper - load portal destination chunk before entity teleport
-+                    if (entity.level.galeConfig().gameplayMechanics.technical.loadPortalDestinationChunkBeforeEntityTeleport) {
++                    if (true) { // Leaf - always load portal destination chunk before entity teleport
 +                        BlockPos pos = BlockPos.containing(position);
 +                        worldserver.getChunkSource().addRegionTicket(TicketType.PORTAL, new ChunkPos(pos), 1, pos);
 +                        worldserver.getChunkAt(pos);
@@ -29,18 +29,3 @@ diff --git a/src/main/java/net/minecraft/world/entity/Entity.java b/src/main/jav
                      entity.restoreFrom(this);
                      entity.moveTo(position.x, position.y, position.z, yaw, pitch); // Paper - use EntityPortalExitEvent values
                      entity.setDeltaMovement(velocity); // Paper - use EntityPortalExitEvent values
-diff --git a/src/main/java/org/galemc/gale/configuration/GaleWorldConfiguration.java b/src/main/java/org/galemc/gale/configuration/GaleWorldConfiguration.java
---- a/src/main/java/org/galemc/gale/configuration/GaleWorldConfiguration.java
-+++ b/src/main/java/org/galemc/gale/configuration/GaleWorldConfiguration.java
-@@ -127,6 +127,11 @@ public class GaleWorldConfiguration extends ConfigurationPart {
- 
-         }
- 
-+        public Technical technical;
-+        public class Technical extends ConfigurationPart {
-+            public boolean loadPortalDestinationChunkBeforeEntityTeleport = false; // Gale - MultiPaper - load portal destination chunk before entity teleport
-+        }
-+
-         public boolean arrowMovementResetsDespawnCounter = true; // Gale - Purpur - make arrow movement resetting despawn counter configurable
-         public double entityWakeUpDurationRatioStandardDeviation = 0.2; // Gale - variable entity wake-up duration
-         public boolean hideFlamesOnEntitiesWithFireResistance = false; // Gale - Slice - hide flames on entities with fire resistance

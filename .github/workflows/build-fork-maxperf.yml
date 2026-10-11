@@ -38,7 +38,10 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          TAG="maxperf-26.3-build${{ github.run_number }}"
+          # Auto-version: v26.3.<patch> incrementing from existing tags
+          LAST=$(gh release list --limit 100 2>/dev/null | grep -oP 'v26\.3\.\d+' | sort -t. -k3 -n | tail -1)
+          if [ -z "$LAST" ]; then NEXT="v26.3.1"; else N=$(echo "$LAST" | cut -d. -f3); NEXT="v26.3.$((N+1))"; fi
+          TAG="$NEXT"
           # Version marker file
           echo "${{ github.sha }}" > leaf-maxperf-version.txt
           echo "build ${{ github.run_number }} $(date -u +%Y-%m-%dT%H:%M:%SZ)" >> leaf-maxperf-version.txt

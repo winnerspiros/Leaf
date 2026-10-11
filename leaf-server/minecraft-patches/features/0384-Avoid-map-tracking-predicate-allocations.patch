@@ -6,7 +6,7 @@ Subject: [PATCH] Avoid map tracking predicate allocations
 diff --git a/net/minecraft/world/entity/player/Inventory.java b/net/minecraft/world/entity/player/Inventory.java
 --- a/net/minecraft/world/entity/player/Inventory.java
 +++ b/net/minecraft/world/entity/player/Inventory.java
-@@ -492,6 +492,24 @@ public class Inventory implements Container, Nameable {
+@@ -492,11 +492,29 @@ public class Inventory implements Container, Nameable {
          return false;
      }
 
@@ -29,8 +29,13 @@ diff --git a/net/minecraft/world/entity/player/Inventory.java b/net/minecraft/wo
 +    // Leaf-Performance end - avoid allocating map match predicates in MapItemSavedData
 +
      public boolean contains(final Predicate<ItemStack> predicate) {
-         for (ItemStack stack : this) {
+         // Leaf start - Remove iterators from Inventory
+         for (int i = 0, size = this.items.size(); i < size; i++) {
+             ItemStack stack = this.items.get(i);
              if (predicate.test(stack)) {
+                 return true;
+             }
+         }
 diff --git a/net/minecraft/world/level/saveddata/maps/MapItemSavedData.java b/net/minecraft/world/level/saveddata/maps/MapItemSavedData.java
 --- a/net/minecraft/world/level/saveddata/maps/MapItemSavedData.java
 +++ b/net/minecraft/world/level/saveddata/maps/MapItemSavedData.java

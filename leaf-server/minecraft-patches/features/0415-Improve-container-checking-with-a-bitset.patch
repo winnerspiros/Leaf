@@ -154,13 +154,14 @@ new file mode 100644
 diff --git a/net/minecraft/world/CompoundContainer.java b/net/minecraft/world/CompoundContainer.java
 --- a/net/minecraft/world/CompoundContainer.java
 +++ b/net/minecraft/world/CompoundContainer.java
-@@ -1,5 +1,6 @@
- package net.minecraft.world;
- 
-+import net.minecraft.core.Direction;
+@@ -3,5 +3,7 @@ package net.minecraft.world;
  import net.minecraft.world.entity.player.Player;
  import net.minecraft.world.item.ItemStack;
  
++import net.minecraft.core.Direction;
++
+ public class CompoundContainer implements Container {
+
 @@ -64,6 +65,23 @@ public class CompoundContainer implements Container {
          this.container2 = second;
      }
@@ -188,16 +189,16 @@ diff --git a/net/minecraft/world/CompoundContainer.java b/net/minecraft/world/Co
 diff --git a/net/minecraft/world/Container.java b/net/minecraft/world/Container.java
 --- a/net/minecraft/world/Container.java
 +++ b/net/minecraft/world/Container.java
-@@ -3,6 +3,8 @@ package net.minecraft.world;
- import java.util.Set;
- import java.util.function.Predicate;
+@@ -6,7 +6,8 @@ import java.util.function.Predicate;
  import net.minecraft.core.BlockPos;
-+
+ import net.minecraft.world.entity.ContainerUser;
+ import net.minecraft.world.entity.SlotAccess;
+ import net.minecraft.world.entity.SlotProvider;
 +import net.minecraft.core.Direction;
  import net.minecraft.world.entity.player.Player;
  import net.minecraft.world.item.Item;
  import net.minecraft.world.item.ItemStack;
-@@ -14,6 +16,63 @@ import org.bukkit.craftbukkit.entity.CraftHumanEntity;
+@@ -19,6 +20,63 @@ public interface Container extends Clearable, Iterable<ItemStack>, SlotProvider
  // CraftBukkit end
  
  public interface Container extends Clearable {

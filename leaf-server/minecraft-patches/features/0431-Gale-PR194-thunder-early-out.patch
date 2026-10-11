@@ -8,7 +8,8 @@ Ports GaleMC/Gale#194.
 diff --git a/net/minecraft/server/level/ServerLevel.java b/net/minecraft/server/level/ServerLevel.java
 --- a/net/minecraft/server/level/ServerLevel.java
 +++ b/net/minecraft/server/level/ServerLevel.java
-@@ -1291,6 +1291,11 @@ public class ServerLevel extends Level implements ChunkHolder.PlayerProvider, Se
+@@ -1287,7 +1287,12 @@ public class ServerLevel extends Level implements ChunkHolder.PlayerProvider, Se
+         profiler.pop();
      }
 
      public void tickThunder(final LevelChunk chunk) {

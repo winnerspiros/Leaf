@@ -8,20 +8,21 @@ This patch is Powered by Pufferfish(https://github.com/pufferfish-gg/Pufferfish)
 diff --git a/net/minecraft/world/entity/LivingEntity.java b/net/minecraft/world/entity/LivingEntity.java
 --- a/net/minecraft/world/entity/LivingEntity.java
 +++ b/net/minecraft/world/entity/LivingEntity.java
-@@ -440,7 +440,7 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin
-         profilerFiller.push("livingEntityBaseTick");
-         if (this.isAlive() && this.level() instanceof ServerLevel serverLevel1) {
-             boolean flag = this instanceof Player;
+@@ -426,7 +426,7 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin
+         profiler.push("livingEntityBaseTick");
+         if (this.isAlive() && this.level() instanceof ServerLevel level) {
+             boolean isPlayer = this instanceof Player;
 -            if (this.isInWall()) {
-+            if ((!org.leavesmc.leaves.LeavesConfig.performance.enableSuffocationOptimization || this instanceof WitherBoss || (tickCount % 10 == 0 && couldPossiblyBeHurt(1.0F))) && this.isInWall()) { // Leaves - optimize suffocation
-                 this.hurtServer(serverLevel1, this.damageSources().inWall(), 1.0F);
-             } else if (flag && !serverLevel1.getWorldBorder().isWithinBounds(this.getBoundingBox())) {
-                 double d = serverLevel1.getWorldBorder().getDistanceToBorder(this) + serverLevel1.getWorldBorder().getSafeZone();
-@@ -1423,6 +1423,12 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin
-         return this.getHealth() <= 0.0F;
++            if ((this instanceof net.minecraft.world.entity.boss.wither.WitherBoss || (this.tickCount % 10 == 0 && this.couldPossiblyBeHurt(1.0F))) && this.isInWall()) { // Leaf - optimize suffocation
+                 this.hurtServer(level, this.damageSources().inWall(), 1.0F);
+             } else if (isPlayer && !level.getWorldBorder().isWithinBounds(this.getBoundingBox())) {
+                 double dist = level.getWorldBorder().getDistanceToBorder(this) + level.getWorldBorder().getSafeZone();
+@@ -1168,7 +1168,13 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin
+     public boolean isDeadOrDying() {
+         return this.getHealth() <= 0.0F || this.dead;
      }
  
-+    // Leaves start - optimize suffocation
++    // Leaf start - optimize suffocation
 +    public boolean couldPossiblyBeHurt(float amount) {
 +        return !((float) this.invulnerableTime > (float) this.invulnerableDuration / 2.0F) || !(amount <= this.lastHurt);
 +    }

@@ -9,7 +9,10 @@ distanceToSqr + squared thresholds, avoiding sqrt in hot paths.
 diff --git a/net/minecraft/world/entity/ai/goal/FollowPlayerRiddenEntityGoal.java b/net/minecraft/world/entity/ai/goal/FollowPlayerRiddenEntityGoal.java
 --- a/net/minecraft/world/entity/ai/goal/FollowPlayerRiddenEntityGoal.java
 +++ b/net/minecraft/world/entity/ai/goal/FollowPlayerRiddenEntityGoal.java
-@@ -75,7 +75,9 @@ public class FollowPlayerRiddenEntityGoal extends Goal {
+@@ -74,18 +74,22 @@ public class FollowPlayerRiddenEntityGoal extends Goal {
+         if (--this.timeToRecalcPath <= 0) {
+             this.timeToRecalcPath = this.adjustedTickDelay(10);
+             if (this.currentGoal == FollowPlayerRiddenEntityGoal.FollowEntityGoal.GO_TO_ENTITY) {
                  BlockPos behindEntityPos = this.following.blockPosition().relative(this.following.getDirection().getOpposite());
                  behindEntityPos = behindEntityPos.offset(0, -1, 0);
                  this.mob.getNavigation().moveTo(behindEntityPos.getX(), behindEntityPos.getY(), behindEntityPos.getZ(), 1.0);
@@ -20,7 +23,7 @@ diff --git a/net/minecraft/world/entity/ai/goal/FollowPlayerRiddenEntityGoal.jav
                      this.timeToRecalcPath = 0;
                      this.currentGoal = FollowPlayerRiddenEntityGoal.FollowEntityGoal.GO_IN_ENTITY_DIRECTION;
                  }
-@@ -83,7 +85,9 @@ public class FollowPlayerRiddenEntityGoal extends Goal {
+             } else if (this.currentGoal == FollowPlayerRiddenEntityGoal.FollowEntityGoal.GO_IN_ENTITY_DIRECTION) {
                  Direction direction = this.following.getMotionDirection();
                  BlockPos goTo = this.following.blockPosition().relative(direction, 10);
                  this.mob.getNavigation().moveTo(goTo.getX(), goTo.getY() - 1, goTo.getZ(), 1.0);

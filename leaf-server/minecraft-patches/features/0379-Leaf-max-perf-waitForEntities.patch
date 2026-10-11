@@ -1,6 +1,6 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Leaf Max-Perf <leaf@localhost>
-Date: Sat, 10 Oct 2026 00:00:00 +0000
+Date: Sat, 11 Oct 2026 00:00:00 +0000
 Subject: [PATCH] Leaf max-perf: zero-alloc waitForEntities chunk loop
 
 Avoids ChunkPos.rangeClosed(...).toList() allocation on teleport/summon paths.
@@ -9,7 +9,7 @@ Idea credit: pipatpad2011/Leaf chunk-optimization docs.
 diff --git a/net/minecraft/server/level/ServerLevel.java b/net/minecraft/server/level/ServerLevel.java
 --- a/net/minecraft/server/level/ServerLevel.java
 +++ b/net/minecraft/server/level/ServerLevel.java
-@@ -1897,16 +1897,23 @@ public class ServerLevel extends Level implements ChunkHolder.PlayerProvider, Se
+@@ -3266,16 +3266,23 @@ public class ServerLevel extends Level implements ChunkHolder.PlayerProvider, Se
      }
 
      public void waitForEntities(final ChunkPos centerChunk, final int radius) {
@@ -18,8 +18,8 @@ diff --git a/net/minecraft/server/level/ServerLevel.java b/net/minecraft/server/
 +        final int cx = centerChunk.x;
 +        final int cz = centerChunk.z;
 +        // Leaf end - max-perf
-         this.server.managedBlock(() -> {
-             this.entityManager.processPendingLoads();
+         this.chunkSource.mainThreadProcessor.managedBlock(() -> { // Paper - rewrite chunk system
+             //this.entityManager.processPendingLoads(); // Paper - rewrite chunk system
 
 -            for (ChunkPos chunk : chunks) {
 -                if (!this.areEntitiesLoaded(chunk.pack())) {

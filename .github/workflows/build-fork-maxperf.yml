@@ -42,7 +42,6 @@ jobs:
           echo "NEXT=$NEXT" >> $GITHUB_ENV
           cp leaf-server/build/libs/leaf-paperclip-*.jar "leaf-server/build/libs/leaf-$NEXT.jar"
           ls -la leaf-server/build/libs/leaf-$NEXT.jar
-          ls -la leaf-server/build/libs/$NEXT.jar
       - name: Create release
         env:
           GH_TOKEN: ${{ github.token }}

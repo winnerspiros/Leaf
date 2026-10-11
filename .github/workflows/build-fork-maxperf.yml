@@ -32,16 +32,21 @@ jobs:
       - name: Upload jar
         uses: actions/upload-artifact@v6
         with:
-          name: leaf-maxperf-paperclip
+          name: uwu-jar
           path: leaf-server/build/libs/leaf-paperclip-*.jar
-      - name: Create release
-        env:
-          GH_TOKEN: ${{ github.token }}
+      - name: Rename jar to version
         run: |
           # Auto-version: UwU jar builds, independent of MC version (uwu-1, uwu-2, ...)
           LAST=$(gh release list --limit 100 2>/dev/null | grep -oP 'uwu-\d+' | sort -t- -k2 -n | tail -1)
           if [ -z "$LAST" ]; then NEXT="uwu-1"; else N=$(echo "$LAST" | cut -d- -f2); NEXT="uwu-$((N+1))"; fi
-          TAG="$NEXT"
+          echo "NEXT=$NEXT" >> $GITHUB_ENV
+          cp leaf-server/build/libs/leaf-paperclip-*.jar "leaf-server/build/libs/$NEXT.jar"
+          ls -la leaf-server/build/libs/$NEXT.jar
+      - name: Create release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG="${{ env.NEXT }}"
           # Version marker file
           echo "${{ github.sha }}" > leaf-maxperf-version.txt
           echo "build ${{ github.run_number }} $(date -u +%Y-%m-%dT%H:%M:%SZ)" >> leaf-maxperf-version.txt
@@ -56,13 +61,13 @@ jobs:
           CHANGELOG+="\n### Recent commits\n$(git log -10 --format='- %s')\n"
           printf "%b" "$CHANGELOG" > maxperf-changelog.md
           NOTES="$(printf "%b" "$CHANGELOG")"
-          gh release create "$TAG" leaf-server/build/libs/leaf-paperclip-*.jar \
+          gh release create "$TAG" "leaf-server/build/libs/$TAG.jar" \
             --title "UwU (MC 26.3) build $TAG" \
             --notes "$NOTES"
           # Roll the 'current' pointer to this build
           gh release delete maxperf-26.3-current -y 2>/dev/null || true
           git tag -f maxperf-26.3-current 2>/dev/null || true
-          gh release create maxperf-26.3-current leaf-server/build/libs/leaf-paperclip-*.jar \
+          gh release create maxperf-26.3-current "leaf-server/build/libs/$TAG.jar" \
             --title "UwU (MC 26.3) current" \
             --notes "$NOTES" \
             --latest || true

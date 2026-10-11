@@ -37,10 +37,27 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           TAG="maxperf-26.3-build${{ github.run_number }}"
-          NOTES="$(git log -5 --format='- %s')"
+          # Version marker file
+          echo "${{ github.sha }}" > leaf-maxperf-version.txt
+          echo "build ${{ github.run_number }} $(date -u +%Y-%m-%dT%H:%M:%SZ)" >> leaf-maxperf-version.txt
+          # Changelog: our patches grouped (subjects from patch filenames)
+          CHANGELOG="## Changes vs upstream Leaf 26.3\n\n"
+          CHANGELOG+="### Our cherry-picked ports (not in upstream Leaf)\n"
+          for p in leaf-server/minecraft-patches/features/03[4-9]*.patch leaf-server/minecraft-patches/features/04*.patch; do
+            [ -f "$p" ] || continue
+            SUBJ=$(grep -m1 "^Subject:" "$p" | sed 's/Subject: \[PATCH\] //')
+            CHANGELOG+="- $SUBJ\n"
+          done
+          CHANGELOG+="\n### Recent commits\n$(git log -10 --format='- %s')\n"
+          printf "%b" "$CHANGELOG" > maxperf-changelog.md
+          NOTES="$(printf "%b" "$CHANGELOG")"
           gh release create "$TAG" leaf-server/build/libs/leaf-paperclip-*.jar \
             --title "Leaf max-perf 26.3 ($TAG)" \
-            --notes "Automated max-perf build from ver/26.3 @ ${{ github.sha }}
-
-          Recent changes:
-          $NOTES"
+            --notes "$NOTES"
+          # Roll the 'current' pointer to this build
+          gh release delete maxperf-26.3-current -y 2>/dev/null || true
+          git tag -f maxperf-26.3-current 2>/dev/null || true
+          gh release create maxperf-26.3-current leaf-server/build/libs/leaf-paperclip-*.jar \
+            --title "Leaf max-perf 26.3 (current)" \
+            --notes "$NOTES" \
+            --latest || true

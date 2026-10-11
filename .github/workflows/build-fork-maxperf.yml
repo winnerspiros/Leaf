@@ -40,7 +40,8 @@ jobs:
           LAST=$(gh release list --limit 100 --json tagName -q '.[].tagName' 2>/dev/null | grep -E '^[0-9]+$' | sort -n | tail -1)
           if [ -z "$LAST" ]; then NEXT="1"; else NEXT="$((LAST+1))"; fi
           echo "NEXT=$NEXT" >> $GITHUB_ENV
-          cp leaf-server/build/libs/leaf-paperclip-*.jar "leaf-server/build/libs/$NEXT.jar"
+          cp leaf-server/build/libs/leaf-paperclip-*.jar "leaf-server/build/libs/leaf-$NEXT.jar"
+          ls -la leaf-server/build/libs/leaf-$NEXT.jar
           ls -la leaf-server/build/libs/$NEXT.jar
       - name: Create release
         env:
@@ -52,8 +53,8 @@ jobs:
             TAG="$((TAG+1))"
           done
           # rename jar to final TAG if bumped
-          if [ ! -f "leaf-server/build/libs/$TAG.jar" ]; then
-            cp leaf-server/build/libs/${{ env.NEXT }}.jar "leaf-server/build/libs/$TAG.jar"
+          if [ ! -f "leaf-server/build/libs/leaf-$TAG.jar" ]; then
+            cp leaf-server/build/libs/leaf-${{ env.NEXT }}.jar "leaf-server/build/libs/leaf-$TAG.jar"
           fi
           # Version marker file
           echo "${{ github.sha }}" > leaf-maxperf-version.txt
@@ -69,13 +70,13 @@ jobs:
           CHANGELOG+="\n### Recent commits\n$(git log -10 --format='- %s')\n"
           printf "%b" "$CHANGELOG" > maxperf-changelog.md
           NOTES="$(printf "%b" "$CHANGELOG")"
-          gh release create "$TAG" "leaf-server/build/libs/$TAG.jar" \
+          gh release create "$TAG" "leaf-server/build/libs/leaf-$TAG.jar" \
             --title "Leaf max-perf build $TAG (MC 26.3)" \
             --notes "$NOTES"
           # Roll the 'current' pointer to this build
           gh release delete maxperf-26.3-current -y 2>/dev/null || true
           git tag -f maxperf-26.3-current 2>/dev/null || true
-          gh release create maxperf-26.3-current "leaf-server/build/libs/$TAG.jar" \
+          gh release create maxperf-26.3-current "leaf-server/build/libs/leaf-$TAG.jar" \
             --title "Leaf max-perf current (MC 26.3)" \
             --notes "$NOTES" \
             --latest || true

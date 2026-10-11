@@ -37,7 +37,7 @@ jobs:
       - name: Rename jar to version
         run: |
           # Auto-version: plain build numbers (1, 2, ...)
-          LAST=$(gh release list --limit 100 2>/dev/null | grep -oP 'uwu-\d+' | sort -t- -k2 -n | tail -1)
+          LAST=$(gh release list --limit 100 --json tagName -q '.[].tagName' 2>/dev/null | grep -E '^[0-9]+$' | sort -n | tail -1)
           if [ -z "$LAST" ]; then NEXT="1"; else NEXT="$((LAST+1))"; fi
           echo "NEXT=$NEXT" >> $GITHUB_ENV
           cp leaf-server/build/libs/leaf-paperclip-*.jar "leaf-server/build/libs/$NEXT.jar"

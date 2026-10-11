@@ -1,0 +1,27 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Leaf Max-Perf <leaf@localhost>
+Date: Sun, 11 Oct 2026 00:00:00 +0000
+Subject: [PATCH] Gale tick204: hoist spawner query box out of spawn loop
+
+Ports GaleMC/Gale#204 (BaseSpawner part): builds the nearby-entity AABB
+once instead of per spawn attempt.
+
+diff --git a/net/minecraft/world/level/BaseSpawner.java b/net/minecraft/world/level/BaseSpawner.java
+--- a/net/minecraft/world/level/BaseSpawner.java
++++ b/net/minecraft/world/level/BaseSpawner.java
+@@ -104,6 +104,7 @@ public abstract class BaseSpawner {
+                 RandomSource random = level.getRandom();
+                 SpawnData nextSpawnData = this.getOrCreateNextSpawnData(level, random, pos);
+ 
++                AABB nearbyEntitiesBox = new AABB(pos.getX(), pos.getY(), pos.getZ(), pos.getX() + 1, pos.getY() + 1, pos.getZ() + 1).inflate(this.spawnRange); // Gale - Leaf: hoist nearby entity query box out of the spawn loop
+                 for (int c = 0; c < this.spawnCount; c++) {
+                     try (ProblemReporter.ScopedCollector reporter = new ProblemReporter.ScopedCollector(this::toString, LOGGER)) {
+                         ValueInput input = TagValueInput.create(reporter, level.registryAccess(), nextSpawnData.getEntityToSpawn());
+@@ -148,6 +149,6 @@ public abstract class BaseSpawner {
+                             int nearBy = level.getEntities(
+                                     EntityTypeTest.forExactClass(entity.getClass()),
+-                                    new AABB(pos.getX(), pos.getY(), pos.getZ(), pos.getX() + 1, pos.getY() + 1, pos.getZ() + 1).inflate(this.spawnRange),
++                                    nearbyEntitiesBox, // Gale - Leaf: hoist nearby entity query box out of the spawn loop
+                                     EntitySelector.NO_SPECTATORS
+                                 )
+                                 .size();

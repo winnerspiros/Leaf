@@ -33,20 +33,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 diff --git a/net/minecraft/world/entity/ai/behavior/AcquirePoi.java b/src/main/java/net/minecraft/world/entity/ai/behavior/AcquirePoi.java
 --- a/net/minecraft/world/entity/ai/behavior/AcquirePoi.java
 +++ b/net/minecraft/world/entity/ai/behavior/AcquirePoi.java
-@@ -13,6 +13,6 @@ import net.minecraft.core.BlockPos;
- import net.minecraft.core.GlobalPos;
- import net.minecraft.core.Holder;
- import net.minecraft.network.protocol.game.DebugPackets;
- import net.minecraft.util.RandomSource;
- import net.minecraft.world.entity.Mob;
- import net.minecraft.world.entity.PathfinderMob;
-@@ -26,6 +27,6 @@ import org.apache.commons.lang3.mutable.MutableLong;
- public class AcquirePoi {
-     public static final int SCAN_RANGE = 48;
- 
-     public static BehaviorControl<PathfinderMob> create(Predicate<Holder<PoiType>> poiPredicate, MemoryModuleType<GlobalPos> poiPosModule, boolean onlyRunIfChild, Optional<Byte> entityStatus) {
-         return create(poiPredicate, poiPosModule, poiPosModule, onlyRunIfChild, entityStatus);
-     }
 @@ -42,11 +50,14 @@ public class AcquirePoi {
                          return false;
                      } else if (mutableLong.getValue() == 0L) {

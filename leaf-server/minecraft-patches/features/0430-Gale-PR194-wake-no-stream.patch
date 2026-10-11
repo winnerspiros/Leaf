@@ -1,0 +1,23 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Leaf Max-Perf <leaf@localhost>
+Date: Sun, 11 Oct 2026 00:00:00 +0000
+Subject: [PATCH] Gale PR194: wakeUpAllPlayers no stream/list alloc
+
+Ports GaleMC/Gale#194.
+
+diff --git a/net/minecraft/server/level/ServerLevel.java b/net/minecraft/server/level/ServerLevel.java
+--- a/net/minecraft/server/level/ServerLevel.java
++++ b/net/minecraft/server/level/ServerLevel.java
+@@ -1201,5 +1201,11 @@ public class ServerLevel extends Level implements ChunkHolder.PlayerProvider, Se
+
+     private void wakeUpAllPlayers() {
+         this.sleepStatus.removeAllSleepers();
+-        this.players.stream().filter(LivingEntity::isSleeping).collect(Collectors.toList()).forEach(player -> player.stopSleepInBed(false, false));
++        // Gale start - Leaf: avoid stream and list allocation
++        for (ServerPlayer player : this.players) {
++            if (player.isSleeping()) {
++                player.stopSleepInBed(false, false);
++            }
++        }
++        // Gale end - Leaf: avoid stream and list allocation
+     }

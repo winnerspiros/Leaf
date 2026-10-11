@@ -47,6 +47,14 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           TAG="${{ env.NEXT }}"
+          # If tag already taken (concurrent builds), bump until free
+          while gh release view "$TAG" >/dev/null 2>&1; do
+            N=$(echo "$TAG" | cut -d- -f2); TAG="uwu-$((N+1))"
+          done
+          # rename jar to final TAG if bumped
+          if [ ! -f "leaf-server/build/libs/$TAG.jar" ]; then
+            cp leaf-server/build/libs/${{ env.NEXT }}.jar "leaf-server/build/libs/$TAG.jar"
+          fi
           # Version marker file
           echo "${{ github.sha }}" > leaf-maxperf-version.txt
           echo "build ${{ github.run_number }} $(date -u +%Y-%m-%dT%H:%M:%SZ)" >> leaf-maxperf-version.txt

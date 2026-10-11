@@ -20,7 +20,7 @@ Decision: RETAIN - CHEAP WIN / LOW MAINTENANCE.
 diff --git a/net/minecraft/world/entity/Entity.java b/net/minecraft/world/entity/Entity.java
 --- a/net/minecraft/world/entity/Entity.java
 +++ b/net/minecraft/world/entity/Entity.java
-@@ -1356,8 +1356,9 @@ public abstract class Entity
+@@ -1385,9 +1385,11 @@ public abstract class Entity
                      this.restituteMovementAfterCollisions(effectState, xCollision, zCollision, movement);
                  }
                  // CraftBukkit start

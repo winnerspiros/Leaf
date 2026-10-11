@@ -36,7 +36,7 @@ diff --git a/net/minecraft/world/entity/Entity.java b/net/minecraft/world/entity
  
          this.gameEvent(GameEvent.SPLASH);
      }
-@@ -4226,6 +4228,7 @@ public abstract class Entity
+@@ -4226,6 +4228,6 @@ public abstract class Entity
      }
  
      protected static void sendBubbleColumnParticles(final Level level, final BlockPos pos) {

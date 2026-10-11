@@ -33,7 +33,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 diff --git a/gg/airplane/structs/ItemListWithBitset.java b/gg/airplane/structs/ItemListWithBitset.java
 new file mode 100644
 --- /dev/null
-+++ b/src/main/java/gg/airplane/structs/ItemListWithBitset.java
++++ b/gg/airplane/structs/ItemListWithBitset.java
 @@ -0,0 +1,116 @@
 +// Gale - Airplane - improve container checking with a bitset
 +
@@ -307,7 +307,7 @@ diff --git a/net/minecraft/world/entity/vehicle/AbstractMinecartContainer.java b
          this.readChestVehicleSaveData(nbt);
      }
  
-diff --git a/net/minecraft/world/level/block/entity/ChestBlockEntity.java b/src/main/java/net/minecraft/world/level/block/entity/ChestBlockEntity.java
+diff --git a/net/minecraft/world/level/block/entity/ChestBlockEntity.java b/net/minecraft/world/level/block/entity/ChestBlockEntity.java
 --- a/net/minecraft/world/level/block/entity/ChestBlockEntity.java
 +++ b/net/minecraft/world/level/block/entity/ChestBlockEntity.java
 @@ -31,7 +31,10 @@ import org.bukkit.entity.HumanEntity;
@@ -384,7 +384,7 @@ diff --git a/net/minecraft/world/level/block/entity/ChestBlockEntity.java b/src/
      }
  
      @Override
-diff --git a/net/minecraft/world/level/block/entity/HopperBlockEntity.java b/src/main/java/net/minecraft/world/level/block/entity/HopperBlockEntity.java
+diff --git a/net/minecraft/world/level/block/entity/HopperBlockEntity.java b/net/minecraft/world/level/block/entity/HopperBlockEntity.java
 --- a/net/minecraft/world/level/block/entity/HopperBlockEntity.java
 +++ b/net/minecraft/world/level/block/entity/HopperBlockEntity.java
 @@ -47,7 +47,10 @@ public class HopperBlockEntity extends RandomizableContainerBlockEntity implemen
@@ -486,7 +486,7 @@ diff --git a/net/minecraft/world/level/block/entity/HopperBlockEntity.java b/src
      }
  
      public static void entityInside(Level world, BlockPos pos, BlockState state, Entity entity, HopperBlockEntity blockEntity) {
-diff --git a/net/minecraft/world/level/block/entity/RandomizableContainerBlockEntity.java b/src/main/java/net/minecraft/world/level/block/entity/RandomizableContainerBlockEntity.java
+diff --git a/net/minecraft/world/level/block/entity/RandomizableContainerBlockEntity.java b/net/minecraft/world/level/block/entity/RandomizableContainerBlockEntity.java
 --- a/net/minecraft/world/level/block/entity/RandomizableContainerBlockEntity.java
 +++ b/net/minecraft/world/level/block/entity/RandomizableContainerBlockEntity.java
 @@ -96,12 +96,7 @@ public abstract class RandomizableContainerBlockEntity extends BaseContainerBloc

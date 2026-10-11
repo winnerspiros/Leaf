@@ -20,7 +20,7 @@ Given that we do a lot of varint writing as well, this should provide a small pe
 
 This includes a test to ensure that the behavior is as expected and fixes the initialization loop so that the correct results will be given. Much thanks to @octylFractal for acting as my duck while trying to figure this out.
 
-diff --git a/net/minecraft/network/VarInt.java b/src/main/java/net/minecraft/network/VarInt.java
+diff --git a/net/minecraft/network/VarInt.java b/net/minecraft/network/VarInt.java
 --- a/net/minecraft/network/VarInt.java
 +++ b/net/minecraft/network/VarInt.java
 @@ -54,6 +54,41 @@ public class VarInt {
@@ -65,7 +65,7 @@ diff --git a/net/minecraft/network/VarInt.java b/src/main/java/net/minecraft/net
          while((i & -128) != 0) {
              buf.writeByte(i & 127 | 128);
              i >>>= 7;
-diff --git a/net/minecraft/network/VarLong.java b/src/main/java/net/minecraft/network/VarLong.java
+diff --git a/net/minecraft/network/VarLong.java b/net/minecraft/network/VarLong.java
 --- a/net/minecraft/network/VarLong.java
 +++ b/net/minecraft/network/VarLong.java
 @@ -54,6 +54,127 @@ public class VarLong {

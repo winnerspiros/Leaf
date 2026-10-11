@@ -13,10 +13,6 @@ only event construction.
 License: GPL-3.0; attribution retained per Paper contribution terms.
 Decision: RETAIN - CHEAP WIN / LOW MAINTENANCE.
 
----
- net/minecraft/world/entity/Entity.java | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
-
 diff --git a/net/minecraft/world/entity/Entity.java b/net/minecraft/world/entity/Entity.java
 --- a/net/minecraft/world/entity/Entity.java
 +++ b/net/minecraft/world/entity/Entity.java

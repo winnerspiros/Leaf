@@ -9,8 +9,9 @@ distanceToSqr + squared thresholds, avoiding sqrt in hot paths.
 diff --git a/net/minecraft/world/entity/ai/goal/FollowPlayerRiddenEntityGoal.java b/net/minecraft/world/entity/ai/goal/FollowPlayerRiddenEntityGoal.java
 --- a/net/minecraft/world/entity/ai/goal/FollowPlayerRiddenEntityGoal.java
 +++ b/net/minecraft/world/entity/ai/goal/FollowPlayerRiddenEntityGoal.java
-@@ -67,22 +67,26 @@ public class FollowPlayerRiddenEntityGoal extends Goal {
-    public void tick() {
+@@ -66,23 +66,27 @@ public class FollowPlayerRiddenEntityGoal extends Goal {
+     @Override
+     public void tick() {
         float speed = this.currentGoal == FollowPlayerRiddenEntityGoal.FollowEntityGoal.GO_IN_ENTITY_DIRECTION ? 0.01F : 0.015F;
         this.mob.moveRelative(speed, new Vec3(this.mob.xxa, this.mob.yya, this.mob.zza));
         this.mob.move(MoverType.SELF, this.mob.getDeltaMovement());

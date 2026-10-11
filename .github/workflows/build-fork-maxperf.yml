@@ -70,12 +70,12 @@ jobs:
           printf "%b" "$CHANGELOG" > maxperf-changelog.md
           NOTES="$(printf "%b" "$CHANGELOG")"
           gh release create "$TAG" "leaf-server/build/libs/$TAG.jar" \
-            --title "YandereCraft build $TAG (MC 26.3)" \
+            --title "Leaf max-perf build $TAG (MC 26.3)" \
             --notes "$NOTES"
           # Roll the 'current' pointer to this build
           gh release delete maxperf-26.3-current -y 2>/dev/null || true
           git tag -f maxperf-26.3-current 2>/dev/null || true
           gh release create maxperf-26.3-current "leaf-server/build/libs/$TAG.jar" \
-            --title "YandereCraft current (MC 26.3)" \
+            --title "Leaf max-perf current (MC 26.3)" \
             --notes "$NOTES" \
             --latest || true

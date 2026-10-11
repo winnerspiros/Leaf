@@ -11,7 +11,9 @@ diff --git a/net/minecraft/world/entity/ai/goal/FollowPlayerRiddenEntityGoal.jav
 diff --git a/net/minecraft/world/entity/animal/bee/Bee.java b/net/minecraft/world/entity/animal/bee/Bee.java
 --- a/net/minecraft/world/entity/animal/bee/Bee.java
 +++ b/net/minecraft/world/entity/animal/bee/Bee.java
-@@ -1161,7 +1161,9 @@ public class Bee extends Animal implements NeutralMob, FlyingAnimal {
+@@ -1160,9 +1160,11 @@ public class Bee extends Animal implements NeutralMob, FlyingAnimal {
+                     Bee.this.dropFlower();
+                     this.pollinating = false;
                      Bee.this.remainingCooldownBeforeLocatingNewFlower = 200;
                  } else {
                      Vec3 flowerPos = Vec3.atBottomCenterOf(Bee.this.savedFlowerPos).add(0.0, 0.6F, 0.0);

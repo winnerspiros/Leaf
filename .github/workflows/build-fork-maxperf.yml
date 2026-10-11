@@ -38,9 +38,9 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          # Auto-version: v26.3.<patch> incrementing from existing tags
-          LAST=$(gh release list --limit 100 2>/dev/null | grep -oP 'v26\.3\.\d+' | sort -t. -k3 -n | tail -1)
-          if [ -z "$LAST" ]; then NEXT="v26.3.1"; else N=$(echo "$LAST" | cut -d. -f3); NEXT="v26.3.$((N+1))"; fi
+          # Auto-version: UwU jar builds, independent of MC version (uwu-1, uwu-2, ...)
+          LAST=$(gh release list --limit 100 2>/dev/null | grep -oP 'uwu-\d+' | sort -t- -k2 -n | tail -1)
+          if [ -z "$LAST" ]; then NEXT="uwu-1"; else N=$(echo "$LAST" | cut -d- -f2); NEXT="uwu-$((N+1))"; fi
           TAG="$NEXT"
           # Version marker file
           echo "${{ github.sha }}" > leaf-maxperf-version.txt
@@ -57,12 +57,12 @@ jobs:
           printf "%b" "$CHANGELOG" > maxperf-changelog.md
           NOTES="$(printf "%b" "$CHANGELOG")"
           gh release create "$TAG" leaf-server/build/libs/leaf-paperclip-*.jar \
-            --title "Leaf max-perf 26.3 ($TAG)" \
+            --title "UwU (MC 26.3) build $TAG" \
             --notes "$NOTES"
           # Roll the 'current' pointer to this build
           gh release delete maxperf-26.3-current -y 2>/dev/null || true
           git tag -f maxperf-26.3-current 2>/dev/null || true
           gh release create maxperf-26.3-current leaf-server/build/libs/leaf-paperclip-*.jar \
-            --title "Leaf max-perf 26.3 (current)" \
+            --title "UwU (MC 26.3) current" \
             --notes "$NOTES" \
             --latest || true

@@ -3,12 +3,6 @@ From: Leaf Performance experiments <noreply@localhost>
 Date: Mon, 14 Sep 2026 07:00:00 +0800
 Subject: [PATCH] Remove streams from attack sensors
 
-Replace short-lived Optional/Stream pipelines with direct iteration in the
-Breeze and Warden attack sensors. Warden still performs a player-first pass
-followed by a non-player pass, preserving priority and encounter order.
-
-License: GPL-3.0-only as part of the distributed Leaf server patch stack.
-
 diff --git a/net/minecraft/world/entity/ai/sensing/BreezeAttackEntitySensor.java b/net/minecraft/world/entity/ai/sensing/BreezeAttackEntitySensor.java
 --- a/net/minecraft/world/entity/ai/sensing/BreezeAttackEntitySensor.java
 +++ b/net/minecraft/world/entity/ai/sensing/BreezeAttackEntitySensor.java

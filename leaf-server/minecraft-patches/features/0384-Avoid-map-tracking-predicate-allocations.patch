@@ -3,14 +3,6 @@ From: Leaf Performance experiments <noreply@localhost>
 Date: Thu, 12 Sep 2026 02:30:00 +0800
 Subject: [PATCH] Avoid map tracking predicate allocations
 
-Problem reference: Paper issue #9597 (accepted performance issue).
-Implementation: independently adapted to current Leaf 26.2 applied sources.
-License: GPL-3.0-only as part of the distributed Leaf server patch stack.
-
-MapItemSavedData repeatedly scans player inventories while tracking map
-holders. Use a specialized inventory scan so each scan no longer allocates a
-capturing Predicate. This intentionally does not add cross-call caching or
-change per-stack decoration, frame, renderer, or packet semantics.
 diff --git a/net/minecraft/world/entity/player/Inventory.java b/net/minecraft/world/entity/player/Inventory.java
 --- a/net/minecraft/world/entity/player/Inventory.java
 +++ b/net/minecraft/world/entity/player/Inventory.java

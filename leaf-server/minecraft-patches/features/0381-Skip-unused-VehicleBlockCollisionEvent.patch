@@ -3,16 +3,6 @@ From: Leaf Performance experiments <noreply@localhost>
 Date: Sat, 12 Sep 2026 22:20:00 +0800
 Subject: [PATCH] Skip VehicleBlockCollisionEvent without listeners
 
-Avoid all Bukkit vehicle, block, and velocity wrapper work for horizontal
-vehicle collisions when no plugin listens to VehicleBlockCollisionEvent.
-Listener-present dispatch and event data remain unchanged.
-
-Based on Paper PR #14173 by flennium, commit 947bb910. This adaptation moves
-the dynamic listener check before the wrapper conversions instead of guarding
-only event construction.
-License: GPL-3.0; attribution retained per Paper contribution terms.
-Decision: RETAIN - CHEAP WIN / LOW MAINTENANCE.
-
 diff --git a/net/minecraft/world/entity/Entity.java b/net/minecraft/world/entity/Entity.java
 --- a/net/minecraft/world/entity/Entity.java
 +++ b/net/minecraft/world/entity/Entity.java

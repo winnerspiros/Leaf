@@ -3,14 +3,6 @@ From: Leaf Performance experiments <noreply@localhost>
 Date: Thu, 12 Sep 2026 01:30:00 +0800
 Subject: [PATCH] Reduce queued copper golem path validation
 
-Source: Paper PR #13077 by Jason Penilla <11360596+jpenilla@users.noreply.github.com>.
-Fixed head: 077c6b1bcbb9cfd1ec1391e760af21d955f61856
-Original project: PaperMC/Paper
-License: GPL-3.0-only under Paper contribution terms.
-
-Queued copper golems retain cheap target validity checks every tick but only
-create a replacement path every 60 ticks. Travelling and interacting states
-continue to perform full validation before acting.
 diff --git a/net/minecraft/world/entity/ai/behavior/TransportItemsBetweenContainers.java b/net/minecraft/world/entity/ai/behavior/TransportItemsBetweenContainers.java
 --- a/net/minecraft/world/entity/ai/behavior/TransportItemsBetweenContainers.java
 +++ b/net/minecraft/world/entity/ai/behavior/TransportItemsBetweenContainers.java

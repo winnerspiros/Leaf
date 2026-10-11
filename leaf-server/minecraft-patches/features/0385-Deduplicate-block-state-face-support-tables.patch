@@ -3,15 +3,6 @@ From: Leaf Performance experiments <noreply@localhost>
 Date: Thu, 12 Sep 2026 03:00:00 +0800
 Subject: [PATCH] Deduplicate block-state face support tables
 
-Inspired by FerriteCore BlockStateCacheImpl at commit
-0cef1f2add1f1329aa6e690e8e292acd625c5c6d.
-Original project: https://github.com/malte0811/FerriteCore
-Original author/project license: MIT.
-Implementation independently adapted to Leaf 26.2 and limited to immutable
-face-sturdy boolean tables; Moonrise collision shapes are left untouched.
-
-Encode the 18 support booleans into an integer key during BlockState cache
-initialization and share identical immutable arrays between states.
 diff --git a/net/minecraft/world/level/block/state/BlockBehaviour.java b/net/minecraft/world/level/block/state/BlockBehaviour.java
 --- a/net/minecraft/world/level/block/state/BlockBehaviour.java
 +++ b/net/minecraft/world/level/block/state/BlockBehaviour.java

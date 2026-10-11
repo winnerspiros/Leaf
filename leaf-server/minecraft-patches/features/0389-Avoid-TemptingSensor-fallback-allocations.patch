@@ -3,15 +3,6 @@ From: Leaf Performance experiments <noreply@localhost>
 Date: Mon, 14 Sep 2026 07:00:00 +0800
 Subject: [PATCH] Avoid TemptingSensor fallback allocations
 
-Select the nearest valid player directly in the custom-predicate fallback
-instead of allocating and sorting a temporary list. Filter order, stable
-equal-distance selection, Bukkit target event behavior, and the optimized
-global lookup path remain unchanged.
-
-Source inspiration: Lithium 26.1.x ai.sensor.replace_streams.tempting,
-2No2Name, revision 701fb2e7636c6d634c76380c11232d27fd578dff.
-License: LGPL-3.0-only; independently adapted to current Leaf 26.2.
-
 diff --git a/net/minecraft/world/entity/ai/sensing/TemptingSensor.java b/net/minecraft/world/entity/ai/sensing/TemptingSensor.java
 --- a/net/minecraft/world/entity/ai/sensing/TemptingSensor.java
 +++ b/net/minecraft/world/entity/ai/sensing/TemptingSensor.java

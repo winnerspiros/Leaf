@@ -1,0 +1,58 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Leaf Max-Perf <leaf@localhost>
+Date: Sun, 11 Oct 2026 00:00:00 +0000
+Subject: [PATCH] Gale PR195: squared distance checks (bee, follow-goal)
+
+Ports GaleMC/Gale#195: replaces distanceTo threshold checks with
+distanceToSqr + squared thresholds, avoiding sqrt in hot paths.
+
+diff --git a/net/minecraft/world/entity/ai/goal/FollowPlayerRiddenEntityGoal.java b/net/minecraft/world/entity/ai/goal/FollowPlayerRiddenEntityGoal.java
+--- a/net/minecraft/world/entity/ai/goal/FollowPlayerRiddenEntityGoal.java
++++ b/net/minecraft/world/entity/ai/goal/FollowPlayerRiddenEntityGoal.java
+@@ -75,7 +75,9 @@ public class FollowPlayerRiddenEntityGoal extends Goal {
+                 BlockPos behindEntityPos = this.following.blockPosition().relative(this.following.getDirection().getOpposite());
+                 behindEntityPos = behindEntityPos.offset(0, -1, 0);
+                 this.mob.getNavigation().moveTo(behindEntityPos.getX(), behindEntityPos.getY(), behindEntityPos.getZ(), 1.0);
+-                if (this.mob.distanceTo(this.following) < 4.0F) {
++                // Gale start - Leaf: use squared distance checks
++                if (this.mob.distanceToSqr(this.following) < 4.0F * 4.0F) {
++                // Gale end - Leaf: use squared distance checks
+                     this.timeToRecalcPath = 0;
+                     this.currentGoal = FollowPlayerRiddenEntityGoal.FollowEntityGoal.GO_IN_ENTITY_DIRECTION;
+                 }
+@@ -83,7 +85,9 @@ public class FollowPlayerRiddenEntityGoal extends Goal {
+                 Direction direction = this.following.getMotionDirection();
+                 BlockPos goTo = this.following.blockPosition().relative(direction, 10);
+                 this.mob.getNavigation().moveTo(goTo.getX(), goTo.getY() - 1, goTo.getZ(), 1.0);
+-                if (this.mob.distanceTo(this.following) > 12.0F) {
++                // Gale start - Leaf: use squared distance checks
++                if (this.mob.distanceToSqr(this.following) > 12.0F * 12.0F) {
++                // Gale end - Leaf: use squared distance checks
+                     this.timeToRecalcPath = 0;
+                     this.currentGoal = FollowPlayerRiddenEntityGoal.FollowEntityGoal.GO_TO_ENTITY;
+                 }
+diff --git a/net/minecraft/world/entity/animal/bee/Bee.java b/net/minecraft/world/entity/animal/bee/Bee.java
+--- a/net/minecraft/world/entity/animal/bee/Bee.java
++++ b/net/minecraft/world/entity/animal/bee/Bee.java
+@@ -1161,7 +1161,9 @@ public class Bee extends Animal implements NeutralMob, FlyingAnimal {
+                     Bee.this.remainingCooldownBeforeLocatingNewFlower = 200;
+                 } else {
+                     Vec3 flowerPos = Vec3.atBottomCenterOf(Bee.this.savedFlowerPos).add(0.0, 0.6F, 0.0);
+-                    if (flowerPos.distanceTo(Bee.this.position()) > 1.0) {
++                    // Gale start - Leaf: use squared distance checks
++                    if (flowerPos.distanceToSqr(Bee.this.position()) > 1.0) {
++                    // Gale end - Leaf: use squared distance checks
+                         this.hoverPos = flowerPos;
+                         this.setWantedPos();
+                     } else {
+@@ -1169,7 +1171,9 @@ public class Bee extends Animal implements NeutralMob, FlyingAnimal {
+                             this.hoverPos = flowerPos;
+                         }
+ 
+-                        boolean arrivedAtHoverPos = Bee.this.position().distanceTo(this.hoverPos) <= 0.1;
++                        // Gale start - Leaf: use squared distance checks
++                        boolean arrivedAtHoverPos = Bee.this.position().distanceToSqr(this.hoverPos) <= 0.1 * 0.1;
++                        // Gale end - Leaf: use squared distance checks
+                         boolean shouldSetWantedPos = true;
+                         if (!arrivedAtHoverPos && this.pollinatingTicks > 600) {
+                             Bee.this.dropFlower();

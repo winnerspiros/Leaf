@@ -1,0 +1,23 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Leaf Max-Perf <leaf@localhost>
+Date: Sun, 11 Oct 2026 00:00:00 +0000
+Subject: [PATCH] Gale PR194: thunder tick early-out
+
+Ports GaleMC/Gale#194.
+
+diff --git a/net/minecraft/server/level/ServerLevel.java b/net/minecraft/server/level/ServerLevel.java
+--- a/net/minecraft/server/level/ServerLevel.java
++++ b/net/minecraft/server/level/ServerLevel.java
+@@ -1288,7 +1288,12 @@ public class ServerLevel extends Level implements ChunkHolder.PlayerProvider, Se
+         profiler.pop();
+     }
+ 
+     public void tickThunder(final LevelChunk chunk) {
++        // Gale start - Leaf: skip profiler + random call when thunder cannot happen
++        if (!this.isThundering() || !this.isRaining()) {
++            return;
++        }
++        // Gale end - Leaf: skip profiler + random call when thunder cannot happen
+         ChunkPos chunkPos = chunk.getPos();
+         boolean raining = this.isRaining();
+         int minX = chunkPos.getMinBlockX();

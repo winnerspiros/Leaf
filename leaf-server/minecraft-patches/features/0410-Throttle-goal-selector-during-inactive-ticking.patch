@@ -8,18 +8,15 @@ This patch is Powered by Pufferfish(https://github.com/pufferfish-gg/Pufferfish)
 diff --git a/net/minecraft/world/entity/Mob.java b/net/minecraft/world/entity/Mob.java
 --- a/net/minecraft/world/entity/Mob.java
 +++ b/net/minecraft/world/entity/Mob.java
-@@ -217,11 +217,13 @@ public abstract class Mob extends LivingEntity implements EquipmentUser, Leashab
-         return this.lookControl;
-     }
- 
-+    int inactiveTickDisableCounter = 0; // Leaves - throttle inactive goal selector ticking
+@@ -220,8 +220,10 @@ public abstract class Mob extends LivingEntity implements EquipmentUser, Leashab
      // Paper start
      @Override
      public void inactiveTick() {
          super.inactiveTick();
 -        if (this.goalSelector.inactiveTick()) {
-+        boolean isThrottled = org.leavesmc.leaves.LeavesConfig.performance.throttleInactiveGoalSelectorTick && (inactiveTickDisableCounter++ % 20 != 0); // Leaves - throttle inactive goal selector ticking
-+        if (this.goalSelector.inactiveTick() && !isThrottled) { // Leaves - throttle inactive goal selector ticking
++        // Leaf - throttle inactive goal selector ticking (standalone, no config dep): only run full goal tick 1/20 inactive ticks
++        boolean goalThrottled = (this.tickCount % 20 != 0);
++        if (this.goalSelector.inactiveTick() && !goalThrottled) { // Leaf - throttle inactive goal selector ticking
              this.goalSelector.tick();
          }
          if (this.targetSelector.inactiveTick()) {

@@ -28,6 +28,7 @@ However we still recommend to use those packet based NPC plugins,
 e.g. ZNPC Plus, Adyeshach, Fancy NPC, etc.
 
 diff --git a/ca/spottedleaf/moonrise/common/misc/NearbyPlayers.java b/ca/spottedleaf/moonrise/common/misc/NearbyPlayers.java
+index e227d101dec76100be6c24db9d4a8c5cb7028128..82b3a42b2d7d9d027596b00af328e060843c87c9 100644
 --- a/ca/spottedleaf/moonrise/common/misc/NearbyPlayers.java
 +++ b/ca/spottedleaf/moonrise/common/misc/NearbyPlayers.java
 @@ -164,6 +164,8 @@ public final class NearbyPlayers {
@@ -79,6 +80,7 @@ diff --git a/ca/spottedleaf/moonrise/common/misc/NearbyPlayers.java b/ca/spotted
              if (list == null) {
                  throw new IllegalStateException("Does not contain player " + player);
 diff --git a/ca/spottedleaf/moonrise/patches/chunk_system/player/RegionizedPlayerChunkLoader.java b/ca/spottedleaf/moonrise/patches/chunk_system/player/RegionizedPlayerChunkLoader.java
+index 8b987ca4e1db327f42806083c25e758375a959ef..bada1d995614d028160166002555d261821ad7dc 100644
 --- a/ca/spottedleaf/moonrise/patches/chunk_system/player/RegionizedPlayerChunkLoader.java
 +++ b/ca/spottedleaf/moonrise/patches/chunk_system/player/RegionizedPlayerChunkLoader.java
 @@ -345,7 +345,7 @@ public final class RegionizedPlayerChunkLoader {
@@ -106,6 +108,7 @@ diff --git a/ca/spottedleaf/moonrise/patches/chunk_system/player/RegionizedPlaye
              }
              throw new IllegalStateException();
 diff --git a/io/papermc/paper/FeatureHooks.java b/io/papermc/paper/FeatureHooks.java
+index 504fdb2c4000eafae4341ec8b24ce9cb0fcdc274..d600bd9f0b26005966eaba943fc38012c96599ea 100644
 --- a/io/papermc/paper/FeatureHooks.java
 +++ b/io/papermc/paper/FeatureHooks.java
 @@ -69,6 +69,14 @@ public final class FeatureHooks {
@@ -149,6 +152,7 @@ diff --git a/io/papermc/paper/FeatureHooks.java b/io/papermc/paper/FeatureHooks.
          return ObjectSets.unmodifiable(chunks);
      }
 diff --git a/net/minecraft/server/MinecraftServer.java b/net/minecraft/server/MinecraftServer.java
+index 2e18112a07ee3a9fc5ded8cd28c91ad7cb64ad3f..6c766031524d3c0c7a30f1aa1a0d2bfaf9d482c7 100644
 --- a/net/minecraft/server/MinecraftServer.java
 +++ b/net/minecraft/server/MinecraftServer.java
 @@ -1956,6 +1956,8 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
@@ -169,6 +173,7 @@ diff --git a/net/minecraft/server/MinecraftServer.java b/net/minecraft/server/Mi
      }
      // CraftBukkit end
 diff --git a/net/minecraft/server/level/ChunkMap.java b/net/minecraft/server/level/ChunkMap.java
+index ffb4cac67c85ad35b131a89574bc2b03f4adedd6..0a0dad530483297ef6313cad73b41e317aff5b3d 100644
 --- a/net/minecraft/server/level/ChunkMap.java
 +++ b/net/minecraft/server/level/ChunkMap.java
 @@ -1130,6 +1130,12 @@ public class ChunkMap extends SimpleRegionStorage implements ChunkHolder.PlayerP
@@ -177,7 +182,7 @@ diff --git a/net/minecraft/server/level/ChunkMap.java b/net/minecraft/server/lev
      protected void tick() {
 +        // Leaf start - Multithreaded tracker
 +        if (org.dreeam.leaf.config.modules.async.MultithreadedTracker.enabled) {
-+            this.level.leaf$asyncTracker.tick(this.level);
++            this.level.leaf$asyncTracker.tick(this.level, this.trackerEntities);
 +            return;
 +        }
 +        // Leaf end - Multithreaded tracker
@@ -520,6 +525,7 @@ diff --git a/net/minecraft/server/level/ChunkMap.java b/net/minecraft/server/lev
      }
  }
 diff --git a/net/minecraft/server/level/ServerEntity.java b/net/minecraft/server/level/ServerEntity.java
+index 4f2344b6e4fe6aebdbb7ca2ad65365515d8e2424..2a0e967aa6c665ffa08cf4c86f0eb69427847b19 100644
 --- a/net/minecraft/server/level/ServerEntity.java
 +++ b/net/minecraft/server/level/ServerEntity.java
 @@ -60,11 +60,12 @@ public class ServerEntity {
@@ -958,6 +964,7 @@ diff --git a/net/minecraft/server/level/ServerEntity.java b/net/minecraft/server
          void sendToTrackingPlayers(Packet<? super ClientGamePacketListener> packet);
  
 diff --git a/net/minecraft/server/level/ServerLevel.java b/net/minecraft/server/level/ServerLevel.java
+index 0d600fc5c06caba1a600eac8a279a1b964fb2c04..2fbd50eeb7af191568bdcc5fecc9a064e4d6f704 100644
 --- a/net/minecraft/server/level/ServerLevel.java
 +++ b/net/minecraft/server/level/ServerLevel.java
 @@ -245,6 +245,7 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
@@ -977,6 +984,7 @@ diff --git a/net/minecraft/server/level/ServerLevel.java b/net/minecraft/server/
  
      @Override
 diff --git a/net/minecraft/world/entity/Entity.java b/net/minecraft/world/entity/Entity.java
+index 809b00d362f8785a7c94ece70d06c33d610da237..30908478ee2156842c41a891e34f1911630b2ca6 100644
 --- a/net/minecraft/world/entity/Entity.java
 +++ b/net/minecraft/world/entity/Entity.java
 @@ -905,6 +905,11 @@ public abstract class Entity
@@ -1034,6 +1042,7 @@ diff --git a/net/minecraft/world/entity/Entity.java b/net/minecraft/world/entity
  
      public void checkDespawn() {
 diff --git a/net/minecraft/world/entity/InterpolationTracker.java b/net/minecraft/world/entity/InterpolationTracker.java
+index f318aee9ec9a6cf1b1a8292f82d095a200f88683..ebcddae9eeaef91162996cac0af216d02d614fca 100644
 --- a/net/minecraft/world/entity/InterpolationTracker.java
 +++ b/net/minecraft/world/entity/InterpolationTracker.java
 @@ -11,6 +11,11 @@ public interface InterpolationTracker {
@@ -1049,6 +1058,7 @@ diff --git a/net/minecraft/world/entity/InterpolationTracker.java b/net/minecraf
          @Override
          public void updateTracking(final Vec3 trackingPos) {
 diff --git a/net/minecraft/world/entity/LivingEntity.java b/net/minecraft/world/entity/LivingEntity.java
+index 2f4eefa597e7a593f2fa85b521fee23c35db1d32..7c2c24589e477a6515ac8da3ef51ac2580e73409 100644
 --- a/net/minecraft/world/entity/LivingEntity.java
 +++ b/net/minecraft/world/entity/LivingEntity.java
 @@ -1011,6 +1011,13 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin
@@ -1066,6 +1076,7 @@ diff --git a/net/minecraft/world/entity/LivingEntity.java b/net/minecraft/world/
          if (this.effectsDirty) {
              this.updateInvisibilityStatus();
 diff --git a/net/minecraft/world/entity/SteppedInterpolationTracker.java b/net/minecraft/world/entity/SteppedInterpolationTracker.java
+index cd1ce498f661024cd38f7fc9286a757b69398c38..f58c0ecbdecdde7759ac064008d3b6ffed77e88c 100644
 --- a/net/minecraft/world/entity/SteppedInterpolationTracker.java
 +++ b/net/minecraft/world/entity/SteppedInterpolationTracker.java
 @@ -45,6 +45,24 @@ public class SteppedInterpolationTracker extends InterpolationHandler.NoOpInterp
@@ -1094,6 +1105,7 @@ diff --git a/net/minecraft/world/entity/SteppedInterpolationTracker.java b/net/m
      public PositionPath getPositionPath(final Vec3 currentPosition) {
          this.addStep(currentPosition);
 diff --git a/net/minecraft/world/entity/npc/wanderingtrader/WanderingTrader.java b/net/minecraft/world/entity/npc/wanderingtrader/WanderingTrader.java
+index 2ed79b97be5a7eb98f3d2da2a643c3d9c7cb0f6f..1ed7bd37ca2b80e715cc9a9d9ea76a7f0c94d49d 100644
 --- a/net/minecraft/world/entity/npc/wanderingtrader/WanderingTrader.java
 +++ b/net/minecraft/world/entity/npc/wanderingtrader/WanderingTrader.java
 @@ -122,14 +122,14 @@ public class WanderingTrader extends AbstractVillager implements Consumable.Over
@@ -1114,6 +1126,7 @@ diff --git a/net/minecraft/world/entity/npc/wanderingtrader/WanderingTrader.java
              );
          this.goalSelector.addGoal(1, new TradeWithPlayerGoal(this));
 diff --git a/net/minecraft/world/entity/vehicle/minecart/NewMinecartBehavior.java b/net/minecraft/world/entity/vehicle/minecart/NewMinecartBehavior.java
+index 6ea8f445bd8d0ab3a061f086e62304f104a82de0..f08def3b40ec970ea61fccdcd44041cbe7baf68a 100644
 --- a/net/minecraft/world/entity/vehicle/minecart/NewMinecartBehavior.java
 +++ b/net/minecraft/world/entity/vehicle/minecart/NewMinecartBehavior.java
 @@ -34,13 +34,20 @@ public class NewMinecartBehavior extends MinecartBehavior {

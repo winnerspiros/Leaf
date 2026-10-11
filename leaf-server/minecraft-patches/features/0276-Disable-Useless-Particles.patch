@@ -40,7 +40,6 @@ diff --git a/net/minecraft/world/entity/Entity.java b/net/minecraft/world/entity
      }
  
      protected static void sendBubbleColumnParticles(final Level level, final BlockPos pos) {
-+        if (org.dreeam.leaf.config.modules.opt.ReduceUselessPackets.disableUselessParticles) return; // Leaf - Disable Useless Particles
          if (level instanceof ServerLevel serverLevel) {
              RandomSource random = level.getRandom();
  

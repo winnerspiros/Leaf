@@ -30,7 +30,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-diff --git a/src/main/java/gg/airplane/structs/ItemListWithBitset.java b/src/main/java/gg/airplane/structs/ItemListWithBitset.java
+diff --git a/gg/airplane/structs/ItemListWithBitset.java b/gg/airplane/structs/ItemListWithBitset.java
 new file mode 100644
 --- /dev/null
 +++ b/src/main/java/gg/airplane/structs/ItemListWithBitset.java
@@ -151,7 +151,7 @@ new file mode 100644
 +          '}';
 +    }
 +}
-diff --git a/net/minecraft/world/CompoundContainer.java b/src/main/java/net/minecraft/world/CompoundContainer.java
+diff --git a/net/minecraft/world/CompoundContainer.java b/net/minecraft/world/CompoundContainer.java
 --- a/net/minecraft/world/CompoundContainer.java
 +++ b/net/minecraft/world/CompoundContainer.java
 @@ -1,5 +1,6 @@
@@ -185,7 +185,7 @@ diff --git a/net/minecraft/world/CompoundContainer.java b/src/main/java/net/mine
      @Override
      public int getContainerSize() {
          return this.container1.getContainerSize() + this.container2.getContainerSize();
-diff --git a/net/minecraft/world/Container.java b/src/main/java/net/minecraft/world/Container.java
+diff --git a/net/minecraft/world/Container.java b/net/minecraft/world/Container.java
 --- a/net/minecraft/world/Container.java
 +++ b/net/minecraft/world/Container.java
 @@ -3,6 +3,8 @@ package net.minecraft.world;
@@ -261,7 +261,7 @@ diff --git a/net/minecraft/world/Container.java b/src/main/java/net/minecraft/wo
  
      int LARGE_MAX_STACK_SIZE = 64;
      int DEFAULT_DISTANCE_LIMIT = 8;
-diff --git a/net/minecraft/world/entity/vehicle/AbstractMinecartContainer.java b/src/main/java/net/minecraft/world/entity/vehicle/AbstractMinecartContainer.java
+diff --git a/net/minecraft/world/entity/vehicle/AbstractMinecartContainer.java b/net/minecraft/world/entity/vehicle/AbstractMinecartContainer.java
 --- a/net/minecraft/world/entity/vehicle/AbstractMinecartContainer.java
 +++ b/net/minecraft/world/entity/vehicle/AbstractMinecartContainer.java
 @@ -27,7 +27,10 @@ import org.bukkit.inventory.InventoryHolder;

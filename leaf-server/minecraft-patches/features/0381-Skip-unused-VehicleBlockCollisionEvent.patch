@@ -6,7 +6,8 @@ Subject: [PATCH] Skip VehicleBlockCollisionEvent without listeners
 diff --git a/net/minecraft/world/entity/Entity.java b/net/minecraft/world/entity/Entity.java
 --- a/net/minecraft/world/entity/Entity.java
 +++ b/net/minecraft/world/entity/Entity.java
-@@ -1385,9 +1385,11 @@ public abstract class Entity
+@@ -1389,9 +1389,10 @@ public abstract class Entity
+                 if (this.canSimulateMovement() && (movedVertically && this.verticalCollision || this.horizontalCollision)) {
                      this.restituteMovementAfterCollisions(effectState, xCollision, zCollision, movement);
                  }
                  // CraftBukkit start

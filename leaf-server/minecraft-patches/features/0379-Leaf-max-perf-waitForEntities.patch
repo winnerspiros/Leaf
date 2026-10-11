@@ -15,8 +15,8 @@ diff --git a/net/minecraft/server/level/ServerLevel.java b/net/minecraft/server/
      public void waitForEntities(final ChunkPos centerChunk, final int radius) {
 -        List<ChunkPos> chunks = ChunkPos.rangeClosed(centerChunk, radius).toList();
 +        // Leaf start - max-perf: avoid rangeClosed list alloc; iterate packed coords directly
-+        final int cx = centerChunk.x;
-+        final int cz = centerChunk.z;
++        final int cx = centerChunk.getMiddleBlockX() >> 4;
++        final int cz = centerChunk.getMiddleBlockZ() >> 4;
 +        // Leaf end - max-perf
          this.chunkSource.mainThreadProcessor.managedBlock(() -> { // Paper - rewrite chunk system
              //this.entityManager.processPendingLoads(); // Paper - rewrite chunk system

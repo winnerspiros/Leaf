@@ -15,5 +15,3 @@ diff --git a/net/minecraft/world/entity/Entity.java b/net/minecraft/world/entity
                      org.bukkit.entity.Vehicle vehicle = (org.bukkit.entity.Vehicle) this.getBukkitEntity();
                      org.bukkit.block.Block block = this.level.getWorld().getBlockAt(Mth.floor(this.getX()), Mth.floor(this.getY()), Mth.floor(this.getZ()));
  
--- 
-2.55.0.windows.5

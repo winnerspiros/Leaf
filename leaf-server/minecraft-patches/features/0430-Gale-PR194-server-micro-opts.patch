@@ -11,7 +11,7 @@ Ports the standalone parts of GaleMC/Gale#194:
 diff --git a/net/minecraft/server/level/ServerLevel.java b/net/minecraft/server/level/ServerLevel.java
 --- a/net/minecraft/server/level/ServerLevel.java
 +++ b/net/minecraft/server/level/ServerLevel.java
-@@ -1201,7 +1201,13 @@ public class ServerLevel extends Level implements ChunkHolder.PlayerProvider, Se
+@@ -1201,5 +1201,11 @@ public class ServerLevel extends Level implements ChunkHolder.PlayerProvider, Se
 
      private void wakeUpAllPlayers() {
          this.sleepStatus.removeAllSleepers();
@@ -24,8 +24,6 @@ diff --git a/net/minecraft/server/level/ServerLevel.java b/net/minecraft/server/
 +        }
 +        // Gale end - Leaf: avoid stream and list allocation
      }
-
-     public void tickChunk(final LevelChunk chunk, final int tickSpeed) {
 @@ -1291,6 +1291,11 @@ public class ServerLevel extends Level implements ChunkHolder.PlayerProvider, Se
      }
 

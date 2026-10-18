@@ -8,7 +8,7 @@ Port of GaleMC/Gale micro-optimizations against our tree.
 diff --git a/net/minecraft/world/level/redstone/RedstoneWireEvaluator.java b/net/minecraft/world/level/redstone/RedstoneWireEvaluator.java
 --- a/net/minecraft/world/level/redstone/RedstoneWireEvaluator.java
 +++ b/net/minecraft/world/level/redstone/RedstoneWireEvaluator.java
-@@ -29,21 +29,24 @@ public abstract class RedstoneWireEvaluator {
+@@ -29,22 +29,25 @@ public abstract class RedstoneWireEvaluator {
      protected int getIncomingWireSignal(final Level level, final BlockPos pos) {
          int wireSignal = 0;
  

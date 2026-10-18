@@ -197,7 +197,13 @@ diff --git a/net/minecraft/server/level/ServerChunkCache.java b/net/minecraft/se
 +            boolean countAllMobsForSpawning = this.level.paperConfig().entities.spawning.countAllMobsForSpawning;
 +            this.spawnCountPending = true;
 +            this.level.getServer().mobSpawnExecutor.submit(() -> {
-+                this.asyncSpawnState = NaturalSpawner.createStateAsync(spawnableChunkCount, entities, this.level, environmentAttributes, countAllMobsForSpawning);
++                try {
++                    this.asyncSpawnState = NaturalSpawner.createStateAsync(spawnableChunkCount, entities, this.level, environmentAttributes, countAllMobsForSpawning);
++                } catch (Throwable t) {
++                    this.asyncSpawnState = null;
++                    this.spawnCountPending = false; // Leaf #937 port - reset on exception, else spawning stalls until restart
++                    throw t;
++                }
 +            });
 +        }
 +        // Leaf end - Pufferfish - async mob spawning

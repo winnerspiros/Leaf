@@ -1,0 +1,69 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Gale <gale@users.noreply.github.com>
+Date: Sat, 18 Oct 2026 00:00:00 +0000
+Subject: [PATCH] Skip LevelTicks container scan when nothing due (Gale #204)
+
+Port of GaleMC/Gale #204 LevelTicks part against our tree.
+Tracks nextTickScan so sortContainersToTick can return early
+instead of iterating the whole map every tick.
+
+diff --git a/net/minecraft/world/ticks/LevelTicks.java b/net/minecraft/world/ticks/LevelTicks.java
+--- a/net/minecraft/world/ticks/LevelTicks.java
++++ b/net/minecraft/world/ticks/LevelTicks.java
+@@ -33,6 +33,7 @@ public class LevelTicks<T> implements LevelTickAccess<T> {
+     private final LongPredicate tickCheck;
+     private final Long2ObjectMap<LevelChunkTicks<T>> allContainers = new Long2ObjectOpenHashMap<>();
+     private final Long2LongMap nextTickForContainer = Util.make(new Long2LongOpenHashMap(), m -> m.defaultReturnValue(Long.MAX_VALUE));
++    private long nextTickScan = Long.MAX_VALUE; // Gale - Skip container scan when nothing due
+     private final Queue<LevelChunkTicks<T>> containersToTick = new PriorityQueue<>(CONTAINER_DRAIN_ORDER);
+     private final Queue<ScheduledTick<T>> toRunThisTick = new ArrayDeque<>();
+     private final List<ScheduledTick<T>> alreadyRunThisTick = new ArrayList<>();
+@@ -53,6 +54,7 @@ public class LevelTicks<T> implements LevelTickAccess<T> {
+         ScheduledTick<T> nextTick = container.peek();
+         if (nextTick != null) {
+             this.nextTickForContainer.put(posKey, nextTick.triggerTick());
++            this.nextTickScan = Math.min(this.nextTickScan, nextTick.triggerTick()); // Gale - Skip container scan when nothing due
+         }
+ 
+         container.setOnTickAdded(this.chunkScheduleUpdater);
+@@ -98,6 +100,11 @@ public class LevelTicks<T> implements LevelTickAccess<T> {
+     }
+ 
+     private void sortContainersToTick(final long currentTick) {
++        if (currentTick < this.nextTickScan) { // Gale - Skip container scan when nothing due
++            return;
++        }
++        this.nextTickScan = Long.MAX_VALUE;
++        long nextScan = Long.MAX_VALUE;
+         ObjectIterator<Entry> it = Long2LongMaps.fastIterator(this.nextTickForContainer);
+ 
+         while (it.hasNext()) {
+@@ -114,13 +121,19 @@ public class LevelTicks<T> implements LevelTickAccess<T> {
+                         it.remove();
+                     } else if (scheduledTick.triggerTick() > currentTick) {
+                         entry.setValue(scheduledTick.triggerTick());
++                        nextScan = Math.min(nextScan, scheduledTick.triggerTick()); // Gale - Skip container scan when nothing due
+                     } else if (this.tickCheck.test(chunkPos)) {
+                         it.remove();
+                         this.containersToTick.add(candidateContainer);
++                    } else {
++                        nextScan = Math.min(nextScan, nextTick); // Gale - Skip container scan when nothing due
+                     }
+                 }
++            } else {
++                nextScan = Math.min(nextScan, nextTick); // Gale - Skip container scan when nothing due
+             }
+         }
++        this.nextTickScan = Math.min(this.nextTickScan, nextScan); // Gale - Skip container scan when nothing due
+     }
+ 
+     private void drainContainers(final long currentTick, final int maxTicksToProcess) {
+@@ -148,6 +161,7 @@ public class LevelTicks<T> implements LevelTickAccess<T> {
+ 
+     private void updateContainerScheduling(final ScheduledTick<T> nextTick) {
+         this.nextTickForContainer.put(ChunkPos.pack(nextTick.pos()), nextTick.triggerTick());
++        this.nextTickScan = Math.min(this.nextTickScan, nextTick.triggerTick()); // Gale - Skip container scan when nothing due
+     }
+ 
+     private void drainFromCurrentContainer(
+

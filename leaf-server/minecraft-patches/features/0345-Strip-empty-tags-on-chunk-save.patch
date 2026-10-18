@@ -25,6 +25,7 @@ diff --git a/net/minecraft/world/level/chunk/storage/SerializableChunkData.java 
 +                tag.put("entities", entityTags);
 +            }
          }
+
          saveTicks(tag, this.packedTicks);
          tag.put("PostProcessing", packOffsets(this.postProcessingSections));
          CompoundTag heightmapsTag = new CompoundTag();

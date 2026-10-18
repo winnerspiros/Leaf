@@ -38,7 +38,7 @@ diff --git a/net/minecraft/world/ticks/LevelTicks.java b/net/minecraft/world/tic
          ObjectIterator<Entry> it = Long2LongMaps.fastIterator(this.nextTickForContainer);
  
          while (it.hasNext()) {
-@@ -114,24 +116,31 @@ public class LevelTicks<T> implements LevelTickAccess<T> {
+@@ -114,21 +116,28 @@ public class LevelTicks<T> implements LevelTickAccess<T> {
                          it.remove();
                      } else if (scheduledTick.triggerTick() > currentTick) {
                          entry.setValue(scheduledTick.triggerTick());
@@ -65,7 +65,5 @@ diff --git a/net/minecraft/world/ticks/LevelTicks.java b/net/minecraft/world/tic
      }
  
      private void drainFromCurrentContainer(
-
-
      private void drainFromCurrentContainer(
 

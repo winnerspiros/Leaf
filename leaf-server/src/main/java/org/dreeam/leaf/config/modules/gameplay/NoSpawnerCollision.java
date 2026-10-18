@@ -1,21 +1,18 @@
 package org.dreeam.leaf.config.modules.gameplay;
 
-import org.dreeam.leaf.config.ConfigModules;
-import org.dreeam.leaf.config.EnumConfigCategory;
+import org.dreeam.leaf.config.ConfigModule;
+import org.dreeam.leaf.config.ConfigCategory;
 
-public class NoSpawnerCollision extends ConfigModules {
+public class NoSpawnerCollision extends ConfigModule {
 
-    public String getBasePath() {
-        return EnumConfigCategory.GAMEPLAY.getBaseKeyName() + ".disable-mob-collision-from-spawner";
+    public String basePath() {
+        return ConfigCategory.GAMEPLAY.basePath() + ".disable-mob-collision-from-spawner";
     }
 
     public static boolean enabled = false;
 
     @Override
     public void onLoaded() {
-        enabled = config.getBoolean(getBasePath(), enabled, config.pickStringRegionBased(
-            "Enable to disable collision for mobs spawned from spawners",
-            "是否禁用从刷怪笼生成的生物与其他实体的碰撞"
-        ));
+        enabled = globalConfig.getBoolean(basePath(), enabled);
     }
 }

@@ -32,7 +32,7 @@ diff --git a/net/minecraft/world/level/chunk/LevelChunkSection.java b/net/minecr
  
      @Override
      public final boolean moonrise$hasSpecialCollidingBlocks() {
-@@ -71,6 +83,21 @@ public class LevelChunkSection implements ca.spottedleaf.moonrise.patches.block_
+@@ -70,6 +82,21 @@ public class LevelChunkSection implements ca.spottedleaf.moonrise.patches.block_
          return this.states.get(sectionX, sectionY, sectionZ);
      }
  
@@ -54,7 +54,7 @@ diff --git a/net/minecraft/world/level/chunk/LevelChunkSection.java b/net/minecr
      public FluidState getFluidState(final int sectionX, final int sectionY, final int sectionZ) {
          return this.states.get(sectionX, sectionY, sectionZ).getFluidState(); // Paper - Perf: Optimise LevelChunk#getFluidState; diff on change - we expect this to be effectively just get(x, y, z).getFluidState(). If this changes we need to check other patches that use BlockBehaviour#getFluidState.
      }
-@@ -133,6 +160,7 @@ public class LevelChunkSection implements ca.spottedleaf.moonrise.patches.block_
+@@ -132,6 +159,7 @@ public class LevelChunkSection implements ca.spottedleaf.moonrise.patches.block_
          } else {
              previous = this.states.getAndSetUnchecked(sectionX, sectionY, sectionZ, state);
          }

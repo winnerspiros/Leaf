@@ -267,7 +267,7 @@ index 0ac10f8283ebf0f897a9df1c6ec0e4bd7a2f732b..e7ccc58724c07ff0ea51ceec1c7d1e25
      protected Component getTypeName() {
          return this.type.getDescription();
      }
-@@ -4642,7 +4648,13 @@ public abstract class Entity
+@@ -4642,6 +4648,12 @@ public abstract class Entity
              .withStyle(s -> s.withHoverEvent(this.createHoverEvent()).withInsertion(this.getStringUUID()));
      }
  

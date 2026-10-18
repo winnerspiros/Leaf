@@ -53,7 +53,7 @@ diff --git a/net/minecraft/world/level/block/entity/HopperBlockEntity.java b/net
 +    }
 +    // Gale end - Do less work - Cache hopper suck AABB
 +
-     public void setCooldown(final int time) {
-         this.cooldownTime = time;
+     @Override
+     protected AbstractContainerMenu createMenu(final int containerId, final Inventory inventory) {
      }
 

@@ -20,17 +20,6 @@ diff --git a/net/minecraft/world/level/block/entity/HopperBlockEntity.java b/net
  
      // CraftBukkit start - add fields and methods
      public List<org.bukkit.entity.HumanEntity> transaction = new java.util.ArrayList<>();
-@@ -731,7 +733,9 @@ public class HopperBlockEntity extends RandomizableContainerBlockEntity imp
-     }
- 
-     public static List<ItemEntity> getItemsAtAndAbove(final Level level, final Hopper hopper) {
--        AABB aabb = hopper.getSuckAabb().move(hopper.getLevelX() - 0.5, hopper.getLevelY() - 0.5, hopper.getLevelZ() - 0.5);
-+        AABB aabb = hopper instanceof HopperBlockEntity hopperBlockEntity // Gale - Do less work - Cache hopper suck AABB
-+            ? hopperBlockEntity.gale$getCachedSuckAabb()
-+            : hopper.getSuckAabb().move(hopper.getLevelX() - 0.5, hopper.getLevelY() - 0.5, hopper.getLevelZ() - 0.5);
-         return level.getEntitiesOfClass(ItemEntity.class, aabb, EntitySelector.ENTITY_STILL_ALIVE);
-     }
- 
 @@ -841,12 +845,25 @@ public class HopperBlockEntity extends RandomizableContainerBlockEntity imp
      public static void entityInside(final Level level, final BlockPos pos, final BlockState blockState, final Entity entity, final HopperBlockEntity hopper) {
          if (entity instanceof ItemEntity itemEntity

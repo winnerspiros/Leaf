@@ -8,7 +8,7 @@ Port of GaleMC/Gale #194 (part): avoid stream + list allocation.
 diff --git a/net/minecraft/server/level/ServerLevel.java b/net/minecraft/server/level/ServerLevel.java
 --- a/net/minecraft/server/level/ServerLevel.java
 +++ b/net/minecraft/server/level/ServerLevel.java
-@@ -1199,6 +1199,11 @@ public class ServerLevel extends Level implements ServerEntityGetter, WorldGenLe
+@@ -1199,6 +1199,12 @@ public class ServerLevel extends Level implements ServerEntityGetter, WorldGenLe
  
      private void wakeUpAllPlayers() {
          this.sleepStatus.removeAllSleepers();

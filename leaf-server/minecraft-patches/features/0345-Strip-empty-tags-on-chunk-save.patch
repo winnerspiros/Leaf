@@ -4,14 +4,13 @@ Date: Sat, 18 Oct 2026 00:00:00 +0000
 Subject: [PATCH] Strip empty tags on chunk save
 
 Skips writing empty/default chunk NBT on save: empty block_entities
-and entities lists, empty PostProcessing, empty block/fluid tick
-lists, empty structures. All load-safe: missing tags read back as
-defaults/empty. Shrinks every new or rewritten chunk.
+and entities lists, empty heightmaps, empty structures. All load-safe:
+missing tags read back as defaults/empty. Shrinks new chunks.
 
 diff --git a/net/minecraft/world/level/chunk/storage/SerializableChunkData.java b/net/minecraft/world/level/chunk/storage/SerializableChunkData.java
 --- a/net/minecraft/world/level/chunk/storage/SerializableChunkData.java
 +++ b/net/minecraft/world/level/chunk/storage/SerializableChunkData.java
-@@ -648,16 +648,24 @@ public record SerializableChunkData(
+@@ -658,8 +658,12 @@ public record SerializableChunkData(
          ListTag blockEntityTags = new ListTag();
          blockEntityTags.addAll(this.blockEntities);
 -        tag.put("block_entities", blockEntityTags);
@@ -26,8 +25,9 @@ diff --git a/net/minecraft/world/level/chunk/storage/SerializableChunkData.java 
 +                tag.put("entities", entityTags);
 +            }
          }
- 
+@@ -668,6 +670,10 @@ public record SerializableChunkData(
          saveTicks(tag, this.packedTicks);
+         tag.put("PostProcessing", packOffsets(this.postProcessingSections));
          CompoundTag heightmapsTag = new CompoundTag();
          this.heightmaps.forEach((type, data) -> heightmapsTag.put(type.getSerializationKey(), new LongArrayTag(data)));
 -        tag.put("Heightmaps", heightmapsTag);
@@ -38,4 +38,3 @@ diff --git a/net/minecraft/world/level/chunk/storage/SerializableChunkData.java 
 +        if (!this.structureData.isEmpty()) { // Leaf - Strip empty tags on chunk save
 +            tag.put("structures", this.structureData);
 +        }
-

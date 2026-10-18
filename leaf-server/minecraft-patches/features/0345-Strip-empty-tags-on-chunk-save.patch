@@ -10,8 +10,8 @@ missing tags read back as defaults/empty. Shrinks new chunks.
 diff --git a/net/minecraft/world/level/chunk/storage/SerializableChunkData.java b/net/minecraft/world/level/chunk/storage/SerializableChunkData.java
 --- a/net/minecraft/world/level/chunk/storage/SerializableChunkData.java
 +++ b/net/minecraft/world/level/chunk/storage/SerializableChunkData.java
-@@ -657,16 +657,24 @@ public record SerializableChunkData(
-
+@@ -656,16 +656,24 @@ public record SerializableChunkData(
+         }
          ListTag blockEntityTags = new ListTag();
          blockEntityTags.addAll(this.blockEntities);
 -        tag.put("block_entities", blockEntityTags);

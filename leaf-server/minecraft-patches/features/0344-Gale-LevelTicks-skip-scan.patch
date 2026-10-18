@@ -58,7 +58,7 @@ diff --git a/net/minecraft/world/ticks/LevelTicks.java b/net/minecraft/world/tic
      }
  
      private void drainContainers(final long currentTick, final int maxTicksToProcess) {
-@@ -148,6 +161,7 @@ public class LevelTicks<T> implements LevelTickAccess<T> {
+@@ -148,8 +161,9 @@ public class LevelTicks<T> implements LevelTickAccess<T> {
  
      private void updateContainerScheduling(final ScheduledTick<T> nextTick) {
          this.nextTickForContainer.put(ChunkPos.pack(nextTick.pos()), nextTick.triggerTick());

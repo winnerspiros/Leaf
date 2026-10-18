@@ -8,7 +8,7 @@ Port of GaleMC/Gale micro-optimizations against our tree.
 diff --git a/net/minecraft/nbt/NbtUtils.java b/net/minecraft/nbt/NbtUtils.java
 --- a/net/minecraft/nbt/NbtUtils.java
 +++ b/net/minecraft/nbt/NbtUtils.java
-@@ -131,15 +131,18 @@ public final class NbtUtils {
+@@ -130,15 +130,18 @@ public final class NbtUtils {
          Block block = blockHolder.get().value();
          BlockState result = block.defaultBlockState();
          Optional<CompoundTag> properties = tag.getCompound("properties");

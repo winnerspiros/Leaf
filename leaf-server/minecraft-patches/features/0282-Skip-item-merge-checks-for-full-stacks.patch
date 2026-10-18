@@ -7,15 +7,10 @@ Subject: [PATCH] Skip item merge checks for full stacks
 diff --git a/net/minecraft/world/entity/item/ItemEntity.java b/net/minecraft/world/entity/item/ItemEntity.java
 --- a/net/minecraft/world/entity/item/ItemEntity.java
 +++ b/net/minecraft/world/entity/item/ItemEntity.java
-@@ -257,11 +257,17 @@ public class ItemEntity extends Entity implements TraceableEntity {
-             // Gale start - hoist level and config lookups (#164)
-             final net.minecraft.world.level.Level level = this.level();
-             final double radius = level.spigotConfig.itemMerge; // Spigot
-             final double yInflate = level.paperConfig().entities.behavior.onlyMergeItemsHorizontally ? 0 : radius - 0.5D;
-             final boolean fixMergingThroughWalls = level.paperConfig().fixes.fixItemsMergingThroughWalls;
-             // Gale end - hoist level and config lookups (#164)
-             for (ItemEntity entity : level
-                 .getEntitiesOfClass(ItemEntity.class, this.getBoundingBox().inflate(radius, yInflate, radius), other -> other != this && other.isMergable())) { // Spigot // Paper - configuration to only merge items horizontally
+@@ -257,6 +257,12 @@ public class ItemEntity extends Entity implements TraceableEntity {
+             double radius = this.level().spigotConfig.itemMerge; // Spigot
+             for (ItemEntity entity : this.level()
+                 .getEntitiesOfClass(ItemEntity.class, this.getBoundingBox().inflate(radius, this.level().paperConfig().entities.behavior.onlyMergeItemsHorizontally ? 0 : radius - 0.5D, radius), other -> other != this && other.isMergable())) { // Spigot // Paper - configuration to only merge items horizontally
 +                // Leaf start - Skip item merge checks for full stacks
 +                final ItemStack item = this.getItem();
 +                if (this.isRemoved() || item.getCount() >= item.getMaxStackSize()) {
@@ -24,7 +19,7 @@ diff --git a/net/minecraft/world/entity/item/ItemEntity.java b/net/minecraft/wor
 +                // Leaf end - Skip item merge checks for full stacks
                  if (entity.isMergable()) {
                      // Paper start - Fix items merging through walls
-                     if (fixMergingThroughWalls) {
+                     if (this.level().paperConfig().fixes.fixItemsMergingThroughWalls) {
 @@ -266,10 +272,7 @@ public class ItemEntity extends Entity implements TraceableEntity {
                          }
                      }
@@ -37,7 +32,7 @@ diff --git a/net/minecraft/world/entity/item/ItemEntity.java b/net/minecraft/wor
                  }
              }
          }
-@@ -283,7 +286,12 @@ public class ItemEntity extends Entity implements TraceableEntity {
+@@ -283,6 +286,11 @@ public class ItemEntity extends Entity implements TraceableEntity {
      private void tryToMerge(final ItemEntity other) {
          ItemStack thisItemStack = this.getItem();
          ItemStack otherItemStack = other.getItem();

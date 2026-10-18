@@ -1525,7 +1525,7 @@ diff --git a/net/minecraft/world/level/entity/EntityTickList.java b/net/minecraf
 diff --git a/net/minecraft/world/level/saveddata/maps/MapIndex.java b/net/minecraft/world/level/saveddata/maps/MapIndex.java
 --- a/net/minecraft/world/level/saveddata/maps/MapIndex.java
 +++ b/net/minecraft/world/level/saveddata/maps/MapIndex.java
-@@ -26,7 +26,16 @@ public class MapIndex extends SavedData {
+@@ -26,6 +26,15 @@ public class MapIndex extends SavedData {
      }
  
      public MapId getNextMapId() {

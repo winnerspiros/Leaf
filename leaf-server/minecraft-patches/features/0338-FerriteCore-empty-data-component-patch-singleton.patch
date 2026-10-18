@@ -11,11 +11,7 @@ Saves one map instance per unmodified ItemStack.
 diff --git a/net/minecraft/core/component/PatchedDataComponentMap.java b/net/minecraft/core/component/PatchedDataComponentMap.java
 --- a/net/minecraft/core/component/PatchedDataComponentMap.java
 +++ b/net/minecraft/core/component/PatchedDataComponentMap.java
-@@ -107,10 +107,11 @@ public final class PatchedDataComponentMap implements DataComponentMap, net.caff
- 
-     public void applyPatch(final DataComponentPatch patch) {
-         this.ensureMapOwnership();
- 
+@@ -110,6 +110,7 @@ public final class PatchedDataComponentMap implements DataComponentMap, net.caff
          for (Entry<DataComponentType<?>, Object> entry : Reference2ObjectMaps.fastIterable(patch.map)) {
              this.applyPatch(entry.getKey(), entry.getValue());
          }
@@ -23,9 +19,7 @@ diff --git a/net/minecraft/core/component/PatchedDataComponentMap.java b/net/min
      }
  
      private void applyPatch(final DataComponentType<?> type, final Object value) {
-@@ -131,15 +137,26 @@ public final class PatchedDataComponentMap implements DataComponentMap, net.caff
-     public void restorePatch(final DataComponentPatch patch) {
-         this.ensureMapOwnership();
+@@ -133,6 +134,7 @@ public final class PatchedDataComponentMap implements DataComponentMap, net.caff
          this.patch.clear();
          this.patch.putAll(patch.map);
          this.detectMaxStackSizeChange(null); // Leaves - cache item max stack size
@@ -33,7 +27,7 @@ diff --git a/net/minecraft/core/component/PatchedDataComponentMap.java b/net/min
      }
  
      public void clearPatch() {
-         this.ensureMapOwnership();
+@@ -140,6 +142,16 @@ public final class PatchedDataComponentMap implements DataComponentMap, net.caff
          this.patch.clear();
          this.detectMaxStackSizeChange(null); // Leaves - cache item max stack size
 +        this.saveMemoryIfEmpty(); // Leaf - FerriteCore empty patch singleton

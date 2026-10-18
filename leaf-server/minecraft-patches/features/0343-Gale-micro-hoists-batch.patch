@@ -59,7 +59,7 @@ diff --git a/net/minecraft/nbt/NbtUtils.java b/net/minecraft/nbt/NbtUtils.java
 diff --git a/net/minecraft/world/level/redstone/RedstoneWireEvaluator.java b/net/minecraft/world/level/redstone/RedstoneWireEvaluator.java
 --- a/net/minecraft/world/level/redstone/RedstoneWireEvaluator.java
 +++ b/net/minecraft/world/level/redstone/RedstoneWireEvaluator.java
-@@ -29,12 +29,15 @@ public abstract class RedstoneWireEvaluator {
+@@ -29,21 +29,24 @@ public abstract class RedstoneWireEvaluator {
      protected int getIncomingWireSignal(final Level level, final BlockPos pos) {
          int wireSignal = 0;
  
@@ -76,3 +76,13 @@ diff --git a/net/minecraft/world/level/redstone/RedstoneWireEvaluator.java b/net
 +            if (neighborState.isRedstoneConductor(level, neighborPos) && !aboveIsConductor) {
                  BlockPos aboveNeighborPos = neighborPos.above();
                  wireSignal = Math.max(wireSignal, this.getWireSignal(aboveNeighborPos, level.getBlockState(aboveNeighborPos)));
+             } else if (!neighborState.isRedstoneConductor(level, neighborPos)) {
+                 BlockPos belowNeighborPos = neighborPos.below();
+                 wireSignal = Math.max(wireSignal, this.getWireSignal(belowNeighborPos, level.getBlockState(belowNeighborPos)));
+             }
+         }
+ 
+         return Math.max(0, wireSignal - 1);
+     }
+ }
+

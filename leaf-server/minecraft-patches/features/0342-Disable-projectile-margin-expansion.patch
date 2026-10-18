@@ -8,7 +8,8 @@ Port of Winds-Studio/Leaf #923 against our tree.
 diff --git a/net/minecraft/world/entity/projectile/ProjectileUtil.java b/net/minecraft/world/entity/projectile/ProjectileUtil.java
 --- a/net/minecraft/world/entity/projectile/ProjectileUtil.java
 +++ b/net/minecraft/world/entity/projectile/ProjectileUtil.java
-@@ -151,3 +151,4 @@ public final class ProjectileUtil {
+@@ -146,7 +146,8 @@ public final class ProjectileUtil {
+         return getEntityHitResult(level, source, from, to, targetSearchArea, matching, computeMargin(source));
      }
  
      public static float computeMargin(final Entity source) {

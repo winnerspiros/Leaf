@@ -1,0 +1,46 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Leaf <leaf@users.noreply.github.com>
+Date: Sat, 18 Oct 2026 00:00:00 +0000
+Subject: [PATCH] Strip empty tags on chunk save
+
+Skips writing empty/default chunk NBT on save: empty block_entities
+and entities lists, empty PostProcessing, empty block/fluid tick
+lists, empty structures. All load-safe: missing tags read back as
+defaults/empty. Shrinks every new or rewritten chunk.
+
+diff --git a/net/minecraft/world/level/chunk/storage/SerializableChunkData.java b/net/minecraft/world/level/chunk/storage/SerializableChunkData.java
+--- a/net/minecraft/world/level/chunk/storage/SerializableChunkData.java
++++ b/net/minecraft/world/level/chunk/storage/SerializableChunkData.java
+@@ -648,17 +648,28 @@ public record SerializableChunkData(
+         ListTag blockEntityTags = new ListTag();
+         blockEntityTags.addAll(this.blockEntities);
+-        tag.put("block_entities", blockEntityTags);
++        if (!blockEntityTags.isEmpty()) { // Leaf - Strip empty tags on chunk save
++            tag.put("block_entities", blockEntityTags);
++        }
+         if (this.chunkStatus.getChunkType() == ChunkType.PROTOCHUNK) {
+             ListTag entityTags = new ListTag();
+             entityTags.addAll(this.entities);
+-            tag.put("entities", entityTags);
++            if (!entityTags.isEmpty()) { // Leaf - Strip empty tags on chunk save
++                tag.put("entities", entityTags);
++            }
+         }
+ 
+         saveTicks(tag, this.packedTicks);
+-        tag.put("PostProcessing", packOffsets(this.postProcessingSections));
++        ListTag postProcessing = packOffsets(this.postProcessingSections); // Leaf - Strip empty tags on chunk save
++        if (!postProcessing.isEmpty()) { // Leaf - Strip empty tags on chunk save
++            tag.put("PostProcessing", postProcessing);
++        }
+         CompoundTag heightmapsTag = new CompoundTag();
+         this.heightmaps.forEach((type, data) -> heightmapsTag.put(type.getSerializationKey(), new LongArrayTag(data)));
+-        tag.put("Heightmaps", heightmapsTag);
+-        tag.put("structures", this.structureData);
++        if (!heightmapsTag.isEmpty()) { // Leaf - Strip empty tags on chunk save
++            tag.put("Heightmaps", heightmapsTag);
++        }
++        if (!this.structureData.isEmpty()) { // Leaf - Strip empty tags on chunk save
++            tag.put("structures", this.structureData);
++        }
+

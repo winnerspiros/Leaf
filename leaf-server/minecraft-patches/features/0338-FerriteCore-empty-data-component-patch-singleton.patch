@@ -11,7 +11,7 @@ Saves one map instance per unmodified ItemStack.
 diff --git a/net/minecraft/core/component/PatchedDataComponentMap.java b/net/minecraft/core/component/PatchedDataComponentMap.java
 --- a/net/minecraft/core/component/PatchedDataComponentMap.java
 +++ b/net/minecraft/core/component/PatchedDataComponentMap.java
-@@ -107,6 +107,12 @@ public final class PatchedDataComponentMap implements DataComponentMap, net.caff
+@@ -107,10 +107,11 @@ public final class PatchedDataComponentMap implements DataComponentMap, net.caff
  
      public void applyPatch(final DataComponentPatch patch) {
          this.ensureMapOwnership();
@@ -23,7 +23,7 @@ diff --git a/net/minecraft/core/component/PatchedDataComponentMap.java b/net/min
      }
  
      private void applyPatch(final DataComponentType<?> type, final Object value) {
-@@ -131,6 +137,7 @@ public final class PatchedDataComponentMap implements DataComponentMap, net.caff
+@@ -131,15 +137,26 @@ public final class PatchedDataComponentMap implements DataComponentMap, net.caff
      public void restorePatch(final DataComponentPatch patch) {
          this.ensureMapOwnership();
          this.patch.clear();

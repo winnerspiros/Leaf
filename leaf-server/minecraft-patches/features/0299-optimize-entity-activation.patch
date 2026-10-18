@@ -87,7 +87,7 @@ diff --git a/io/papermc/paper/entity/activation/ActivationRange.java b/io/paperm
      static AABB maxBB = new AABB(0, 0, 0, 0, 0, 0);
  
      /**
-@@ -166,23 +167,35 @@ public final class ActivationRange {
+@@ -166,13 +167,25 @@ public final class ActivationRange {
          maxRange = Math.max(maxRange, villagerActivationRange);
          maxRange = Math.min((world.spigotConfig.simulationDistance << 4) - 8, maxRange);
  
@@ -115,11 +115,9 @@ diff --git a/io/papermc/paper/entity/activation/ActivationRange.java b/io/paperm
 +            if (!idleTimeoutTickNearbyEntities && player.isAfk()) continue; // Purpur - AFK API // Leaf - optimize entity activation
  
              final int worldHeight = world.getHeight();
-             // Gale start - hoist player bounding box lookup (#162)
-             final net.minecraft.world.phys.AABB playerBB = player.getBoundingBox();
-             ActivationRange.maxBB = playerBB.inflate(maxRange, worldHeight, maxRange);
-             ActivationType.VILLAGER.boundingBox = playerBB.inflate(villagerActivationRange, worldHeight, villagerActivationRange);
-             // Gale end - hoist player bounding box lookup (#162)
+             ActivationRange.maxBB = player.getBoundingBox().inflate(maxRange, worldHeight, maxRange);
+@@ -185,7 +198,7 @@ public final class ActivationRange {
+             ActivationType.VILLAGER.boundingBox = player.getBoundingBox().inflate(villagerActivationRange, worldHeight, villagerActivationRange);
  
              final List<Entity> entities = world.getEntities((Entity) null, ActivationRange.maxBB, e -> true);
 -            final boolean tickMarkers = world.paperConfig().entities.markers.tick;
@@ -192,7 +190,7 @@ diff --git a/net/minecraft/server/level/ServerLevel.java b/net/minecraft/server/
 diff --git a/net/minecraft/world/entity/Entity.java b/net/minecraft/world/entity/Entity.java
 --- a/net/minecraft/world/entity/Entity.java
 +++ b/net/minecraft/world/entity/Entity.java
-@@ -392,8 +392,8 @@ public abstract class Entity
+@@ -392,7 +392,7 @@ public abstract class Entity
      public final int despawnTime; // Paper - entity despawn time limit // Leaf - Rewrite entity despawn time - private -> public
      public int totalEntityAge; // Paper - age-like counter for all entities
      private int lastTickTime; // Leaf - Rewrite entity despawn time

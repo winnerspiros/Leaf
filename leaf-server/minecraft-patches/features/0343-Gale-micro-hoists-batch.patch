@@ -1,7 +1,7 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Gale <gale@users.noreply.github.com>
 Date: Sat, 18 Oct 2026 00:00:00 +0000
-Subject: [PATCH] Gale micro-hoists batch (#162 #173 #175 #176 #177)
+Subject: [PATCH] Gale micro-hoists batch (#162 #173 #176 #177)
 
 Port of GaleMC/Gale micro-optimizations against our tree.
 
@@ -77,48 +77,7 @@ diff --git a/net/minecraft/world/entity/projectile/throwableitemprojectile/Snowb
          }
      }
  
-diff --git a/net/minecraft/world/level/block/PointedDripstoneBlock.java b/net/minecraft/world/level/block/PointedDripstoneBlock.java
---- a/net/minecraft/world/level/block/PointedDripstoneBlock.java
-+++ b/net/minecraft/world/level/block/PointedDripstoneBlock.java
-@@ -81,30 +81,33 @@ public class PointedDripstoneBlock extends Block implements Fallable {
-     public static void maybeTransferFluid(final BlockState state, final ServerLevel level, final BlockPos pos, final float randomValue) {
-         if (!(randomValue > level.purpurConfig.cauldronDripstoneWaterFillChance) || !(randomValue > level.purpurConfig.cauldronDripstoneLavaFillChance)) { // Purpur - Cauldron fill chances
-             if (isStalactiteStartPos(state, level, pos)) {
--                Optional<PointedDripstoneBlock.FluidInfo> fluidInfo = getFluidAboveStalactite(level, pos, state);
--                if (!fluidInfo.isEmpty()) {
--                    Fluid fluid = fluidInfo.get().fluid;
-+                Optional<PointedDripstoneBlock.FluidInfo> fluidInfoOptional = getFluidAboveStalactite(level, pos, state);
-+                if (!fluidInfoOptional.isEmpty()) {
-+                    // Gale start - cache unwrapped Optional value
-+                    PointedDripstoneBlock.FluidInfo fluidInfo = fluidInfoOptional.get();
-+                    Fluid fluid = fluidInfo.fluid;
-+                    // Gale end - cache unwrapped Optional value
-                     float transferProbability;
-                     if (fluid == Fluids.WATER) {
-                         transferProbability = level.purpurConfig.cauldronDripstoneWaterFillChance; // Purpur - Cauldron fill chances
-                     } else {
-                         if (fluid != Fluids.LAVA) {
-                             return;
-                         }
- 
-                         transferProbability = level.purpurConfig.cauldronDripstoneLavaFillChance; // Purpur - Cauldron fill chances
-                     }
- 
-                     if (!(randomValue >= transferProbability)) {
-                         BlockPos stalactiteTipPos = findTip(state, level, pos, 11, false);
-                         if (stalactiteTipPos != null) {
--                            if (fluidInfo.get().sourceState.is(Blocks.MUD) && fluid == Fluids.WATER) {
-+                            if (fluidInfo.sourceState.is(Blocks.MUD) && fluid == Fluids.WATER) {
-                                 BlockState newState = Blocks.CLAY.defaultBlockState();
--                                if (org.bukkit.craftbukkit.event.CraftEventFactory.handleBlockFormEvent(level, fluidInfo.get().pos, newState, Block.UPDATE_ALL)) { // Paper - Call BlockFormEvent
--                                Block.pushEntitiesUp(fluidInfo.get().sourceState, newState, level, fluidInfo.get().pos);
--                                level.gameEvent(GameEvent.BLOCK_CHANGE, fluidInfo.get().pos, GameEvent.Context.of(newState));
-+                                if (org.bukkit.craftbukkit.event.CraftEventFactory.handleBlockFormEvent(level, fluidInfo.pos, newState, Block.UPDATE_ALL)) { // Paper - Call BlockFormEvent
-+                                Block.pushEntitiesUp(fluidInfo.sourceState, newState, level, fluidInfo.pos);
-+                                level.gameEvent(GameEvent.BLOCK_CHANGE, fluidInfo.pos, GameEvent.Context.of(newState));
-                                 level.levelEvent(LevelEvent.DRIPSTONE_DRIP, stalactiteTipPos, 0);
-                             } else {
- diff --git a/net/minecraft/world/level/redstone/RedstoneWireEvaluator.java b/net/minecraft/world/level/redstone/RedstoneWireEvaluator.java
+diff --git a/net/minecraft/world/level/redstone/RedstoneWireEvaluator.java b/net/minecraft/world/level/redstone/RedstoneWireEvaluator.java
 --- a/net/minecraft/world/level/redstone/RedstoneWireEvaluator.java
 +++ b/net/minecraft/world/level/redstone/RedstoneWireEvaluator.java
 @@ -29,12 +29,15 @@ public class RedstoneWireEvaluator extends RedstoneWireEvaluatorAccessor {

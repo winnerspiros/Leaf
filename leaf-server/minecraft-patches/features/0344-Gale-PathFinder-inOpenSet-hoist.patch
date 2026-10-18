@@ -10,7 +10,9 @@ Caches inOpenSet() and skips getBestH when only updating cost.
 diff --git a/net/minecraft/world/level/pathfinder/PathFinder.java b/net/minecraft/world/level/pathfinder/PathFinder.java
 --- a/net/minecraft/world/level/pathfinder/PathFinder.java
 +++ b/net/minecraft/world/level/pathfinder/PathFinder.java
-@@ -165,15 +165,16 @@ public class PathFinder {
+@@ -164,17 +164,18 @@ public class PathFinder {
+                 for (int i = 0; i < neighborCount; i++) {
+                     Node neighbor = localNeighbors[i]; // Kaiiju - petal - async path processing
                      float distance = this.distance(current, neighbor);
                      neighbor.walkedDistance = current.walkedDistance + distance;
                      float tentativeGScore = current.g + distance + neighbor.costMalus;

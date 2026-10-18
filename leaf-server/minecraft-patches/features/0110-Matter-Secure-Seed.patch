@@ -83,7 +83,7 @@ diff --git a/net/minecraft/world/level/chunk/ChunkAccess.java b/net/minecraft/wo
  
      // Paper start - rewrite chunk system
      private volatile ca.spottedleaf.moonrise.patches.starlight.light.SWMRNibbleArray[] blockNibbles;
-@@ -184,6 +188,17 @@ public abstract class ChunkAccess implements LightChunk, StructureAccess, BiomeR
+@@ -200,6 +204,17 @@ public abstract class ChunkAccess implements LightChunk, StructureAccess, BiomeR
          return GameEventListenerRegistry.NOOP;
      }
  
@@ -104,7 +104,7 @@ diff --git a/net/minecraft/world/level/chunk/ChunkAccess.java b/net/minecraft/wo
 diff --git a/net/minecraft/world/level/chunk/ChunkGenerator.java b/net/minecraft/world/level/chunk/ChunkGenerator.java
 --- a/net/minecraft/world/level/chunk/ChunkGenerator.java
 +++ b/net/minecraft/world/level/chunk/ChunkGenerator.java
-@@ -380,7 +380,11 @@ public abstract class ChunkGenerator {
+@@ -389,7 +389,11 @@ public abstract class ChunkGenerator {
              Map<Integer, List<Structure>> structuresByStep = structuresRegistry.stream()
                  .collect(Collectors.groupingBy(structure -> structure.step().ordinal()));
              List<FeatureSorter.StepFeatureData> featureList = this.featuresPerStep.get();
@@ -117,7 +117,7 @@ diff --git a/net/minecraft/world/level/chunk/ChunkGenerator.java b/net/minecraft
              long decorationSeed = random.setDecorationSeed(level.getSeed(), origin.getX(), origin.getZ());
              Set<Holder<Biome>> possibleBiomes = new ObjectArraySet<>();
              ChunkPos.rangeClosed(sectionPos.chunk(), 1).forEach(chunkPos -> {
-@@ -601,8 +605,15 @@ public abstract class ChunkGenerator {
+@@ -620,8 +624,15 @@ public abstract class ChunkGenerator {
                              } else {
                                  ArrayList<StructureSet.StructureSelectionEntry> options = new ArrayList<>(structures.size());
                                  options.addAll(structures);

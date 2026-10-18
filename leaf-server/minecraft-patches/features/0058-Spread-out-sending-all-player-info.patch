@@ -71,7 +71,7 @@ diff --git a/net/minecraft/server/players/PlayerList.java b/net/minecraft/server
          serverPlayer.level().removePlayerImmediately(serverPlayer, removalReason);
          ServerLevel level = respawnInfo.newLevel();
          ServerPlayer player = serverPlayer; // Paper - TODO - recreate instance
-@@ -671,6 +675,7 @@ public abstract class PlayerList {
+@@ -672,6 +676,7 @@ public abstract class PlayerList {
          this.players.add(player);
          this.playersByName.put(player.getScoreboardName().toLowerCase(java.util.Locale.ROOT), player); // Paper
          this.playersByUUID.put(player.getUUID(), player);
@@ -79,7 +79,7 @@ diff --git a/net/minecraft/server/players/PlayerList.java b/net/minecraft/server
          player.initInventoryMenu();
          player.setHealth(player.getHealth());
          // Paper start - Once we not reuse the player entity we can remove this.
-@@ -756,18 +761,58 @@ public abstract class PlayerList {
+@@ -757,18 +762,58 @@ public abstract class PlayerList {
      }
  
      public void tick() {

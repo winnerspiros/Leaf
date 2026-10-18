@@ -23,7 +23,7 @@ diff --git a/net/minecraft/world/entity/EntitySelector.java b/net/minecraft/worl
 diff --git a/net/minecraft/world/entity/monster/zombie/Zombie.java b/net/minecraft/world/entity/monster/zombie/Zombie.java
 --- a/net/minecraft/world/entity/monster/zombie/Zombie.java
 +++ b/net/minecraft/world/entity/monster/zombie/Zombie.java
-@@ -393,7 +393,7 @@ public class Zombie extends Monster {
+@@ -400,7 +400,7 @@ public class Zombie extends Monster {
                  if (SpawnPlacements.isSpawnPositionOk(type, level, spawnPos)
                      && SpawnPlacements.checkSpawnRules(type, level, EntitySpawnReason.REINFORCEMENT, spawnPos, level.getRandom())) {
                      reinforcement.setPos(xt, yt, zt);

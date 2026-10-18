@@ -19,7 +19,7 @@ This was mostly made for the auto crafting table, since the performance boost is
 diff --git a/net/minecraft/world/item/crafting/RecipeManager.java b/net/minecraft/world/item/crafting/RecipeManager.java
 --- a/net/minecraft/world/item/crafting/RecipeManager.java
 +++ b/net/minecraft/world/item/crafting/RecipeManager.java
-@@ -136,8 +136,20 @@ public class RecipeManager implements RecipeAccess {
+@@ -137,8 +137,20 @@ public class RecipeManager implements RecipeAccess {
  
      public <I extends RecipeInput, T extends Recipe<I>> Optional<RecipeHolder<T>> getRecipeFor(final RecipeType<T> type, final I input, final Level level) {
          // CraftBukkit start

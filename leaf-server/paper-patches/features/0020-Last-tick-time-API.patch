@@ -25,7 +25,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -3080,4 +3080,21 @@ public final class CraftServer implements Server {
+@@ -3078,4 +3078,21 @@ public final class CraftServer implements Server {
          return getServer().lagging;
      }
      // Purpur end - Lagging threshold

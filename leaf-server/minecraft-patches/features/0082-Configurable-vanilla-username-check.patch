@@ -7,7 +7,7 @@ Subject: [PATCH] Configurable vanilla username check
 diff --git a/net/minecraft/server/level/ServerPlayer.java b/net/minecraft/server/level/ServerPlayer.java
 --- a/net/minecraft/server/level/ServerPlayer.java
 +++ b/net/minecraft/server/level/ServerPlayer.java
-@@ -2697,7 +2697,7 @@ public class ServerPlayer extends Player implements ca.spottedleaf.moonrise.patc
+@@ -2698,7 +2698,7 @@ public class ServerPlayer extends Player implements ca.spottedleaf.moonrise.patc
          if (this.level().purpurConfig.idleTimeoutUpdateTabList) {
              String scoreboardName = getScoreboardName();
              String playerListName = net.kyori.adventure.text.minimessage.MiniMessage.miniMessage().serialize(getBukkitEntity().playerListName());

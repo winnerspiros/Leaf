@@ -9,7 +9,7 @@ Gale - https://galemc.org
 diff --git a/net/minecraft/server/network/ServerGamePacketListenerImpl.java b/net/minecraft/server/network/ServerGamePacketListenerImpl.java
 --- a/net/minecraft/server/network/ServerGamePacketListenerImpl.java
 +++ b/net/minecraft/server/network/ServerGamePacketListenerImpl.java
-@@ -2754,7 +2754,7 @@ public class ServerGamePacketListenerImpl
+@@ -2755,7 +2755,7 @@ public class ServerGamePacketListenerImpl
          // CraftBukkit start
          String rawMessage = message.signedContent();
          if (rawMessage.isEmpty()) {

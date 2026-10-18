@@ -54,7 +54,7 @@ diff --git a/net/minecraft/server/level/ServerPlayerGameMode.java b/net/minecraf
 diff --git a/net/minecraft/server/network/ServerGamePacketListenerImpl.java b/net/minecraft/server/network/ServerGamePacketListenerImpl.java
 --- a/net/minecraft/server/network/ServerGamePacketListenerImpl.java
 +++ b/net/minecraft/server/network/ServerGamePacketListenerImpl.java
-@@ -1408,8 +1408,8 @@ public class ServerGamePacketListenerImpl
+@@ -1409,8 +1409,8 @@ public class ServerGamePacketListenerImpl
              }
  
              if (byteTotal > byteAllowed) {

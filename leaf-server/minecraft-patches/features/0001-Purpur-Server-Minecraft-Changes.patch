@@ -843,7 +843,7 @@ diff --git a/net/minecraft/server/level/ServerLevel.java b/net/minecraft/server/
                  ? this.getDestroyType(GameRules.MOB_EXPLOSION_DROP_DECAY)
                  : Explosion.BlockInteraction.KEEP;
              case TNT -> this.getDestroyType(GameRules.TNT_EXPLOSION_DROP_DECAY);
-@@ -3179,7 +3251,7 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
+@@ -3178,7 +3250,7 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
              // Spigot start
              if (entity.getBukkitEntity() instanceof org.bukkit.inventory.InventoryHolder && (!(entity instanceof ServerPlayer) || entity.getRemovalReason() != Entity.RemovalReason.KILLED)) { // SPIGOT-6876: closeInventory clears death message
                  // Paper start - Fix merchant inventory not closing on entity removal
@@ -928,7 +928,7 @@ diff --git a/net/minecraft/server/level/ServerPlayer.java b/net/minecraft/server
          Entity entity = source.getEntity();
          if (!( // Paper - split the if statement. If below statement is false, hurtServer would not have been evaluated. Return false.
              !(entity instanceof Player player && !this.canHarmPlayer(player))
-@@ -1597,6 +1628,7 @@ public class ServerPlayer extends Player implements ca.spottedleaf.moonrise.patc
+@@ -1598,6 +1629,7 @@ public class ServerPlayer extends Player implements ca.spottedleaf.moonrise.patc
  
          profiler.pop();
          profiler.push("placing");
@@ -936,7 +936,7 @@ diff --git a/net/minecraft/server/level/ServerPlayer.java b/net/minecraft/server
          this.setServerLevel(newLevel);
          this.connection.internalTeleport(PositionMoveRotation.of(transition), transition.relatives()); // CraftBukkit - use internal teleport without event
          this.connection.resetPosition();
-@@ -1706,7 +1738,7 @@ public class ServerPlayer extends Player implements ca.spottedleaf.moonrise.patc
+@@ -1707,7 +1739,7 @@ public class ServerPlayer extends Player implements ca.spottedleaf.moonrise.patc
                          new AABB(bedCenter.x() - 8.0, bedCenter.y() - 5.0, bedCenter.z() - 8.0, bedCenter.x() + 8.0, bedCenter.y() + 5.0, bedCenter.z() + 8.0),
                          monster -> monster.isPreventingPlayerRest(this.level(), this)
                      );
@@ -945,7 +945,7 @@ diff --git a/net/minecraft/server/level/ServerPlayer.java b/net/minecraft/server
                      return Either.left(Player.BedSleepingProblem.NOT_SAFE);
                  }
              }
-@@ -1747,7 +1779,17 @@ public class ServerPlayer extends Player implements ca.spottedleaf.moonrise.patc
+@@ -1748,7 +1780,17 @@ public class ServerPlayer extends Player implements ca.spottedleaf.moonrise.patc
                  }
              });
              if (!this.level().canSleepThroughNights()) {
@@ -964,7 +964,7 @@ diff --git a/net/minecraft/server/level/ServerPlayer.java b/net/minecraft/server
              }
  
              this.level().updateSleepingPlayerList();
-@@ -1850,6 +1892,7 @@ public class ServerPlayer extends Player implements ca.spottedleaf.moonrise.patc
+@@ -1851,6 +1893,7 @@ public class ServerPlayer extends Player implements ca.spottedleaf.moonrise.patc
  
      @Override
      public void openTextEdit(final SignBlockEntity sign, final SignTextSlot slot) {
@@ -972,7 +972,7 @@ diff --git a/net/minecraft/server/level/ServerPlayer.java b/net/minecraft/server
          this.connection.send(new ClientboundBlockUpdatePacket(this.level(), sign.getBlockPos()));
          this.connection.send(new ClientboundOpenSignEditorPacket(sign.getBlockPos(), slot));
      }
-@@ -2192,6 +2235,26 @@ public class ServerPlayer extends Player implements ca.spottedleaf.moonrise.patc
+@@ -2193,6 +2236,26 @@ public class ServerPlayer extends Player implements ca.spottedleaf.moonrise.patc
          this.lastSentExp = -1; // CraftBukkit - Added to reset
      }
  
@@ -999,7 +999,7 @@ diff --git a/net/minecraft/server/level/ServerPlayer.java b/net/minecraft/server
      @Override
      public void completeUsingItem() {
          if (!this.useItem.isEmpty() && this.isUsingItem()) {
-@@ -2419,6 +2482,20 @@ public class ServerPlayer extends Player implements ca.spottedleaf.moonrise.patc
+@@ -2420,6 +2483,20 @@ public class ServerPlayer extends Player implements ca.spottedleaf.moonrise.patc
          return new CommandSourceStack(this.commandSource(), this.position(), this.getRotationVector(), this.level(), this.permissions(), this.server, this);
      }
  
@@ -1020,7 +1020,7 @@ diff --git a/net/minecraft/server/level/ServerPlayer.java b/net/minecraft/server
      @Override
      public void sendSystemMessage(final Component message) {
          this.sendSystemMessage(message, false);
-@@ -2570,8 +2647,68 @@ public class ServerPlayer extends Player implements ca.spottedleaf.moonrise.patc
+@@ -2571,8 +2648,68 @@ public class ServerPlayer extends Player implements ca.spottedleaf.moonrise.patc
  
      public void resetLastActionTime() {
          this.lastActionTime = Util.getMillis();
@@ -1089,7 +1089,7 @@ diff --git a/net/minecraft/server/level/ServerPlayer.java b/net/minecraft/server
      public ServerStatsCounter getStats() {
          return this.stats;
      }
-@@ -3198,4 +3335,64 @@ public class ServerPlayer extends Player implements ca.spottedleaf.moonrise.patc
+@@ -3199,4 +3336,64 @@ public class ServerPlayer extends Player implements ca.spottedleaf.moonrise.patc
          return (org.bukkit.craftbukkit.entity.CraftPlayer) super.getBukkitEntity();
      }
      // CraftBukkit end
@@ -1282,7 +1282,7 @@ diff --git a/net/minecraft/server/network/ServerGamePacketListenerImpl.java b/ne
                  this.disconnect(Component.translatable("multiplayer.disconnect.invalid_player_movement"), org.bukkit.event.player.PlayerKickEvent.Cause.INVALID_PLAYER_MOVEMENT); // Paper - kick event cause
                  return;
              }
-@@ -1351,6 +1374,10 @@ public class ServerGamePacketListenerImpl
+@@ -1352,6 +1375,10 @@ public class ServerGamePacketListenerImpl
              final int maxBookPageSize = pageMax.intValue();
              final double multiplier = Math.clamp(io.papermc.paper.configuration.GlobalConfiguration.get().itemValidation.bookSize.totalMultiplier, 0.3D, 1D);
              long byteAllowed = maxBookPageSize;
@@ -1293,7 +1293,7 @@ diff --git a/net/minecraft/server/network/ServerGamePacketListenerImpl.java b/ne
              for (final String page : pageList) {
                  final int byteLength = page.getBytes(java.nio.charset.StandardCharsets.UTF_8).length;
                  byteTotal += byteLength;
-@@ -1375,7 +1402,8 @@ public class ServerGamePacketListenerImpl
+@@ -1376,7 +1403,8 @@ public class ServerGamePacketListenerImpl
              }
  
              if (byteTotal > byteAllowed) {
@@ -1303,7 +1303,7 @@ diff --git a/net/minecraft/server/network/ServerGamePacketListenerImpl.java b/ne
                  this.disconnectAsync(Component.literal("Book too large!"), org.bukkit.event.player.PlayerKickEvent.Cause.ILLEGAL_ACTION); // Paper - kick event cause // Paper - add proper async disconnect
                  return;
              }
-@@ -1394,31 +1422,45 @@ public class ServerGamePacketListenerImpl
+@@ -1395,31 +1423,45 @@ public class ServerGamePacketListenerImpl
              Optional<String> title = packet.title();
              title.ifPresent(contents::add);
              contents.addAll(packet.pages());
@@ -1353,7 +1353,7 @@ diff --git a/net/minecraft/server/network/ServerGamePacketListenerImpl.java b/ne
              writtenBook.set(
                  DataComponents.WRITTEN_BOOK_CONTENT, new WrittenBookContent(this.filterableFromOutgoing(title), this.player.getPlainTextName(), 0, pages, true)
              );
-@@ -1431,6 +1473,16 @@ public class ServerGamePacketListenerImpl
+@@ -1432,6 +1474,16 @@ public class ServerGamePacketListenerImpl
          return this.player.isTextFilteringEnabled() ? Filterable.passThrough(text.filteredOrEmpty()) : Filterable.from(text);
      }
  
@@ -1370,7 +1370,7 @@ diff --git a/net/minecraft/server/network/ServerGamePacketListenerImpl.java b/ne
      @Override
      public void handleEntityTagQuery(final ServerboundEntityTagQueryPacket packet) {
          PacketUtils.ensureRunningOnSameThread(packet, this, this.player.level());
-@@ -1470,7 +1522,15 @@ public class ServerGamePacketListenerImpl
+@@ -1471,7 +1523,15 @@ public class ServerGamePacketListenerImpl
      @Override
      public void handleMovePlayer(final ServerboundMovePlayerPacket packet) {
          PacketUtils.ensureRunningOnSameThread(packet, this, this.player.level());
@@ -1387,7 +1387,7 @@ diff --git a/net/minecraft/server/network/ServerGamePacketListenerImpl.java b/ne
              this.disconnect(Component.translatable("multiplayer.disconnect.invalid_player_movement"), org.bukkit.event.player.PlayerKickEvent.Cause.INVALID_PLAYER_MOVEMENT); // Paper - kick event cause
          } else {
              if (packet.hasPosition()) {
-@@ -1670,7 +1730,7 @@ public class ServerGamePacketListenerImpl
+@@ -1671,7 +1731,7 @@ public class ServerGamePacketListenerImpl
                          movedWrongly = true;
                          if (event.getLogWarning())
                      // Paper end - Add fail move event
@@ -1396,7 +1396,7 @@ diff --git a/net/minecraft/server/network/ServerGamePacketListenerImpl.java b/ne
                      } // Paper - Add fail move event
                  }
  
-@@ -1722,6 +1782,7 @@ public class ServerGamePacketListenerImpl
+@@ -1723,6 +1783,7 @@ public class ServerGamePacketListenerImpl
                          this.lastYRot = to.getYaw();
                          this.lastXRot = to.getPitch();
  
@@ -1404,7 +1404,7 @@ diff --git a/net/minecraft/server/network/ServerGamePacketListenerImpl.java b/ne
                          Location oldTo = to.clone();
                          PlayerMoveEvent event = new PlayerMoveEvent(player, from, to);
                          this.cserver.getPluginManager().callEvent(event);
-@@ -1777,6 +1838,12 @@ public class ServerGamePacketListenerImpl
+@@ -1778,6 +1839,12 @@ public class ServerGamePacketListenerImpl
                          this.player.tryResetCurrentImpulseContext();
                      }
  
@@ -1417,7 +1417,7 @@ diff --git a/net/minecraft/server/network/ServerGamePacketListenerImpl.java b/ne
                      this.player.checkMovementStatistics(this.player.getX() - startX, this.player.getY() - startY, this.player.getZ() - startZ);
                      this.lastGoodX = this.player.getX();
                      this.lastGoodY = this.player.getY();
-@@ -1790,6 +1857,17 @@ public class ServerGamePacketListenerImpl
+@@ -1791,6 +1858,17 @@ public class ServerGamePacketListenerImpl
          }
      }
  
@@ -1435,7 +1435,7 @@ diff --git a/net/minecraft/server/network/ServerGamePacketListenerImpl.java b/ne
      private boolean shouldCheckPlayerMovement(final boolean isFallFlying) {
          if (this.isSingleplayerOwner()) {
              return false;
-@@ -2267,6 +2345,7 @@ public class ServerGamePacketListenerImpl
+@@ -2268,6 +2346,7 @@ public class ServerGamePacketListenerImpl
  
                  boolean cancelled;
                  if (hitResult == null || hitResult.getType() != HitResult.Type.BLOCK) {
@@ -1443,7 +1443,7 @@ diff --git a/net/minecraft/server/network/ServerGamePacketListenerImpl.java b/ne
                      org.bukkit.event.player.PlayerInteractEvent event = CraftEventFactory.callPlayerInteractEvent(this.player, Action.RIGHT_CLICK_AIR, itemStack, hand);
                      cancelled = event.useItemInHand() == Event.Result.DENY;
                  } else {
-@@ -2305,7 +2384,7 @@ public class ServerGamePacketListenerImpl
+@@ -2306,7 +2385,7 @@ public class ServerGamePacketListenerImpl
      @Override
      public void handleTeleportToEntityPacket(final ServerboundTeleportToEntityPacket packet) {
          PacketUtils.ensureRunningOnSameThread(packet, this, this.player.level());
@@ -1452,7 +1452,7 @@ diff --git a/net/minecraft/server/network/ServerGamePacketListenerImpl.java b/ne
              for (ServerLevel level : this.server.getAllLevels()) {
                  Entity entity = packet.getEntity(level);
                  if (entity != null) {
-@@ -2908,6 +2987,7 @@ public class ServerGamePacketListenerImpl
+@@ -2909,6 +2988,7 @@ public class ServerGamePacketListenerImpl
                  ItemStack mainHandItem = this.player.getMainHandItem();
                  if (this.player.isWithinAttackRange(mainHandItem, targetBounds, io.papermc.paper.configuration.GlobalConfiguration.get().misc.clientInteractionLeniencyDistance.or(3.0))) { // Paper - configurable lenience
                      if (!mainHandItem.has(DataComponents.PIERCING_WEAPON)) {
@@ -1460,7 +1460,7 @@ diff --git a/net/minecraft/server/network/ServerGamePacketListenerImpl.java b/ne
                          if (target instanceof ItemEntity
                              || target instanceof ExperienceOrb
                              || target == this.player
-@@ -2965,6 +3045,8 @@ public class ServerGamePacketListenerImpl
+@@ -2966,6 +3046,8 @@ public class ServerGamePacketListenerImpl
                          ServerGamePacketListenerImpl.this.cserver.getPluginManager().callEvent(event);
                          final boolean resendData = event.isCancelled() || !ServerGamePacketListenerImpl.this.player.getItemInHand(hand).is(itemType);
  
@@ -1469,7 +1469,7 @@ diff --git a/net/minecraft/server/network/ServerGamePacketListenerImpl.java b/ne
                          // Entity in bucket - SPIGOT-4048 and SPIGOT-6859
                          if (itemType == Items.WATER_BUCKET && target instanceof net.minecraft.world.entity.Bucketable && target instanceof LivingEntity && resendData) {
                              target.resendPossiblyDesyncedEntityData(ServerGamePacketListenerImpl.this.player); // Paper - The entire mob gets deleted, so resend it
-@@ -3687,7 +3769,7 @@ public class ServerGamePacketListenerImpl
+@@ -3688,7 +3770,7 @@ public class ServerGamePacketListenerImpl
      @Override
      public void handleChangeGameMode(final ServerboundChangeGameModePacket packet) {
          PacketUtils.ensureRunningOnSameThread(packet, this, this.player.level());
@@ -1509,7 +1509,7 @@ diff --git a/net/minecraft/server/players/PlayerList.java b/net/minecraft/server
          ServerLevel level = player.level();
          player.awardStat(Stats.LEAVE_GAME);
          // CraftBukkit start - Quitting must be before we do final save of data, in case plugins need to modify it
-@@ -777,6 +779,20 @@ public abstract class PlayerList {
+@@ -778,6 +780,20 @@ public abstract class PlayerList {
          }
      }
  
@@ -1530,7 +1530,7 @@ diff --git a/net/minecraft/server/players/PlayerList.java b/net/minecraft/server
      public void broadcastAll(final Packet<?> packet, final ResourceKey<Level> dimension) {
          for (ServerPlayer player : this.players) {
              if (player.level().dimension() == dimension) {
-@@ -870,6 +886,7 @@ public abstract class PlayerList {
+@@ -871,6 +887,7 @@ public abstract class PlayerList {
                  case ADMINS -> EntityEvent.PERMISSION_LEVEL_ADMINS;
                  case OWNERS -> EntityEvent.PERMISSION_LEVEL_OWNERS;
              };
@@ -1538,7 +1538,7 @@ diff --git a/net/minecraft/server/players/PlayerList.java b/net/minecraft/server
              player.connection.send(new ClientboundEntityEventPacket(player, eventId));
          }
  
-@@ -877,11 +894,32 @@ public abstract class PlayerList {
+@@ -878,11 +895,32 @@ public abstract class PlayerList {
          player.getBukkitEntity().recalculatePermissions(); // CraftBukkit
          this.server.getCommands().sendCommands(player);
          } // Paper - Add sendOpLevel API
@@ -2038,7 +2038,7 @@ diff --git a/net/minecraft/world/entity/Entity.java b/net/minecraft/world/entity
              }
          }
      }
-@@ -4442,7 +4499,7 @@ public abstract class Entity
+@@ -4438,7 +4495,7 @@ public abstract class Entity
      }
  
      public boolean canUsePortal(final boolean ignorePassenger) {
@@ -2047,7 +2047,7 @@ diff --git a/net/minecraft/world/entity/Entity.java b/net/minecraft/world/entity
      }
  
      public boolean canTeleport(final Level from, final Level to) {
-@@ -5005,6 +5062,12 @@ public abstract class Entity
+@@ -5001,6 +5058,12 @@ public abstract class Entity
          return Mth.lerp(partial, this.yRotO, this.yRot);
      }
  
@@ -2060,7 +2060,7 @@ diff --git a/net/minecraft/world/entity/Entity.java b/net/minecraft/world/entity
      public boolean touchingUnloadedChunk() {
          AABB box = this.getBoundingBox().inflate(1.0);
          int x0 = Mth.floor(box.minX);
-@@ -5321,7 +5384,7 @@ public abstract class Entity
+@@ -5317,7 +5380,7 @@ public abstract class Entity
      }
  
      public float maxUpStep() {
@@ -2069,7 +2069,7 @@ diff --git a/net/minecraft/world/entity/Entity.java b/net/minecraft/world/entity
      }
  
      public void onExplosionHit(final @Nullable Entity explosionCausedBy) {
-@@ -5624,4 +5687,44 @@ public abstract class Entity
+@@ -5620,4 +5683,44 @@ public abstract class Entity
          return ((ServerLevel) this.level()).isPositionEntityTicking(this.blockPosition());
      }
      // Paper end
@@ -3017,10 +3017,10 @@ diff --git a/net/minecraft/world/entity/ai/behavior/TransportItemsBetweenContain
 +            return false;
 +        }
 +        // Purpur end - copper golem can place items in barrels or shulkers option
-         return container.isEmpty() || hasItemMatchingHandItem(body, container);
-     }
- 
-@@ -554,7 +563,7 @@ public class TransportItemsBetweenContainers extends Behavior<PathfinderMob> {
+         // Paper start - Add event for container assessment
+         final io.papermc.paper.event.entity.ItemTransportingEntitySortEvent sortEvent = org.bukkit.craftbukkit.event.CraftEventFactory.createItemTransportingEntitySortEvent(body, container);
+         sortEvent.callEvent();
+@@ -561,7 +570,7 @@ public class TransportItemsBetweenContainers extends Behavior<PathfinderMob> {
          int slot = 0;
  
          for (ItemStack itemStack : container) {
@@ -8835,7 +8835,7 @@ diff --git a/net/minecraft/world/entity/decoration/ArmorStand.java b/net/minecra
 diff --git a/net/minecraft/world/entity/decoration/ItemFrame.java b/net/minecraft/world/entity/decoration/ItemFrame.java
 --- a/net/minecraft/world/entity/decoration/ItemFrame.java
 +++ b/net/minecraft/world/entity/decoration/ItemFrame.java
-@@ -249,7 +249,7 @@ public class ItemFrame extends HangingEntity {
+@@ -256,7 +256,7 @@ public class ItemFrame extends HangingEntity {
                  this.removeFramedMap(itemStack);
              } else {
                  if (withFrame) {
@@ -12963,7 +12963,7 @@ diff --git a/net/minecraft/world/entity/monster/zombie/Zombie.java b/net/minecra
          this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, IronGolem.class, true));
          this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, Turtle.class, 10, true, false, Turtle.BABY_ON_LAND_SELECTOR));
      }
-@@ -267,6 +342,7 @@ public class Zombie extends Monster {
+@@ -274,6 +349,7 @@ public class Zombie extends Monster {
          // CraftBukkit end
      }
  
@@ -12971,7 +12971,7 @@ diff --git a/net/minecraft/world/entity/monster/zombie/Zombie.java b/net/minecra
      public boolean isSunSensitive() {
          return this.shouldBurnInDay; // Paper - Add more Zombie API
      }
-@@ -413,7 +489,7 @@ public class Zombie extends Monster {
+@@ -420,7 +496,7 @@ public class Zombie extends Monster {
          output.putBoolean("IsBaby", this.isBaby());
          output.putBoolean("CanBreakDoors", this.canBreakDoors());
          this.drowningTracker.addAdditionalSaveData(output);
@@ -12980,7 +12980,7 @@ diff --git a/net/minecraft/world/entity/monster/zombie/Zombie.java b/net/minecra
      }
  
      @Override
-@@ -422,7 +498,7 @@ public class Zombie extends Monster {
+@@ -429,7 +505,7 @@ public class Zombie extends Monster {
          this.setBaby(input.getBooleanOr("IsBaby", false));
          this.setCanBreakDoors(input.getBooleanOr("CanBreakDoors", false));
          this.drowningTracker.readAdditionalSaveData(input);
@@ -12989,7 +12989,7 @@ diff --git a/net/minecraft/world/entity/monster/zombie/Zombie.java b/net/minecra
      }
  
      @Override
-@@ -473,19 +549,18 @@ public class Zombie extends Monster {
+@@ -480,19 +556,18 @@ public class Zombie extends Monster {
          }
  
          if (groupData instanceof Zombie.ZombieGroupData zombieData) {
@@ -13015,7 +13015,7 @@ diff --git a/net/minecraft/world/entity/monster/zombie/Zombie.java b/net/minecra
                          Chicken chicken = EntityTypes.CHICKEN.create(this.level(), EntitySpawnReason.JOCKEY);
                          if (chicken != null) {
                              chicken.snapTo(this.getX(), this.getY(), this.getZ(), this.getYRot(), 0.0F);
-@@ -494,6 +569,7 @@ public class Zombie extends Monster {
+@@ -501,6 +576,7 @@ public class Zombie extends Monster {
                              this.startRiding(chicken, false, false);
                              level.addFreshEntity(chicken, org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason.MOUNT); // CraftBukkit
                          }
@@ -13023,7 +13023,7 @@ diff --git a/net/minecraft/world/entity/monster/zombie/Zombie.java b/net/minecra
                      }
                  }
              }
-@@ -505,7 +581,7 @@ public class Zombie extends Monster {
+@@ -512,7 +588,7 @@ public class Zombie extends Monster {
              }
          }
  
@@ -13032,7 +13032,7 @@ diff --git a/net/minecraft/world/entity/monster/zombie/Zombie.java b/net/minecra
              this.setItemSlot(EquipmentSlot.HEAD, new ItemStack(random.nextFloat() < 0.1F ? Blocks.JACK_O_LANTERN : Blocks.CARVED_PUMPKIN));
              this.setDropChance(EquipmentSlot.HEAD, 0.0F);
          }
-@@ -568,7 +644,7 @@ public class Zombie extends Monster {
+@@ -575,7 +651,7 @@ public class Zombie extends Monster {
      }
  
      protected void randomizeReinforcementsChance() {
@@ -13820,7 +13820,7 @@ diff --git a/net/minecraft/world/entity/projectile/LlamaSpit.java b/net/minecraf
 +    // Purpur end - Ridables
 +
      @Override
-     protected double getDefaultGravity() {
+     public double getDefaultGravity() {
          return 0.06;
 diff --git a/net/minecraft/world/entity/projectile/Projectile.java b/net/minecraft/world/entity/projectile/Projectile.java
 --- a/net/minecraft/world/entity/projectile/Projectile.java

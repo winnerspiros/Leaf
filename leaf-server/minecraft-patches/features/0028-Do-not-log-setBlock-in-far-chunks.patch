@@ -39,7 +39,7 @@ SOFTWARE.
 diff --git a/net/minecraft/server/level/WorldGenRegion.java b/net/minecraft/server/level/WorldGenRegion.java
 --- a/net/minecraft/server/level/WorldGenRegion.java
 +++ b/net/minecraft/server/level/WorldGenRegion.java
-@@ -354,7 +354,7 @@ public class WorldGenRegion implements WorldGenLevel {
+@@ -378,7 +378,7 @@ public class WorldGenRegion implements WorldGenLevel {
              int chunkX = SectionPos.blockToSectionCoord(pos.getX());
              int chunkZ = SectionPos.blockToSectionCoord(pos.getZ());
              // Paper start - Buffer OOB setBlock calls

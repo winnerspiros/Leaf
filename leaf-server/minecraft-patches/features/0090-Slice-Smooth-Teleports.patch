@@ -22,7 +22,7 @@ diff --git a/net/minecraft/server/level/ServerPlayer.java b/net/minecraft/server
 diff --git a/net/minecraft/server/players/PlayerList.java b/net/minecraft/server/players/PlayerList.java
 --- a/net/minecraft/server/players/PlayerList.java
 +++ b/net/minecraft/server/players/PlayerList.java
-@@ -664,8 +664,10 @@ public abstract class PlayerList {
+@@ -665,8 +665,10 @@ public abstract class PlayerList {
          byte dataToKeep = keepAllPlayerData ? ClientboundRespawnPacket.KEEP_ATTRIBUTE_MODIFIERS : 0;
          ServerLevel playerLevel = player.level();
          LevelData levelData = playerLevel.getLevelData();
@@ -33,7 +33,7 @@ diff --git a/net/minecraft/server/players/PlayerList.java b/net/minecraft/server
          player.connection.send(new ClientboundSetDefaultSpawnPositionPacket(level.getRespawnData()));
          player.connection.send(new ClientboundChangeDifficultyPacket(levelData.getDifficulty(), levelData.isDifficultyLocked()));
          player.connection.send(new ClientboundSetExperiencePacket(player.experienceProgress, player.totalExperience, player.experienceLevel));
-@@ -736,6 +738,8 @@ public abstract class PlayerList {
+@@ -737,6 +739,8 @@ public abstract class PlayerList {
          return player;
      }
  

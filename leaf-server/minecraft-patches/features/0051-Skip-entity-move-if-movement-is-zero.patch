@@ -70,7 +70,7 @@ diff --git a/net/minecraft/world/entity/Entity.java b/net/minecraft/world/entity
              }
  
              if (this.horizontalCollision) {
-@@ -4802,6 +4817,20 @@ public abstract class Entity
+@@ -4798,6 +4813,20 @@ public abstract class Entity
      }
  
      public final void setBoundingBox(final AABB bb) {

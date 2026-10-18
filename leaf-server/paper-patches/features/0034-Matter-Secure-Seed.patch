@@ -31,7 +31,7 @@ diff --git a/src/main/java/org/bukkit/craftbukkit/CraftChunk.java b/src/main/jav
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -1254,7 +1254,11 @@ public final class CraftServer implements Server {
+@@ -1232,7 +1232,11 @@ public final class CraftServer implements Server {
              .orElse(null);
          RegistryAccess contextRegistryAccess = registryAccess;
          if (worldGenSettings == null) {

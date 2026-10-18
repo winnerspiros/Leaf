@@ -21,7 +21,7 @@ diff --git a/src/main/java/org/bukkit/craftbukkit/block/CraftBlock.java b/src/ma
 diff --git a/src/main/java/org/bukkit/craftbukkit/block/CraftBlockStates.java b/src/main/java/org/bukkit/craftbukkit/block/CraftBlockStates.java
 --- a/src/main/java/org/bukkit/craftbukkit/block/CraftBlockStates.java
 +++ b/src/main/java/org/bukkit/craftbukkit/block/CraftBlockStates.java
-@@ -188,7 +188,7 @@ public final class CraftBlockStates {
+@@ -193,7 +193,7 @@ public final class CraftBlockStates {
      }
  
      public static BlockState getBlockState(Block block) {

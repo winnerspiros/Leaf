@@ -14,7 +14,7 @@ This patch ensures the chunk at the random location is loaded before trying to s
 diff --git a/net/minecraft/world/entity/monster/zombie/Zombie.java b/net/minecraft/world/entity/monster/zombie/Zombie.java
 --- a/net/minecraft/world/entity/monster/zombie/Zombie.java
 +++ b/net/minecraft/world/entity/monster/zombie/Zombie.java
-@@ -383,6 +383,13 @@ public class Zombie extends Monster {
+@@ -390,6 +390,13 @@ public class Zombie extends Monster {
                  int yt = y + Mth.nextInt(this.random, 7, 40) * Mth.nextInt(this.random, -1, 1);
                  int zt = z + Mth.nextInt(this.random, 7, 40) * Mth.nextInt(this.random, -1, 1);
                  BlockPos spawnPos = new BlockPos(xt, yt, zt);

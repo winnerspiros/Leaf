@@ -9,7 +9,7 @@ By removing this check, it gives ability for hackers to use some modules of hack
 diff --git a/net/minecraft/server/network/ServerGamePacketListenerImpl.java b/net/minecraft/server/network/ServerGamePacketListenerImpl.java
 --- a/net/minecraft/server/network/ServerGamePacketListenerImpl.java
 +++ b/net/minecraft/server/network/ServerGamePacketListenerImpl.java
-@@ -2255,8 +2255,13 @@ public class ServerGamePacketListenerImpl
+@@ -2256,8 +2256,13 @@ public class ServerGamePacketListenerImpl
                  BlockPos pos = blockHit.getBlockPos();
                  if (this.player.isWithinBlockInteractionRange(pos, 1.0)) {
                      Vec3 distance = location.subtract(Vec3.atCenterOf(pos));

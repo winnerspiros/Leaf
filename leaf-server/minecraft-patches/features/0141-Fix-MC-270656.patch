@@ -47,7 +47,7 @@ diff --git a/net/minecraft/server/level/ServerPlayer.java b/net/minecraft/server
              return this;
          }
  
-@@ -1662,6 +1680,7 @@ public class ServerPlayer extends Player implements ca.spottedleaf.moonrise.patc
+@@ -1663,6 +1681,7 @@ public class ServerPlayer extends Player implements ca.spottedleaf.moonrise.patc
              this.stopUsingItem();
          }
          // Paper end - Reset shield blocking on dimension change

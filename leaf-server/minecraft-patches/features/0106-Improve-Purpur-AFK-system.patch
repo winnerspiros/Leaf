@@ -20,7 +20,7 @@ diff --git a/net/minecraft/commands/Commands.java b/net/minecraft/commands/Comma
 diff --git a/net/minecraft/server/level/ServerPlayer.java b/net/minecraft/server/level/ServerPlayer.java
 --- a/net/minecraft/server/level/ServerPlayer.java
 +++ b/net/minecraft/server/level/ServerPlayer.java
-@@ -2665,6 +2665,10 @@ public class ServerPlayer extends Player implements ca.spottedleaf.moonrise.patc
+@@ -2666,6 +2666,10 @@ public class ServerPlayer extends Player implements ca.spottedleaf.moonrise.patc
  
      // Purpur start - AFK API
      private boolean isAfk = false;
@@ -31,7 +31,7 @@ diff --git a/net/minecraft/server/level/ServerPlayer.java b/net/minecraft/server
  
      @Override
      public void setAfk(boolean afk) {
-@@ -2702,6 +2706,18 @@ public class ServerPlayer extends Player implements ca.spottedleaf.moonrise.patc
+@@ -2703,6 +2707,18 @@ public class ServerPlayer extends Player implements ca.spottedleaf.moonrise.patc
              String prefix = (split.length > 0 ? split[0] : "").replace(org.purpurmc.purpur.PurpurConfig.afkTabListPrefix, "");
              String suffix = (split.length > 1 ? split[1] : "").replace(org.purpurmc.purpur.PurpurConfig.afkTabListSuffix, "");
              if (afk) {
@@ -53,7 +53,7 @@ diff --git a/net/minecraft/server/level/ServerPlayer.java b/net/minecraft/server
 diff --git a/net/minecraft/server/network/ServerGamePacketListenerImpl.java b/net/minecraft/server/network/ServerGamePacketListenerImpl.java
 --- a/net/minecraft/server/network/ServerGamePacketListenerImpl.java
 +++ b/net/minecraft/server/network/ServerGamePacketListenerImpl.java
-@@ -2518,6 +2518,7 @@ public class ServerGamePacketListenerImpl
+@@ -2519,6 +2519,7 @@ public class ServerGamePacketListenerImpl
  
      @Override
      public void handleChatCommand(final ServerboundChatCommandPacket packet) {
@@ -61,7 +61,7 @@ diff --git a/net/minecraft/server/network/ServerGamePacketListenerImpl.java b/ne
          this.tryHandleChat(packet.command(), true, () -> {
              // CraftBukkit start - SPIGOT-7346: Prevent disconnected players from executing commands
              if (this.player.hasDisconnected()) {
-@@ -2526,7 +2527,7 @@ public class ServerGamePacketListenerImpl
+@@ -2527,7 +2528,7 @@ public class ServerGamePacketListenerImpl
              // CraftBukkit end
              this.performUnsignedChatCommand(packet.command());
              this.detectCommandRateSpam(packet.command()); // Spigot - spam exclusions
@@ -70,7 +70,7 @@ diff --git a/net/minecraft/server/network/ServerGamePacketListenerImpl.java b/ne
      }
  
      // CraftBukkit start
-@@ -2559,6 +2560,7 @@ public class ServerGamePacketListenerImpl
+@@ -2560,6 +2561,7 @@ public class ServerGamePacketListenerImpl
      public void handleSignedChatCommand(final ServerboundChatCommandSignedPacket packet) {
          Optional<LastSeenMessages> unpackedLastSeen = this.unpackAndApplyLastSeen(packet.lastSeenMessages());
          if (!unpackedLastSeen.isEmpty()) {
@@ -78,7 +78,7 @@ diff --git a/net/minecraft/server/network/ServerGamePacketListenerImpl.java b/ne
              this.tryHandleChat(packet.command(), true, () -> {
                  // CraftBukkit start - SPIGOT-7346: Prevent disconnected players from executing commands
                  if (this.player.hasDisconnected()) {
-@@ -2567,7 +2569,7 @@ public class ServerGamePacketListenerImpl
+@@ -2568,7 +2570,7 @@ public class ServerGamePacketListenerImpl
                  // CraftBukkit end
                  this.performSignedChatCommand(packet, unpackedLastSeen.get());
                  this.detectCommandRateSpam(packet.command()); // Spigot - spam exclusions
@@ -87,7 +87,7 @@ diff --git a/net/minecraft/server/network/ServerGamePacketListenerImpl.java b/ne
          }
      }
  
-@@ -2673,11 +2675,16 @@ public class ServerGamePacketListenerImpl
+@@ -2674,11 +2676,16 @@ public class ServerGamePacketListenerImpl
      }
  
      private void tryHandleChat(final String message, final boolean isCommand, final Runnable chatHandler, final boolean sync) { // CraftBukkit
@@ -105,7 +105,7 @@ diff --git a/net/minecraft/server/network/ServerGamePacketListenerImpl.java b/ne
              this.player.resetLastActionTime();
              // CraftBukkit start
              if (sync) {
-@@ -2689,6 +2696,43 @@ public class ServerGamePacketListenerImpl
+@@ -2690,6 +2697,43 @@ public class ServerGamePacketListenerImpl
          }
      }
  

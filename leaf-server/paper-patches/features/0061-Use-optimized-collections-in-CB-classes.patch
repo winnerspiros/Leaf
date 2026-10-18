@@ -7,7 +7,7 @@ Subject: [PATCH] Use optimized collections in CB classes
 diff --git a/src/main/java/org/bukkit/craftbukkit/block/CraftBlockStates.java b/src/main/java/org/bukkit/craftbukkit/block/CraftBlockStates.java
 --- a/src/main/java/org/bukkit/craftbukkit/block/CraftBlockStates.java
 +++ b/src/main/java/org/bukkit/craftbukkit/block/CraftBlockStates.java
-@@ -70,7 +70,7 @@ public final class CraftBlockStates {
+@@ -75,7 +75,7 @@ public final class CraftBlockStates {
          }
      }
  
@@ -15,8 +15,8 @@ diff --git a/src/main/java/org/bukkit/craftbukkit/block/CraftBlockStates.java b/
 +    private static final Map<Material, BlockStateFactory<?>> FACTORIES = new java.util.EnumMap<>(Material.class); // Leaf - Use optimized collections in CB classes
      private static final BlockStateFactory<?> DEFAULT_FACTORY = new BlockStateFactory<>(CraftBlockState.class) {
          @Override
-         public CraftBlockState createBlockState(World world, BlockPos pos, net.minecraft.world.level.block.state.BlockState state, BlockEntity blockEntity) {
-@@ -80,7 +80,7 @@ public final class CraftBlockStates {
+         public CraftBlockState createBlockState(World world, BlockPos pos, net.minecraft.world.level.block.state.BlockState state, BlockEntity blockEntity, boolean useSnapshot) {
+@@ -85,7 +85,7 @@ public final class CraftBlockStates {
          }
      };
  

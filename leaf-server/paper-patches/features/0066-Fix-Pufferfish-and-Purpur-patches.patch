@@ -33,7 +33,7 @@ diff --git a/src/main/java/org/bukkit/craftbukkit/entity/CraftHumanEntity.java b
 diff --git a/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java b/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java
 --- a/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java
 +++ b/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java
-@@ -775,7 +775,7 @@ public class CraftEventFactory {
+@@ -778,7 +778,7 @@ public class CraftEventFactory {
          // Spigot start - SPIGOT-7523: Merge after spawn event and only merge if the event was not cancelled (gets checked above)
          if (entity instanceof net.minecraft.world.entity.ExperienceOrb xp) {
              double radius = level.spigotConfig.expMerge;

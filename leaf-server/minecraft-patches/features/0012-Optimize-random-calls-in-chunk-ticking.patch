@@ -71,7 +71,7 @@ diff --git a/net/minecraft/server/level/ServerLevel.java b/net/minecraft/server/
 diff --git a/net/minecraft/world/level/chunk/LevelChunk.java b/net/minecraft/world/level/chunk/LevelChunk.java
 --- a/net/minecraft/world/level/chunk/LevelChunk.java
 +++ b/net/minecraft/world/level/chunk/LevelChunk.java
-@@ -135,6 +135,18 @@ public class LevelChunk extends ChunkAccess implements DebugValueSource, ca.spot
+@@ -140,6 +140,18 @@ public class LevelChunk extends ChunkAccess implements DebugValueSource, ca.spot
      }
      // Paper end - get block chunk optimisation
  
@@ -90,7 +90,7 @@ diff --git a/net/minecraft/world/level/chunk/LevelChunk.java b/net/minecraft/wor
      public LevelChunk(final Level level, final ChunkPos pos) {
          this(level, pos, UpgradeData.EMPTY, new LevelChunkTicks<>(), new LevelChunkTicks<>(), 0L, null, null, null);
      }
-@@ -171,6 +183,8 @@ public class LevelChunk extends ChunkAccess implements DebugValueSource, ca.spot
+@@ -176,6 +188,8 @@ public class LevelChunk extends ChunkAccess implements DebugValueSource, ca.spot
          this.debug = !empty && this.level.isDebug();
          this.defaultBlockState = empty ? VOID_AIR_BLOCKSTATE : AIR_BLOCKSTATE;
          // Paper end - get block chunk optimisation

@@ -155,7 +155,7 @@ diff --git a/net/minecraft/world/level/biome/Biome.java b/net/minecraft/world/le
 diff --git a/net/minecraft/world/level/chunk/ChunkGenerator.java b/net/minecraft/world/level/chunk/ChunkGenerator.java
 --- a/net/minecraft/world/level/chunk/ChunkGenerator.java
 +++ b/net/minecraft/world/level/chunk/ChunkGenerator.java
-@@ -504,7 +504,7 @@ public abstract class ChunkGenerator {
+@@ -523,7 +523,7 @@ public abstract class ChunkGenerator {
              int x = chunk.getPos().x();
              int z = chunk.getPos().z();
              for (org.bukkit.generator.BlockPopulator populator : world.getPopulators()) {
@@ -164,7 +164,7 @@ diff --git a/net/minecraft/world/level/chunk/ChunkGenerator.java b/net/minecraft
                  seededrandom.setDecorationSeed(level.getSeed(), x, z);
                  populator.populate(world, new org.bukkit.craftbukkit.util.RandomSourceWrapper.RandomWrapper(seededrandom), x, z, limitedRegion);
              }
-@@ -610,7 +610,7 @@ public abstract class ChunkGenerator {
+@@ -629,7 +629,7 @@ public abstract class ChunkGenerator {
                                  if (org.dreeam.leaf.config.modules.misc.SecureSeed.enabled) {
                                      random = new su.plo.matter.WorldgenCryptoRandom(sourceChunkPos.x(), sourceChunkPos.z(), su.plo.matter.Globals.Salt.GENERATE_FEATURE, 0);
                                  } else {

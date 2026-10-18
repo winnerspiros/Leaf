@@ -46,6 +46,6 @@ diff --git a/src/main/java/org/bukkit/craftbukkit/inventory/CraftShapelessRecipe
 -            ingredients
 +            ingredients,
 +            true // Gale - Airplane - simpler ShapelessRecipe comparison for vanilla
-         );
-         MinecraftServer.getServer().getRecipeManager().addRecipe(new RecipeHolder<>(CraftNamespacedKey.toResourceKey(Registries.RECIPE, this.getKey()), recipe));
+         ));
      }
+ }

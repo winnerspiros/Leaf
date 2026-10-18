@@ -34,7 +34,7 @@ diff --git a/net/minecraft/server/players/PlayerList.java b/net/minecraft/server
          this.cserver.getPluginManager().callEvent(playerQuitEvent);
          player.getBukkitEntity().disconnect();
  
-@@ -1407,4 +1407,40 @@ public abstract class PlayerList {
+@@ -1408,4 +1408,40 @@ public abstract class PlayerList {
              player.getRecipeBook().sendInitialRecipeBook(player);
          }
      }

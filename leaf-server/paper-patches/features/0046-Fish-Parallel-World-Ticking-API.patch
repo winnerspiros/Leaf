@@ -18,7 +18,7 @@ With this approach only new methods are added into already existing Bukkit API, 
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -3101,4 +3101,11 @@ public final class CraftServer implements Server {
+@@ -3099,4 +3099,11 @@ public final class CraftServer implements Server {
          return MinecraftServer.lastTickOversleepTime;
      }
      // Gale end - YAPFA - last tick time - API
@@ -33,7 +33,7 @@ diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/ja
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftWorld.java b/src/main/java/org/bukkit/craftbukkit/CraftWorld.java
 --- a/src/main/java/org/bukkit/craftbukkit/CraftWorld.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftWorld.java
-@@ -2113,4 +2113,15 @@ public class CraftWorld extends CraftRegionAccessor implements World {
+@@ -2126,4 +2126,15 @@ public class CraftWorld extends CraftRegionAccessor implements World {
          return POINTERS_SUPPLIER.view(this);
      }
      // Paper end

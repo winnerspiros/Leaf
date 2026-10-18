@@ -7,7 +7,7 @@ Subject: [PATCH] Remove useless creating stats json bases on player name logic
 diff --git a/net/minecraft/server/players/PlayerList.java b/net/minecraft/server/players/PlayerList.java
 --- a/net/minecraft/server/players/PlayerList.java
 +++ b/net/minecraft/server/players/PlayerList.java
-@@ -1289,6 +1289,8 @@ public abstract class PlayerList {
+@@ -1290,6 +1290,8 @@ public abstract class PlayerList {
              return uuidStatsFile;
          }
  
@@ -16,7 +16,7 @@ diff --git a/net/minecraft/server/players/PlayerList.java b/net/minecraft/server
          String playerNameStatsFile = gameProfile.name() + ".json";
          if (FileUtil.isValidPathSegment(playerNameStatsFile)) {
              Path playerNameStatsPath = statFolder.resolve(playerNameStatsFile);
-@@ -1301,6 +1303,8 @@ public abstract class PlayerList {
+@@ -1302,6 +1304,8 @@ public abstract class PlayerList {
                  }
              }
          }

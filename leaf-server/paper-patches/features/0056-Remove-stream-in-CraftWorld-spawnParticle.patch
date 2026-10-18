@@ -7,7 +7,7 @@ Subject: [PATCH] Remove stream in CraftWorld#spawnParticle
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftWorld.java b/src/main/java/org/bukkit/craftbukkit/CraftWorld.java
 --- a/src/main/java/org/bukkit/craftbukkit/CraftWorld.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftWorld.java
-@@ -1770,8 +1770,8 @@ public class CraftWorld extends CraftRegionAccessor implements World {
+@@ -1783,8 +1783,8 @@ public class CraftWorld extends CraftRegionAccessor implements World {
          if (data != null) {
              Preconditions.checkArgument(particle.getDataType().isInstance(data), "data (%s) should be %s", data.getClass(), particle.getDataType());
          }

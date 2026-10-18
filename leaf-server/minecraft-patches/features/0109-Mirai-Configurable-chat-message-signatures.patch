@@ -97,7 +97,7 @@ diff --git a/net/minecraft/server/dedicated/DedicatedServer.java b/net/minecraft
 diff --git a/net/minecraft/server/network/ServerGamePacketListenerImpl.java b/net/minecraft/server/network/ServerGamePacketListenerImpl.java
 --- a/net/minecraft/server/network/ServerGamePacketListenerImpl.java
 +++ b/net/minecraft/server/network/ServerGamePacketListenerImpl.java
-@@ -2956,10 +2956,22 @@ public class ServerGamePacketListenerImpl
+@@ -2957,10 +2957,22 @@ public class ServerGamePacketListenerImpl
  
      public void sendPlayerChatMessage(final PlayerChatMessage message, final ChatType.Bound chatType) {
          // CraftBukkit start - SPIGOT-7262: if hidden we have to send as disguised message. Query whether we should send at all (but changing this may not be expected).
@@ -125,7 +125,7 @@ diff --git a/net/minecraft/server/network/ServerGamePacketListenerImpl.java b/ne
 diff --git a/net/minecraft/server/players/PlayerList.java b/net/minecraft/server/players/PlayerList.java
 --- a/net/minecraft/server/players/PlayerList.java
 +++ b/net/minecraft/server/players/PlayerList.java
-@@ -1239,7 +1239,7 @@ public abstract class PlayerList {
+@@ -1240,7 +1240,7 @@ public abstract class PlayerList {
      public void broadcastChatMessage(final PlayerChatMessage message, final Predicate<ServerPlayer> isFiltered, final @Nullable ServerPlayer senderPlayer, final ChatType.Bound chatType, final @Nullable Function<net.kyori.adventure.audience.Audience, Component> unsignedFunction) {
          // Paper end
          boolean trusted = this.verifyChatTrusted(message);
@@ -134,7 +134,7 @@ diff --git a/net/minecraft/server/players/PlayerList.java b/net/minecraft/server
          OutgoingChatMessage tracked = OutgoingChatMessage.create(message);
          boolean wasFullyFiltered = false;
  
-@@ -1264,6 +1264,7 @@ public abstract class PlayerList {
+@@ -1265,6 +1265,7 @@ public abstract class PlayerList {
      }
  
      public boolean verifyChatTrusted(final PlayerChatMessage message) {

@@ -60,7 +60,7 @@ diff --git a/src/main/java/com/destroystokyo/paper/gui/RAMDetails.java b/src/mai
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -2833,7 +2833,21 @@ public final class CraftServer implements Server {
+@@ -2831,7 +2831,21 @@ public final class CraftServer implements Server {
          return this.getServer().getTPS();
      }
  

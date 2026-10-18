@@ -7,7 +7,7 @@ Subject: [PATCH] cache biome zoom seed
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -1296,7 +1296,7 @@ public final class CraftServer implements Server {
+@@ -1274,7 +1274,7 @@ public final class CraftServer implements Server {
              net.minecraft.server.Main.forceUpgrade(this.console.storageSource, DataFixers.getDataFixer(), this.console.options.has("eraseCache"), () -> true, contextRegistryAccess, this.console.options.has("recreateRegionFiles"));
          }
  

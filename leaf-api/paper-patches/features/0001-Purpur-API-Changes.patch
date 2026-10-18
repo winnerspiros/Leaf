@@ -67,7 +67,7 @@ diff --git a/src/main/java/io/papermc/paper/ServerBuildInfo.java b/src/main/java
 diff --git a/src/main/java/org/bukkit/Bukkit.java b/src/main/java/org/bukkit/Bukkit.java
 --- a/src/main/java/org/bukkit/Bukkit.java
 +++ b/src/main/java/org/bukkit/Bukkit.java
-@@ -3009,4 +3009,126 @@ public final class Bukkit {
+@@ -3054,4 +3054,126 @@ public final class Bukkit {
      public static void restart() {
          server.restart();
      }
@@ -430,7 +430,7 @@ diff --git a/src/main/java/org/bukkit/OfflinePlayer.java b/src/main/java/org/buk
 diff --git a/src/main/java/org/bukkit/Server.java b/src/main/java/org/bukkit/Server.java
 --- a/src/main/java/org/bukkit/Server.java
 +++ b/src/main/java/org/bukkit/Server.java
-@@ -2438,6 +2438,18 @@ public interface Server extends PluginMessageRecipient, net.kyori.adventure.audi
+@@ -2475,6 +2475,18 @@ public interface Server extends PluginMessageRecipient, net.kyori.adventure.audi
          }
          // Paper end
  
@@ -449,7 +449,7 @@ diff --git a/src/main/java/org/bukkit/Server.java b/src/main/java/org/bukkit/Ser
          /**
           * Sends the component to the player
           *
-@@ -2778,4 +2790,108 @@ public interface Server extends PluginMessageRecipient, net.kyori.adventure.audi
+@@ -2815,4 +2827,108 @@ public interface Server extends PluginMessageRecipient, net.kyori.adventure.audi
       */
      void allowPausing(@NotNull org.bukkit.plugin.Plugin plugin, boolean value);
      // Paper end - API to check if the server is sleeping
@@ -561,7 +561,7 @@ diff --git a/src/main/java/org/bukkit/Server.java b/src/main/java/org/bukkit/Ser
 diff --git a/src/main/java/org/bukkit/World.java b/src/main/java/org/bukkit/World.java
 --- a/src/main/java/org/bukkit/World.java
 +++ b/src/main/java/org/bukkit/World.java
-@@ -4591,6 +4591,100 @@ public interface World extends RegionAccessor, WorldInfo, PluginMessageRecipient
+@@ -4645,6 +4645,100 @@ public interface World extends RegionAccessor, WorldInfo, PluginMessageRecipient
      @Nullable
      public DragonBattle getEnderDragonBattle();
  
@@ -694,7 +694,7 @@ diff --git a/src/main/java/org/bukkit/block/EntityBlockStorage.java b/src/main/j
 diff --git a/src/main/java/org/bukkit/command/SimpleCommandMap.java b/src/main/java/org/bukkit/command/SimpleCommandMap.java
 --- a/src/main/java/org/bukkit/command/SimpleCommandMap.java
 +++ b/src/main/java/org/bukkit/command/SimpleCommandMap.java
-@@ -148,6 +148,19 @@ public class SimpleCommandMap implements CommandMap {
+@@ -155,6 +155,19 @@ public class SimpleCommandMap implements CommandMap {
              return false;
          }
  
@@ -714,7 +714,7 @@ diff --git a/src/main/java/org/bukkit/command/SimpleCommandMap.java b/src/main/j
          // Paper start - Plugins do weird things to workaround normal registration
          if (target.timings == null) {
              target.timings = co.aikar.timings.TimingsManager.getCommandTiming(null, target);
-@@ -157,7 +170,7 @@ public class SimpleCommandMap implements CommandMap {
+@@ -164,7 +177,7 @@ public class SimpleCommandMap implements CommandMap {
          try {
              try (co.aikar.timings.Timing ignored = target.timings.startTiming()) { // Paper - use try with resources
              // Note: we don't return the result of target.execute as thats success / failure, we return handled (true) or not handled (false)
@@ -819,10 +819,10 @@ diff --git a/src/main/java/org/bukkit/entity/Endermite.java b/src/main/java/org/
 diff --git a/src/main/java/org/bukkit/entity/Entity.java b/src/main/java/org/bukkit/entity/Entity.java
 --- a/src/main/java/org/bukkit/entity/Entity.java
 +++ b/src/main/java/org/bukkit/entity/Entity.java
-@@ -1359,4 +1359,59 @@ public interface Entity extends Metadatable, CommandSender, Nameable, Persistent
+@@ -1400,4 +1400,59 @@ public interface Entity extends Metadatable, CommandSender, Nameable, Persistent
+      * @throws IllegalArgumentException if {@code this} is contained in {@code players}
       */
      void broadcastHurtAnimation(@NotNull java.util.Collection<Player> players);
-     // Paper end - broadcast hurt animation
 +
 +    // Purpur start - Ridables
 +    /**

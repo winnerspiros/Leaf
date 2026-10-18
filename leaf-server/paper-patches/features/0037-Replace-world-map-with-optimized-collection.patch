@@ -7,7 +7,7 @@ Subject: [PATCH] Replace world map with optimized collection
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -279,7 +279,7 @@ public final class CraftServer implements Server {
+@@ -257,7 +257,7 @@ public final class CraftServer implements Server {
      private final StructureManager structureManager;
      final DedicatedServer console;
      private final DedicatedPlayerList playerList;

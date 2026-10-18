@@ -9,7 +9,7 @@ Gale - https://galemc.org
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -2833,6 +2833,23 @@ public final class CraftServer implements Server {
+@@ -2831,6 +2831,23 @@ public final class CraftServer implements Server {
          return this.getServer().getTPS();
      }
  

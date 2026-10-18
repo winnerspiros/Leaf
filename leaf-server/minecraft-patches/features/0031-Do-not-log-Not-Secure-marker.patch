@@ -9,7 +9,7 @@ Gale - https://galemc.org
 diff --git a/net/minecraft/server/players/PlayerList.java b/net/minecraft/server/players/PlayerList.java
 --- a/net/minecraft/server/players/PlayerList.java
 +++ b/net/minecraft/server/players/PlayerList.java
-@@ -1176,7 +1176,7 @@ public abstract class PlayerList {
+@@ -1177,7 +1177,7 @@ public abstract class PlayerList {
      public void broadcastChatMessage(final PlayerChatMessage message, final Predicate<ServerPlayer> isFiltered, final @Nullable ServerPlayer senderPlayer, final ChatType.Bound chatType, final @Nullable Function<net.kyori.adventure.audience.Audience, Component> unsignedFunction) {
          // Paper end
          boolean trusted = this.verifyChatTrusted(message);

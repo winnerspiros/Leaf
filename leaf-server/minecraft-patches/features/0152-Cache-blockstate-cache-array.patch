@@ -11,7 +11,7 @@ The JMH benchmark of this patch can be found in SunBox's `CachedEnumValuesForLoo
 diff --git a/net/minecraft/world/level/block/state/BlockBehaviour.java b/net/minecraft/world/level/block/state/BlockBehaviour.java
 --- a/net/minecraft/world/level/block/state/BlockBehaviour.java
 +++ b/net/minecraft/world/level/block/state/BlockBehaviour.java
-@@ -1082,6 +1082,10 @@ public abstract class BlockBehaviour implements FeatureElement {
+@@ -1135,6 +1135,10 @@ public abstract class BlockBehaviour implements FeatureElement {
          private static final class Cache {
              private static final Direction[] DIRECTIONS = Direction.values();
              private static final int SUPPORT_TYPE_COUNT = SupportType.values().length;
@@ -22,7 +22,7 @@ diff --git a/net/minecraft/world/level/block/state/BlockBehaviour.java b/net/min
              public final VoxelShape collisionShape;
              public boolean largeCollisionShape;
              private final boolean[] faceSturdy;
-@@ -1101,7 +1105,7 @@ public abstract class BlockBehaviour implements FeatureElement {
+@@ -1154,7 +1158,7 @@ public abstract class BlockBehaviour implements FeatureElement {
                  }
  
                  // Leaf start - Remove stream in BlockBehaviour cache blockstate
@@ -31,7 +31,7 @@ diff --git a/net/minecraft/world/level/block/state/BlockBehaviour.java b/net/min
                      if (this.collisionShape.min(axis) < 0.0 || this.collisionShape.max(axis) > 1.0) {
                          this.largeCollisionShape = true;
                          break;
-@@ -1111,7 +1115,7 @@ public abstract class BlockBehaviour implements FeatureElement {
+@@ -1164,7 +1168,7 @@ public abstract class BlockBehaviour implements FeatureElement {
                  this.faceSturdy = new boolean[DIRECTIONS.length * SUPPORT_TYPE_COUNT];
  
                  for (Direction direction : DIRECTIONS) {

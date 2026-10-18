@@ -7,7 +7,7 @@ Subject: [PATCH] Cache tile entity position
 diff --git a/net/minecraft/world/level/chunk/LevelChunk.java b/net/minecraft/world/level/chunk/LevelChunk.java
 --- a/net/minecraft/world/level/chunk/LevelChunk.java
 +++ b/net/minecraft/world/level/chunk/LevelChunk.java
-@@ -972,10 +972,12 @@ public class LevelChunk extends ChunkAccess implements DebugValueSource, ca.spot
+@@ -977,10 +977,12 @@ public class LevelChunk extends ChunkAccess implements DebugValueSource, ca.spot
          private final T blockEntity;
          private final BlockEntityTicker<T> ticker;
          private boolean loggedInvalidBlockState;
@@ -20,7 +20,7 @@ diff --git a/net/minecraft/world/level/chunk/LevelChunk.java b/net/minecraft/wor
          }
  
          @Override
-@@ -1026,7 +1028,7 @@ public class LevelChunk extends ChunkAccess implements DebugValueSource, ca.spot
+@@ -1031,7 +1033,7 @@ public class LevelChunk extends ChunkAccess implements DebugValueSource, ca.spot
  
          @Override
          public BlockPos getPos() {
@@ -29,7 +29,7 @@ diff --git a/net/minecraft/world/level/chunk/LevelChunk.java b/net/minecraft/wor
          }
  
          @Override
-@@ -1053,13 +1055,16 @@ public class LevelChunk extends ChunkAccess implements DebugValueSource, ca.spot
+@@ -1058,13 +1060,16 @@ public class LevelChunk extends ChunkAccess implements DebugValueSource, ca.spot
  
      private static class RebindableTickingBlockEntityWrapper implements TickingBlockEntity {
          private TickingBlockEntity ticker;
@@ -46,7 +46,7 @@ diff --git a/net/minecraft/world/level/chunk/LevelChunk.java b/net/minecraft/wor
          }
  
          @Override
-@@ -1074,7 +1079,7 @@ public class LevelChunk extends ChunkAccess implements DebugValueSource, ca.spot
+@@ -1079,7 +1084,7 @@ public class LevelChunk extends ChunkAccess implements DebugValueSource, ca.spot
  
          @Override
          public BlockPos getPos() {

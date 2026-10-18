@@ -60,7 +60,7 @@ diff --git a/net/minecraft/world/level/chunk/LevelChunk.java b/net/minecraft/wor
      private final LevelChunkTicks<Block> blockTicks;
      private final LevelChunkTicks<Fluid> fluidTicks;
      private LevelChunk.UnsavedListener unsavedListener = chunkPos -> {};
-@@ -164,7 +176,7 @@ public class LevelChunk extends ChunkAccess implements DebugValueSource, ca.spot
+@@ -169,7 +181,7 @@ public class LevelChunk extends ChunkAccess implements DebugValueSource, ca.spot
      ) {
          super(pos, upgradeData, level, PalettedContainerFactory.create(net.minecraft.server.MinecraftServer.getServer().registryAccess()), inhabitedTime, sections, blendingData); // Paper - Anti-Xray - The world isn't ready yet, use server singleton for registry
          this.level = (ServerLevel) level; // CraftBukkit - type
@@ -69,7 +69,7 @@ diff --git a/net/minecraft/world/level/chunk/LevelChunk.java b/net/minecraft/wor
  
          for (Heightmap.Types type : Heightmap.Types.values()) {
              if (ChunkStatus.FULL.heightmapsAfter().contains(type)) {
-@@ -276,10 +288,27 @@ public class LevelChunk extends ChunkAccess implements DebugValueSource, ca.spot
+@@ -281,10 +293,27 @@ public class LevelChunk extends ChunkAccess implements DebugValueSource, ca.spot
  
      @Override
      public GameEventListenerRegistry getListenerRegistry(final int section) {
@@ -101,7 +101,7 @@ diff --git a/net/minecraft/world/level/chunk/LevelChunk.java b/net/minecraft/wor
      }
  
      // Paper start - Perf: Reduce instructions and provide final method
-@@ -623,7 +652,7 @@ public class LevelChunk extends ChunkAccess implements DebugValueSource, ca.spot
+@@ -628,7 +657,7 @@ public class LevelChunk extends ChunkAccess implements DebugValueSource, ca.spot
      }
  
      private void removeGameEventListenerRegistry(final int sectionY) {

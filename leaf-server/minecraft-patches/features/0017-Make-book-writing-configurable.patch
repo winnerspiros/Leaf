@@ -24,7 +24,7 @@ functionality before additional exploits are found.
 diff --git a/net/minecraft/server/network/ServerGamePacketListenerImpl.java b/net/minecraft/server/network/ServerGamePacketListenerImpl.java
 --- a/net/minecraft/server/network/ServerGamePacketListenerImpl.java
 +++ b/net/minecraft/server/network/ServerGamePacketListenerImpl.java
-@@ -1366,6 +1366,12 @@ public class ServerGamePacketListenerImpl
+@@ -1367,6 +1367,12 @@ public class ServerGamePacketListenerImpl
  
      @Override
      public void handleEditBook(final ServerboundEditBookPacket packet) {

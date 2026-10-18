@@ -84,7 +84,7 @@ diff --git a/net/minecraft/world/level/chunk/PalettedContainer.java b/net/minecr
          // Paper start - Anti-Xray
          this.addPresetValues();
          return lastAddedValue == null ? -1 : newData.palette.idFor(lastAddedValue, PaletteResize.noResizeExpected());
-@@ -268,8 +268,34 @@ public class PalettedContainer<T> implements PaletteResize<T>, PalettedContainer
+@@ -268,9 +268,35 @@ public class PalettedContainer<T> implements PaletteResize<T>, PalettedContainer
      }
      // Leaf end - optimize PalettedContainer#get
  
@@ -117,4 +117,6 @@ diff --git a/net/minecraft/world/level/chunk/PalettedContainer.java b/net/minecr
      public T get(final int index) { // Paper - public
          // Paper start - optimise palette reads
          final PalettedContainer.Data<T> data = (PalettedContainer.Data<T>) DATA_HANDLE.getAcquire(this); // Leaf - optimize PalettedContainer#get
+         return this.readPalette(data, data.storage.get(index));
+         // Paper end - optimise palette reads
 

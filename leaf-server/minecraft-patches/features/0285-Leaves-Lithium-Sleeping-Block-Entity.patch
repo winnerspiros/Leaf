@@ -1570,7 +1570,7 @@ diff --git a/net/minecraft/world/level/block/entity/HopperBlockEntity.java b/net
      }
  
      public static void entityInside(final Level level, final BlockPos pos, final BlockState blockState, final Entity entity, final HopperBlockEntity hopper) {
-@@ -781,4 +822,756 @@ public class HopperBlockEntity extends RandomizableContainerBlockEntity implemen
+@@ -781,4 +822,774 @@ public class HopperBlockEntity extends RandomizableContainerBlockEntity implemen
      protected AbstractContainerMenu createMenu(final int containerId, final Inventory inventory) {
          return new HopperMenu(containerId, inventory, this);
      }

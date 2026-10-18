@@ -1,0 +1,132 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Gale <gale@users.noreply.github.com>
+Date: Sat, 18 Oct 2026 00:00:00 +0000
+Subject: [PATCH] Gale micro-hoists batch (#162 #173 #175 #176 #177)
+
+Port of GaleMC/Gale micro-optimizations against our tree.
+
+diff --git a/io/papermc/paper/entity/activation/ActivationRange.java b/io/papermc/paper/entity/activation/ActivationRange.java
+--- a/io/papermc/paper/entity/activation/ActivationRange.java
++++ b/io/papermc/paper/entity/activation/ActivationRange.java
+@@ -188,12 +188,15 @@ public final class ActivationRange {
+ 
+             final int worldHeight = world.getHeight();
+-            ActivationRange.maxBB = player.getBoundingBox().inflate(maxRange, worldHeight, maxRange);
+-            ActivationType.MISC.boundingBox = player.getBoundingBox().inflate(miscActivationRange, worldHeight, miscActivationRange);
+-            ActivationType.RAIDER.boundingBox = player.getBoundingBox().inflate(raiderActivationRange, worldHeight, raiderActivationRange);
+-            ActivationType.ANIMAL.boundingBox = player.getBoundingBox().inflate(animalActivationRange, worldHeight, animalActivationRange);
+-            ActivationType.MONSTER.boundingBox = player.getBoundingBox().inflate(monsterActivationRange, worldHeight, monsterActivationRange);
+-            ActivationType.WATER.boundingBox = player.getBoundingBox().inflate(waterActivationRange, worldHeight, waterActivationRange);
+-            ActivationType.FLYING_MONSTER.boundingBox = player.getBoundingBox().inflate(flyingActivationRange, worldHeight, flyingActivationRange);
+-            ActivationType.VILLAGER.boundingBox = player.getBoundingBox().inflate(villagerActivationRange, worldHeight, villagerActivationRange);
++            // Gale start - hoist player bounding box lookup
++            final net.minecraft.world.phys.AABB playerBB = player.getBoundingBox();
++            ActivationRange.maxBB = playerBB.inflate(maxRange, worldHeight, maxRange);
++            ActivationType.MISC.boundingBox = playerBB.inflate(miscActivationRange, worldHeight, miscActivationRange);
++            ActivationType.RAIDER.boundingBox = playerBB.inflate(raiderActivationRange, worldHeight, raiderActivationRange);
++            ActivationType.ANIMAL.boundingBox = playerBB.inflate(animalActivationRange, worldHeight, animalActivationRange);
++            ActivationType.MONSTER.boundingBox = playerBB.inflate(monsterActivationRange, worldHeight, monsterActivationRange);
++            ActivationType.WATER.boundingBox = playerBB.inflate(waterActivationRange, worldHeight, waterActivationRange);
++            ActivationType.FLYING_MONSTER.boundingBox = playerBB.inflate(flyingActivationRange, worldHeight, flyingActivationRange);
++            ActivationType.VILLAGER.boundingBox = playerBB.inflate(villagerActivationRange, worldHeight, villagerActivationRange);
++            // Gale end - hoist player bounding box lookup
+ 
+             final List<Entity> entities = world.getEntities((Entity) null, ActivationRange.maxBB, e -> true);
+diff --git a/net/minecraft/nbt/NbtUtils.java b/net/minecraft/nbt/NbtUtils.java
+--- a/net/minecraft/nbt/NbtUtils.java
++++ b/net/minecraft/nbt/NbtUtils.java
+@@ -131,15 +131,18 @@ public final class NbtUtils {
+         Block block = blockHolder.get().value();
+         BlockState result = block.defaultBlockState();
+         Optional<CompoundTag> properties = tag.getCompound("properties");
+         if (properties.isPresent()) {
++            // Gale start - avoid repeated Optional.get() calls in loop
++            CompoundTag propertiesTag = properties.get();
+             StateDefinition<Block, BlockState> definition = block.getStateDefinition();
+ 
+-            for (String key : properties.get().keySet()) {
++            for (String key : propertiesTag.keySet()) {
+                 Property<?> property = definition.getProperty(key);
+                 if (property != null) {
+-                    result = setValueHelper(result, property, key, properties.get(), tag);
++                    result = setValueHelper(result, property, key, propertiesTag, tag);
+                 }
+             }
++            // Gale end - avoid repeated Optional.get() calls in loop
+         }
+ 
+         return result;
+diff --git a/net/minecraft/world/entity/projectile/throwableitemprojectile/Snowball.java b/net/minecraft/world/entity/projectile/throwableitemprojectile/Snowball.java
+--- a/net/minecraft/world/entity/projectile/throwableitemprojectile/Snowball.java
++++ b/net/minecraft/world/entity/projectile/throwableitemprojectile/Snowball.java
+@@ -44,10 +44,16 @@ public class Snowball extends ThrowableItemProjectile {
+     public void handleEntityEvent(final @EntityEvent.Value byte id) {
+         if (id == EntityEvent.DEATH) {
+             ParticleOptions particle = this.getParticle();
++            // Gale start - hoist level lookup and position out of particle loop
++            final net.minecraft.world.level.Level level = this.level();
++            final double x = this.getX();
++            final double y = this.getY();
++            final double z = this.getZ();
+ 
+             for (int i = 0; i < 8; i++) {
+-                this.level().addParticle(particle, this.getX(), this.getY(), this.getZ(), 0.0, 0.0, 0.0);
++                level.addParticle(particle, x, y, z, 0.0, 0.0, 0.0);
+             }
++            // Gale end - hoist level lookup and position out of particle loop
+         }
+     }
+ 
+diff --git a/net/minecraft/world/level/block/PointedDripstoneBlock.java b/net/minecraft/world/level/block/PointedDripstoneBlock.java
+--- a/net/minecraft/world/level/block/PointedDripstoneBlock.java
++++ b/net/minecraft/world/level/block/PointedDripstoneBlock.java
+@@ -81,9 +81,12 @@ public class PointedDripstoneBlock extends Block implements Fallable {
+     public static void maybeTransferFluid(final BlockState state, final ServerLevel level, final BlockPos pos, final float randomValue) {
+         if (!(randomValue > level.purpurConfig.cauldronDripstoneWaterFillChance) || !(randomValue > level.purpurConfig.cauldronDripstoneLavaFillChance)) { // Purpur - Cauldron fill chances
+             if (isStalactiteStartPos(state, level, pos)) {
+-                Optional<PointedDripstoneBlock.FluidInfo> fluidInfo = getFluidAboveStalactite(level, pos, state);
+-                if (!fluidInfo.isEmpty()) {
+-                    Fluid fluid = fluidInfo.get().fluid;
++                Optional<PointedDripstoneBlock.FluidInfo> fluidInfoOptional = getFluidAboveStalactite(level, pos, state);
++                if (!fluidInfoOptional.isEmpty()) {
++                    // Gale start - cache unwrapped Optional value
++                    PointedDripstoneBlock.FluidInfo fluidInfo = fluidInfoOptional.get();
++                    Fluid fluid = fluidInfo.fluid;
++                    // Gale end - cache unwrapped Optional value
+                     float transferProbability;
+                     if (fluid == Fluids.WATER) {
+                         transferProbability = level.purpurConfig.cauldronDripstoneWaterFillChance; // Purpur - Cauldron fill chances
+@@ -98,9 +100,9 @@ public class PointedDripstoneBlock extends Block implements Fallable {
+                         BlockPos stalactiteTipPos = findTip(state, level, pos, 11, false);
+                         if (stalactiteTipPos != null) {
+-                            if (fluidInfo.get().sourceState.is(Blocks.MUD) && fluid == Fluids.WATER) {
++                            if (fluidInfo.sourceState.is(Blocks.MUD) && fluid == Fluids.WATER) {
+                                 BlockState newState = Blocks.CLAY.defaultBlockState();
+-                                if (org.bukkit.craftbukkit.event.CraftEventFactory.handleBlockFormEvent(level, fluidInfo.get().pos, newState, Block.UPDATE_ALL)) { // Paper - Call BlockFormEvent
+-                                Block.pushEntitiesUp(fluidInfo.get().sourceState, newState, level, fluidInfo.get().pos);
+-                                level.gameEvent(GameEvent.BLOCK_CHANGE, fluidInfo.get().pos, GameEvent.Context.of(newState));
++                                if (org.bukkit.craftbukkit.event.CraftEventFactory.handleBlockFormEvent(level, fluidInfo.pos, newState, Block.UPDATE_ALL)) { // Paper - Call BlockFormEvent
++                                Block.pushEntitiesUp(fluidInfo.sourceState, newState, level, fluidInfo.pos);
++                                level.gameEvent(GameEvent.BLOCK_CHANGE, fluidInfo.pos, GameEvent.Context.of(newState));
+                                 level.levelEvent(LevelEvent.DRIPSTONE_DRIP, stalactiteTipPos, 0);
+                             } else {
+diff --git a/net/minecraft/world/level/redstone/RedstoneWireEvaluator.java b/net/minecraft/world/level/redstone/RedstoneWireEvaluator.java
+--- a/net/minecraft/world/level/redstone/RedstoneWireEvaluator.java
++++ b/net/minecraft/world/level/redstone/RedstoneWireEvaluator.java
+@@ -29,12 +29,15 @@ public class RedstoneWireEvaluator extends RedstoneWireEvaluatorAccessor {
+     protected int getIncomingWireSignal(final Level level, final BlockPos pos) {
+         int wireSignal = 0;
+ 
++        // Gale start - hoist pos.above() out of loop
++        final BlockPos abovePos = pos.above();
++        final boolean aboveIsConductor = level.getBlockState(abovePos).isRedstoneConductor(level, abovePos);
++        // Gale end - hoist pos.above() out of loop
+         for (Direction direction : Direction.Plane.HORIZONTAL.faces) { // Pluto - Expose Direction$Plane's faces
+             BlockPos neighborPos = pos.relative(direction);
+             BlockState neighborState = level.getBlockState(neighborPos);
+             wireSignal = Math.max(wireSignal, this.getWireSignal(neighborPos, neighborState));
+-            BlockPos abovePos = pos.above();
+-            if (neighborState.isRedstoneConductor(level, neighborPos) && !level.getBlockState(abovePos).isRedstoneConductor(level, abovePos)) {
++            if (neighborState.isRedstoneConductor(level, neighborPos) && !aboveIsConductor) {
+                 BlockPos aboveNeighborPos = neighborPos.above();
+                 wireSignal = Math.max(wireSignal, this.getWireSignal(aboveNeighborPos, level.getBlockState(aboveNeighborPos)));

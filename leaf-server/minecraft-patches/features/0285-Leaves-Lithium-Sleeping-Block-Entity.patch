@@ -2300,10 +2300,28 @@ diff --git a/net/minecraft/world/level/block/entity/HopperBlockEntity.java b/net
 +                    }
 +                }
 +                //calling removeStack is necessary due to its side effects (markDirty in LootableContainerBlockEntity)
-+                ItemStack takenItem = from.removeItem(fromSlot, 1);
++                int transferCount = Math.min(world.spigotConfig.hopperAmount, itemStack.getCount()); // Leaf #952 - respect hopperAmount
++                ItemStack takenItem = from.removeItem(fromSlot, transferCount);
 +                assert !takenItem.isEmpty();
-+                boolean transferSuccess = net.caffeinemc.mods.lithium.common.hopper.HopperHelper.tryMoveSingleItem(to, takenItem, null);
-+                if (transferSuccess) {
++                int takenCount = takenItem.getCount();
++                int remainingCount = takenCount;
++                while (remainingCount > 0) {
++                    ItemStack singleItem = takenItem.copyWithCount(1);
++                    if (!net.caffeinemc.mods.lithium.common.hopper.HopperHelper.tryMoveSingleItem(to, singleItem, null)) {
++                        break;
++                    }
++                    remainingCount--;
++                }
++                if (remainingCount < takenCount) {
++                    if (remainingCount > 0) {
++                        ItemStack partialStack = fromStackList.get(fromSlot);
++                        if (partialStack.isEmpty()) {
++                            partialStack = takenItem.copyWithCount(remainingCount);
++                        } else {
++                            partialStack.grow(remainingCount);
++                        }
++                        from.setItem(fromSlot, partialStack);
++                    }
 +                    to.setChanged();
 +                    from.setChanged();
 +                    return true;
@@ -2313,7 +2331,7 @@ diff --git a/net/minecraft/world/level/block/entity/HopperBlockEntity.java b/net
 +                if (restoredStack.isEmpty()) {
 +                    restoredStack = takenItem;
 +                } else {
-+                    restoredStack.grow(1);
++                    restoredStack.grow(takenCount);
 +                }
 +                //calling setStack is necessary due to its side effects (markDirty in LootableContainerBlockEntity)
 +                from.setItem(fromSlot, restoredStack);

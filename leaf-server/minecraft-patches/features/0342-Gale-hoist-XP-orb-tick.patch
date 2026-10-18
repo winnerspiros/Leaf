@@ -33,7 +33,7 @@ diff --git a/net/minecraft/world/entity/ExperienceOrb.java b/net/minecraft/world
                  this.setDeltaMovement(
                      (this.random.nextFloat() - this.random.nextFloat()) * 0.2F, 0.2F, (this.random.nextFloat() - this.random.nextFloat()) * 0.2F
                  );
-@@ -164,8 +167,8 @@ public class ExperienceOrb extends Entity {
+@@ -164,6 +167,6 @@ public class ExperienceOrb extends Entity {
              }
  
              this.followNearbyPlayer();
@@ -44,7 +44,7 @@ diff --git a/net/minecraft/world/entity/ExperienceOrb.java b/net/minecraft/world
                  if (nextColliding) {
                      this.moveTowardsClosestSpace(this.getX(), (this.getBoundingBox().minY + this.getBoundingBox().maxY) / 2.0, this.getZ());
                      this.needsSync = true;
-@@ -173,8 +176,8 @@ public class ExperienceOrb extends Entity {
+@@ -173,7 +176,7 @@ public class ExperienceOrb extends Entity {
              this.applyEffectsFromBlocks();
              float friction = this.getAirDrag();
              if (this.onGround()) {

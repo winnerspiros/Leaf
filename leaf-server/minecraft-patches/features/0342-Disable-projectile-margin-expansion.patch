@@ -16,3 +16,4 @@ diff --git a/net/minecraft/world/entity/projectile/ProjectileUtil.java b/net/min
 +        if (org.dreeam.leaf.config.modules.gameplay.ProjectileMarginExpansion.disableProjectileMarginExpansion) return 0.3F; // Leaf - Disable projectile margin expansion
          return Math.max(0.0F, Math.min(0.3F, (source.tickCount - 2) / 20.0F));
      }
+

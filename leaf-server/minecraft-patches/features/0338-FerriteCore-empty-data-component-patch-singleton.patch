@@ -27,7 +27,7 @@ diff --git a/net/minecraft/core/component/PatchedDataComponentMap.java b/net/min
      }
  
      public void clearPatch() {
-@@ -140,5 +142,15 @@ public final class PatchedDataComponentMap implements DataComponentMap, net.caff
+@@ -140,6 +142,16 @@ public final class PatchedDataComponentMap implements DataComponentMap, net.caff
          this.patch.clear();
          this.detectMaxStackSizeChange(null); // Leaves - cache item max stack size
 +        this.saveMemoryIfEmpty(); // Leaf - FerriteCore empty patch singleton

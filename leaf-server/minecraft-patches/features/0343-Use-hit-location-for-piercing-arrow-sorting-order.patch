@@ -1,0 +1,23 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Leaf <leaf@users.noreply.github.com>
+Date: Sat, 18 Oct 2026 00:00:00 +0000
+Subject: [PATCH] Use hit location for piercing arrow sorting order (Leaf #782)
+
+Port of Winds-Studio/Leaf #782 against our tree.
+Vanilla bug: sort by target entity position is wrong for large entities;
+sort by hit location instead.
+
+diff --git a/net/minecraft/world/entity/projectile/arrow/AbstractArrow.java b/net/minecraft/world/entity/projectile/arrow/AbstractArrow.java
+--- a/net/minecraft/world/entity/projectile/arrow/AbstractArrow.java
++++ b/net/minecraft/world/entity/projectile/arrow/AbstractArrow.java
+@@ -297,7 +297,7 @@ public abstract class AbstractArrow extends Projectile {
+     private void stepMoveAndHit(final BlockHitResult blockHitResult) {
+         while (this.isAlive()) {
+             Vec3 initialPosition = this.position();
+             ArrayList<EntityHitResult> entitiesHit = new ArrayList<>(this.findHitEntities(initialPosition, blockHitResult.getLocation()));
+-            entitiesHit.sort(Comparator.comparingDouble(c -> initialPosition.distanceToSqr(c.getEntity().position())));
++            entitiesHit.sort(Comparator.comparingDouble(c -> initialPosition.distanceToSqr(c.getLocation()))); // Leaf - Use hit location for piercing arrow sorting order
+             EntityHitResult firstEntityHit = entitiesHit.isEmpty() ? null : entitiesHit.getFirst();
+             Vec3 nextLocation = Objects.requireNonNullElse(firstEntityHit, blockHitResult).getLocation();
+             this.setPos(nextLocation);
+

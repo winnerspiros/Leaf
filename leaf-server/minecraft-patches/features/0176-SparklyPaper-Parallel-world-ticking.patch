@@ -243,6 +243,7 @@ diff --git a/net/minecraft/server/MinecraftServer.java b/net/minecraft/server/Mi
 +                            tickLevel(level, haveTime); // Leaf - SparklyPaper - parallel world ticking - move level ticking logic out for branch convergence
 +                        } finally {
 +                            serverLevelTickingSemaphore.release();
++                            level.explosionDensityCache.clear(); // SparklyPaper cca2e5c - clear in finally, never leak stale density across ticks
 +                        }
 +                    }, level)
 +                );

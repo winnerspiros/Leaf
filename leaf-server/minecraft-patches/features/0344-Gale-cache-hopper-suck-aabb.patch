@@ -55,5 +55,6 @@ diff --git a/net/minecraft/world/level/block/entity/HopperBlockEntity.java b/net
 +
      @Override
      protected AbstractContainerMenu createMenu(final int containerId, final Inventory inventory) {
+         return new HopperMenu(containerId, inventory, this);
      }
 

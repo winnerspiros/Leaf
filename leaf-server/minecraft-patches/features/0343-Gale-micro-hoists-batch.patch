@@ -80,7 +80,7 @@ diff --git a/net/minecraft/world/entity/projectile/throwableitemprojectile/Snowb
 diff --git a/net/minecraft/world/level/block/PointedDripstoneBlock.java b/net/minecraft/world/level/block/PointedDripstoneBlock.java
 --- a/net/minecraft/world/level/block/PointedDripstoneBlock.java
 +++ b/net/minecraft/world/level/block/PointedDripstoneBlock.java
-@@ -81,28 +81,30 @@ public class PointedDripstoneBlock extends Block implements Fallable {
+@@ -81,30 +81,33 @@ public class PointedDripstoneBlock extends Block implements Fallable {
      public static void maybeTransferFluid(final BlockState state, final ServerLevel level, final BlockPos pos, final float randomValue) {
          if (!(randomValue > level.purpurConfig.cauldronDripstoneWaterFillChance) || !(randomValue > level.purpurConfig.cauldronDripstoneLavaFillChance)) { // Purpur - Cauldron fill chances
              if (isStalactiteStartPos(state, level, pos)) {

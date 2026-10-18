@@ -1,7 +1,7 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Gale <gale@users.noreply.github.com>
 Date: Sat, 18 Oct 2026 00:00:00 +0000
-Subject: [PATCH] Gale micro-hoists batch (#162 #173 #176 #177)
+Subject: [PATCH] Gale micro-hoists batch (#162 #173 #176)
 
 Port of GaleMC/Gale micro-optimizations against our tree.
 
@@ -56,27 +56,6 @@ diff --git a/net/minecraft/nbt/NbtUtils.java b/net/minecraft/nbt/NbtUtils.java
          }
  
          return result;
-diff --git a/net/minecraft/world/entity/projectile/throwableitemprojectile/Snowball.java b/net/minecraft/world/entity/projectile/throwableitemprojectile/Snowball.java
---- a/net/minecraft/world/entity/projectile/throwableitemprojectile/Snowball.java
-+++ b/net/minecraft/world/entity/projectile/throwableitemprojectile/Snowball.java
-@@ -44,10 +44,16 @@ public class Snowball extends ThrowableItemProjectile {
-     public void handleEntityEvent(final @EntityEvent.Value byte id) {
-         if (id == EntityEvent.DEATH) {
-             ParticleOptions particle = this.getParticle();
-+            // Gale start - hoist level lookup and position out of particle loop
-+            final net.minecraft.world.level.Level level = this.level();
-+            final double x = this.getX();
-+            final double y = this.getY();
-+            final double z = this.getZ();
- 
-             for (int i = 0; i < 8; i++) {
--                this.level().addParticle(particle, this.getX(), this.getY(), this.getZ(), 0.0, 0.0, 0.0);
-+                level.addParticle(particle, x, y, z, 0.0, 0.0, 0.0);
-             }
-+            // Gale end - hoist level lookup and position out of particle loop
-         }
-     }
- 
 diff --git a/net/minecraft/world/level/redstone/RedstoneWireEvaluator.java b/net/minecraft/world/level/redstone/RedstoneWireEvaluator.java
 --- a/net/minecraft/world/level/redstone/RedstoneWireEvaluator.java
 +++ b/net/minecraft/world/level/redstone/RedstoneWireEvaluator.java

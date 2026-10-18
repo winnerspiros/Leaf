@@ -11,7 +11,7 @@ defaults/empty. Shrinks every new or rewritten chunk.
 diff --git a/net/minecraft/world/level/chunk/storage/SerializableChunkData.java b/net/minecraft/world/level/chunk/storage/SerializableChunkData.java
 --- a/net/minecraft/world/level/chunk/storage/SerializableChunkData.java
 +++ b/net/minecraft/world/level/chunk/storage/SerializableChunkData.java
-@@ -648,17 +648,28 @@ public record SerializableChunkData(
+@@ -648,16 +648,24 @@ public record SerializableChunkData(
          ListTag blockEntityTags = new ListTag();
          blockEntityTags.addAll(this.blockEntities);
 -        tag.put("block_entities", blockEntityTags);
@@ -28,11 +28,6 @@ diff --git a/net/minecraft/world/level/chunk/storage/SerializableChunkData.java 
          }
  
          saveTicks(tag, this.packedTicks);
--        tag.put("PostProcessing", packOffsets(this.postProcessingSections));
-+        ListTag postProcessing = packOffsets(this.postProcessingSections); // Leaf - Strip empty tags on chunk save
-+        if (!postProcessing.isEmpty()) { // Leaf - Strip empty tags on chunk save
-+            tag.put("PostProcessing", postProcessing);
-+        }
          CompoundTag heightmapsTag = new CompoundTag();
          this.heightmaps.forEach((type, data) -> heightmapsTag.put(type.getSerializationKey(), new LongArrayTag(data)));
 -        tag.put("Heightmaps", heightmapsTag);

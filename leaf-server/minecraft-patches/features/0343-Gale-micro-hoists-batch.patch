@@ -80,7 +80,7 @@ diff --git a/net/minecraft/world/entity/projectile/throwableitemprojectile/Snowb
 diff --git a/net/minecraft/world/level/block/PointedDripstoneBlock.java b/net/minecraft/world/level/block/PointedDripstoneBlock.java
 --- a/net/minecraft/world/level/block/PointedDripstoneBlock.java
 +++ b/net/minecraft/world/level/block/PointedDripstoneBlock.java
-@@ -81,9 +81,12 @@ public class PointedDripstoneBlock extends Block implements Fallable {
+@@ -81,28 +81,30 @@ public class PointedDripstoneBlock extends Block implements Fallable {
      public static void maybeTransferFluid(final BlockState state, final ServerLevel level, final BlockPos pos, final float randomValue) {
          if (!(randomValue > level.purpurConfig.cauldronDripstoneWaterFillChance) || !(randomValue > level.purpurConfig.cauldronDripstoneLavaFillChance)) { // Purpur - Cauldron fill chances
              if (isStalactiteStartPos(state, level, pos)) {
@@ -96,7 +96,15 @@ diff --git a/net/minecraft/world/level/block/PointedDripstoneBlock.java b/net/mi
                      float transferProbability;
                      if (fluid == Fluids.WATER) {
                          transferProbability = level.purpurConfig.cauldronDripstoneWaterFillChance; // Purpur - Cauldron fill chances
-@@ -98,9 +100,9 @@ public class PointedDripstoneBlock extends Block implements Fallable {
+                     } else {
+                         if (fluid != Fluids.LAVA) {
+                             return;
+                         }
+ 
+                         transferProbability = level.purpurConfig.cauldronDripstoneLavaFillChance; // Purpur - Cauldron fill chances
+                     }
+ 
+                     if (!(randomValue >= transferProbability)) {
                          BlockPos stalactiteTipPos = findTip(state, level, pos, 11, false);
                          if (stalactiteTipPos != null) {
 -                            if (fluidInfo.get().sourceState.is(Blocks.MUD) && fluid == Fluids.WATER) {
@@ -110,7 +118,7 @@ diff --git a/net/minecraft/world/level/block/PointedDripstoneBlock.java b/net/mi
 +                                level.gameEvent(GameEvent.BLOCK_CHANGE, fluidInfo.pos, GameEvent.Context.of(newState));
                                  level.levelEvent(LevelEvent.DRIPSTONE_DRIP, stalactiteTipPos, 0);
                              } else {
-diff --git a/net/minecraft/world/level/redstone/RedstoneWireEvaluator.java b/net/minecraft/world/level/redstone/RedstoneWireEvaluator.java
+ diff --git a/net/minecraft/world/level/redstone/RedstoneWireEvaluator.java b/net/minecraft/world/level/redstone/RedstoneWireEvaluator.java
 --- a/net/minecraft/world/level/redstone/RedstoneWireEvaluator.java
 +++ b/net/minecraft/world/level/redstone/RedstoneWireEvaluator.java
 @@ -29,12 +29,15 @@ public class RedstoneWireEvaluator extends RedstoneWireEvaluatorAccessor {

@@ -12,6 +12,7 @@ Co-authored-by: MrlingXD <90316914+wling-art@users.noreply.github.com>
 Commit: a274e6617255a93d567efdf00762e492aa2df535
 
 diff --git a/src/main/java/ca/spottedleaf/moonrise/common/util/TickThread.java b/src/main/java/ca/spottedleaf/moonrise/common/util/TickThread.java
+index 69cdd304d255d52c9b7dc9b6a33ffdb630b79abe..a3690445efe304e1ba26cf9e9b9fb10b9e8a82d0 100644
 --- a/src/main/java/ca/spottedleaf/moonrise/common/util/TickThread.java
 +++ b/src/main/java/ca/spottedleaf/moonrise/common/util/TickThread.java
 @@ -14,6 +14,7 @@ import java.util.concurrent.atomic.AtomicInteger;
@@ -266,6 +267,7 @@ diff --git a/src/main/java/ca/spottedleaf/moonrise/common/util/TickThread.java b
 +    // Leaf end - SparklyPaper - parallel world ticking
  }
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftWorld.java b/src/main/java/org/bukkit/craftbukkit/CraftWorld.java
+index c528f5e6fae2dcb4684bf8494da4847676edfdf0..92900859f98dca52da8e79ca19474f263ddaf0ae 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftWorld.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftWorld.java
 @@ -476,7 +476,13 @@ public class CraftWorld extends CraftRegionAccessor implements World {
@@ -347,6 +349,7 @@ diff --git a/src/main/java/org/bukkit/craftbukkit/CraftWorld.java b/src/main/jav
      }
      // Paper end
 diff --git a/src/main/java/org/bukkit/craftbukkit/block/CraftBlock.java b/src/main/java/org/bukkit/craftbukkit/block/CraftBlock.java
+index ef13f200d35b49c1d7b99b0a79e9c424898173f9..2dfa8287fc54c5c8527c2f5149dbfa2d6f570b80 100644
 --- a/src/main/java/org/bukkit/craftbukkit/block/CraftBlock.java
 +++ b/src/main/java/org/bukkit/craftbukkit/block/CraftBlock.java
 @@ -80,8 +80,97 @@ public class CraftBlock implements Block {
@@ -1614,55 +1617,8 @@ diff --git a/src/main/java/org/bukkit/craftbukkit/block/CraftBlock.java b/src/ma
 +        }
 +    }
  }
-diff --git a/src/main/java/org/bukkit/craftbukkit/block/CraftBlockEntityState.java b/src/main/java/org/bukkit/craftbukkit/block/CraftBlockEntityState.java
---- a/src/main/java/org/bukkit/craftbukkit/block/CraftBlockEntityState.java
-+++ b/src/main/java/org/bukkit/craftbukkit/block/CraftBlockEntityState.java
-@@ -34,6 +34,33 @@ public abstract class CraftBlockEntityState<T extends BlockEntity> extends Craft
-     private final T snapshot;
-     public boolean snapshotDisabled; // Paper
-     public static boolean DISABLE_SNAPSHOT = false; // Paper
-+    private static final ThreadLocal<Boolean> DISABLE_SNAPSHOT_TL = ThreadLocal.withInitial(() -> Boolean.FALSE); // Leaf - SparklyPaper - parallel world ticking
-+
-+    // Leaf start - SparklyPaper - parallel world ticking
-+    // refer to original field in case plugins attempt to modify it
-+    public static boolean getDisableSnapshotTL() {
-+        if (org.dreeam.leaf.config.modules.async.SparklyPaperParallelWorldTicking.enabled) {
-+            if (DISABLE_SNAPSHOT_TL.get()) return true;
-+            synchronized (CraftBlockEntityState.class) {
-+                return DISABLE_SNAPSHOT;
-+            }
-+        } else {
-+            return DISABLE_SNAPSHOT;
-+        }
-+    }
-+
-+    // update original field in case plugins attempt to access it
-+    public static void setDisableSnapshotTL(boolean value) {
-+        if (org.dreeam.leaf.config.modules.async.SparklyPaperParallelWorldTicking.enabled) {
-+            DISABLE_SNAPSHOT_TL.set(value);
-+            synchronized (CraftBlockEntityState.class) {
-+                DISABLE_SNAPSHOT = value;
-+            }
-+        } else {
-+            DISABLE_SNAPSHOT =  value;
-+        }
-+    }
-+    // Leaf end - SparklyPaper - parallel world ticking
- 
-     public CraftBlockEntityState(World world, T blockEntity) {
-         super(world, blockEntity.getBlockPos(), blockEntity.getBlockState());
-@@ -42,8 +69,8 @@ public abstract class CraftBlockEntityState<T extends BlockEntity> extends Craft
- 
-         try { // Paper - Show blockstate location if we failed to read it
-         // Paper start
--        this.snapshotDisabled = DISABLE_SNAPSHOT;
--        if (DISABLE_SNAPSHOT) {
-+        this.snapshotDisabled = getDisableSnapshotTL(); // Leaf - SparklyPaper - parallel world ticking
-+        if (this.snapshotDisabled) { // Leaf - SparklyPaper - parallel world ticking
-             this.snapshot = this.blockEntity;
-         } else {
-             this.snapshot = this.createSnapshot(blockEntity);
 diff --git a/src/main/java/org/bukkit/craftbukkit/block/CraftBlockState.java b/src/main/java/org/bukkit/craftbukkit/block/CraftBlockState.java
+index ec3343ecbe68b1c2a33f85edb3b527363affa9ba..53dc2f530a1335dd02fa6b1e6dad8333c8ecac8b 100644
 --- a/src/main/java/org/bukkit/craftbukkit/block/CraftBlockState.java
 +++ b/src/main/java/org/bukkit/craftbukkit/block/CraftBlockState.java
 @@ -346,6 +346,7 @@ public class CraftBlockState implements BlockState {
@@ -1673,28 +1629,8 @@ diff --git a/src/main/java/org/bukkit/craftbukkit/block/CraftBlockState.java b/s
          this.requirePlaced();
          net.minecraft.world.item.ItemStack item = org.bukkit.craftbukkit.inventory.CraftItemStack.asNMSCopy(tool);
  
-diff --git a/src/main/java/org/bukkit/craftbukkit/block/CraftBlockStates.java b/src/main/java/org/bukkit/craftbukkit/block/CraftBlockStates.java
---- a/src/main/java/org/bukkit/craftbukkit/block/CraftBlockStates.java
-+++ b/src/main/java/org/bukkit/craftbukkit/block/CraftBlockStates.java
-@@ -198,14 +198,14 @@ public final class CraftBlockStates {
-         BlockPos pos = craftBlock.getPosition();
-         net.minecraft.world.level.block.state.BlockState state = craftBlock.getBlockState();
-         BlockEntity blockEntity = craftBlock.getLevel().getBlockEntity(pos);
--        boolean prev = CraftBlockEntityState.DISABLE_SNAPSHOT;
--        CraftBlockEntityState.DISABLE_SNAPSHOT = !useSnapshot;
-+        boolean prev = CraftBlockEntityState.getDisableSnapshotTL(); // Leaf - SparklyPaper - parallel world tick
-+        CraftBlockEntityState.setDisableSnapshotTL(!useSnapshot); // Leaf - SparklyPaper - parallel world ticking
-         try {
-             CraftBlockState blockState = CraftBlockStates.getBlockState(world, pos, state, blockEntity);
-             blockState.setWorldHandle(craftBlock.getLevel()); // Inject the block's level accessor
-             return blockState;
-         } finally {
--            CraftBlockEntityState.DISABLE_SNAPSHOT = prev;
-+            CraftBlockEntityState.setDisableSnapshotTL(prev); // Leaf - SparklyPaper - parallel world ticking
-         }
-     }
- 
 diff --git a/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java b/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java
+index 358420eac7ed059cc2a83989d55ad735d5b2a7e0..60bb4227eebb486f05941f079a7431b36f131f82 100644
 --- a/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java
 +++ b/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java
 @@ -947,6 +947,34 @@ public class CraftEventFactory {
@@ -1745,6 +1681,7 @@ diff --git a/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java b
              boolean result = snapshot.place(flags);
              return !checkSetResult || result;
 diff --git a/src/main/java/org/bukkit/craftbukkit/scheduler/CraftScheduler.java b/src/main/java/org/bukkit/craftbukkit/scheduler/CraftScheduler.java
+index c3713b6653bcd595c0a40788cd4ffa12e3ce2e4b..bbf37820f4e16bf5a95ec992014f7fc05de484cd 100644
 --- a/src/main/java/org/bukkit/craftbukkit/scheduler/CraftScheduler.java
 +++ b/src/main/java/org/bukkit/craftbukkit/scheduler/CraftScheduler.java
 @@ -521,6 +521,16 @@ public class CraftScheduler implements BukkitScheduler {

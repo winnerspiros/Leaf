@@ -31,7 +31,7 @@ diff --git a/net/minecraft/world/level/block/entity/HopperBlockEntity.java b/net
          return level.getEntitiesOfClass(ItemEntity.class, aabb, EntitySelector.ENTITY_STILL_ALIVE);
      }
  
-@@ -841,9 +845,20 @@ public class HopperBlockEntity extends RandomizableContainerBlockEntity imp
+@@ -841,12 +845,25 @@ public class HopperBlockEntity extends RandomizableContainerBlockEntity imp
      public static void entityInside(final Level level, final BlockPos pos, final BlockState blockState, final Entity entity, final HopperBlockEntity hopper) {
          if (entity instanceof ItemEntity itemEntity
              && !itemEntity.getItem().isEmpty()

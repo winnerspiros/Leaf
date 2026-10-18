@@ -10,7 +10,10 @@ instead of iterating the whole map every tick.
 diff --git a/net/minecraft/world/ticks/LevelTicks.java b/net/minecraft/world/ticks/LevelTicks.java
 --- a/net/minecraft/world/ticks/LevelTicks.java
 +++ b/net/minecraft/world/ticks/LevelTicks.java
-@@ -33,6 +33,7 @@ public class LevelTicks<T> implements LevelTickAccess<T> {
+@@ -30,124 +30,138 @@ public class LevelTicks<T> implements LevelTickAccess<T> {
+ 
+ public class LevelTicks<T> implements LevelTickAccess<T> {
+     private static final Comparator<LevelChunkTicks<?>> CONTAINER_DRAIN_ORDER = (o1, o2) -> ScheduledTick.INTRA_TICK_DRAIN_ORDER.compare(o1.peek(), o2.peek());
      private final LongPredicate tickCheck;
      private final Long2ObjectMap<LevelChunkTicks<T>> allContainers = new Long2ObjectOpenHashMap<>();
      private final Long2LongMap nextTickForContainer = Util.make(new Long2LongOpenHashMap(), m -> m.defaultReturnValue(Long.MAX_VALUE));
@@ -18,7 +21,20 @@ diff --git a/net/minecraft/world/ticks/LevelTicks.java b/net/minecraft/world/tic
      private final Queue<LevelChunkTicks<T>> containersToTick = new PriorityQueue<>(CONTAINER_DRAIN_ORDER);
      private final Queue<ScheduledTick<T>> toRunThisTick = new ArrayDeque<>();
      private final List<ScheduledTick<T>> alreadyRunThisTick = new ArrayList<>();
-@@ -53,6 +54,7 @@ public class LevelTicks<T> implements LevelTickAccess<T> {
+     private final Set<ScheduledTick<?>> toRunThisTickSet = new ObjectOpenCustomHashSet<>(ScheduledTick.UNIQUE_TICK_HASH);
+     private final BiConsumer<LevelChunkTicks<T>, ScheduledTick<T>> chunkScheduleUpdater = (container, newTick) -> {
+         if (newTick.equals(container.peek())) {
+             this.updateContainerScheduling(newTick);
+         }
+     };
+ 
+     public LevelTicks(final LongPredicate tickCheck) {
+         this.tickCheck = tickCheck;
+     }
+ 
+     public void addContainer(final ChunkPos pos, final LevelChunkTicks<T> container) {
+         long posKey = pos.pack();
+         this.allContainers.put(posKey, container);
          ScheduledTick<T> nextTick = container.peek();
          if (nextTick != null) {
              this.nextTickForContainer.put(posKey, nextTick.triggerTick());
@@ -26,10 +42,47 @@ diff --git a/net/minecraft/world/ticks/LevelTicks.java b/net/minecraft/world/tic
          }
  
          container.setOnTickAdded(this.chunkScheduleUpdater);
-@@ -98,57 +100,69 @@ public class LevelTicks<T> implements LevelTickAccess<T> {
      }
  
-     private void sortContainersToTick(final long currentTick) {
+     public void removeContainer(final ChunkPos pos) {
+         long chunkKey = pos.pack();
+         LevelChunkTicks<T> removedContainer = this.allContainers.remove(chunkKey);
+         this.nextTickForContainer.remove(chunkKey);
+         if (removedContainer != null) {
+             removedContainer.setOnTickAdded(null);
+         }
+     }
+ 
+     @Override
+     public void schedule(final ScheduledTick<T> tick) {
+         long chunkKey = ChunkPos.pack(tick.pos());
+         LevelChunkTicks<T> tickContainer = this.allContainers.get(chunkKey);
+         if (tickContainer == null) {
+             Util.logAndPauseIfInIde("Trying to schedule tick in not loaded position " + tick.pos());
+         } else {
+             tickContainer.schedule(tick);
+         }
+     }
+ 
+     public void tick(final long currentTick, final int maxTicksToProcess, final BiConsumer<BlockPos, T> output) {
+         ProfilerFiller profiler = Profiler.get();
+         profiler.push("collect");
+         this.collectTicks(currentTick, maxTicksToProcess, profiler);
+         profiler.popPush("run");
+         profiler.incrementCounter("ticksToRun", this.toRunThisTick.size());
+         this.runCollectedTicks(output);
+         profiler.popPush("cleanup");
+         this.cleanupAfterTick();
+         profiler.pop();
+     }
+ 
+     private void collectTicks(final long currentTick, final int maxTicksToProcess, final ProfilerFiller profiler) {
+         this.sortContainersToTick(currentTick);
+         profiler.incrementCounter("containersToTick", this.containersToTick.size());
+         this.drainContainers(currentTick, maxTicksToProcess);
+         this.rescheduleLeftoverContainers();
+     }
+ 
 +        if (currentTick < this.nextTickScan) { // Gale - Skip container scan when nothing due
 +            return;
 +        }
@@ -95,4 +148,4 @@ diff --git a/net/minecraft/world/ticks/LevelTicks.java b/net/minecraft/world/tic
          this.nextTickForContainer.put(ChunkPos.pack(nextTick.pos()), nextTick.triggerTick());
      }
  
-         final Queue<LevelChunkTicks<T>> containersToTick, final LevelChunkTicks<T> currentContainer, final long currentTick, final int maxTicksToProcess
+     private void drainFromCurrentContainer(

@@ -10,7 +10,7 @@ instead of iterating the whole map every tick.
 diff --git a/net/minecraft/world/ticks/LevelTicks.java b/net/minecraft/world/ticks/LevelTicks.java
 --- a/net/minecraft/world/ticks/LevelTicks.java
 +++ b/net/minecraft/world/ticks/LevelTicks.java
-@@ -30,128 +30,142 @@ public class LevelTicks<T> implements LevelTickAccess<T> {
+@@ -30,0 +30,0 @@ public class LevelTicks<T> implements LevelTickAccess<T> {
  
  public class LevelTicks<T> implements LevelTickAccess<T> {
      private static final Comparator<LevelChunkTicks<?>> CONTAINER_DRAIN_ORDER = (o1, o2) -> ScheduledTick.INTRA_TICK_DRAIN_ORDER.compare(o1.peek(), o2.peek());
@@ -154,3 +154,7 @@ diff --git a/net/minecraft/world/ticks/LevelTicks.java b/net/minecraft/world/tic
      }
  
      private void drainFromCurrentContainer(
+
+         final Queue<LevelChunkTicks<T>> containersToTick, final LevelChunkTicks<T> currentContainer, final long currentTick, final int maxTicksToProcess
+     ) {
+         if (this.canScheduleMoreTicks(maxTicksToProcess)) {

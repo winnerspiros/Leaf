@@ -87,7 +87,7 @@ diff --git a/io/papermc/paper/entity/activation/ActivationRange.java b/io/paperm
      static AABB maxBB = new AABB(0, 0, 0, 0, 0, 0);
  
      /**
-@@ -166,15 +167,27 @@ public final class ActivationRange {
+@@ -166,23 +167,35 @@ public final class ActivationRange {
          maxRange = Math.max(maxRange, villagerActivationRange);
          maxRange = Math.min((world.spigotConfig.simulationDistance << 4) - 8, maxRange);
  
@@ -118,7 +118,6 @@ diff --git a/io/papermc/paper/entity/activation/ActivationRange.java b/io/paperm
              // Gale start - hoist player bounding box lookup (#162)
              final net.minecraft.world.phys.AABB playerBB = player.getBoundingBox();
              ActivationRange.maxBB = playerBB.inflate(maxRange, worldHeight, maxRange);
-@@ -185,8 +198,8 @@ public final class ActivationRange {
              ActivationType.VILLAGER.boundingBox = playerBB.inflate(villagerActivationRange, worldHeight, villagerActivationRange);
              // Gale end - hoist player bounding box lookup (#162)
  

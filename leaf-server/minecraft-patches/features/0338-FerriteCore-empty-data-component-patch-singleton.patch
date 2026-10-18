@@ -1,0 +1,51 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: malte0811 <malte0811@users.noreply.github.com>
+Date: Sun, 25 Jan 2026 00:00:00 +0100
+Subject: [PATCH] FerriteCore: empty data component patch singleton
+
+Port of FerriteCore 66741286 (server-side part): when the patch map ends
+up empty after applyPatch/restorePatch/clearPatch, swap it for the shared
+empty-map singleton and mark copyOnWrite so the next mutation allocates.
+Saves one map instance per unmodified ItemStack.
+
+diff --git a/net/minecraft/core/component/PatchedDataComponentMap.java b/net/minecraft/core/component/PatchedDataComponentMap.java
+--- a/net/minecraft/core/component/PatchedDataComponentMap.java
++++ b/net/minecraft/core/component/PatchedDataComponentMap.java
+@@ -107,6 +107,12 @@ public final class PatchedDataComponentMap implements DataComponentMap, net.caff
+ 
+     public void applyPatch(final DataComponentPatch patch) {
+         this.ensureMapOwnership();
+ 
+         for (Entry<DataComponentType<?>, Object> entry : Reference2ObjectMaps.fastIterable(patch.map)) {
+             this.applyPatch(entry.getKey(), entry.getValue());
+         }
++        this.saveMemoryIfEmpty(); // Leaf - FerriteCore empty patch singleton
+     }
+ 
+     private void applyPatch(final DataComponentType<?> type, final Object value) {
+@@ -131,6 +137,7 @@ public final class PatchedDataComponentMap implements DataComponentMap, net.caff
+     public void restorePatch(final DataComponentPatch patch) {
+         this.ensureMapOwnership();
+         this.patch.clear();
+         this.patch.putAll(patch.map);
+         this.detectMaxStackSizeChange(null); // Leaves - cache item max stack size
++        this.saveMemoryIfEmpty(); // Leaf - FerriteCore empty patch singleton
+     }
+ 
+     public void clearPatch() {
+         this.ensureMapOwnership();
+         this.patch.clear();
+         this.detectMaxStackSizeChange(null); // Leaves - cache item max stack size
++        this.saveMemoryIfEmpty(); // Leaf - FerriteCore empty patch singleton
++    }
++
++    private void saveMemoryIfEmpty() {
++        // Leaf start - FerriteCore empty patch singleton (port of 66741286)
++        if (this.patch.isEmpty()) {
++            this.patch = Reference2ObjectMaps.emptyMap();
++            this.copyOnWrite = true;
++        }
++        // Leaf end - FerriteCore empty patch singleton
+     }
+ 
+     public void setAll(final DataComponentMap components) {

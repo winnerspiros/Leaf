@@ -26,7 +26,7 @@ diff --git a/net/minecraft/world/ticks/LevelTicks.java b/net/minecraft/world/tic
          }
  
          container.setOnTickAdded(this.chunkScheduleUpdater);
-@@ -98,6 +100,11 @@ public class LevelTicks<T> implements LevelTickAccess<T> {
+@@ -98,57 +100,69 @@ public class LevelTicks<T> implements LevelTickAccess<T> {
      }
  
      private void sortContainersToTick(final long currentTick) {
@@ -35,35 +35,64 @@ diff --git a/net/minecraft/world/ticks/LevelTicks.java b/net/minecraft/world/tic
 +        }
 +        this.nextTickScan = Long.MAX_VALUE;
 +        long nextScan = Long.MAX_VALUE;
+     private void sortContainersToTick(final long currentTick) {
          ObjectIterator<Entry> it = Long2LongMaps.fastIterator(this.nextTickForContainer);
  
          while (it.hasNext()) {
-@@ -114,21 +116,28 @@ public class LevelTicks<T> implements LevelTickAccess<T> {
+             Entry entry = it.next();
+             long chunkPos = entry.getLongKey();
+             long nextTick = entry.getLongValue();
+             if (nextTick <= currentTick) {
+                 LevelChunkTicks<T> candidateContainer = this.allContainers.get(chunkPos);
+                 if (candidateContainer == null) {
+                     it.remove();
+                 } else {
+                     ScheduledTick<T> scheduledTick = candidateContainer.peek();
+                     if (scheduledTick == null) {
++                        nextScan = Math.min(nextScan, scheduledTick.triggerTick()); // Gale - Skip container scan when nothing due
                          it.remove();
                      } else if (scheduledTick.triggerTick() > currentTick) {
                          entry.setValue(scheduledTick.triggerTick());
-+                        nextScan = Math.min(nextScan, scheduledTick.triggerTick()); // Gale - Skip container scan when nothing due
                      } else if (this.tickCheck.test(chunkPos)) {
                          it.remove();
-                         this.containersToTick.add(candidateContainer);
 +                    } else {
 +                        nextScan = Math.min(nextScan, nextTick); // Gale - Skip container scan when nothing due
+                         this.containersToTick.add(candidateContainer);
                      }
                  }
+             }
 +            } else {
 +                nextScan = Math.min(nextScan, nextTick); // Gale - Skip container scan when nothing due
-             }
-         }
-+        this.nextTickScan = Math.min(this.nextTickScan, nextScan); // Gale - Skip container scan when nothing due
      }
+ 
++        this.nextTickScan = Math.min(this.nextTickScan, nextScan); // Gale - Skip container scan when nothing due
  
      private void drainContainers(final long currentTick, final int maxTicksToProcess) {
- 
-     private void updateContainerScheduling(final ScheduledTick<T> nextTick) {
-         this.nextTickForContainer.put(ChunkPos.pack(nextTick.pos()), nextTick.triggerTick());
-+        this.nextTickScan = Math.min(this.nextTickScan, nextTick.triggerTick()); // Gale - Skip container scan when nothing due
+         LevelChunkTicks<T> topContainer;
+         while (this.canScheduleMoreTicks(maxTicksToProcess) && (topContainer = this.containersToTick.poll()) != null) {
+             ScheduledTick<T> tick = topContainer.poll();
+             this.scheduleForThisTick(tick);
+             this.drainFromCurrentContainer(this.containersToTick, topContainer, currentTick, maxTicksToProcess);
+             ScheduledTick<T> nextTick = topContainer.peek();
+             if (nextTick != null) {
+                 if (nextTick.triggerTick() <= currentTick && this.canScheduleMoreTicks(maxTicksToProcess)) {
+                     this.containersToTick.add(topContainer);
+                 } else {
+                     this.updateContainerScheduling(nextTick);
+                 }
+             }
+         }
      }
  
-     private void drainFromCurrentContainer(
-     private void drainFromCurrentContainer(
-
+     private void rescheduleLeftoverContainers() {
+         for (LevelChunkTicks<T> container : this.containersToTick) {
+             this.updateContainerScheduling(container.peek());
+         }
+     }
+ 
++        this.nextTickScan = Math.min(this.nextTickScan, nextTick.triggerTick()); // Gale - Skip container scan when nothing due
+     private void updateContainerScheduling(final ScheduledTick<T> nextTick) {
+         this.nextTickForContainer.put(ChunkPos.pack(nextTick.pos()), nextTick.triggerTick());
+     }
+ 
+         final Queue<LevelChunkTicks<T>> containersToTick, final LevelChunkTicks<T> currentContainer, final long currentTick, final int maxTicksToProcess

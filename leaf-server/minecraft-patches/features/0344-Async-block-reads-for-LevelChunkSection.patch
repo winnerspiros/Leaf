@@ -12,7 +12,9 @@ race fences.
 diff --git a/net/minecraft/world/level/chunk/LevelChunkSection.java b/net/minecraft/world/level/chunk/LevelChunkSection.java
 --- a/net/minecraft/world/level/chunk/LevelChunkSection.java
 +++ b/net/minecraft/world/level/chunk/LevelChunkSection.java
-@@ -29,5 +29,17 @@ public class LevelChunkSection implements ca.spottedleaf.moonrise.patches.block_
+@@ -28,7 +28,19 @@ public class LevelChunkSection implements ca.spottedleaf.moonrise.patches.block_
+     private boolean isClient;
+     private static final short CLIENT_FORCED_SPECIAL_COLLIDING_BLOCKS = (short)9999;
      private short specialCollidingBlocks;
      private final ca.spottedleaf.moonrise.common.list.ShortList tickingBlocks = new ca.spottedleaf.moonrise.common.list.ShortList();
 +    // Leaf start - Async block reads for LevelChunkSection

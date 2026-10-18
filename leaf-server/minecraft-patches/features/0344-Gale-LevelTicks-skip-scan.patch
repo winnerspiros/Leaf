@@ -148,9 +148,9 @@ diff --git a/net/minecraft/world/ticks/LevelTicks.java b/net/minecraft/world/tic
          }
      }
  
-+        this.nextTickScan = Math.min(this.nextTickScan, nextTick.triggerTick()); // Gale - Skip container scan when nothing due
      private void updateContainerScheduling(final ScheduledTick<T> nextTick) {
          this.nextTickForContainer.put(ChunkPos.pack(nextTick.pos()), nextTick.triggerTick());
++        this.nextTickScan = Math.min(this.nextTickScan, nextTick.triggerTick()); // Gale - Skip container scan when nothing due
      }
  
      private void drainFromCurrentContainer(

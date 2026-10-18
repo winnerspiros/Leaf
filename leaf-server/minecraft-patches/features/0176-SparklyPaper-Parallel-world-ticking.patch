@@ -223,7 +223,7 @@ diff --git a/net/minecraft/server/MinecraftServer.java b/net/minecraft/server/Mi
          for (ServerLevel level : this.getAllLevels()) {
              level.hasPhysicsEvent = org.bukkit.event.block.BlockPhysicsEvent.getHandlerList().getRegisteredListeners().length > 0; // Paper - BlockPhysicsEvent
              level.hasEntityMoveEvent = io.papermc.paper.event.entity.EntityMoveEvent.getHandlerList().getRegisteredListeners().length > 0; // Paper - Add EntityMoveEvent
-@@ -1879,18 +1912,34 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+@@ -1879,18 +1912,35 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
              profiler.push(() -> level + " " + level.dimension().identifier());
              profiler.push("tick");
  
@@ -1525,7 +1525,7 @@ diff --git a/net/minecraft/world/level/entity/EntityTickList.java b/net/minecraf
 diff --git a/net/minecraft/world/level/saveddata/maps/MapIndex.java b/net/minecraft/world/level/saveddata/maps/MapIndex.java
 --- a/net/minecraft/world/level/saveddata/maps/MapIndex.java
 +++ b/net/minecraft/world/level/saveddata/maps/MapIndex.java
-@@ -26,6 +26,15 @@ public class MapIndex extends SavedData {
+@@ -26,7 +26,16 @@ public class MapIndex extends SavedData {
      }
  
      public MapId getNextMapId() {

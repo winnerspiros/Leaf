@@ -1,0 +1,31 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Gale <gale@users.noreply.github.com>
+Date: Sat, 18 Oct 2026 00:00:00 +0000
+Subject: [PATCH] Hoist inOpenSet + skip getBestH on update (Gale #203 part)
+
+Port of GaleMC/Gale #203 hot-loop part against our tree (adapted:
+our tree uses localOpenSet/localNeighbors via async pathfinding).
+Caches inOpenSet() and skips getBestH when only updating cost.
+
+diff --git a/net/minecraft/world/level/pathfinder/PathFinder.java b/net/minecraft/world/level/pathfinder/PathFinder.java
+--- a/net/minecraft/world/level/pathfinder/PathFinder.java
++++ b/net/minecraft/world/level/pathfinder/PathFinder.java
+@@ -165,15 +165,16 @@ public class PathFinder {
+                     float distance = this.distance(current, neighbor);
+                     neighbor.walkedDistance = current.walkedDistance + distance;
+                     float tentativeGScore = current.g + distance + neighbor.costMalus;
+-                    if (neighbor.walkedDistance < maxPathLength && (!neighbor.inOpenSet() || tentativeGScore < neighbor.g)) {
++                    boolean inOpenSet = neighbor.inOpenSet(); // Gale - reduce pathfinding overhead - hoist inOpenSet out of condition
++                    if (neighbor.walkedDistance < maxPathLength && (!inOpenSet || tentativeGScore < neighbor.g)) {
+                         neighbor.cameFrom = current;
+                         neighbor.g = tentativeGScore;
+-                        neighbor.h = this.getBestH(neighbor, targets) * 1.5F;
+-                        if (neighbor.inOpenSet()) {
++                        if (inOpenSet) {
+                             localOpenSet.changeCost(neighbor, neighbor.g + neighbor.h); // Kaiiju - petal - async path processing
+                         } else {
++                            neighbor.h = this.getBestH(neighbor, targets) * 1.5F; // Gale - reduce pathfinding overhead - skip getBestH on cost update
+                             neighbor.f = neighbor.g + neighbor.h;
+                             localOpenSet.insert(neighbor); // Kaiiju - petal - async path processing
+                         }
+

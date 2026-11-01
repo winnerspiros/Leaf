@@ -15,7 +15,6 @@ prominent legal notice accompanying the corresponding source:
 Original patch by HaHaWTH <102713261+HaHaWTH@users.noreply.github.com>
 
 diff --git a/net/minecraft/world/ContainerHelper.java b/net/minecraft/world/ContainerHelper.java
-index fd703764323afa8e4e0cba7022a9fd14c3274e5d..3ffc1f22c2721c3f899e4ef4636dc5a85994e762 100644
 --- a/net/minecraft/world/ContainerHelper.java
 +++ b/net/minecraft/world/ContainerHelper.java
 @@ -45,6 +45,37 @@ public class ContainerHelper {
@@ -57,7 +56,6 @@ index fd703764323afa8e4e0cba7022a9fd14c3274e5d..3ffc1f22c2721c3f899e4ef4636dc5a8
          final Container container, final Predicate<ItemStack> predicate, final int amountToRemove, final boolean countingOnly
      ) {
 diff --git a/net/minecraft/world/level/block/entity/BarrelBlockEntity.java b/net/minecraft/world/level/block/entity/BarrelBlockEntity.java
-index ffdded59896479a983f54e2a327870dede6dd6d4..0000000000000000000000000000000000000000 100644
 --- a/net/minecraft/world/level/block/entity/BarrelBlockEntity.java
 +++ b/net/minecraft/world/level/block/entity/BarrelBlockEntity.java
 @@ -30,7 +30,7 @@ public class BarrelBlockEntity extends RandomizableContainerBlockEntity implemen
@@ -134,7 +132,6 @@ index ffdded59896479a983f54e2a327870dede6dd6d4..00000000000000000000000000000000
      @Override
      public void setInventoryLithium(final net.minecraft.core.NonNullList<net.minecraft.world.item.ItemStack> inventory) {
 diff --git a/net/minecraft/world/level/block/entity/ChestBlockEntity.java b/net/minecraft/world/level/block/entity/ChestBlockEntity.java
-index 31a7622e9a6f8439362ffa5a1d2e5cec92fe1968..0000000000000000000000000000000000000000 100644
 --- a/net/minecraft/world/level/block/entity/ChestBlockEntity.java
 +++ b/net/minecraft/world/level/block/entity/ChestBlockEntity.java
 @@ -29,6 +29,7 @@ public class ChestBlockEntity extends RandomizableContainerBlockEntity implement
@@ -210,7 +207,6 @@ index 31a7622e9a6f8439362ffa5a1d2e5cec92fe1968..00000000000000000000000000000000
      @Override
      public void setInventoryLithium(final net.minecraft.core.NonNullList<net.minecraft.world.item.ItemStack> inventory) {
 diff --git a/net/minecraft/world/level/block/entity/ShulkerBoxBlockEntity.java b/net/minecraft/world/level/block/entity/ShulkerBoxBlockEntity.java
-index 42f8261fe23861301221c53f65d4f19280a06394..0000000000000000000000000000000000000000 100644
 --- a/net/minecraft/world/level/block/entity/ShulkerBoxBlockEntity.java
 +++ b/net/minecraft/world/level/block/entity/ShulkerBoxBlockEntity.java
 @@ -43,6 +43,7 @@ public class ShulkerBoxBlockEntity extends RandomizableContainerBlockEntity impl
@@ -282,7 +278,6 @@ index 42f8261fe23861301221c53f65d4f19280a06394..00000000000000000000000000000000
      @Override
      public void setInventoryLithium(final net.minecraft.core.NonNullList<net.minecraft.world.item.ItemStack> inventory) {
 diff --git a/net/minecraft/world/level/storage/TagValueInput.java b/net/minecraft/world/level/storage/TagValueInput.java
-index 00647a31e78bbd1d483a2bc0b2c2db5de50e5ac5..0000000000000000000000000000000000000000 100644
 --- a/net/minecraft/world/level/storage/TagValueInput.java
 +++ b/net/minecraft/world/level/storage/TagValueInput.java
 @@ -37,4 +37,34 @@ public class TagValueInput implements ValueInput {

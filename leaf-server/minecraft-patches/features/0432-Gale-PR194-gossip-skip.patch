@@ -1,0 +1,22 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Leaf Max-Perf <leaf@localhost>
+Date: Sun, 11 Oct 2026 00:00:00 +0000
+Subject: [PATCH] Gale PR194: skip villager gossip decay when empty
+
+Ports GaleMC/Gale#194.
+
+diff --git a/net/minecraft/world/entity/npc/villager/Villager.java b/net/minecraft/world/entity/npc/villager/Villager.java
+--- a/net/minecraft/world/entity/npc/villager/Villager.java
++++ b/net/minecraft/world/entity/npc/villager/Villager.java
+@@ -839,7 +839,11 @@ public class Villager extends AbstractVillager implements ReputationEventHandler
+         if (this.lastGossipDecayTime == 0L) {
+             this.lastGossipDecayTime = timestamp;
+         } else if (timestamp >= this.lastGossipDecayTime + 24000L) {
++            // Gale start - Leaf: skip gossip decay for villagers without any gossip
++            if (!this.gossips.gossips.isEmpty()) {
+             this.gossips.decay();
++            }
++            // Gale end - Leaf: skip gossip decay for villagers without any gossip
+             this.lastGossipDecayTime = timestamp;
+         }
+     }

@@ -1,0 +1,24 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Leaf Performance experiments <noreply@localhost>
+Date: Mon, 14 Sep 2026 07:00:00 +0800
+Subject: [PATCH] Avoid streams when counting player passengers
+
+diff --git a/net/minecraft/world/entity/Entity.java b/net/minecraft/world/entity/Entity.java
+--- a/net/minecraft/world/entity/Entity.java
++++ b/net/minecraft/world/entity/Entity.java
+@@ -4967,7 +4967,14 @@ public abstract class Entity
+     }
+ 
+     public int countPlayerPassengers() {
+-        return (int)this.getIndirectPassengersStream().filter(e -> e instanceof Player).count();
++        int count = 0;
++        for (Entity passenger : this.passengers) {
++            if (passenger instanceof Player) {
++                count++;
++            }
++            count += passenger.countPlayerPassengers();
++        }
++        return count;
+     }
+ 
+     public boolean hasExactlyOnePlayerPassenger() {

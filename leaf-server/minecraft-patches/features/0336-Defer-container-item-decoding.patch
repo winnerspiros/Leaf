@@ -280,7 +280,7 @@ diff --git a/net/minecraft/world/level/block/entity/ShulkerBoxBlockEntity.java b
 diff --git a/net/minecraft/world/level/storage/TagValueInput.java b/net/minecraft/world/level/storage/TagValueInput.java
 --- a/net/minecraft/world/level/storage/TagValueInput.java
 +++ b/net/minecraft/world/level/storage/TagValueInput.java
-@@ -37,4 +37,25 @@ public class TagValueInput implements ValueInput {
+@@ -37,6 +37,36 @@ public class TagValueInput implements ValueInput {
          this.input = input;
      }
 
@@ -304,5 +304,14 @@ diff --git a/net/minecraft/world/level/storage/TagValueInput.java b/net/minecraf
 +        }
 +    }
 +    // Leaf end - Defer container item decoding
++
++    // Paper start - utility methods
++    public static ValueInput createGlobal(
++        final ProblemReporter problemReporter,
++        final CompoundTag compoundTag
++    ) {
++        return create(problemReporter, net.minecraft.server.MinecraftServer.getServer().registryAccess(), compoundTag);
++    }
++    // Paper end - utility methods
 +
      public static ValueInput create(final ProblemReporter problemReporter, final HolderLookup.Provider holders, final CompoundTag tag) {

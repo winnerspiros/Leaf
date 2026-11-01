@@ -1,6 +1,6 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: HaHaWTH <102713261+HaHaWTH@users.noreply.github.com>
-Date: Tue, 9 Nov 2077 00:00:00 +0800
+Date: Tue, 9 Sep 2025 00:00:00 +0800
 Subject: [PATCH] Cache XP orb merge parameters
 
 License: GPL-3.0-only (https://www.gnu.org/licenses/gpl-3.0.html)
@@ -15,7 +15,6 @@ prominent legal notice accompanying the corresponding source:
 Original patch by HaHaWTH <102713261+HaHaWTH@users.noreply.github.com>
 
 diff --git a/net/minecraft/world/entity/ExperienceOrb.java b/net/minecraft/world/entity/ExperienceOrb.java
-index e7d4037e81e0e813aa1db8538d808533b4111240..d4a60cf70f949d6c5f84d60ec1736b7adea243ba 100644
 --- a/net/minecraft/world/entity/ExperienceOrb.java
 +++ b/net/minecraft/world/entity/ExperienceOrb.java
 @@ -246,9 +246,14 @@ public class ExperienceOrb extends Entity {

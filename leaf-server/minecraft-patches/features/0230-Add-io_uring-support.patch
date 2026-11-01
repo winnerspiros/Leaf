@@ -5,7 +5,6 @@ Subject: [PATCH] Add io_uring support
 
 
 diff --git a/net/minecraft/server/network/EventLoopGroupHolder.java b/net/minecraft/server/network/EventLoopGroupHolder.java
-index 9544eaee7e02d00226d957ea0b79cd1a1fb0c4d0..9dd4ee9e126f3fcbba7b05e0d5ea79d300323cff 100644
 --- a/net/minecraft/server/network/EventLoopGroupHolder.java
 +++ b/net/minecraft/server/network/EventLoopGroupHolder.java
 @@ -56,6 +56,20 @@ public abstract class EventLoopGroupHolder {

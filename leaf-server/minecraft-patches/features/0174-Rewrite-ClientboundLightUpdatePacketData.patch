@@ -11,7 +11,6 @@ At 256 sections with 0.75 fill ratio: 18x faster (333.489 μs → 18.606 μs)
 At 256 sections with 0.5 fill ratio: 13.5x faster (147.804 μs → 10.962 μs)
 
 diff --git a/net/minecraft/network/protocol/game/ClientboundLightUpdatePacketData.java b/net/minecraft/network/protocol/game/ClientboundLightUpdatePacketData.java
-index 53ccc1f38cba87c4eb05f37e122c3def5fd4a660..4b09b2c0822cb9293560aeaf5ed1de7d2eb283e6 100644
 --- a/net/minecraft/network/protocol/game/ClientboundLightUpdatePacketData.java
 +++ b/net/minecraft/network/protocol/game/ClientboundLightUpdatePacketData.java
 @@ -17,6 +17,14 @@ public record ClientboundLightUpdatePacketData(

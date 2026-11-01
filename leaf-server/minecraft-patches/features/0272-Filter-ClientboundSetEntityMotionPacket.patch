@@ -25,7 +25,6 @@ The only entities needing this are:
 This filter helps keep unneeded packets reduced, but also ensures that we keep smooth visual gameplay
 
 diff --git a/net/minecraft/server/level/ServerEntity.java b/net/minecraft/server/level/ServerEntity.java
-index 2a0e967aa6c665ffa08cf4c86f0eb69427847b19..edad1bd673c5913e2339cfa830b6684e21b091e2 100644
 --- a/net/minecraft/server/level/ServerEntity.java
 +++ b/net/minecraft/server/level/ServerEntity.java
 @@ -211,7 +211,13 @@ public class ServerEntity {

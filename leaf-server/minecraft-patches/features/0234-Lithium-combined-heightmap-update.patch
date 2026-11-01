@@ -23,7 +23,6 @@ track:
 // SYNC SOURCE END
 
 diff --git a/net/minecraft/world/level/chunk/LevelChunk.java b/net/minecraft/world/level/chunk/LevelChunk.java
-index a01f41527a5af361efeb136be82667caa3c5b700..349f7fd0058301cf45477a4ce40693a9fd17610f 100644
 --- a/net/minecraft/world/level/chunk/LevelChunk.java
 +++ b/net/minecraft/world/level/chunk/LevelChunk.java
 @@ -439,10 +439,13 @@ public class LevelChunk extends ChunkAccess implements DebugValueSource, ca.spot
@@ -45,7 +44,6 @@ index a01f41527a5af361efeb136be82667caa3c5b700..349f7fd0058301cf45477a4ce40693a9
          if (wasEmpty != isEmpty) {
              this.level.getChunkSource().getLightEngine().updateSectionStatus(pos, isEmpty);
 diff --git a/net/minecraft/world/level/levelgen/Heightmap.java b/net/minecraft/world/level/levelgen/Heightmap.java
-index 22990ffcb40304279530462a72c489e8e1207e08..84a1455c153e2ecbfc3e128903dd83ee9a53e952 100644
 --- a/net/minecraft/world/level/levelgen/Heightmap.java
 +++ b/net/minecraft/world/level/levelgen/Heightmap.java
 @@ -49,6 +49,12 @@ public class Heightmap {

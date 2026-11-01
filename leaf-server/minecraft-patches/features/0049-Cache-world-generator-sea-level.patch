@@ -27,7 +27,6 @@ track:
 // SYNC SOURCE END
 
 diff --git a/net/minecraft/world/level/levelgen/NoiseBasedChunkGenerator.java b/net/minecraft/world/level/levelgen/NoiseBasedChunkGenerator.java
-index f0529d233b791e226cec469b2efebcffd02c6d58..ff328b5435e4e5ca148680d912078b939927aa79 100644
 --- a/net/minecraft/world/level/levelgen/NoiseBasedChunkGenerator.java
 +++ b/net/minecraft/world/level/levelgen/NoiseBasedChunkGenerator.java
 @@ -69,6 +69,7 @@ public final class NoiseBasedChunkGenerator extends ChunkGenerator {

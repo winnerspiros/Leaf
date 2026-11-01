@@ -1,11 +1,10 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: HaHaWTH <102713261+HaHaWTH@users.noreply.github.com>
-Date: Tue, 9 Nov 2077 00:00:00 +0800
+Date: Tue, 9 Sep 2025 00:00:00 +0800
 Subject: [PATCH] Replace ServerClockManager map with optimized collection
 
 
 diff --git a/net/minecraft/world/clock/ServerClockManager.java b/net/minecraft/world/clock/ServerClockManager.java
-index 86314884bfd3a1637888c2440efd5cb4f254599f..4d1e7c17b5da6d7a615cce41af3923246327b759 100644
 --- a/net/minecraft/world/clock/ServerClockManager.java
 +++ b/net/minecraft/world/clock/ServerClockManager.java
 @@ -31,7 +31,7 @@ public class ServerClockManager extends SavedData implements ClockManager {

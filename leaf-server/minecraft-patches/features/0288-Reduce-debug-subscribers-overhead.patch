@@ -1,11 +1,10 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: HaHaWTH <102713261+HaHaWTH@users.noreply.github.com>
-Date: Tue, 9 Nov 2077 00:00:00 +0800
+Date: Tue, 9 Sep 2025 00:00:00 +0800
 Subject: [PATCH] Reduce debug subscribers overhead
 
 
 diff --git a/net/minecraft/server/MinecraftServer.java b/net/minecraft/server/MinecraftServer.java
-index 3defb5c72f566c758f4252bbd740349dbcb15249..d810495efc89189a54133264eb990d1776ff89c6 100644
 --- a/net/minecraft/server/MinecraftServer.java
 +++ b/net/minecraft/server/MinecraftServer.java
 @@ -1962,7 +1962,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
@@ -18,7 +17,6 @@ index 3defb5c72f566c758f4252bbd740349dbcb15249..d810495efc89189a54133264eb990d17
              profiler.popPush("gameTests");
              GameTestTicker.SINGLETON.tick();
 diff --git a/net/minecraft/util/debug/ServerDebugSubscribers.java b/net/minecraft/util/debug/ServerDebugSubscribers.java
-index ffbc6e6b88336e692c94586de8181a8c33b002f3..79019d6e8eb4ae53a394313d763670305bb914f8 100644
 --- a/net/minecraft/util/debug/ServerDebugSubscribers.java
 +++ b/net/minecraft/util/debug/ServerDebugSubscribers.java
 @@ -13,17 +13,24 @@ import net.minecraft.server.players.NameAndId;

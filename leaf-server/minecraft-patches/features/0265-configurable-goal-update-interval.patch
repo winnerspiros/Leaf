@@ -6,7 +6,6 @@ Subject: [PATCH] configurable goal update interval
 The alternative solution of Pufferfish's Throttle-goal-selector-during-inactive-ticking.patch
 
 diff --git a/net/minecraft/world/entity/ai/goal/AvoidEntityGoal.java b/net/minecraft/world/entity/ai/goal/AvoidEntityGoal.java
-index bde6ea8a6ee682b034349ffdce579b0429db2eef..a4dc4aa51f3ebcc96d1b6007fc70b7cc168cb1eb 100644
 --- a/net/minecraft/world/entity/ai/goal/AvoidEntityGoal.java
 +++ b/net/minecraft/world/entity/ai/goal/AvoidEntityGoal.java
 @@ -65,8 +65,10 @@ public class AvoidEntityGoal<T extends LivingEntity> extends Goal {
@@ -21,7 +20,6 @@ index bde6ea8a6ee682b034349ffdce579b0429db2eef..a4dc4aa51f3ebcc96d1b6007fc70b7cc
              .getNearestEntity(
                  this.mob.level().getEntitiesOfClass(this.avoidClass, this.mob.getBoundingBox().inflate(this.maxDist, 3.0, this.maxDist), entity -> true),
 diff --git a/net/minecraft/world/entity/ai/goal/FollowParentGoal.java b/net/minecraft/world/entity/ai/goal/FollowParentGoal.java
-index 26e04169289d18911ff63495bac75884edafc2de..8b6fac9a46a88b7dbb7db1bf025eb1241dd3c2ee 100644
 --- a/net/minecraft/world/entity/ai/goal/FollowParentGoal.java
 +++ b/net/minecraft/world/entity/ai/goal/FollowParentGoal.java
 @@ -18,8 +18,10 @@ public class FollowParentGoal extends Goal {
@@ -36,7 +34,6 @@ index 26e04169289d18911ff63495bac75884edafc2de..8b6fac9a46a88b7dbb7db1bf025eb124
              return false;
          }
 diff --git a/net/minecraft/world/entity/ai/goal/TemptGoal.java b/net/minecraft/world/entity/ai/goal/TemptGoal.java
-index a8062ff41f009c77ce35292488483858b276b074..7ce0b611c0c2a517f3a0dabe58c63cd885b8f443 100644
 --- a/net/minecraft/world/entity/ai/goal/TemptGoal.java
 +++ b/net/minecraft/world/entity/ai/goal/TemptGoal.java
 @@ -50,12 +50,14 @@ public class TemptGoal extends Goal {
@@ -55,7 +52,6 @@ index a8062ff41f009c77ce35292488483858b276b074..7ce0b611c0c2a517f3a0dabe58c63cd8
              final TargetingConditions rangeTargetingConditions = this.targetingConditions.range(this.mob.getAttributeValue(Attributes.TEMPT_RANGE));
  
 diff --git a/net/minecraft/world/entity/ai/goal/target/NearestAttackableTargetGoal.java b/net/minecraft/world/entity/ai/goal/target/NearestAttackableTargetGoal.java
-index c5e64fb3f857ef3d34ae9c80cfd16d1257e33054..5840088eb7a34fb925ee0dfb9575546f0f8d15f7 100644
 --- a/net/minecraft/world/entity/ai/goal/target/NearestAttackableTargetGoal.java
 +++ b/net/minecraft/world/entity/ai/goal/target/NearestAttackableTargetGoal.java
 @@ -40,7 +40,7 @@ public class NearestAttackableTargetGoal<T extends LivingEntity> extends TargetG
@@ -68,7 +64,6 @@ index c5e64fb3f857ef3d34ae9c80cfd16d1257e33054..5840088eb7a34fb925ee0dfb9575546f
          this.targetConditions = TargetingConditions.forCombat().range(this.getFollowDistance()).selector(selector);
      }
 diff --git a/net/minecraft/world/entity/monster/Enderman.java b/net/minecraft/world/entity/monster/Enderman.java
-index 103f549a738abebaf4642d230e3d16ba01e4948c..54bc5f9e67419cf8449dee69adae6bd2baa28404 100644
 --- a/net/minecraft/world/entity/monster/Enderman.java
 +++ b/net/minecraft/world/entity/monster/Enderman.java
 @@ -587,8 +587,10 @@ public class Enderman extends Monster implements NeutralMob {

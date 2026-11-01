@@ -5,7 +5,6 @@ Subject: [PATCH] Optimize BlockEntities tickersInLevel
 
 
 diff --git a/net/minecraft/world/level/chunk/LevelChunk.java b/net/minecraft/world/level/chunk/LevelChunk.java
-index 888dcbc1d88b4294cf8c1a523d2057bc372c71c6..e77d78e73a907fbe566d4c781e350af8f7e8f457 100644
 --- a/net/minecraft/world/level/chunk/LevelChunk.java
 +++ b/net/minecraft/world/level/chunk/LevelChunk.java
 @@ -84,7 +84,7 @@ public class LevelChunk extends ChunkAccess implements DebugValueSource, ca.spot

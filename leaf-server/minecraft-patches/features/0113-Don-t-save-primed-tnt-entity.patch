@@ -5,7 +5,6 @@ Subject: [PATCH] Don't save primed tnt entity
 
 
 diff --git a/net/minecraft/world/entity/item/PrimedTnt.java b/net/minecraft/world/entity/item/PrimedTnt.java
-index 492121dc20c29e3798353c8bec289cda46deea44..18f5ef22e87f8c6efdf7d8ba63e47d49667950fa 100644
 --- a/net/minecraft/world/entity/item/PrimedTnt.java
 +++ b/net/minecraft/world/entity/item/PrimedTnt.java
 @@ -280,4 +280,11 @@ public class PrimedTnt extends Entity implements TraceableEntity {

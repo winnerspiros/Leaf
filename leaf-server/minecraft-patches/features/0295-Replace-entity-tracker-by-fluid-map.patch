@@ -5,7 +5,6 @@ Subject: [PATCH] Replace entity tracker by fluid map
 
 
 diff --git a/net/minecraft/world/entity/Entity.java b/net/minecraft/world/entity/Entity.java
-index 1ac3daa19a9f0ab3c75e723a64a9e87e5b9d02a2..4fe7028b602184d13a28fde85cb714c965eeffa2 100644
 --- a/net/minecraft/world/entity/Entity.java
 +++ b/net/minecraft/world/entity/Entity.java
 @@ -308,7 +308,7 @@ public abstract class Entity
@@ -18,7 +17,6 @@ index 1ac3daa19a9f0ab3c75e723a64a9e87e5b9d02a2..4fe7028b602184d13a28fde85cb714c9
      protected boolean wasEyeInWater;
      private int invulnerableTime;
 diff --git a/net/minecraft/world/entity/EntityFluidInteraction.java b/net/minecraft/world/entity/EntityFluidInteraction.java
-index ed6aa849a7ba718f673026c74a454f993f791ee5..87efdfcebb3a622d92e809d894a14ba0c037b29d 100644
 --- a/net/minecraft/world/entity/EntityFluidInteraction.java
 +++ b/net/minecraft/world/entity/EntityFluidInteraction.java
 @@ -26,7 +26,7 @@ import org.jspecify.annotations.Nullable;

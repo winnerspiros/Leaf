@@ -5,7 +5,6 @@ Subject: [PATCH] cache collision list
 
 
 diff --git a/net/minecraft/server/level/ServerLevel.java b/net/minecraft/server/level/ServerLevel.java
-index 53b77c3af4dbcfe4de621bd8dc29d893f30c080a..7ca9376d4e52ad5a8485815238eff5f557dd7d73 100644
 --- a/net/minecraft/server/level/ServerLevel.java
 +++ b/net/minecraft/server/level/ServerLevel.java
 @@ -1219,6 +1219,7 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
@@ -17,7 +16,6 @@ index 53b77c3af4dbcfe4de621bd8dc29d893f30c080a..7ca9376d4e52ad5a8485815238eff5f5
          final net.minecraft.world.level.levelgen.BitRandomSource simpleRandom = this.simpleRandom; // Paper - optimise random ticking // Leaf - Faster random generator - upcasting
          ChunkPos chunkPos = chunk.getPos();
 diff --git a/net/minecraft/world/entity/Entity.java b/net/minecraft/world/entity/Entity.java
-index 5675606a4e776140c604f106c25d7941188bb591..eb23f238c272f3c4c4f05e2e9a102e293db27e9f 100644
 --- a/net/minecraft/world/entity/Entity.java
 +++ b/net/minecraft/world/entity/Entity.java
 @@ -1722,8 +1722,8 @@ public abstract class Entity

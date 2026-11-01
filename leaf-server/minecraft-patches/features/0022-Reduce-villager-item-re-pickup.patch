@@ -18,7 +18,6 @@ Helps 1.8 Farms let hoppers pick it up before Villager
 due to our hopper changes
 
 diff --git a/net/minecraft/world/entity/ai/behavior/BehaviorUtils.java b/net/minecraft/world/entity/ai/behavior/BehaviorUtils.java
-index f744ecd20dc70786311a7162b52aa4ceca0717db..c50d6ac77cae556aaa7ce8f3f1dc3a706ccd9d31 100644
 --- a/net/minecraft/world/entity/ai/behavior/BehaviorUtils.java
 +++ b/net/minecraft/world/entity/ai/behavior/BehaviorUtils.java
 @@ -101,7 +101,19 @@ public class BehaviorUtils {

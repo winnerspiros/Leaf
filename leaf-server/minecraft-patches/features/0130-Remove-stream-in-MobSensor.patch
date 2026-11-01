@@ -5,7 +5,6 @@ Subject: [PATCH] Remove stream in MobSensor
 
 
 diff --git a/net/minecraft/world/entity/ai/sensing/MobSensor.java b/net/minecraft/world/entity/ai/sensing/MobSensor.java
-index ac9c50d680814b5752f7c712633555d587633598..f314441d7a01145d8338a7b6b189b04f11fcd06c 100644
 --- a/net/minecraft/world/entity/ai/sensing/MobSensor.java
 +++ b/net/minecraft/world/entity/ai/sensing/MobSensor.java
 @@ -46,10 +46,15 @@ public class MobSensor<T extends LivingEntity> extends Sensor<T> {

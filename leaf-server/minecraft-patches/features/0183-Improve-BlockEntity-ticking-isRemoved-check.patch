@@ -10,7 +10,6 @@ Leaf (After): ~628ms (-96%)
 This should help for massive hopper chains or hopper matrix.
 
 diff --git a/net/minecraft/world/level/chunk/LevelChunk.java b/net/minecraft/world/level/chunk/LevelChunk.java
-index abbc80acb7c086c6e1fd2b077cc1182bf623c39d..888dcbc1d88b4294cf8c1a523d2057bc372c71c6 100644
 --- a/net/minecraft/world/level/chunk/LevelChunk.java
 +++ b/net/minecraft/world/level/chunk/LevelChunk.java
 @@ -1062,15 +1062,28 @@ public class LevelChunk extends ChunkAccess implements DebugValueSource, ca.spot

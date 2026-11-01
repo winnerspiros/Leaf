@@ -1,6 +1,6 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: HaHaWTH <102713261+HaHaWTH@users.noreply.github.com>
-Date: Tue, 9 Nov 2077 00:00:00 +0800
+Date: Tue, 9 Sep 2025 00:00:00 +0800
 Subject: [PATCH] Faster CraftServer#getworlds list creation
 
 CraftServer#getWorlds/Bukkit#getWorlds is frequently used in plugins,
@@ -8,7 +8,6 @@ replacing ArrayList with Fastutil ObjectArrayList
 brings about 40% performance improvement in benchmark.
 
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 3ca02d8faadbdb1274cd851e6dc78452a314c353..6f9a729fdba3b08cc680991f0cdac354c390b401 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 @@ -896,7 +896,7 @@ public final class CraftServer implements Server {

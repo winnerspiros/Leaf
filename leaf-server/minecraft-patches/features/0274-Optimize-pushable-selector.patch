@@ -6,7 +6,6 @@ Subject: [PATCH] Optimize pushable selector
 Avoid duplicated Bukkit#isPushable check, already checked inside the Bukkit#canCollideWithBukkit
 
 diff --git a/net/minecraft/world/entity/EntitySelector.java b/net/minecraft/world/entity/EntitySelector.java
-index 53a7312bc021edfe46b589d68e3bc775fdda0ffb..9526f091bdde7f91a8e1d437e8faaecbeec63bf1 100644
 --- a/net/minecraft/world/entity/EntitySelector.java
 +++ b/net/minecraft/world/entity/EntitySelector.java
 @@ -49,9 +49,8 @@ public final class EntitySelector {

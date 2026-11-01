@@ -39,7 +39,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 diff --git a/net/minecraft/server/MinecraftServer.java b/net/minecraft/server/MinecraftServer.java
-index b56481491db6e39ca30c482ce1d6cd5d44d65d78..4cbbcb757ce1ee065a49539d9237d68b5fd4dde8 100644
 --- a/net/minecraft/server/MinecraftServer.java
 +++ b/net/minecraft/server/MinecraftServer.java
 @@ -1355,7 +1355,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
@@ -52,7 +51,6 @@ index b56481491db6e39ca30c482ce1d6cd5d44d65d78..4cbbcb757ce1ee065a49539d9237d68b
                      ProfilerFiller profiler = Profiler.get();
                      profiler.push("nextTickWait");
 diff --git a/net/minecraft/server/ReloadableServerResources.java b/net/minecraft/server/ReloadableServerResources.java
-index 4b7cb2ba2e1f05d73768e62bb93cd129514166d0..49c1b41143b99da4d72ff8e239b99c6c047132ba 100644
 --- a/net/minecraft/server/ReloadableServerResources.java
 +++ b/net/minecraft/server/ReloadableServerResources.java
 @@ -112,7 +112,7 @@ public class ReloadableServerResources {
@@ -65,7 +63,6 @@ index 4b7cb2ba2e1f05d73768e62bb93cd129514166d0..49c1b41143b99da4d72ff8e239b99c6c
                                  .done()
                                  .thenApply(ignore -> result);
 diff --git a/net/minecraft/server/commands/DebugCommand.java b/net/minecraft/server/commands/DebugCommand.java
-index 812659bc14a356bde510d245557f94746bc576cc..f665f112ab278c786403d98fc206d6752fd4de1f 100644
 --- a/net/minecraft/server/commands/DebugCommand.java
 +++ b/net/minecraft/server/commands/DebugCommand.java
 @@ -71,6 +71,7 @@ public class DebugCommand {
@@ -107,7 +104,6 @@ index 812659bc14a356bde510d245557f94746bc576cc..f665f112ab278c786403d98fc206d675
          extends CustomCommandExecutor.WithErrorHandling<CommandSourceStack>
          implements CustomCommandExecutor.CommandAdapter<CommandSourceStack> {
 diff --git a/net/minecraft/server/commands/PerfCommand.java b/net/minecraft/server/commands/PerfCommand.java
-index f881d6c20487569c0408fbb33e5d9d09363d7cbc..767c812271672271123446265b6ee75f2725ae88 100644
 --- a/net/minecraft/server/commands/PerfCommand.java
 +++ b/net/minecraft/server/commands/PerfCommand.java
 @@ -42,6 +42,7 @@ public class PerfCommand {
@@ -127,7 +123,6 @@ index f881d6c20487569c0408fbb33e5d9d09363d7cbc..767c812271672271123446265b6ee75f
          if (!server.isRecordingMetrics()) {
              throw ERROR_NOT_RUNNING.create();
 diff --git a/net/minecraft/server/packs/resources/ReloadableResourceManager.java b/net/minecraft/server/packs/resources/ReloadableResourceManager.java
-index 2bccd6a2ade7e5d2bda6f031202700f9811b8f01..222c7d3c88fba00eaead059425e2be2a7983d5e1 100644
 --- a/net/minecraft/server/packs/resources/ReloadableResourceManager.java
 +++ b/net/minecraft/server/packs/resources/ReloadableResourceManager.java
 @@ -45,7 +45,7 @@ public class ReloadableResourceManager implements AutoCloseable, ResourceManager
@@ -140,7 +135,6 @@ index 2bccd6a2ade7e5d2bda6f031202700f9811b8f01..222c7d3c88fba00eaead059425e2be2a
  
      @Override
 diff --git a/net/minecraft/util/profiling/Profiler.java b/net/minecraft/util/profiling/Profiler.java
-index ae5974d304abd7d240453f0376c5fd79359a9585..a7ae88f744e1adafca1e13243dbee94536c9c961 100644
 --- a/net/minecraft/util/profiling/Profiler.java
 +++ b/net/minecraft/util/profiling/Profiler.java
 @@ -49,6 +49,7 @@ public final class Profiler {

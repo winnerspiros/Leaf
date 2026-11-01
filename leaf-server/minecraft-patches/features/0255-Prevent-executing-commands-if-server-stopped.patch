@@ -10,7 +10,6 @@ It's a kind of weird race condition, not sure what causes it,
 so just add a `isStopped` check, like the check under `handleChat`
 
 diff --git a/net/minecraft/server/network/ServerGamePacketListenerImpl.java b/net/minecraft/server/network/ServerGamePacketListenerImpl.java
-index fedfcca08f4f2e3a197dde60ea4e54764d3ed47e..dedcc939275146c294ceace37df472bbce05df08 100644
 --- a/net/minecraft/server/network/ServerGamePacketListenerImpl.java
 +++ b/net/minecraft/server/network/ServerGamePacketListenerImpl.java
 @@ -2517,7 +2517,7 @@ public class ServerGamePacketListenerImpl

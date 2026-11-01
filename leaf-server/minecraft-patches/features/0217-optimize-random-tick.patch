@@ -5,7 +5,6 @@ Subject: [PATCH] optimize random tick
 
 
 diff --git a/net/minecraft/server/level/ServerChunkCache.java b/net/minecraft/server/level/ServerChunkCache.java
-index b3a514f10083f40f2768da0cd9d4676c2651baf1..e1e94e89c15a3b85efda42d9ad84a707fe788cb4 100644
 --- a/net/minecraft/server/level/ServerChunkCache.java
 +++ b/net/minecraft/server/level/ServerChunkCache.java
 @@ -649,7 +649,13 @@ public class ServerChunkCache extends ChunkSource implements ca.spottedleaf.moon
@@ -24,7 +23,6 @@ index b3a514f10083f40f2768da0cd9d4676c2651baf1..e1e94e89c15a3b85efda42d9ad84a707
              profiler.popPush("customSpawners");
              this.level.tickCustomSpawners(this.spawnEnemies);
 diff --git a/net/minecraft/server/level/ServerLevel.java b/net/minecraft/server/level/ServerLevel.java
-index 33df98a435c2a256981c5388e8ffe3f4c0db4e26..9d96451d9556e8c6573e2cc5e192511deb01eb71 100644
 --- a/net/minecraft/server/level/ServerLevel.java
 +++ b/net/minecraft/server/level/ServerLevel.java
 @@ -1217,6 +1217,7 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
@@ -36,7 +34,6 @@ index 33df98a435c2a256981c5388e8ffe3f4c0db4e26..9d96451d9556e8c6573e2cc5e192511d
          final net.minecraft.world.level.levelgen.BitRandomSource simpleRandom = this.simpleRandom; // Paper - optimise random ticking // Leaf - Faster random generator - upcasting
          ChunkPos chunkPos = chunk.getPos();
 diff --git a/net/minecraft/world/level/chunk/LevelChunk.java b/net/minecraft/world/level/chunk/LevelChunk.java
-index e77d78e73a907fbe566d4c781e350af8f7e8f457..a01f41527a5af361efeb136be82667caa3c5b700 100644
 --- a/net/minecraft/world/level/chunk/LevelChunk.java
 +++ b/net/minecraft/world/level/chunk/LevelChunk.java
 @@ -164,6 +164,11 @@ public class LevelChunk extends ChunkAccess implements DebugValueSource, ca.spot

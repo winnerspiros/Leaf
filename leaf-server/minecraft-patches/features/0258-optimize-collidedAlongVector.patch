@@ -5,7 +5,6 @@ Subject: [PATCH] optimize collidedAlongVector
 
 
 diff --git a/net/minecraft/world/entity/Entity.java b/net/minecraft/world/entity/Entity.java
-index f2fa0864306d5ad6c8be067a3c6d198507cf13d5..5ac99d7f7d722c39b6ccab578361aa6b30a275bb 100644
 --- a/net/minecraft/world/entity/Entity.java
 +++ b/net/minecraft/world/entity/Entity.java
 @@ -2006,7 +2006,7 @@ public abstract class Entity
@@ -50,7 +49,6 @@ index f2fa0864306d5ad6c8be067a3c6d198507cf13d5..5ac99d7f7d722c39b6ccab578361aa6b
      }
  
 diff --git a/net/minecraft/world/entity/monster/Ghast.java b/net/minecraft/world/entity/monster/Ghast.java
-index 9c8efe9eba76ba601d2aa440461e7eb6b6a1e663..ecf39a23514b0fb18a4920aeffc81fb4e84a4ed4 100644
 --- a/net/minecraft/world/entity/monster/Ghast.java
 +++ b/net/minecraft/world/entity/monster/Ghast.java
 @@ -364,7 +364,7 @@ public class Ghast extends Mob implements Enemy {
@@ -63,7 +61,6 @@ index 9c8efe9eba76ba601d2aa440461e7eb6b6a1e663..ecf39a23514b0fb18a4920aeffc81fb4
              if (!this.careful) {
                  return pathNoCollisions;
 diff --git a/net/minecraft/world/phys/AABB.java b/net/minecraft/world/phys/AABB.java
-index 350ec6796abc4d53627871b35651a2490e4ac175..fc27bb515f51b2fd99c4639df266ae598b2c853a 100644
 --- a/net/minecraft/world/phys/AABB.java
 +++ b/net/minecraft/world/phys/AABB.java
 @@ -408,21 +408,34 @@ public class AABB {

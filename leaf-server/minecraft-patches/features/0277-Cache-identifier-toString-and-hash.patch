@@ -8,7 +8,6 @@ Use lazy cache here to prevent cache inconsistency caused by
 operations that don't use the constructor, e.g., Gson serialization or Reflection.
 
 diff --git a/net/minecraft/resources/Identifier.java b/net/minecraft/resources/Identifier.java
-index f961326218d56f1455df8d3b7b6079e2126fb8ed..79c3c65b97d0e0b0234e467625f92ccdd31fb7fe 100644
 --- a/net/minecraft/resources/Identifier.java
 +++ b/net/minecraft/resources/Identifier.java
 @@ -26,6 +26,10 @@ public final class Identifier implements Comparable<Identifier>, ca.spottedleaf.

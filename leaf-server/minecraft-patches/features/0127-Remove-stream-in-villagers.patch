@@ -14,7 +14,6 @@ under 2048 villagers situation.
 And ~93.92% improvement (~1382ms -> ~84ms), under 512 villagers situation.
 
 diff --git a/net/minecraft/world/entity/ai/behavior/TradeWithVillager.java b/net/minecraft/world/entity/ai/behavior/TradeWithVillager.java
-index 7d7f99d13526ff9c2fc440cdc47525f1086805eb..89f8ba9b1a54929d3607e9c73ec4b69c55eb3b77 100644
 --- a/net/minecraft/world/entity/ai/behavior/TradeWithVillager.java
 +++ b/net/minecraft/world/entity/ai/behavior/TradeWithVillager.java
 @@ -81,7 +81,15 @@ public class TradeWithVillager extends Behavior<Villager> {

@@ -15,7 +15,6 @@ See: https://docs.oracle.com/javase/8/docs/api/java/util/Base64.html#:~:text=MIM
 And use the basic Base64 encoder to encode the data.
 
 diff --git a/src/test/java/org/bukkit/util/io/BukkitObjectStreamTest.java b/src/test/java/org/bukkit/util/io/BukkitObjectStreamTest.java
-index 7021a44e494b53e597dc97af4550b0a3990d038b..e68e4087334ad8dd1a9912d58995d2a5fc810946 100644
 --- a/src/test/java/org/bukkit/util/io/BukkitObjectStreamTest.java
 +++ b/src/test/java/org/bukkit/util/io/BukkitObjectStreamTest.java
 @@ -19,7 +19,6 @@ import org.junit.jupiter.api.Disabled;

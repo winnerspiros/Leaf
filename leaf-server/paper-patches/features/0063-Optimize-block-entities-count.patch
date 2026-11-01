@@ -7,7 +7,6 @@ Just use `getTickableTileEntityCount` for `getTileEntityCount` to be simpler, to
 statistics calls.
 
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftWorld.java b/src/main/java/org/bukkit/craftbukkit/CraftWorld.java
-index f7101ad48a472d3b87d07883cf3a7b433e377ec6..7e2626bf5eaaf3f9c28b167b83221ab85afd9510 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftWorld.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftWorld.java
 @@ -227,6 +227,7 @@ public class CraftWorld extends CraftRegionAccessor implements World {

@@ -1,0 +1,17 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Leaf Performance experiments <noreply@localhost>
+Date: Sat, 12 Sep 2026 22:20:00 +0800
+Subject: [PATCH] Skip VehicleBlockCollisionEvent without listeners
+
+diff --git a/net/minecraft/world/entity/Entity.java b/net/minecraft/world/entity/Entity.java
+--- a/net/minecraft/world/entity/Entity.java
++++ b/net/minecraft/world/entity/Entity.java
+@@ -1389,4 +1389,6 @@ public abstract class Entity
+                 // CraftBukkit start
+-                if (this.horizontalCollision && this.getBukkitEntity() instanceof org.bukkit.entity.Vehicle) {
++                if (this.horizontalCollision
++                    && org.bukkit.event.vehicle.VehicleBlockCollisionEvent.getHandlerList().getRegisteredListeners().length != 0
++                    && this.getBukkitEntity() instanceof org.bukkit.entity.Vehicle) { // Leaf-Performance - skip unused vehicle collision wrappers and event
+                     org.bukkit.entity.Vehicle vehicle = (org.bukkit.entity.Vehicle) this.getBukkitEntity();
+                     org.bukkit.block.Block block = this.level.getWorld().getBlockAt(Mth.floor(this.getX()), Mth.floor(this.getY()), Mth.floor(this.getZ()));
+ 

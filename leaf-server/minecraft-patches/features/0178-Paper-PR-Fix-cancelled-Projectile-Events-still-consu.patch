@@ -11,7 +11,6 @@ Paper pull request: https://github.com/PaperMC/Paper/pull/12124
 fixes https://github.com/PaperMC/Paper/issues/12123
 
 diff --git a/net/minecraft/world/item/BowItem.java b/net/minecraft/world/item/BowItem.java
-index b8ec51d5f50c15f2cd74733f762b4ddc71b573cb..2976d01105ae1d68eef98af68b212f801b8b3d7e 100644
 --- a/net/minecraft/world/item/BowItem.java
 +++ b/net/minecraft/world/item/BowItem.java
 @@ -41,9 +41,9 @@ public class BowItem extends ProjectileWeaponItem {
@@ -27,7 +26,6 @@ index b8ec51d5f50c15f2cd74733f762b4ddc71b573cb..2976d01105ae1d68eef98af68b212f80
  
              level.playSound(
 diff --git a/net/minecraft/world/item/CrossbowItem.java b/net/minecraft/world/item/CrossbowItem.java
-index e2113224fe85dc5838e3d8b6dca6a0f8c948a25a..08e47e362930407cdef2602a81f252d8319084e4 100644
 --- a/net/minecraft/world/item/CrossbowItem.java
 +++ b/net/minecraft/world/item/CrossbowItem.java
 @@ -95,7 +95,7 @@ public class CrossbowItem extends ProjectileWeaponItem {
@@ -71,7 +69,6 @@ index e2113224fe85dc5838e3d8b6dca6a0f8c948a25a..08e47e362930407cdef2602a81f252d8
                      CriteriaTriggers.SHOT_CROSSBOW.trigger(player, weapon);
                      player.awardStat(Stats.ITEM_USED.get(weapon.getItem()));
 diff --git a/net/minecraft/world/item/ProjectileWeaponItem.java b/net/minecraft/world/item/ProjectileWeaponItem.java
-index 039fc3ced4e06a97346264b52375ddd298fb8422..8619679be2e983c92129e8121d9628c89b3aa03d 100644
 --- a/net/minecraft/world/item/ProjectileWeaponItem.java
 +++ b/net/minecraft/world/item/ProjectileWeaponItem.java
 @@ -40,7 +40,21 @@ public abstract class ProjectileWeaponItem extends Item {
@@ -245,7 +242,6 @@ index 039fc3ced4e06a97346264b52375ddd298fb8422..8619679be2e983c92129e8121d9628c8
              player.getInventory().removeItem(projectile);
          }
 diff --git a/net/minecraft/world/level/Level.java b/net/minecraft/world/level/Level.java
-index e5d0b57a1be1b2399f9de833e61d61d45a47243b..f99f889dd132edaaeeaa6e04fb186ff533be3dd6 100644
 --- a/net/minecraft/world/level/Level.java
 +++ b/net/minecraft/world/level/Level.java
 @@ -183,6 +183,7 @@ public abstract class Level implements LevelAccessor, AutoCloseable, ca.spottedl

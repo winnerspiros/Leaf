@@ -5,7 +5,6 @@ Subject: [PATCH] Remove Spigot check for broken BungeeCord configurations
 
 
 diff --git a/net/minecraft/server/network/ServerHandshakePacketListenerImpl.java b/net/minecraft/server/network/ServerHandshakePacketListenerImpl.java
-index d39379b2a9a087b38c96ebc31179c1bc6e6693ed..401e3a456cd5cb2eb2e639f9ac5c60f425eb1cb6 100644
 --- a/net/minecraft/server/network/ServerHandshakePacketListenerImpl.java
 +++ b/net/minecraft/server/network/ServerHandshakePacketListenerImpl.java
 @@ -169,7 +169,7 @@ public class ServerHandshakePacketListenerImpl implements ServerHandshakePacketL

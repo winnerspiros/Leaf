@@ -7,7 +7,6 @@ Related to https://github.com/PaperMC/Paper/issues/12441
 This patch is a similar solution as the part of https://github.com/PaperMC/Paper/pull/11840
 
 diff --git a/net/minecraft/world/level/ServerExplosion.java b/net/minecraft/world/level/ServerExplosion.java
-index 41949cb4d0392844eb40b3d5bd3956da75b1cb5e..0d0ace1217f956401e938808253dfd33e24d366c 100644
 --- a/net/minecraft/world/level/ServerExplosion.java
 +++ b/net/minecraft/world/level/ServerExplosion.java
 @@ -661,6 +661,7 @@ public class ServerExplosion implements Explosion {

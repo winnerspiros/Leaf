@@ -12,7 +12,6 @@ Cache the date result to prevent calculate in every call
 The JMH benchmark of this patch can be found in SunBox's `PredictHalloween`
 
 diff --git a/net/minecraft/util/SpecialDates.java b/net/minecraft/util/SpecialDates.java
-index a6018d9fba0957fc721cebc9f366767fa04d4950..5d663a3b26de7eac1bfd25245b0cadb60d721264 100644
 --- a/net/minecraft/util/SpecialDates.java
 +++ b/net/minecraft/util/SpecialDates.java
 @@ -13,12 +13,58 @@ public class SpecialDates {

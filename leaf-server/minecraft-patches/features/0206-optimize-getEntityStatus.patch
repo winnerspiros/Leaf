@@ -5,7 +5,6 @@ Subject: [PATCH] optimize getEntityStatus
 
 
 diff --git a/ca/spottedleaf/moonrise/patches/chunk_system/level/entity/EntityLookup.java b/ca/spottedleaf/moonrise/patches/chunk_system/level/entity/EntityLookup.java
-index 328784ba08236553e49d62320b79f7222292412f..cc02a276e5de57667676e5c2cdb9358f684984ec 100644
 --- a/ca/spottedleaf/moonrise/patches/chunk_system/level/entity/EntityLookup.java
 +++ b/ca/spottedleaf/moonrise/patches/chunk_system/level/entity/EntityLookup.java
 @@ -93,8 +93,17 @@ public abstract class EntityLookup implements LevelEntityGetter<Entity> {

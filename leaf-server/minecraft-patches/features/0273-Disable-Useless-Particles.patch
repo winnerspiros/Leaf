@@ -9,7 +9,6 @@ Original project: https://github.com/CraftCanvasMC/Canvas
 It is recommended to enable these options, as the client displays most of these particles already, so the server-side particle logic is not needed
 
 diff --git a/net/minecraft/world/entity/Entity.java b/net/minecraft/world/entity/Entity.java
-index ce9a31b46defd76721925b1f194a2bbe8d9bdcf3..945bf5ac7db3cc4bad81a6aaa4dd40149b20a569 100644
 --- a/net/minecraft/world/entity/Entity.java
 +++ b/net/minecraft/world/entity/Entity.java
 @@ -1021,7 +1021,7 @@ public abstract class Entity
@@ -37,16 +36,7 @@ index ce9a31b46defd76721925b1f194a2bbe8d9bdcf3..945bf5ac7db3cc4bad81a6aaa4dd4014
  
          this.gameEvent(GameEvent.SPLASH);
      }
-@@ -4222,6 +4224,7 @@ public abstract class Entity
-     }
- 
-     protected static void sendBubbleColumnParticles(final Level level, final BlockPos pos) {
-+        if (org.dreeam.leaf.config.modules.opt.ReduceUselessPackets.disableUselessParticles) return; // Leaf - Disable Useless Particles
-         if (level instanceof ServerLevel serverLevel) {
-             RandomSource random = level.getRandom();
- 
 diff --git a/net/minecraft/world/entity/LivingEntity.java b/net/minecraft/world/entity/LivingEntity.java
-index aa3dc105ae6ca6bc039e306741d340e8e7037e0d..58c238c832a38155e6ef18a13cb9c46da46d1175 100644
 --- a/net/minecraft/world/entity/LivingEntity.java
 +++ b/net/minecraft/world/entity/LivingEntity.java
 @@ -999,7 +999,7 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin

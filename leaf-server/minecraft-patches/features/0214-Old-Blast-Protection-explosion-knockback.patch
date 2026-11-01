@@ -5,7 +5,6 @@ Subject: [PATCH] Old Blast Protection explosion knockback
 
 
 diff --git a/net/minecraft/world/entity/EquipmentSlot.java b/net/minecraft/world/entity/EquipmentSlot.java
-index 63a9956f4aaf6feb6de2ef59a2211448f816e4fb..e5d67c834f214def5b04e75cc3decbcb05c6c2aa 100644
 --- a/net/minecraft/world/entity/EquipmentSlot.java
 +++ b/net/minecraft/world/entity/EquipmentSlot.java
 @@ -22,6 +22,7 @@ public enum EquipmentSlot implements StringRepresentable {
@@ -17,7 +16,6 @@ index 63a9956f4aaf6feb6de2ef59a2211448f816e4fb..e5d67c834f214def5b04e75cc3decbcb
      public static final StringRepresentable.EnumCodec<EquipmentSlot> CODEC = StringRepresentable.fromEnum(EquipmentSlot::values);
      public static final StreamCodec<ByteBuf, EquipmentSlot> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, s -> s.id);
 diff --git a/net/minecraft/world/level/ServerExplosion.java b/net/minecraft/world/level/ServerExplosion.java
-index e649684b5fab7fdea0dd69d4d511d26c0a1d764c..41949cb4d0392844eb40b3d5bd3956da75b1cb5e 100644
 --- a/net/minecraft/world/level/ServerExplosion.java
 +++ b/net/minecraft/world/level/ServerExplosion.java
 @@ -524,7 +524,7 @@ public class ServerExplosion implements Explosion {

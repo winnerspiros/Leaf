@@ -5,7 +5,6 @@ Subject: [PATCH] optimize ClientboundCommandsPacket#enumerateNodes
 
 
 diff --git a/net/minecraft/network/protocol/game/ClientboundCommandsPacket.java b/net/minecraft/network/protocol/game/ClientboundCommandsPacket.java
-index d2585a69b978e00cf3b9e8829807d63128fc0b55..278866fbec2090e72a595239e93991101bd4f7c6 100644
 --- a/net/minecraft/network/protocol/game/ClientboundCommandsPacket.java
 +++ b/net/minecraft/network/protocol/game/ClientboundCommandsPacket.java
 @@ -84,14 +84,17 @@ public class ClientboundCommandsPacket implements Packet<ClientGamePacketListene

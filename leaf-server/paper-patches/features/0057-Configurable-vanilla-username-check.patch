@@ -5,7 +5,6 @@ Subject: [PATCH] Configurable vanilla username check
 
 
 diff --git a/src/main/java/com/destroystokyo/paper/profile/CraftPlayerProfile.java b/src/main/java/com/destroystokyo/paper/profile/CraftPlayerProfile.java
-index 310c0917fbae3f632cce9b391cbb02f584c06b70..c9969013edacde98bf82569d658a3ab10a6a9c55 100644
 --- a/src/main/java/com/destroystokyo/paper/profile/CraftPlayerProfile.java
 +++ b/src/main/java/com/destroystokyo/paper/profile/CraftPlayerProfile.java
 @@ -73,6 +73,14 @@ public class CraftPlayerProfile implements PlayerProfile, SharedPlayerProfile {

@@ -8,7 +8,6 @@ Use lazy cache here to prevent cache inconsistency caused by
 operations that don't use the constructor, e.g., Gson serialization or Reflection.
 
 diff --git a/src/main/java/org/bukkit/NamespacedKey.java b/src/main/java/org/bukkit/NamespacedKey.java
-index ac63c379b5ccbf6d1b25604a0bffc10ddfb61158..9b881460078ff11d9923a7703673e15fddf52d74 100644
 --- a/src/main/java/org/bukkit/NamespacedKey.java
 +++ b/src/main/java/org/bukkit/NamespacedKey.java
 @@ -37,6 +37,10 @@ public final class NamespacedKey implements Key, com.destroystokyo.paper.Namespa

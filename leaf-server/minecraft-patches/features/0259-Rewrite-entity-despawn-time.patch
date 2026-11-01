@@ -1,6 +1,6 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: HaHaWTH <102713261+HaHaWTH@users.noreply.github.com>
-Date: Tue, 9 Nov 2077 00:00:00 +0800
+Date: Tue, 9 Sep 2025 00:00:00 +0800
 Subject: [PATCH] Rewrite entity despawn time
 
 HOW IT WORKS:
@@ -31,7 +31,6 @@ prominent legal notice accompanying the corresponding source:
 Original patch by HaHaWTH <102713261+HaHaWTH@users.noreply.github.com>
 
 diff --git a/ca/spottedleaf/moonrise/patches/chunk_system/level/entity/ChunkEntitySlices.java b/ca/spottedleaf/moonrise/patches/chunk_system/level/entity/ChunkEntitySlices.java
-index 81e72a1cd2de1bfeb4c78999148dd2e95ed782c2..2b90941bf6824719531582c27e640514742f0dd2 100644
 --- a/ca/spottedleaf/moonrise/patches/chunk_system/level/entity/ChunkEntitySlices.java
 +++ b/ca/spottedleaf/moonrise/patches/chunk_system/level/entity/ChunkEntitySlices.java
 @@ -183,6 +183,7 @@ public final class ChunkEntitySlices {
@@ -43,7 +42,6 @@ index 81e72a1cd2de1bfeb4c78999148dd2e95ed782c2..2b90941bf6824719531582c27e640514
                  PlatformHooks.get().unloadEntity(entity);
                  if (entity.isVehicle()) {
 diff --git a/ca/spottedleaf/moonrise/patches/chunk_system/level/entity/EntityLookup.java b/ca/spottedleaf/moonrise/patches/chunk_system/level/entity/EntityLookup.java
-index 0d8ca784122c70d74ad49c20821b535e1cb967a9..b5b3c91aee7e143e6879a2216ef84d7e10c88399 100644
 --- a/ca/spottedleaf/moonrise/patches/chunk_system/level/entity/EntityLookup.java
 +++ b/ca/spottedleaf/moonrise/patches/chunk_system/level/entity/EntityLookup.java
 @@ -51,6 +51,7 @@ public abstract class EntityLookup implements LevelEntityGetter<Entity> {
@@ -120,7 +118,6 @@ index 0d8ca784122c70d74ad49c20821b535e1cb967a9..b5b3c91aee7e143e6879a2216ef84d7e
  
          private final ChunkEntitySlices[] slices = new ChunkEntitySlices[REGION_SIZE * REGION_SIZE];
 diff --git a/net/minecraft/server/level/ServerLevel.java b/net/minecraft/server/level/ServerLevel.java
-index 8a1a796bbf219686491e443db48af1f9ed3aa46f..3d7e7d5b028a855a70d6513367a06933acad8f76 100644
 --- a/net/minecraft/server/level/ServerLevel.java
 +++ b/net/minecraft/server/level/ServerLevel.java
 @@ -1136,6 +1136,7 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
@@ -132,7 +129,6 @@ index 8a1a796bbf219686491e443db48af1f9ed3aa46f..3d7e7d5b028a855a70d6513367a06933
      }
  
 diff --git a/net/minecraft/world/entity/Entity.java b/net/minecraft/world/entity/Entity.java
-index 5ac99d7f7d722c39b6ccab578361aa6b30a275bb..0ee92958913826c41e1e16c335c8ae5f112e937c 100644
 --- a/net/minecraft/world/entity/Entity.java
 +++ b/net/minecraft/world/entity/Entity.java
 @@ -388,12 +388,14 @@ public abstract class Entity
@@ -264,7 +260,6 @@ index 5ac99d7f7d722c39b6ccab578361aa6b30a275bb..0ee92958913826c41e1e16c335c8ae5f
  
      @Override
 diff --git a/net/minecraft/world/entity/projectile/ThrowableProjectile.java b/net/minecraft/world/entity/projectile/ThrowableProjectile.java
-index 787addf20375517333f2b75f20aff026c5b953d1..49df6d81ff3d1feb7ab2c392f7a52cad5e3d012a 100644
 --- a/net/minecraft/world/entity/projectile/ThrowableProjectile.java
 +++ b/net/minecraft/world/entity/projectile/ThrowableProjectile.java
 @@ -42,6 +42,11 @@ public abstract class ThrowableProjectile extends Projectile {

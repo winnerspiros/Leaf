@@ -8,7 +8,6 @@ Original license: GPL-3.0-only
 Original project: https://github.com/Akarin-project/Akarin
 
 diff --git a/net/minecraft/server/players/StoredUserList.java b/net/minecraft/server/players/StoredUserList.java
-index 174febed3e10ed50c7ec8b1eb8771a533ce882fb..c589608f28cb00a35cce7fe48450cd5e38d77e4e 100644
 --- a/net/minecraft/server/players/StoredUserList.java
 +++ b/net/minecraft/server/players/StoredUserList.java
 @@ -125,13 +125,23 @@ public abstract class StoredUserList<K, V extends StoredUserEntry<K>> {

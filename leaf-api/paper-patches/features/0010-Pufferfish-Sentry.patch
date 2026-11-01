@@ -8,7 +8,6 @@ Original project: https://github.com/pufferfish-gg/Pufferfish
 
 diff --git a/src/main/java/gg/pufferfish/pufferfish/sentry/SentryContext.java b/src/main/java/gg/pufferfish/pufferfish/sentry/SentryContext.java
 new file mode 100644
-index 0000000000000000000000000000000000000000..f607154e5fd8caa82d1cb81da717125c1d8fc84f
 --- /dev/null
 +++ b/src/main/java/gg/pufferfish/pufferfish/sentry/SentryContext.java
 @@ -0,0 +1,171 @@
@@ -184,7 +183,6 @@ index 0000000000000000000000000000000000000000..f607154e5fd8caa82d1cb81da717125c
 +    }
 +}
 diff --git a/src/main/java/org/bukkit/plugin/SimplePluginManager.java b/src/main/java/org/bukkit/plugin/SimplePluginManager.java
-index d1a13d8893ffbbd2a3f90ec8f89bd584ef96032e..8eef253214979b22ca723f8a89b9fcc5aba92cd9 100644
 --- a/src/main/java/org/bukkit/plugin/SimplePluginManager.java
 +++ b/src/main/java/org/bukkit/plugin/SimplePluginManager.java
 @@ -596,7 +596,9 @@ public final class SimplePluginManager implements PluginManager {
@@ -210,7 +208,6 @@ index d1a13d8893ffbbd2a3f90ec8f89bd584ef96032e..8eef253214979b22ca723f8a89b9fcc5
                      callEvent(new com.destroystokyo.paper.event.server.ServerExceptionEvent(new com.destroystokyo.paper.exception.ServerEventException(msg, ex, registration.getPlugin(), registration.getListener(), event)));
                  }
 diff --git a/src/main/java/org/bukkit/plugin/java/JavaPluginLoader.java b/src/main/java/org/bukkit/plugin/java/JavaPluginLoader.java
-index 6c949cc016685d3909fa6542f92a2c9770220c9a..88af006d15643de1a9ccc39f6f18e48f1942c9b6 100644
 --- a/src/main/java/org/bukkit/plugin/java/JavaPluginLoader.java
 +++ b/src/main/java/org/bukkit/plugin/java/JavaPluginLoader.java
 @@ -336,7 +336,9 @@ public final class JavaPluginLoader implements PluginLoader {

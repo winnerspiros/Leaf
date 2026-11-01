@@ -7,7 +7,6 @@ Note: Some plugins may extend the PalettedContainer and delegate operations to t
 Keeps leaf$getDataAcquire, leaf$getFromData non-final, so they can override and redirect the access back.
 
 diff --git a/net/minecraft/world/level/chunk/PalettedContainer.java b/net/minecraft/world/level/chunk/PalettedContainer.java
-index 80136bf48b7a58af2c9382fc032200f9033fc89c..e39413d3db4e3457f47f672e1b238dfbcea9d279 100644
 --- a/net/minecraft/world/level/chunk/PalettedContainer.java
 +++ b/net/minecraft/world/level/chunk/PalettedContainer.java
 @@ -29,6 +29,18 @@ public class PalettedContainer<T> implements PaletteResize<T>, PalettedContainer

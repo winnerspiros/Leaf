@@ -42,7 +42,7 @@ public record TrackerTask(ServerLevel world, TrackerSlice entities, Reference2Re
                 FullChunkStatus status = entity.moonrise$getChunkStatus();
                 sendChanges = status != null && status.isOrAfter(FullChunkStatus.ENTITY_TICKING);
             }
-            if (sendChanges || entity.needsSync) {
+            if (sendChanges || entity.needsSync || entity.getEntityData().isDirty()) {
                 tracker.serverEntity.leaf$sendChanges(ctx, tracker, input, false);
             }
         }

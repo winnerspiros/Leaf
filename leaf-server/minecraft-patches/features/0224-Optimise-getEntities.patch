@@ -6,7 +6,6 @@ Subject: [PATCH] Optimise getEntities
 Co-authored by: Martijn Muijsers <martijnmuijsers@live.nl>
 
 diff --git a/ca/spottedleaf/moonrise/patches/chunk_system/level/entity/ChunkEntitySlices.java b/ca/spottedleaf/moonrise/patches/chunk_system/level/entity/ChunkEntitySlices.java
-index d825882a78f629e4789b4efdda946bd3ff8acfe6..81e72a1cd2de1bfeb4c78999148dd2e95ed782c2 100644
 --- a/ca/spottedleaf/moonrise/patches/chunk_system/level/entity/ChunkEntitySlices.java
 +++ b/ca/spottedleaf/moonrise/patches/chunk_system/level/entity/ChunkEntitySlices.java
 @@ -547,6 +547,15 @@ public final class ChunkEntitySlices {
@@ -85,7 +84,6 @@ index d825882a78f629e4789b4efdda946bd3ff8acfe6..81e72a1cd2de1bfeb4c78999148dd2e9
                      }
  
 diff --git a/net/minecraft/world/entity/LivingEntity.java b/net/minecraft/world/entity/LivingEntity.java
-index 25d0423660dd043601a677d1bdb4ced2bc9c4e2b..d0161c2620d57dac8fcc104cb53c49e6be1a4006 100644
 --- a/net/minecraft/world/entity/LivingEntity.java
 +++ b/net/minecraft/world/entity/LivingEntity.java
 @@ -2290,7 +2290,7 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin

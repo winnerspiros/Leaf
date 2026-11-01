@@ -6,7 +6,6 @@ Subject: [PATCH] fix skeleton horse trap NPE
 Prevent removing the goal during the goals iteration.
 
 diff --git a/net/minecraft/world/entity/animal/equine/SkeletonHorse.java b/net/minecraft/world/entity/animal/equine/SkeletonHorse.java
-index 7df95f57044a29d51af9d898535f1794941d3f31..e260669a389c554bdbc6ebc1e40c899872c7780d 100644
 --- a/net/minecraft/world/entity/animal/equine/SkeletonHorse.java
 +++ b/net/minecraft/world/entity/animal/equine/SkeletonHorse.java
 @@ -205,8 +205,10 @@ public class SkeletonHorse extends AbstractHorse {
@@ -22,7 +21,6 @@ index 7df95f57044a29d51af9d898535f1794941d3f31..e260669a389c554bdbc6ebc1e40c8998
          }
      }
 diff --git a/net/minecraft/world/entity/animal/equine/SkeletonTrapGoal.java b/net/minecraft/world/entity/animal/equine/SkeletonTrapGoal.java
-index 9f9e7b6b40f0cf12fd5fca848dc223553857b9a0..bb050ef8021200174741750d66dd6f8dff84fa8c 100644
 --- a/net/minecraft/world/entity/animal/equine/SkeletonTrapGoal.java
 +++ b/net/minecraft/world/entity/animal/equine/SkeletonTrapGoal.java
 @@ -20,6 +20,7 @@ public class SkeletonTrapGoal extends Goal {

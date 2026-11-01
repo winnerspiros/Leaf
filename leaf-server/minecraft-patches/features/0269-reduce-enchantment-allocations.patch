@@ -6,7 +6,6 @@ Subject: [PATCH] reduce enchantment allocations
 reduce allocation of creating entity loot contexts and unmodifiable set boxing
 
 diff --git a/net/minecraft/world/item/enchantment/Enchantment.java b/net/minecraft/world/item/enchantment/Enchantment.java
-index ebe405c0079081b67035f13979e500b15bd0e765..ca37ee9804020f1760bf7915a4471460fe6bfe36 100644
 --- a/net/minecraft/world/item/enchantment/Enchantment.java
 +++ b/net/minecraft/world/item/enchantment/Enchantment.java
 @@ -198,9 +198,15 @@ public record Enchantment(Component description, Enchantment.EnchantmentDefiniti
@@ -43,7 +42,6 @@ index ebe405c0079081b67035f13979e500b15bd0e765..ca37ee9804020f1760bf7915a4471460
              e -> e.apply(serverLevel, enchantmentLevel, item, entity, entity.position())
          );
 diff --git a/net/minecraft/world/item/enchantment/EnchantmentHelper.java b/net/minecraft/world/item/enchantment/EnchantmentHelper.java
-index 32daa598a75affc810463cc170ea155d992a569b..ff7ae9b5afaa79081e98fb63427d5e6a875779be 100644
 --- a/net/minecraft/world/item/enchantment/EnchantmentHelper.java
 +++ b/net/minecraft/world/item/enchantment/EnchantmentHelper.java
 @@ -132,7 +132,7 @@ public class EnchantmentHelper {
@@ -65,7 +63,6 @@ index 32daa598a75affc810463cc170ea155d992a569b..ff7ae9b5afaa79081e98fb63427d5e6a
                      if (enchantment.value().matchingSlot(slot)) {
                          method.accept(enchantment, entry.getIntValue(), itemInUse);
 diff --git a/net/minecraft/world/item/enchantment/ItemEnchantments.java b/net/minecraft/world/item/enchantment/ItemEnchantments.java
-index 9260e1c53da0c0e9c3650508c6c92bbf55336b3d..9a058c3a172c25ecacbc165f6be92a20470d993c 100644
 --- a/net/minecraft/world/item/enchantment/ItemEnchantments.java
 +++ b/net/minecraft/world/item/enchantment/ItemEnchantments.java
 @@ -101,6 +101,12 @@ public class ItemEnchantments implements TooltipProvider {

@@ -21,7 +21,6 @@ track:
 // SYNC SOURCE END
 
 diff --git a/net/minecraft/world/level/LocalMobCapCalculator.java b/net/minecraft/world/level/LocalMobCapCalculator.java
-index 5b3808e6ff58d350fe3fd65fb56e8f209e1b2c93..150dfb4c8465dea0139bdbf804a84ce28e8d9023 100644
 --- a/net/minecraft/world/level/LocalMobCapCalculator.java
 +++ b/net/minecraft/world/level/LocalMobCapCalculator.java
 @@ -42,14 +42,14 @@ public class LocalMobCapCalculator {

@@ -15,7 +15,6 @@ See: https://docs.oracle.com/javase/8/docs/api/java/util/Base64.html#:~:text=MIM
 And use the basic Base64 encoder to encode the data.
 
 diff --git a/src/test/java/org/bukkit/craftbukkit/inventory/ItemStackTest.java b/src/test/java/org/bukkit/craftbukkit/inventory/ItemStackTest.java
-index b3f8edc3c983467b908b39101072a94fd7360a07..277369e874add2af766c96c9cde90c0315f5c2d6 100644
 --- a/src/test/java/org/bukkit/craftbukkit/inventory/ItemStackTest.java
 +++ b/src/test/java/org/bukkit/craftbukkit/inventory/ItemStackTest.java
 @@ -24,7 +24,6 @@ import org.bukkit.util.io.BukkitObjectOutputStream;

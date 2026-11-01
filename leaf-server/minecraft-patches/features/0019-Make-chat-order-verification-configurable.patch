@@ -13,7 +13,6 @@ As part of: Pufferfish (https://github.com/pufferfish-gg/Pufferfish)
 Licensed under: GPL-3.0-only (https://www.gnu.org/licenses/gpl-3.0.html)
 
 diff --git a/net/minecraft/network/chat/SignedMessageChain.java b/net/minecraft/network/chat/SignedMessageChain.java
-index 9395c6a58ba37fb00c492065b8045f54de0a2246..fd5059c9f37af798036f2ac5dd55d7f9a4aafe97 100644
 --- a/net/minecraft/network/chat/SignedMessageChain.java
 +++ b/net/minecraft/network/chat/SignedMessageChain.java
 @@ -49,7 +49,7 @@ public class SignedMessageChain {

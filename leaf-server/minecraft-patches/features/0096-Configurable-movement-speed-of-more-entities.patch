@@ -5,7 +5,6 @@ Subject: [PATCH] Configurable movement speed of more entities
 
 
 diff --git a/net/minecraft/world/entity/monster/zombie/Drowned.java b/net/minecraft/world/entity/monster/zombie/Drowned.java
-index 33c8a321da348680849bf1652ccd66dc55b596ce..ac86980324931871c985619fa01f7fecc85062e7 100644
 --- a/net/minecraft/world/entity/monster/zombie/Drowned.java
 +++ b/net/minecraft/world/entity/monster/zombie/Drowned.java
 @@ -111,6 +111,7 @@ public class Drowned extends Zombie implements RangedAttackMob {
@@ -17,7 +16,6 @@ index 33c8a321da348680849bf1652ccd66dc55b596ce..ac86980324931871c985619fa01f7fec
  
      @Override
 diff --git a/net/minecraft/world/entity/monster/zombie/Husk.java b/net/minecraft/world/entity/monster/zombie/Husk.java
-index 753d5296fa1e49eb2629424fcf8cd7f533ffc32b..bc5dbe4a8649e8b0129ed7d393d9685ac5d8c948 100644
 --- a/net/minecraft/world/entity/monster/zombie/Husk.java
 +++ b/net/minecraft/world/entity/monster/zombie/Husk.java
 @@ -60,6 +60,7 @@ public class Husk extends Zombie {
@@ -29,7 +27,6 @@ index 753d5296fa1e49eb2629424fcf8cd7f533ffc32b..bc5dbe4a8649e8b0129ed7d393d9685a
  
      @Override
 diff --git a/net/minecraft/world/entity/monster/zombie/Zombie.java b/net/minecraft/world/entity/monster/zombie/Zombie.java
-index 8705b576dd95af7c34293762d7aaab584a03e06b..c35febe5271ca6a373f477abc71d9e07f2a3281c 100644
 --- a/net/minecraft/world/entity/monster/zombie/Zombie.java
 +++ b/net/minecraft/world/entity/monster/zombie/Zombie.java
 @@ -147,6 +147,7 @@ public class Zombie extends Monster {
@@ -50,7 +47,6 @@ index 8705b576dd95af7c34293762d7aaab584a03e06b..c35febe5271ca6a373f477abc71d9e07
              .add(Attributes.ARMOR, 2.0)
              .add(Attributes.SPAWN_REINFORCEMENTS_CHANCE);
 diff --git a/net/minecraft/world/entity/monster/zombie/ZombieVillager.java b/net/minecraft/world/entity/monster/zombie/ZombieVillager.java
-index 7fdc4657cf111712d9b67cb3b3c2f9c396f61540..aa019d9bded6641427ee030357ef5d29e6875b0f 100644
 --- a/net/minecraft/world/entity/monster/zombie/ZombieVillager.java
 +++ b/net/minecraft/world/entity/monster/zombie/ZombieVillager.java
 @@ -107,6 +107,7 @@ public class ZombieVillager extends Zombie implements VillagerDataHolder {
@@ -62,7 +58,6 @@ index 7fdc4657cf111712d9b67cb3b3c2f9c396f61540..aa019d9bded6641427ee030357ef5d29
  
      @Override
 diff --git a/net/minecraft/world/entity/monster/zombie/ZombifiedPiglin.java b/net/minecraft/world/entity/monster/zombie/ZombifiedPiglin.java
-index 8245dcf59c17d98a01ee509350bd79efca2b1bb3..842351864df5d0dab692edb166ec166259cb6511 100644
 --- a/net/minecraft/world/entity/monster/zombie/ZombifiedPiglin.java
 +++ b/net/minecraft/world/entity/monster/zombie/ZombifiedPiglin.java
 @@ -90,6 +90,7 @@ public class ZombifiedPiglin extends Zombie implements NeutralMob {
@@ -83,7 +78,6 @@ index 8245dcf59c17d98a01ee509350bd79efca2b1bb3..842351864df5d0dab692edb166ec1662
      }
  
 diff --git a/org/purpurmc/purpur/PurpurWorldConfig.java b/org/purpurmc/purpur/PurpurWorldConfig.java
-index fb6056efa01d30209d0db4a02bc2635beb130161..619f7c7744494d57217f5619a6b71d57d7381959 100644
 --- a/org/purpurmc/purpur/PurpurWorldConfig.java
 +++ b/org/purpurmc/purpur/PurpurWorldConfig.java
 @@ -1525,6 +1525,7 @@ public class PurpurWorldConfig {

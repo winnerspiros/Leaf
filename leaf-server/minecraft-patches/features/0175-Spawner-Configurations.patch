@@ -5,7 +5,6 @@ Subject: [PATCH] Spawner Configurations
 
 
 diff --git a/net/minecraft/world/level/BaseSpawner.java b/net/minecraft/world/level/BaseSpawner.java
-index 53dde75a5b8ed35afc67c5e7c74e92fe8d579a19..9f2b44a9e4759bb74b89ae5fb700f6fc47ed7d9f 100644
 --- a/net/minecraft/world/level/BaseSpawner.java
 +++ b/net/minecraft/world/level/BaseSpawner.java
 @@ -73,6 +73,12 @@ public abstract class BaseSpawner {

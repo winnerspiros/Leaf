@@ -21,7 +21,6 @@ track:
 // SYNC SOURCE END
 
 diff --git a/net/minecraft/world/entity/Entity.java b/net/minecraft/world/entity/Entity.java
-index 6ab05439c56317197f467db851cd5382078a6be4..7c6a947704ca3b9f23d56d18f0278aa1a8960a49 100644
 --- a/net/minecraft/world/entity/Entity.java
 +++ b/net/minecraft/world/entity/Entity.java
 @@ -285,6 +285,7 @@ public abstract class Entity

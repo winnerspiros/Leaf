@@ -37,7 +37,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 diff --git a/net/minecraft/server/level/WorldGenRegion.java b/net/minecraft/server/level/WorldGenRegion.java
-index 6f3b53b40df0263656dc195c82265de8374155d2..cc838464dbe2d2f060494ec913e589058bee24f3 100644
 --- a/net/minecraft/server/level/WorldGenRegion.java
 +++ b/net/minecraft/server/level/WorldGenRegion.java
 @@ -378,7 +378,7 @@ public class WorldGenRegion implements WorldGenLevel {

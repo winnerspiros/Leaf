@@ -5,7 +5,6 @@ Subject: [PATCH] Remove stream in YieldJobSite
 
 
 diff --git a/net/minecraft/world/entity/ai/behavior/YieldJobSite.java b/net/minecraft/world/entity/ai/behavior/YieldJobSite.java
-index 09cc0f75c0dea7d9ef9caf9b1f14f46e4da84375..a3751f59d1a058d9be95cea7e3ae43a51447cc35 100644
 --- a/net/minecraft/world/entity/ai/behavior/YieldJobSite.java
 +++ b/net/minecraft/world/entity/ai/behavior/YieldJobSite.java
 @@ -41,23 +41,26 @@ public class YieldJobSite {

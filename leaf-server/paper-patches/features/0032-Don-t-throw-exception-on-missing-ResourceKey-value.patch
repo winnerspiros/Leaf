@@ -5,7 +5,6 @@ Subject: [PATCH] Don't throw exception on missing ResourceKey value
 
 
 diff --git a/src/main/java/io/papermc/paper/configuration/serializer/registry/RegistryValueSerializer.java b/src/main/java/io/papermc/paper/configuration/serializer/registry/RegistryValueSerializer.java
-index 6d39c5ee997f051147180c1d6f23d2a18e3f3aa4..400c501d93e376669e3c3efb84ad7ff0af121bee 100644
 --- a/src/main/java/io/papermc/paper/configuration/serializer/registry/RegistryValueSerializer.java
 +++ b/src/main/java/io/papermc/paper/configuration/serializer/registry/RegistryValueSerializer.java
 @@ -33,7 +33,11 @@ public final class RegistryValueSerializer<T> extends RegistryEntrySerializer<T,

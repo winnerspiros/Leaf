@@ -5,7 +5,6 @@ Subject: [PATCH] Don't save falling block entity
 
 
 diff --git a/net/minecraft/world/entity/item/FallingBlockEntity.java b/net/minecraft/world/entity/item/FallingBlockEntity.java
-index 95a2c47dfaef33737afb4843ea5a784d0392046e..d252ebd7a4b59c106e68feeffa881f2e39430d4f 100644
 --- a/net/minecraft/world/entity/item/FallingBlockEntity.java
 +++ b/net/minecraft/world/entity/item/FallingBlockEntity.java
 @@ -398,4 +398,11 @@ public class FallingBlockEntity extends Entity {

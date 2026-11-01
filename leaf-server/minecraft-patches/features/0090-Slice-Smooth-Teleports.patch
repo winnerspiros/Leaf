@@ -9,7 +9,6 @@ Original project: https://github.com/Cryptite/Slice
 Co-authored-by: HaHaWTH <102713261+HaHaWTH@users.noreply.github.com>
 
 diff --git a/net/minecraft/server/level/ServerPlayer.java b/net/minecraft/server/level/ServerPlayer.java
-index 9d0ccf42e69b41a47affafdf823909238b1f5d25..f23f9a52e43c74a3b7815d668270bc57e1fd2ec5 100644
 --- a/net/minecraft/server/level/ServerPlayer.java
 +++ b/net/minecraft/server/level/ServerPlayer.java
 @@ -451,6 +451,7 @@ public class ServerPlayer extends Player implements ca.spottedleaf.moonrise.patc
@@ -21,7 +20,6 @@ index 9d0ccf42e69b41a47affafdf823909238b1f5d25..f23f9a52e43c74a3b7815d668270bc57
      // Paper start - rewrite chunk system
      private ca.spottedleaf.moonrise.patches.chunk_system.player.RegionizedPlayerChunkLoader.PlayerChunkLoaderData chunkLoader;
 diff --git a/net/minecraft/server/players/PlayerList.java b/net/minecraft/server/players/PlayerList.java
-index 2d6fa3f00fb583030c2b7105cf20aa48f5aa8f16..b6d7077264eeddeae2b60257b7c1a43c94fa43d7 100644
 --- a/net/minecraft/server/players/PlayerList.java
 +++ b/net/minecraft/server/players/PlayerList.java
 @@ -665,8 +665,10 @@ public abstract class PlayerList {

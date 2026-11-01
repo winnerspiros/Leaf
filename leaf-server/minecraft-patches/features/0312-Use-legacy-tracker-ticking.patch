@@ -10,7 +10,6 @@ Paper pull request: https://github.com/PaperMC/Paper/pull/13094
 Related MC issue: https://mojira.dev/MC-297196
 
 diff --git a/net/minecraft/server/level/ServerChunkCache.java b/net/minecraft/server/level/ServerChunkCache.java
-index 7ba08ffc25986343dd82e610940276211cfb2b29..1624e8792d6002b675e8bcfe5ccd5f0993f0d8d2 100644
 --- a/net/minecraft/server/level/ServerChunkCache.java
 +++ b/net/minecraft/server/level/ServerChunkCache.java
 @@ -532,7 +532,7 @@ public class ServerChunkCache extends ChunkSource implements ca.spottedleaf.moon
@@ -23,7 +22,6 @@ index 7ba08ffc25986343dd82e610940276211cfb2b29..1624e8792d6002b675e8bcfe5ccd5f09
  
          profiler.popPush("unload");
 diff --git a/net/minecraft/server/level/ServerLevel.java b/net/minecraft/server/level/ServerLevel.java
-index f8ae4d5d4796f46a79a9393a092812da8ce6089b..7c73f5373d741c5703fff7f5e6eb66d6916b6d8f 100644
 --- a/net/minecraft/server/level/ServerLevel.java
 +++ b/net/minecraft/server/level/ServerLevel.java
 @@ -1158,6 +1158,7 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet

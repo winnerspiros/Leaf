@@ -6,7 +6,6 @@ Subject: [PATCH] Null handling on MultifaceSpreader
 WHYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
 
 diff --git a/net/minecraft/world/level/block/MultifaceSpreader.java b/net/minecraft/world/level/block/MultifaceSpreader.java
-index 2cbd6be3ba3495f9040af1fc2eba6eeb232103c9..0d47600f9463437af76b17ea765f4382a24b288d 100644
 --- a/net/minecraft/world/level/block/MultifaceSpreader.java
 +++ b/net/minecraft/world/level/block/MultifaceSpreader.java
 @@ -172,6 +172,13 @@ public class MultifaceSpreader {

@@ -37,7 +37,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 diff --git a/net/minecraft/world/entity/ai/goal/RangedBowAttackGoal.java b/net/minecraft/world/entity/ai/goal/RangedBowAttackGoal.java
-index 50f12f2581267827c394134cd51a09016a5fa2b0..1b2edb6ebf41041bf1d3aabcfe8ea348c0dcd469 100644
 --- a/net/minecraft/world/entity/ai/goal/RangedBowAttackGoal.java
 +++ b/net/minecraft/world/entity/ai/goal/RangedBowAttackGoal.java
 @@ -103,7 +103,10 @@ public class RangedBowAttackGoal<T extends Monster & RangedAttackMob> extends Go

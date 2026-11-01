@@ -5,7 +5,6 @@ Subject: [PATCH] Fix sprint glitch
 
 
 diff --git a/net/minecraft/world/entity/LivingEntity.java b/net/minecraft/world/entity/LivingEntity.java
-index 3f554b998df6811f81e6825f274775765e9aab42..c0eef60bfbdc67dbed2845c2a4e397094beb2ae7 100644
 --- a/net/minecraft/world/entity/LivingEntity.java
 +++ b/net/minecraft/world/entity/LivingEntity.java
 @@ -1438,7 +1438,8 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin

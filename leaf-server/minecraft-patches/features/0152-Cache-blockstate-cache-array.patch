@@ -9,7 +9,6 @@ Cache values to reduce allocations.
 The JMH benchmark of this patch can be found in SunBox's `CachedEnumValuesForLoop`
 
 diff --git a/net/minecraft/world/level/block/state/BlockBehaviour.java b/net/minecraft/world/level/block/state/BlockBehaviour.java
-index 2865473782fa9a31600b82d612048f0d1f2cec17..a9afca646255d4918da8697f73da738eec85813a 100644
 --- a/net/minecraft/world/level/block/state/BlockBehaviour.java
 +++ b/net/minecraft/world/level/block/state/BlockBehaviour.java
 @@ -1135,6 +1135,10 @@ public abstract class BlockBehaviour implements FeatureElement {

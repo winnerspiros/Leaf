@@ -5,7 +5,6 @@ Subject: [PATCH] Async switch connection state
 
 
 diff --git a/net/minecraft/network/Connection.java b/net/minecraft/network/Connection.java
-index 6ccc4d2a9acce111fbcdaaf3590c8b09b31b2c1d..00e8e9502c848a990b3594a81fe849d43dfa52d0 100644
 --- a/net/minecraft/network/Connection.java
 +++ b/net/minecraft/network/Connection.java
 @@ -331,6 +331,11 @@ public class Connection extends SimpleChannelInboundHandler<Packet<?>> {
@@ -69,7 +68,6 @@ index 6ccc4d2a9acce111fbcdaaf3590c8b09b31b2c1d..00e8e9502c848a990b3594a81fe849d4
          if (this.packetListener != null) {
              throw new IllegalStateException("Listener already set");
 diff --git a/net/minecraft/server/network/ServerConfigurationPacketListenerImpl.java b/net/minecraft/server/network/ServerConfigurationPacketListenerImpl.java
-index 6baa9d2a8af7901d47964e6d7ad53ea7963ceeef..b6fbcd4329d94af940b1aff50d9b1ae7e491ca1b 100644
 --- a/net/minecraft/server/network/ServerConfigurationPacketListenerImpl.java
 +++ b/net/minecraft/server/network/ServerConfigurationPacketListenerImpl.java
 @@ -192,11 +192,33 @@ public class ServerConfigurationPacketListenerImpl extends ServerCommonPacketLis
@@ -107,7 +105,6 @@ index 6baa9d2a8af7901d47964e6d7ad53ea7963ceeef..b6fbcd4329d94af940b1aff50d9b1ae7
          try {
              PlayerList playerList = this.server.getPlayerList();
 diff --git a/net/minecraft/server/network/ServerLoginPacketListenerImpl.java b/net/minecraft/server/network/ServerLoginPacketListenerImpl.java
-index e50ed0fc29826eacf5aa03c05ea6a401fb1420d6..f738257d310b6fd02ca63e2d9475fd32560dd3af 100644
 --- a/net/minecraft/server/network/ServerLoginPacketListenerImpl.java
 +++ b/net/minecraft/server/network/ServerLoginPacketListenerImpl.java
 @@ -455,11 +455,30 @@ public class ServerLoginPacketListenerImpl implements ServerLoginPacketListener,

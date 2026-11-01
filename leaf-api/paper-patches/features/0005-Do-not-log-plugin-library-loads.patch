@@ -37,7 +37,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 diff --git a/src/main/java/org/bukkit/plugin/java/JavaPluginLoader.java b/src/main/java/org/bukkit/plugin/java/JavaPluginLoader.java
-index 163e9a0e179dc88be93614ff66ee2be3eccc694f..539786355ac89b5eb8ad876e65662e844d4654e3 100644
 --- a/src/main/java/org/bukkit/plugin/java/JavaPluginLoader.java
 +++ b/src/main/java/org/bukkit/plugin/java/JavaPluginLoader.java
 @@ -54,6 +54,13 @@ public final class JavaPluginLoader implements PluginLoader {
@@ -55,7 +54,6 @@ index 163e9a0e179dc88be93614ff66ee2be3eccc694f..539786355ac89b5eb8ad876e65662e84
       * This class was not meant to be constructed explicitly
       *
 diff --git a/src/main/java/org/bukkit/plugin/java/LibraryLoader.java b/src/main/java/org/bukkit/plugin/java/LibraryLoader.java
-index 35b36ba0901088c2c29111ca07c752ac0fbfd32c..44d6810dcd5688b89632ceaeaddc9f524a71ab39 100644
 --- a/src/main/java/org/bukkit/plugin/java/LibraryLoader.java
 +++ b/src/main/java/org/bukkit/plugin/java/LibraryLoader.java
 @@ -68,6 +68,7 @@ public class LibraryLoader {

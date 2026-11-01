@@ -16,7 +16,6 @@ With this approach only new methods are added into already existing Bukkit API, 
   get standarized.
 
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 6f9a729fdba3b08cc680991f0cdac354c390b401..6c4f920a4dc78ed23045c1de7eb879cd2a1456bf 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 @@ -3099,4 +3099,11 @@ public final class CraftServer implements Server {
@@ -32,7 +31,6 @@ index 6f9a729fdba3b08cc680991f0cdac354c390b401..6c4f920a4dc78ed23045c1de7eb879cd
 +    // Fish end - Parallel World Ticking API
  }
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftWorld.java b/src/main/java/org/bukkit/craftbukkit/CraftWorld.java
-index 92900859f98dca52da8e79ca19474f263ddaf0ae..f9e3b20250868d4e0fed5dc3748ec8b27e82d656 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftWorld.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftWorld.java
 @@ -2126,4 +2126,15 @@ public class CraftWorld extends CraftRegionAccessor implements World {

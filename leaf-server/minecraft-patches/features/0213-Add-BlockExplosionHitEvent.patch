@@ -5,7 +5,6 @@ Subject: [PATCH] Add BlockExplosionHitEvent
 
 
 diff --git a/net/minecraft/world/level/ServerExplosion.java b/net/minecraft/world/level/ServerExplosion.java
-index aa000036aa3390ba0d87056ffff8144887e599de..e649684b5fab7fdea0dd69d4d511d26c0a1d764c 100644
 --- a/net/minecraft/world/level/ServerExplosion.java
 +++ b/net/minecraft/world/level/ServerExplosion.java
 @@ -602,7 +602,11 @@ public class ServerExplosion implements Explosion {

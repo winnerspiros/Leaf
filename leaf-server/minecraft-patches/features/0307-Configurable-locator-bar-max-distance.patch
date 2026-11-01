@@ -21,7 +21,6 @@ still take precedence. Defaults to 0, which keeps vanilla behaviour.
 Similar Paper PR: https://github.com/PaperMC/Paper/pull/13376
 
 diff --git a/net/minecraft/world/waypoints/WaypointTransmitter.java b/net/minecraft/world/waypoints/WaypointTransmitter.java
-index 6077e1a0ae8448f4d975676f0eaf19ddbd45bd4b..a249f2ea782dd82c6ddd5fcf22da2a3bb56e9d8b 100644
 --- a/net/minecraft/world/waypoints/WaypointTransmitter.java
 +++ b/net/minecraft/world/waypoints/WaypointTransmitter.java
 @@ -27,6 +27,12 @@ public interface WaypointTransmitter extends Waypoint {

@@ -1,6 +1,6 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: HaHaWTH <102713261+HaHaWTH@users.noreply.github.com>
-Date: Tue, 9 Nov 2077 00:00:00 +0800
+Date: Tue, 9 Sep 2025 00:00:00 +0800
 Subject: [PATCH] Remove stream in PlayerSensor
 
 Stream operations in PlayerSensor take too much time
@@ -9,7 +9,6 @@ Before: 164ms
 After: 18ms
 
 diff --git a/net/minecraft/world/entity/ai/sensing/PlayerSensor.java b/net/minecraft/world/entity/ai/sensing/PlayerSensor.java
-index 22f58ba0bce5db69c7bcea76d40bac6079f5581a..de2b16a09051bfa4f1cae42827e181be7291dcdd 100644
 --- a/net/minecraft/world/entity/ai/sensing/PlayerSensor.java
 +++ b/net/minecraft/world/entity/ai/sensing/PlayerSensor.java
 @@ -26,17 +26,39 @@ public class PlayerSensor extends Sensor<LivingEntity> {

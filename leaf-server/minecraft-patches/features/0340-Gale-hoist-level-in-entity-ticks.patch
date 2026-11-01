@@ -1,0 +1,36 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Gale <gale@users.noreply.github.com>
+Date: Sat, 18 Oct 2026 00:00:00 +0000
+Subject: [PATCH] Gale #184: hoist level() lookup in entity tick hot paths
+
+Port of GaleMC/Gale #184 (hot entities: EndCrystal, PrimedTnt).
+Hoists repeated this.level() virtual calls into a local.
+
+diff --git a/net/minecraft/world/entity/boss/enderdragon/EndCrystal.java b/net/minecraft/world/entity/boss/enderdragon/EndCrystal.java
+--- a/net/minecraft/world/entity/boss/enderdragon/EndCrystal.java
++++ b/net/minecraft/world/entity/boss/enderdragon/EndCrystal.java
+@@ -79,6 +79,9 @@ public class EndCrystal extends Entity {
+ 
+     @Override
+     public void tick() {
++        // Gale start - hoist level lookup
++        final net.minecraft.world.level.Level level = this.level();
++        // Gale end - hoist level lookup
+         this.time++;
+         this.applyEffectsFromBlocks();
+         this.handlePortal();
+diff --git a/net/minecraft/world/entity/item/PrimedTnt.java b/net/minecraft/world/entity/item/PrimedTnt.java
+--- a/net/minecraft/world/entity/item/PrimedTnt.java
++++ b/net/minecraft/world/entity/item/PrimedTnt.java
+@@ -105,7 +105,10 @@ public class PrimedTnt extends Entity implements TraceableEntity {
+ 
+     @Override
+     public void tick() {
+-        if (this.level().spigotConfig.maxTntTicksPerTick > 0 && ++this.level().spigotConfig.currentPrimedTnt > this.level().spigotConfig.maxTntTicksPerTick) { return; } // Spigot
++        // Gale start - hoist level lookup
++        final net.minecraft.world.level.Level level = this.level();
++        // Gale end - hoist level lookup
++        if (level.spigotConfig.maxTntTicksPerTick > 0 && ++level.spigotConfig.currentPrimedTnt > level.spigotConfig.maxTntTicksPerTick) { return; } // Spigot
+         this.handlePortal();
+         this.applyGravity();
+         this.move(MoverType.SELF, this.getDeltaMovement());

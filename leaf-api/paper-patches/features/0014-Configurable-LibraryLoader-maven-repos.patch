@@ -7,7 +7,6 @@ Add JVM flag `-DLeaf.library-download-repo=link` to choose library download repo
 e.g. `-DLeaf.library-download-repo=https://maven.aliyun.com/repository/public`
 
 diff --git a/src/main/java/io/papermc/paper/plugin/loader/library/impl/MavenLibraryResolver.java b/src/main/java/io/papermc/paper/plugin/loader/library/impl/MavenLibraryResolver.java
-index bb715d2ee5b0c548ac2d2d07bfaa2cb456794bb9..39a17aa75a8934cf7a9aebf9e3650b1d742564e9 100644
 --- a/src/main/java/io/papermc/paper/plugin/loader/library/impl/MavenLibraryResolver.java
 +++ b/src/main/java/io/papermc/paper/plugin/loader/library/impl/MavenLibraryResolver.java
 @@ -59,12 +59,24 @@ public class MavenLibraryResolver implements ClassPathLibrary {
@@ -88,7 +87,6 @@ index bb715d2ee5b0c548ac2d2d07bfaa2cb456794bb9..39a17aa75a8934cf7a9aebf9e3650b1d
 +    // Leaf end - Configurable LibraryLoader maven repos
  }
 diff --git a/src/main/java/org/bukkit/plugin/java/LibraryLoader.java b/src/main/java/org/bukkit/plugin/java/LibraryLoader.java
-index 44d6810dcd5688b89632ceaeaddc9f524a71ab39..1d2f29cf746cf2bcf7db74a3b0ad516fd52995da 100644
 --- a/src/main/java/org/bukkit/plugin/java/LibraryLoader.java
 +++ b/src/main/java/org/bukkit/plugin/java/LibraryLoader.java
 @@ -49,6 +49,7 @@ public class LibraryLoader {

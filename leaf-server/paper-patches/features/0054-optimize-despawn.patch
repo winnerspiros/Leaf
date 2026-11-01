@@ -5,7 +5,6 @@ Subject: [PATCH] optimize despawn
 
 
 diff --git a/src/main/java/io/papermc/paper/configuration/WorldConfiguration.java b/src/main/java/io/papermc/paper/configuration/WorldConfiguration.java
-index 16d3b177f396396d68afe039a707bb7469dd4e6f..50172e58ef612b9ba956ad2ac75077e2b5426c26 100644
 --- a/src/main/java/io/papermc/paper/configuration/WorldConfiguration.java
 +++ b/src/main/java/io/papermc/paper/configuration/WorldConfiguration.java
 @@ -181,7 +181,7 @@ public class WorldConfiguration extends ConfigurationPart {
@@ -18,7 +17,6 @@ index 16d3b177f396396d68afe039a707bb7469dd4e6f..50172e58ef612b9ba956ad2ac75077e2
              @MergeMap
              public Reference2IntMap<MobCategory> ticksPerSpawn = Util.make(new Reference2IntOpenHashMap<>(NaturalSpawner.SPAWNING_CATEGORIES.length), map -> Arrays.stream(NaturalSpawner.SPAWNING_CATEGORIES).forEach(mobCategory -> map.put(mobCategory, -1)));
 diff --git a/src/main/java/io/papermc/paper/configuration/type/DespawnRange.java b/src/main/java/io/papermc/paper/configuration/type/DespawnRange.java
-index 7779edcbbce36d7da177a92807dac73fbe24c9fa..093638ded4e35a33f34ef3d0e0fc2175efc5efaf 100644
 --- a/src/main/java/io/papermc/paper/configuration/type/DespawnRange.java
 +++ b/src/main/java/io/papermc/paper/configuration/type/DespawnRange.java
 @@ -20,8 +20,8 @@ public final class DespawnRange {

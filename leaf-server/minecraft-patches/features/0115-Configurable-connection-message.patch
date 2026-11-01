@@ -5,7 +5,6 @@ Subject: [PATCH] Configurable connection message
 
 
 diff --git a/net/minecraft/server/players/PlayerList.java b/net/minecraft/server/players/PlayerList.java
-index 5927ba28af48ee17b709eb3f0df43c5a0dd34cb3..64521b89130065c8350ba8c1187c73adfcad487e 100644
 --- a/net/minecraft/server/players/PlayerList.java
 +++ b/net/minecraft/server/players/PlayerList.java
 @@ -244,7 +244,7 @@ public abstract class PlayerList {

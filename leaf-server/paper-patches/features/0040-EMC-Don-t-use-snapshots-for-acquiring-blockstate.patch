@@ -7,7 +7,6 @@ Original license: MIT
 Original project: https://github.com/starlis/empirecraft
 
 diff --git a/src/main/java/org/bukkit/craftbukkit/block/CraftBlock.java b/src/main/java/org/bukkit/craftbukkit/block/CraftBlock.java
-index 0ab39922e53ebeb044958f99b7f0f06391d78d31..ef13f200d35b49c1d7b99b0a79e9c424898173f9 100644
 --- a/src/main/java/org/bukkit/craftbukkit/block/CraftBlock.java
 +++ b/src/main/java/org/bukkit/craftbukkit/block/CraftBlock.java
 @@ -293,7 +293,7 @@ public class CraftBlock implements Block {
@@ -20,7 +19,6 @@ index 0ab39922e53ebeb044958f99b7f0f06391d78d31..ef13f200d35b49c1d7b99b0a79e9c424
  
      @Override
 diff --git a/src/main/java/org/bukkit/craftbukkit/block/CraftBlockStates.java b/src/main/java/org/bukkit/craftbukkit/block/CraftBlockStates.java
-index a238403918013160ea7aabc3fa2f6a6fca0bf9d5..a848fa64659786818e74161a07d1fabcfe8978c4 100644
 --- a/src/main/java/org/bukkit/craftbukkit/block/CraftBlockStates.java
 +++ b/src/main/java/org/bukkit/craftbukkit/block/CraftBlockStates.java
 @@ -193,7 +193,7 @@ public final class CraftBlockStates {

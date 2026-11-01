@@ -6,7 +6,6 @@ Subject: [PATCH] Avoid regex in Material#matchMaterial
 The JMH benchmark of this patch can be found in SunBox's `MaterialMatchBenchmark`
 
 diff --git a/src/main/java/org/bukkit/Material.java b/src/main/java/org/bukkit/Material.java
-index 3390c05258c1b93bf1295935e7704b4d6e234b58..93b1ab6dcfe15bc2969e347c1ac787bb2ceb4675 100644
 --- a/src/main/java/org/bukkit/Material.java
 +++ b/src/main/java/org/bukkit/Material.java
 @@ -3117,12 +3117,51 @@ public enum Material implements Keyed, Translatable, net.kyori.adventure.transla

@@ -13,7 +13,6 @@ As part of: EmpireCraft (https://github.com/starlis/empirecraft)
 Licensed under: MIT (https://opensource.org/licenses/MIT)
 
 diff --git a/net/minecraft/stats/ServerStatsCounter.java b/net/minecraft/stats/ServerStatsCounter.java
-index f5beb001b938072e78c0ead7e0ad0499784ed1cf..eb40f1bdab68d51047df702a0e4ad8a7931a134f 100644
 --- a/net/minecraft/stats/ServerStatsCounter.java
 +++ b/net/minecraft/stats/ServerStatsCounter.java
 @@ -121,7 +121,7 @@ public class ServerStatsCounter extends StatsCounter {

@@ -5,7 +5,6 @@ Subject: [PATCH] Optimize map lookups with isEmpty check
 
 
 diff --git a/net/minecraft/world/entity/Entity.java b/net/minecraft/world/entity/Entity.java
-index ca09f0ac7d7c8c12a342bd509bf00418347afb7c..ce9a31b46defd76721925b1f194a2bbe8d9bdcf3 100644
 --- a/net/minecraft/world/entity/Entity.java
 +++ b/net/minecraft/world/entity/Entity.java
 @@ -270,6 +270,7 @@ public abstract class Entity
@@ -108,7 +107,6 @@ index ca09f0ac7d7c8c12a342bd509bf00418347afb7c..ce9a31b46defd76721925b1f194a2bbe
      }
  
 diff --git a/net/minecraft/world/entity/LivingEntity.java b/net/minecraft/world/entity/LivingEntity.java
-index 5e6648490a3cd6dc19f1a289768f6b775ed9f12c..aa3dc105ae6ca6bc039e306741d340e8e7037e0d 100644
 --- a/net/minecraft/world/entity/LivingEntity.java
 +++ b/net/minecraft/world/entity/LivingEntity.java
 @@ -1168,7 +1168,7 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin
@@ -130,7 +128,6 @@ index 5e6648490a3cd6dc19f1a289768f6b775ed9f12c..aa3dc105ae6ca6bc039e306741d340e8
      // CraftBukkit end
  
 diff --git a/net/minecraft/world/entity/Mob.java b/net/minecraft/world/entity/Mob.java
-index 445e33a5e8d923b40ef389b92ce779bab71edb49..8136b8372ec575ba21adec541fe1d926e005b1e8 100644
 --- a/net/minecraft/world/entity/Mob.java
 +++ b/net/minecraft/world/entity/Mob.java
 @@ -1768,7 +1768,7 @@ public abstract class Mob extends LivingEntity implements Targeting, EquipmentUs
@@ -143,7 +140,6 @@ index 445e33a5e8d923b40ef389b92ce779bab71edb49..8136b8372ec575ba21adec541fe1d926
          }
          if (this instanceof TamableAnimal tamable) {
 diff --git a/net/minecraft/world/entity/monster/piglin/Piglin.java b/net/minecraft/world/entity/monster/piglin/Piglin.java
-index ce0f6871057e386ada6f5e12b4001f54d3105847..29f313ad83f60116ae03b4766c79614b2a31c738 100644
 --- a/net/minecraft/world/entity/monster/piglin/Piglin.java
 +++ b/net/minecraft/world/entity/monster/piglin/Piglin.java
 @@ -471,7 +471,7 @@ public class Piglin extends AbstractPiglin implements CrossbowAttackMob, Invento
@@ -156,7 +152,6 @@ index ce0f6871057e386ada6f5e12b4001f54d3105847..29f313ad83f60116ae03b4766c79614b
  
      @Override
 diff --git a/net/minecraft/world/entity/vehicle/minecart/AbstractMinecart.java b/net/minecraft/world/entity/vehicle/minecart/AbstractMinecart.java
-index 39b018231a92a979fce3cb9d8f8a24e5d3722324..487c13536fd1c57e6a140af2a9c4602c551edd08 100644
 --- a/net/minecraft/world/entity/vehicle/minecart/AbstractMinecart.java
 +++ b/net/minecraft/world/entity/vehicle/minecart/AbstractMinecart.java
 @@ -453,7 +453,7 @@ public abstract class AbstractMinecart extends VehicleEntity {

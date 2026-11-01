@@ -10,7 +10,6 @@ Licensed under: LGPL-3.0-only (https://www.gnu.org/licenses/lgpl-3.0.html)
 Co-authored-by: MrlingXD <90316914+wling-art@users.noreply.github.com>
 
 diff --git a/net/minecraft/core/BlockPos.java b/net/minecraft/core/BlockPos.java
-index c183047c17386d78f04120b390abcc6f542c7615..8d176d34218d453eb44632e3ce9ef16733b2c271 100644
 --- a/net/minecraft/core/BlockPos.java
 +++ b/net/minecraft/core/BlockPos.java
 @@ -320,6 +320,11 @@ public class BlockPos extends Vec3i {
@@ -39,7 +38,6 @@ index c183047c17386d78f04120b390abcc6f542c7615..8d176d34218d453eb44632e3ce9ef167
      }
  
 diff --git a/net/minecraft/world/level/levelgen/feature/DeltaFeature.java b/net/minecraft/world/level/levelgen/feature/DeltaFeature.java
-index a3b0cd69a2f724ecd99da3e9564fe27cb5b92416..efbd00c7918ba007ce3ebdae8beeca5999c52600 100644
 --- a/net/minecraft/world/level/levelgen/feature/DeltaFeature.java
 +++ b/net/minecraft/world/level/levelgen/feature/DeltaFeature.java
 @@ -47,7 +47,7 @@ public record DeltaFeature(BlockState contents, BlockState rim, IntProvider size
@@ -52,7 +50,6 @@ index a3b0cd69a2f724ecd99da3e9564fe27cb5b92416..efbd00c7918ba007ce3ebdae8beeca59
                  break;
              }
 diff --git a/net/minecraft/world/level/levelgen/feature/ReplaceBlobsFeature.java b/net/minecraft/world/level/levelgen/feature/ReplaceBlobsFeature.java
-index 270065e06e9b49faa3637aa18b6690ae8a2c57a8..4cd03ba1915460e5aca305cbd838765ea8d31602 100644
 --- a/net/minecraft/world/level/levelgen/feature/ReplaceBlobsFeature.java
 +++ b/net/minecraft/world/level/levelgen/feature/ReplaceBlobsFeature.java
 @@ -43,7 +43,7 @@ public record ReplaceBlobsFeature(BlockState targetState, BlockState replaceStat

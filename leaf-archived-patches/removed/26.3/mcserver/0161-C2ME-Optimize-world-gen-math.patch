@@ -1,6 +1,6 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: HaHaWTH <102713261+HaHaWTH@users.noreply.github.com>
-Date: Tue, 9 Nov 2077 00:00:00 +0800
+Date: Tue, 9 Sep 2025 00:00:00 +0800
 Subject: [PATCH] C2ME: Optimize world gen math
 
 Removed since Leaf 26.3:
@@ -21,7 +21,6 @@ track:
 // SYNC SOURCE END
 
 diff --git a/net/minecraft/world/level/levelgen/Beardifier.java b/net/minecraft/world/level/levelgen/Beardifier.java
-index 7041d673e6f6b7b629d325fee770e640f75725a1..7e6a1a0e213c12405ce660a22f4c574199c25f9e 100644
 --- a/net/minecraft/world/level/levelgen/Beardifier.java
 +++ b/net/minecraft/world/level/levelgen/Beardifier.java
 @@ -135,45 +135,52 @@ public class Beardifier implements DensitySampler {

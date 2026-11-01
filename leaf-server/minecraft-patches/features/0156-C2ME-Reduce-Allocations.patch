@@ -19,7 +19,6 @@ track:
 // SYNC SOURCE END
 
 diff --git a/net/minecraft/world/level/levelgen/feature/OreFeature.java b/net/minecraft/world/level/levelgen/feature/OreFeature.java
-index e6aee6a38f45b47413aa3bbddf3632bc0c6a93f5..7e902e3d4d25f808e4907d051942cb8d2aa1e515 100644
 --- a/net/minecraft/world/level/levelgen/feature/OreFeature.java
 +++ b/net/minecraft/world/level/levelgen/feature/OreFeature.java
 @@ -80,7 +80,7 @@ public class OreFeature extends AbstractOreFeature {

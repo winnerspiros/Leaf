@@ -5,7 +5,6 @@ Subject: [PATCH] Bulk writes to writeLongArray during chunk loading
 
 
 diff --git a/net/minecraft/network/FriendlyByteBuf.java b/net/minecraft/network/FriendlyByteBuf.java
-index b63d24683f7b3b1f11e927cf4261ff2d05cdbd38..9af154e650563c100774f28c45ad0d3dc831604c 100644
 --- a/net/minecraft/network/FriendlyByteBuf.java
 +++ b/net/minecraft/network/FriendlyByteBuf.java
 @@ -252,7 +252,7 @@ public class FriendlyByteBuf extends ByteBuf {

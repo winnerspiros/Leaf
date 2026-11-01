@@ -22,7 +22,6 @@ track:
 // SYNC SOURCE END
 
 diff --git a/net/minecraft/world/level/EntityBasedExplosionDamageCalculator.java b/net/minecraft/world/level/EntityBasedExplosionDamageCalculator.java
-index 356a3a0dda09af007c3fbddfe360b38f4d7204ce..aff8d67c9b9797402a3bf6c5bce54af19af0ade7 100644
 --- a/net/minecraft/world/level/EntityBasedExplosionDamageCalculator.java
 +++ b/net/minecraft/world/level/EntityBasedExplosionDamageCalculator.java
 @@ -17,8 +17,20 @@ public class EntityBasedExplosionDamageCalculator extends ExplosionDamageCalcula

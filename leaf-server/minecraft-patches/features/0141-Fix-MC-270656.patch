@@ -1,12 +1,11 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: HaHaWTH <102713261+HaHaWTH@users.noreply.github.com>
-Date: Tue, 9 Nov 2077 00:00:00 +0800
+Date: Tue, 9 Sep 2025 00:00:00 +0800
 Subject: [PATCH] Fix MC-270656
 
 Related MC issue: https://bugs.mojang.com/browse/MC/issues/MC-270656
 
 diff --git a/net/minecraft/server/level/ServerPlayer.java b/net/minecraft/server/level/ServerPlayer.java
-index 290d163d266da116f0bace58c89463e8a94e0b79..7221a2bc2ac2063458166e3784089f6243d2527f 100644
 --- a/net/minecraft/server/level/ServerPlayer.java
 +++ b/net/minecraft/server/level/ServerPlayer.java
 @@ -1088,6 +1088,7 @@ public class ServerPlayer extends Player implements ca.spottedleaf.moonrise.patc

@@ -59,7 +59,7 @@ index fd703764323afa8e4e0cba7022a9fd14c3274e5d..3ffc1f22c2721c3f899e4ef4636dc5a8
          int count = 0;
 
 diff --git a/net/minecraft/world/level/block/entity/BarrelBlockEntity.java b/net/minecraft/world/level/block/entity/BarrelBlockEntity.java
-index ea21571ba2656e38d2bfb27a20806810ef4ec059..0547cc7bb3be2d57d0a6df6c23c3f1e53c26d056 100644
+index ffdded59896479a983f54e2a327870dede6dd6d4..0547cc7bb3be2d57d0a6df6c23c3f1e53c26d056 100644
 --- a/net/minecraft/world/level/block/entity/BarrelBlockEntity.java
 +++ b/net/minecraft/world/level/block/entity/BarrelBlockEntity.java
 @@ -30,7 +30,7 @@ public class BarrelBlockEntity extends RandomizableContainerBlockEntity implemen

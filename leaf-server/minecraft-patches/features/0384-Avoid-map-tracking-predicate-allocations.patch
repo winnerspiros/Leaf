@@ -1,0 +1,73 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Leaf Performance experiments <noreply@localhost>
+Date: Thu, 12 Sep 2026 02:30:00 +0800
+Subject: [PATCH] Avoid map tracking predicate allocations
+
+diff --git a/net/minecraft/world/entity/player/Inventory.java b/net/minecraft/world/entity/player/Inventory.java
+--- a/net/minecraft/world/entity/player/Inventory.java
++++ b/net/minecraft/world/entity/player/Inventory.java
+@@ -492,11 +492,29 @@ public class Inventory implements Container, Nameable {
+         return false;
+     }
+
++    // Leaf-Performance start - avoid allocating map match predicates in MapItemSavedData
++    public boolean containsMap(final net.minecraft.world.item.Item mapItem, final net.minecraft.world.level.saveddata.maps.MapId mapId) {
++        for (int i = 0, size = this.items.size(); i < size; i++) {
++            final ItemStack stack = this.items.get(i);
++            if (stack.is(mapItem) && java.util.Objects.equals(mapId, stack.get(DataComponents.MAP_ID))) {
++                return true;
++            }
++        }
++        for (final EquipmentSlot slot : EQUIPMENT_SLOTS_SORTED_BY_INDEX) {
++            final ItemStack stack = this.equipment.get(slot);
++            if (stack.is(mapItem) && java.util.Objects.equals(mapId, stack.get(DataComponents.MAP_ID))) {
++                return true;
++            }
++        }
++        return false;
++    }
++    // Leaf-Performance end - avoid allocating map match predicates in MapItemSavedData
++
+     public boolean contains(final Predicate<ItemStack> predicate) {
+         // Leaf start - Remove iterators from Inventory
+         for (int i = 0, size = this.items.size(); i < size; i++) {
+             ItemStack stack = this.items.get(i);
+             if (predicate.test(stack)) {
+                 return true;
+             }
+         }
+diff --git a/net/minecraft/world/level/saveddata/maps/MapItemSavedData.java b/net/minecraft/world/level/saveddata/maps/MapItemSavedData.java
+--- a/net/minecraft/world/level/saveddata/maps/MapItemSavedData.java
++++ b/net/minecraft/world/level/saveddata/maps/MapItemSavedData.java
+@@ -195,10 +195,5 @@ public class MapItemSavedData extends SavedData {
+         return createFresh(this.centerX, this.centerZ, (byte)Mth.clamp(this.scale + 1, 0, 4), this.trackingPosition, this.unlimitedTracking, this.dimension);
+     }
+
+-    private static Predicate<ItemStack> mapMatcher(final ItemStack mapStack) {
+-        MapId mapId = mapStack.get(DataComponents.MAP_ID);
+-        return stack -> stack == mapStack || stack.is(mapStack.getItem()) && Objects.equals(mapId, stack.get(DataComponents.MAP_ID));
+-    }
+-
+     public void tickCarriedBy(final Player tickingPlayer, final ItemStack itemStack, final @Nullable ItemFrame placedInFrame) {
+         if (!this.carriedByPlayers.containsKey(tickingPlayer)) {
+@@ -207,8 +203,9 @@ public class MapItemSavedData extends SavedData {
+             this.carriedBy.add(holdingPlayer);
+         }
+
+-        Predicate<ItemStack> mapMatcher = mapMatcher(itemStack);
+-        if (!tickingPlayer.getInventory().contains(mapMatcher)) {
++        final MapId mapId = itemStack.get(DataComponents.MAP_ID); // Leaf-Performance - allocation-free map inventory matching
++        final net.minecraft.world.item.Item mapItem = itemStack.getItem();
++        if (!tickingPlayer.getInventory().containsMap(mapItem, mapId)) {
+             this.removeDecoration(tickingPlayer.getPlainTextName());
+         }
+
+@@ -216,7 +213,7 @@ public class MapItemSavedData extends SavedData {
+             MapItemSavedData.HoldingPlayer otherHoldingPlayer = this.carriedBy.get(i);
+             Player otherPlayer = otherHoldingPlayer.player;
+             String otherPlayerName = otherPlayer.getPlainTextName();
+-            if (!otherPlayer.isRemoved() && (placedInFrame != null || otherPlayer.getInventory().contains(mapMatcher))) {
++            if (!otherPlayer.isRemoved() && (placedInFrame != null || otherPlayer.getInventory().containsMap(mapItem, mapId))) {
+                 if (placedInFrame == null && otherPlayer.level().dimension() == this.dimension && this.trackingPosition) {
+                     this.addDecoration(
+                         MapDecorationTypes.PLAYER, otherPlayer.level(), otherPlayerName, otherPlayer.getX(), otherPlayer.getZ(), otherPlayer.getYRot(), null

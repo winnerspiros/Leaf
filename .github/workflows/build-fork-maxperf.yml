@@ -1,0 +1,81 @@
+name: Build Leaf max-perf (fork)
+
+on:
+  push:
+    branches: [ "ver/26.3" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - name: Set up JDK 25
+        uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '25'
+          cache: gradle
+      - name: Configure Git
+        run: |
+          git config --global user.email "no-reply@github.com"
+          git config --global user.name "Github Actions"
+      - name: Apply patches
+        run: ./gradlew applyAllPatches --stacktrace --no-daemon
+      - name: Create PaperclipJar
+        run: ./gradlew createPaperclipJar --stacktrace --no-daemon
+      - name: Upload jar
+        uses: actions/upload-artifact@v6
+        with:
+          name: server-jar
+          path: leaf-server/build/libs/leaf-paperclip-*.jar
+      - name: Rename jar to version
+        run: |
+          # Auto-version: plain build numbers (1, 2, ...)
+          LAST=$(gh release list --limit 100 --json tagName -q '.[].tagName' 2>/dev/null | grep -E '^[0-9]+$' | sort -n | tail -1)
+          if [ -z "$LAST" ]; then NEXT="1"; else NEXT="$((LAST+1))"; fi
+          echo "NEXT=$NEXT" >> $GITHUB_ENV
+          cp leaf-server/build/libs/leaf-paperclip-*.jar "leaf-server/build/libs/leaf-$NEXT.jar"
+          ls -la leaf-server/build/libs/leaf-$NEXT.jar
+      - name: Create release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG="${{ env.NEXT }}"
+          # If tag already taken (concurrent builds), bump until free
+          while gh release view "$TAG" >/dev/null 2>&1; do
+            TAG="$((TAG+1))"
+          done
+          # rename jar to final TAG if bumped
+          if [ ! -f "leaf-server/build/libs/leaf-$TAG.jar" ]; then
+            cp leaf-server/build/libs/leaf-${{ env.NEXT }}.jar "leaf-server/build/libs/leaf-$TAG.jar"
+          fi
+          # Version marker file
+          echo "${{ github.sha }}" > leaf-maxperf-version.txt
+          echo "build ${{ github.run_number }} $(date -u +%Y-%m-%dT%H:%M:%SZ)" >> leaf-maxperf-version.txt
+          # Changelog: our patches grouped (subjects from patch filenames)
+          CHANGELOG="## Changes vs upstream Leaf 26.3\n\n"
+          CHANGELOG+="### Our cherry-picked ports (not in upstream Leaf)\n"
+          for p in leaf-server/minecraft-patches/features/03[4-9]*.patch leaf-server/minecraft-patches/features/04*.patch; do
+            [ -f "$p" ] || continue
+            SUBJ=$(grep -m1 "^Subject:" "$p" | sed 's/Subject: \[PATCH\] //')
+            CHANGELOG+="- $SUBJ\n"
+          done
+          CHANGELOG+="\n### Recent commits\n$(git log -10 --format='- %s')\n"
+          printf "%b" "$CHANGELOG" > maxperf-changelog.md
+          NOTES="$(printf "%b" "$CHANGELOG")"
+          gh release create "$TAG" "leaf-server/build/libs/leaf-$TAG.jar" \
+            --title "Leaf max-perf build $TAG (MC 26.3)" \
+            --notes "$NOTES"
+          # Roll the 'current' pointer to this build
+          gh release delete maxperf-26.3-current -y 2>/dev/null || true
+          git tag -f maxperf-26.3-current 2>/dev/null || true
+          gh release create maxperf-26.3-current "leaf-server/build/libs/leaf-$TAG.jar" \
+            --title "Leaf max-perf current (MC 26.3)" \
+            --notes "$NOTES" \
+            --latest || true

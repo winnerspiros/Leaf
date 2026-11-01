@@ -29,6 +29,4 @@ leaf-server/src/minecraft
 paper-api
 paper-server
 
-# AI tools
 .codegraph
-.pi

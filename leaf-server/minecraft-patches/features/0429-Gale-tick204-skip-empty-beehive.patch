@@ -1,0 +1,18 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Leaf Max-Perf <leaf@localhost>
+Date: Sun, 11 Oct 2026 00:00:00 +0000
+Subject: [PATCH] Gale tick204: skip beehive tick when empty
+
+Ports GaleMC/Gale#204 (BeehiveBlockEntity part): empty hives do no work.
+
+diff --git a/net/minecraft/world/level/block/entity/BeehiveBlockEntity.java b/net/minecraft/world/level/block/entity/BeehiveBlockEntity.java
+--- a/net/minecraft/world/level/block/entity/BeehiveBlockEntity.java
++++ b/net/minecraft/world/level/block/entity/BeehiveBlockEntity.java
+@@ -278,6 +278,7 @@ public class BeehiveBlockEntity extends BlockEntity {
+     }
+ 
+     public static void serverTick(final Level level, final BlockPos blockPos, final BlockState state, final BeehiveBlockEntity entity) {
++        if (entity.stored.isEmpty()) return; // Gale - Leaf: skip bee hive ticking when it holds no bees
+         tickOccupants(level, blockPos, state, entity.stored, entity.savedFlowerPos);
+         if (!entity.stored.isEmpty() && level.getRandom().nextDouble() < 0.005) {
+             double x = blockPos.getX() + 0.5;

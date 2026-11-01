@@ -110,7 +110,7 @@
      runtimeOnly("org.xerial:sqlite-jdbc:3.49.1.0")
 @@ -148,40 +_,59 @@
      }
-
+ 
      testImplementation("io.github.classgraph:classgraph:4.8.184") // For mob goal test
 -    testRuntimeOnly("org.junit.platform:junit-platform-launcher:6.0.3")
 -    testImplementation("org.junit.jupiter:junit-jupiter:6.0.3")

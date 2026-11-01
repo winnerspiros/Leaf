@@ -80,7 +80,8 @@
 +    implementation("com.github.ben-manes.caffeine:caffeine:3.2.4")
 +    // Leaf end - Libraries
 +
-     implementation(platform("ca.spottedleaf.leafpile:bom:1.2.4"))
+-    implementation(platform("ca.spottedleaf.leafpile:bom:1.3.2"))
++    implementation(platform("ca.spottedleaf.leafpile:bom:1.2.4")) // Leaf - max-perf: pin leafpile
      implementation("ca.spottedleaf.leafpile:common")
      implementation("ca.spottedleaf.leafpile:concurrentutil")
 @@ -130,14 +_,20 @@
@@ -107,7 +108,7 @@
      // Deps that were previously in the API but have now been moved here for backwards compat, eventually to be removed
      runtimeOnly("commons-lang:commons-lang:2.6")
      runtimeOnly("org.xerial:sqlite-jdbc:3.49.1.0")
-@@ -148,40 +_,59 @@
+@@ -148,40 +_,57 @@
      }
  
      testImplementation("io.github.classgraph:classgraph:4.8.184") // For mob goal test
@@ -133,8 +134,9 @@
      // Spark
 -    implementation("me.lucko:spark-api:0.1-20240720.200737-2")
 -    implementation("me.lucko:spark-paper:1.10.191")
-+    implementation("me.lucko:spark-api:0.1-dev-284ead8-SNAPSHOT")
-+    implementation("me.lucko:spark-paper:1.10-dev-284ead8-SNAPSHOT")
+-}
++    implementation("me.lucko:spark-api:0.1-dev-284ead8-SNAPSHOT") // Leaf - max-perf: spark snapshots
++    implementation("me.lucko:spark-paper:1.10-dev-284ead8-SNAPSHOT") // Leaf - max-perf: spark snapshots
 +
 +    implementation("io.netty:netty-all:4.2.17.Final")
 +    // Leaf end - Bump Dependencies

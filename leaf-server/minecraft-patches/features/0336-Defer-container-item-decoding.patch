@@ -1,6 +1,6 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: HaHaWTH <102713261+HaHaWTH@users.noreply.github.com>
-Date: Tue, 9 Sep 2025 00:00:00 +0800
+Date: Tue, 9 Nov 2077 00:00:00 +0800
 Subject: [PATCH] Defer container item decoding
 
 License: GPL-3.0-only (https://www.gnu.org/licenses/gpl-3.0.html)
@@ -15,6 +15,7 @@ prominent legal notice accompanying the corresponding source:
 Original patch by HaHaWTH <102713261+HaHaWTH@users.noreply.github.com>
 
 diff --git a/net/minecraft/world/ContainerHelper.java b/net/minecraft/world/ContainerHelper.java
+index fd703764323afa8e4e0cba7022a9fd14c3274e5d..3ffc1f22c2721c3f899e4ef4636dc5a85994e762 100644
 --- a/net/minecraft/world/ContainerHelper.java
 +++ b/net/minecraft/world/ContainerHelper.java
 @@ -45,8 +45,39 @@ public class ContainerHelper {
@@ -58,6 +59,7 @@ diff --git a/net/minecraft/world/ContainerHelper.java b/net/minecraft/world/Cont
          int count = 0;
 
 diff --git a/net/minecraft/world/level/block/entity/BarrelBlockEntity.java b/net/minecraft/world/level/block/entity/BarrelBlockEntity.java
+index a91a5535f64e611e5fd199eba87601a1bbc34f5b..c1b0dfb71ddb87f7ac2a1f3529476b6c7695ed74 100644
 --- a/net/minecraft/world/level/block/entity/BarrelBlockEntity.java
 +++ b/net/minecraft/world/level/block/entity/BarrelBlockEntity.java
 @@ -30,7 +30,7 @@ public class BarrelBlockEntity extends RandomizableContainerBlockEntity implemen
@@ -69,13 +71,13 @@ diff --git a/net/minecraft/world/level/block/entity/BarrelBlockEntity.java b/net
      }
  
      @Override
-@@ -69,6 +69,7 @@ public class BarrelBlockEntity extends RandomizableContainerBlockEntity implemen
-         default -> 27;
-     }, ItemStack.EMPTY);
-     // Purpur end - Barrels and enderchests 6 rows
+@@ -59,6 +59,7 @@ public class BarrelBlockEntity extends RandomizableContainerBlockEntity implements net.caffeinemc.mods.lithium.common.block.entity.inventory_change_tracking.InventoryChangeTracker, net.caffeinemc.mods.lithium.api.inventory.LithiumInventory { // Leaves - Lithium Sleeping Block Entity
+     // CraftBukkit end
+     private static final Component DEFAULT_NAME = Component.translatable("container.barrel");
+     private NonNullList<ItemStack> items = NonNullList.withSize(27, ItemStack.EMPTY);
 +    private ContainerHelper.@org.jspecify.annotations.Nullable PendingItems pendingItems; // Leaf - Defer container item decoding
      public final ContainerOpenersCounter openersCounter = new ContainerOpenersCounter() {
-         // Paper start - delay open/close callbacks
+         // Paper start - delay close callbacks
          @Override
 @@ -112,7 +113,13 @@ public class BarrelBlockEntity extends RandomizableContainerBlockEntity implemen
      protected void saveAdditional(final ValueOutput output) {
@@ -116,8 +118,11 @@ diff --git a/net/minecraft/world/level/block/entity/BarrelBlockEntity.java b/net
          return this.items;
      }
  
-@@ -214,8 +225,15 @@ public class BarrelBlockEntity extends RandomizableContainerBlockEntity implemen
- 
+@@ -183,11 +194,18 @@ public class BarrelBlockEntity extends RandomizableContainerBlockEntity implemen
+
+     // Leaves start - Lithium Sleeping Block Entity
+
+
      @Override
      public net.minecraft.core.NonNullList<net.minecraft.world.item.ItemStack> getInventoryLithium() {
 -        return items;
@@ -134,15 +139,17 @@ diff --git a/net/minecraft/world/level/block/entity/BarrelBlockEntity.java b/net
      @Override
      public void setInventoryLithium(final net.minecraft.core.NonNullList<net.minecraft.world.item.ItemStack> inventory) {
 diff --git a/net/minecraft/world/level/block/entity/ChestBlockEntity.java b/net/minecraft/world/level/block/entity/ChestBlockEntity.java
+index 899149db8ebf95c2813fbe562d4f7fd0e829b304..bee01fe8a3b2d6a66f1830b8e87bbdc4b448bd4d 100644
 --- a/net/minecraft/world/level/block/entity/ChestBlockEntity.java
 +++ b/net/minecraft/world/level/block/entity/ChestBlockEntity.java
-@@ -29,6 +29,7 @@ public class ChestBlockEntity extends RandomizableContainerBlockEntity implement
+@@ -28,7 +28,8 @@ public class ChestBlockEntity extends RandomizableContainerBlockEntity implements LidBlockEntity, net.caffeinemc.mods.lithium.common.block.entity.inventory_change_tracking.InventoryChangeTracker, net.caffeinemc.mods.lithium.common.block.entity.inventory_change_tracking.InventoryChangeEmitter, net.caffeinemc.mods.lithium.common.block.entity.SetBlockStateHandlingBlockEntity, net.caffeinemc.mods.lithium.common.block.entity.SleepingBlockEntity, net.caffeinemc.mods.lithium.api.inventory.LithiumInventory { // Leaves - Lithium Sleeping Block Entity
+ public class ChestBlockEntity extends RandomizableContainerBlockEntity implements LidBlockEntity, net.caffeinemc.mods.lithium.common.block.entity.inventory_change_tracking.InventoryChangeTracker, net.caffeinemc.mods.lithium.common.block.entity.inventory_change_tracking.InventoryChangeEmitter, net.caffeinemc.mods.lithium.common.block.entity.SetBlockStateHandlingBlockEntity, net.caffeinemc.mods.lithium.common.block.entity.SleepingBlockEntity, net.caffeinemc.mods.lithium.api.inventory.LithiumInventory { // Leaves - Lithium Sleeping Block Entity
      private static final int EVENT_SET_OPEN_COUNT = 1;
      public static final Component DEFAULT_NAME = Component.translatable("container.chest");
      private NonNullList<ItemStack> items = NonNullList.withSize(27, ItemStack.EMPTY);
 +    private ContainerHelper.@org.jspecify.annotations.Nullable PendingItems pendingItems; // Leaf - Defer container item decoding
      public final ContainerOpenersCounter openersCounter = new ContainerOpenersCounter() {
-         // Paper start - delay open/close callbacks
+         // Paper start - delay close callbacks
          @Override
 @@ -75,7 +76,7 @@ public class ChestBlockEntity extends RandomizableContainerBlockEntity implement
  
@@ -191,7 +198,7 @@ diff --git a/net/minecraft/world/level/block/entity/ChestBlockEntity.java b/net/
          return this.items;
      }
  
-@@ -277,8 +288,15 @@ public class ChestBlockEntity extends RandomizableContainerBlockEntity implement
+@@ -276,8 +287,15 @@ @@ public class ChestBlockEntity extends RandomizableContainerBlockEntity implement
  
      @Override
      public net.minecraft.core.NonNullList<net.minecraft.world.item.ItemStack> getInventoryLithium() {
@@ -209,13 +216,14 @@ diff --git a/net/minecraft/world/level/block/entity/ChestBlockEntity.java b/net/
      @Override
      public void setInventoryLithium(final net.minecraft.core.NonNullList<net.minecraft.world.item.ItemStack> inventory) {
 diff --git a/net/minecraft/world/level/block/entity/ShulkerBoxBlockEntity.java b/net/minecraft/world/level/block/entity/ShulkerBoxBlockEntity.java
+index 309a2b0e09866c1b30452260644bcf7f960b0860..6a42a06db4a559c237bd3fd6abd018f7a319b8cb 100644
 --- a/net/minecraft/world/level/block/entity/ShulkerBoxBlockEntity.java
 +++ b/net/minecraft/world/level/block/entity/ShulkerBoxBlockEntity.java
 @@ -43,6 +43,7 @@ public class ShulkerBoxBlockEntity extends RandomizableContainerBlockEntity impl
      private static final int[] SLOTS = IntStream.range(0, 27).toArray();
      private static final Component DEFAULT_NAME = Component.translatable("container.shulkerBox");
      private NonNullList<ItemStack> itemStacks = NonNullList.withSize(27, ItemStack.EMPTY);
-+    private ContainerHelper.@Nullable PendingItems pendingItems; // Leaf - Defer container item decoding
++    private ContainerHelper.@org.jspecify.annotations.Nullable PendingItems pendingItems; // Leaf - Defer container item decoding
      public int openCount;
      private ShulkerBoxBlockEntity.AnimationStatus animationStatus = ShulkerBoxBlockEntity.AnimationStatus.CLOSED;
      private float progress;
@@ -262,7 +270,7 @@ diff --git a/net/minecraft/world/level/block/entity/ShulkerBoxBlockEntity.java b
          return this.itemStacks;
      }
  
-@@ -340,8 +351,15 @@ public class ShulkerBoxBlockEntity extends RandomizableContainerBlockEntity impl
+@@ -338,8 +356,15 @@ @@ public class ShulkerBoxBlockEntity extends RandomizableContainerBlockEntity impl
  
      @Override
      public net.minecraft.core.NonNullList<net.minecraft.world.item.ItemStack> getInventoryLithium() {
@@ -282,7 +290,7 @@ diff --git a/net/minecraft/world/level/block/entity/ShulkerBoxBlockEntity.java b
 diff --git a/net/minecraft/world/level/storage/TagValueInput.java b/net/minecraft/world/level/storage/TagValueInput.java
 --- a/net/minecraft/world/level/storage/TagValueInput.java
 +++ b/net/minecraft/world/level/storage/TagValueInput.java
-@@ -37,5 +37,35 @@ public class TagValueInput implements ValueInput {
+@@ -37,13 +37,34 @@ public class TagValueInput implements ValueInput {
          this.input = input;
      }
  
@@ -307,14 +315,13 @@ diff --git a/net/minecraft/world/level/storage/TagValueInput.java b/net/minecraf
 +    }
 +    // Leaf end - Defer container item decoding
 +
-+    // Paper start - utility methods
-+    public static ValueInput createGlobal(
-+        final ProblemReporter problemReporter,
-+        final CompoundTag compoundTag
-+    ) {
-+        return create(problemReporter, net.minecraft.server.MinecraftServer.getServer().registryAccess(), compoundTag);
-+    }
-+    // Paper end - utility methods
-+
+     // Paper start - utility methods
+     public static ValueInput createGlobal(
+         final ProblemReporter problemReporter,
+         final CompoundTag compoundTag
+     ) {
+         return create(problemReporter, net.minecraft.server.MinecraftServer.getServer().registryAccess(), compoundTag);
+     }
+     // Paper end - utility methods
+ 
      public static ValueInput create(final ProblemReporter problemReporter, final HolderLookup.Provider holders, final CompoundTag tag) {
-

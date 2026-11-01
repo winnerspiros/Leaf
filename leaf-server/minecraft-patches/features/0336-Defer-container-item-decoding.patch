@@ -17,7 +17,7 @@ Original patch by HaHaWTH <102713261+HaHaWTH@users.noreply.github.com>
 diff --git a/net/minecraft/world/ContainerHelper.java b/net/minecraft/world/ContainerHelper.java
 --- a/net/minecraft/world/ContainerHelper.java
 +++ b/net/minecraft/world/ContainerHelper.java
-@@ -45,6 +45,37 @@ public class ContainerHelper {
+@@ -45,8 +45,39 @@ public class ContainerHelper {
          }
      }
  
@@ -55,6 +55,8 @@ diff --git a/net/minecraft/world/ContainerHelper.java b/net/minecraft/world/Cont
      public static int clearOrCountMatchingItems(
          final Container container, final Predicate<ItemStack> predicate, final int amountToRemove, final boolean countingOnly
      ) {
+         int count = 0;
+
 diff --git a/net/minecraft/world/level/block/entity/BarrelBlockEntity.java b/net/minecraft/world/level/block/entity/BarrelBlockEntity.java
 --- a/net/minecraft/world/level/block/entity/BarrelBlockEntity.java
 +++ b/net/minecraft/world/level/block/entity/BarrelBlockEntity.java
@@ -280,7 +282,7 @@ diff --git a/net/minecraft/world/level/block/entity/ShulkerBoxBlockEntity.java b
 diff --git a/net/minecraft/world/level/storage/TagValueInput.java b/net/minecraft/world/level/storage/TagValueInput.java
 --- a/net/minecraft/world/level/storage/TagValueInput.java
 +++ b/net/minecraft/world/level/storage/TagValueInput.java
-@@ -37,4 +37,34 @@ public class TagValueInput implements ValueInput {
+@@ -37,5 +37,35 @@ public class TagValueInput implements ValueInput {
          this.input = input;
      }
  

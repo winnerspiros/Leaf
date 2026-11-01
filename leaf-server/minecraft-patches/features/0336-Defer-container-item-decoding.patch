@@ -317,3 +317,4 @@ diff --git a/net/minecraft/world/level/storage/TagValueInput.java b/net/minecraf
 +    // Paper end - utility methods
 +
      public static ValueInput create(final ProblemReporter problemReporter, final HolderLookup.Provider holders, final CompoundTag tag) {
+

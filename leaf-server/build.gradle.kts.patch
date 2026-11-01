@@ -108,7 +108,7 @@
      // Deps that were previously in the API but have now been moved here for backwards compat, eventually to be removed
      runtimeOnly("commons-lang:commons-lang:2.6")
      runtimeOnly("org.xerial:sqlite-jdbc:3.49.1.0")
-@@ -148,40 +_,57 @@
+@@ -148,40 +_,60 @@
      }
  
      testImplementation("io.github.classgraph:classgraph:4.8.184") // For mob goal test
@@ -135,8 +135,11 @@
 -    implementation("me.lucko:spark-api:0.1-20240720.200737-2")
 -    implementation("me.lucko:spark-paper:1.10.191")
 -}
-+    implementation("me.lucko:spark-api:0.1-dev-284ead8-SNAPSHOT") // Leaf - max-perf: spark snapshots
-+    implementation("me.lucko:spark-paper:1.10-dev-284ead8-SNAPSHOT") // Leaf - max-perf: spark snapshots
++    //implementation("me.lucko:spark-api:0.1-dev-284ead8-SNAPSHOT") // Leaf - max-perf: snapshots repo gone, kept for reference
++    //implementation("me.lucko:spark-paper:1.10-dev-284ead8-SNAPSHOT") // Leaf - max-perf: snapshots repo gone, kept for reference
++    implementation("me.lucko:spark-api:0.1-20240720.200737-2")
++    implementation("me.lucko:spark-paper:1.10.191")
++}
 +
 +    implementation("io.netty:netty-all:4.2.17.Final")
 +    // Leaf end - Bump Dependencies

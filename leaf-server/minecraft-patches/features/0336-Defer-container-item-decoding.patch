@@ -71,7 +71,7 @@ index ffdded59896479a983f54e2a327870dede6dd6d4..0547cc7bb3be2d57d0a6df6c23c3f1e5
      }
  
      @Override
-@@ -68,6 +68,7 @@ public class BarrelBlockEntity extends RandomizableContainerBlockEntity implements net.caffeinemc.mods.lithium.common.block.entity.inventory_change_tracking.InventoryChangeTracker, net.caffeinemc.mods.lithium.api.inventory.LithiumInventory { // Leaves - Lithium Sleeping Block Entity
+@@ -68,5 +68,6 @@ public class BarrelBlockEntity extends RandomizableContainerBlockEntity implements net.caffeinemc.mods.lithium.common.block.entity.inventory_change_tracking.InventoryChangeTracker, net.caffeinemc.mods.lithium.api.inventory.LithiumInventory { // Leaves - Lithium Sleeping Block Entity
      }, ItemStack.EMPTY);
      // Purpur end - Barrels and enderchests 6 rows
 +    private ContainerHelper.@org.jspecify.annotations.Nullable PendingItems pendingItems; // Leaf - Defer container item decoding

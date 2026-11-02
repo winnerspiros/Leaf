@@ -9,26 +9,38 @@ jobs:
   sync:
     runs-on: ubuntu-24.04
     steps:
-      - name: Checkout fork
+      - name: Checkout fork branch
         uses: actions/checkout@v5
         with:
+          ref: ver/26.3
           fetch-depth: 0
-          token: ${{ secrets.SYNC_PAT }}
+      - name: Auth remote (PAT when available)
+        env:
+          SYNC_PAT: ${{ secrets.SYNC_PAT }}
+        run: |
+          if [ -n "$SYNC_PAT" ]; then
+            git remote set-url origin "https://x-access-token:${SYNC_PAT}@github.com/winnerspiros/Leaf.git"
+            echo "HAVE_PAT=true" >> $GITHUB_ENV
+          else
+            echo "HAVE_PAT=false" >> $GITHUB_ENV
+            echo "No SYNC_PAT secret — pushes will use GITHUB_TOKEN and the build will be dispatched explicitly."
+          fi
       - name: Fetch upstream
         run: |
           git remote add upstream https://github.com/Winds-Studio/Leaf.git 2>/dev/null || true
           git fetch upstream ver/26.3
           echo "UPSTREAM_SHA=$(git rev-parse upstream/ver/26.3)" >> $GITHUB_ENV
-          echo "BASE_SHA=$(git merge-base ver/26.3 upstream/ver/26.3)" >> $GITHUB_ENV
+          echo "HEAD_SHA=$(git rev-parse HEAD)" >> $GITHUB_ENV
+          echo "BASE_SHA=$(git merge-base HEAD upstream/ver/26.3)" >> $GITHUB_ENV
       - name: Check for upstream movement
         id: check
         run: |
-          git checkout ver/26.3
-          if [ "$UPSTREAM_SHA" = "$(git rev-parse ver/26.3)" ]; then
+          if [ "$BASE_SHA" = "$UPSTREAM_SHA" ]; then
             echo "moved=false" >> $GITHUB_OUTPUT
-            echo "Upstream unchanged, nothing to do."
+            echo "Fork already contains upstream $UPSTREAM_SHA, nothing to do."
           else
             echo "moved=true" >> $GITHUB_OUTPUT
+            echo "Upstream moved: base $BASE_SHA -> $UPSTREAM_SHA"
           fi
       - name: Attempt rebase onto upstream
         id: rebase
@@ -36,20 +48,25 @@ jobs:
         run: |
           git config user.email "no-reply@github.com"
           git config user.name "Github Actions"
-          git rebase upstream/ver/26.3 ver/26.3 && echo "clean=true" >> $GITHUB_OUTPUT || echo "clean=false" >> $GITHUB_OUTPUT
+          git rebase upstream/ver/26.3 && echo "clean=true" >> $GITHUB_OUTPUT || echo "clean=false" >> $GITHUB_OUTPUT
       - name: Push clean rebase
         if: steps.check.outputs.moved == 'true' && steps.rebase.outputs.clean == 'true'
-        run: git push origin ver/26.3 --force-with-lease
+        run: git push origin HEAD:ver/26.3 --force-with-lease
+      - name: Dispatch build (GITHUB_TOKEN pushes don't trigger workflows)
+        if: steps.check.outputs.moved == 'true' && steps.rebase.outputs.clean == 'true' && env.HAVE_PAT == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run "Build Leaf max-perf (fork)" --ref ver/26.3
       - name: Open conflict PR
         if: steps.check.outputs.moved == 'true' && steps.rebase.outputs.clean != 'true'
         env:
-          GH_TOKEN: ${{ secrets.SYNC_PAT }}
+          GH_TOKEN: ${{ secrets.SYNC_PAT || github.token }}
         run: |
           git rebase --abort || true
           BR="sync/upstream-$(date +%Y%m%d)"
-          git checkout -b "$BR" upstream/ver/26.3
-          git cherry-pick ver/26.3..upstream/ver/26.3 2>/dev/null || true
+          git checkout -b "$BR" "$UPSTREAM_SHA"
+          git cherry-pick "$BASE_SHA..$HEAD_SHA" || true
           git push origin "$BR" --force
           gh pr create --title "Upstream sync $(date +%Y-%m-%d): rebase conflicts need manual fix" \
-            --body "Upstream ver/26.3 moved to $UPSTREAM_SHA. Auto-rebase failed — resolve conflicts on this branch, then fast-forward ver/26.3." \
+            --body "Upstream ver/26.3 moved to $UPSTREAM_SHA (fork was based at $BASE_SHA). Auto-rebase failed — resolve conflicts on this branch, then fast-forward ver/26.3." \
             --base ver/26.3 --head "$BR" || true

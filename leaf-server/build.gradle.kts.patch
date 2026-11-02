@@ -80,7 +80,7 @@
 +    // Leaf end - Libraries
 +
 -    implementation(platform("ca.spottedleaf.leafpile:bom:1.3.2"))
-+    implementation(platform("ca.spottedleaf.leafpile:bom:1.2.4")) // Leaf - max-perf: pin leafpile
+     implementation(platform("ca.spottedleaf.leafpile:bom:1.3.2"))
      implementation("ca.spottedleaf.leafpile:common")
      implementation("ca.spottedleaf.leafpile:concurrentutil")
 @@ -130,14 +_,20 @@

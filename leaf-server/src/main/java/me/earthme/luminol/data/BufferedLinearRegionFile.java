@@ -842,6 +842,21 @@ public class BufferedLinearRegionFile implements me.earthme.luminol.data.RegionF
     // MCC end
 
     @Override
+    public int moonrise$getRecalculateCount() {
+        return 0;
+    }
+
+    @Override
+    public boolean moonrise$recalculateHeader() {
+        return false;
+    }
+
+    @Override
+    public Boolean moonrise$tryRecalcHeader(final int expectedRecalcCount) {
+        return null;
+    }
+
+    @Override
     public MoonriseRegionFileIO.RegionDataController.WriteData moonrise$startWrite(CompoundTag data, ChunkPos pos) {
         final ChunkBufferHelper buffer = new ChunkBufferHelper(pos);
         buffer.moonrise$setWriteOnClose(false);

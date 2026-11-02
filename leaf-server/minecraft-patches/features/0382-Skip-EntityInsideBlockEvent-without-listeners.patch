@@ -6,7 +6,7 @@ Subject: [PATCH] Skip EntityInsideBlockEvent without listeners
 diff --git a/net/minecraft/world/level/block/BaseFireBlock.java b/net/minecraft/world/level/block/BaseFireBlock.java
 --- a/net/minecraft/world/level/block/BaseFireBlock.java
 +++ b/net/minecraft/world/level/block/BaseFireBlock.java
-@@ -136,8 +136,8 @@ public abstract class BaseFireBlock extends Block {
+@@ -136,7 +136,8 @@ public abstract class BaseFireBlock extends Block {
          final InsideBlockEffectApplier effectApplier,
          final boolean isPrecise
      ) {
